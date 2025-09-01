@@ -92,6 +92,15 @@ export class UsuarioDashboardComponent {
     this.refreshListas();
   }
 
+  // Métodos para contadores dos cards
+  getEmAnaliseCount(): number {
+    return this.meusAE?.filter(ae => ae.status === 'EM_ANALISE')?.length || 0;
+  }
+
+  getAprovadasCount(): number {
+    return this.meusAE?.filter(ae => ae.status === 'APROVADA')?.length || 0;
+  }
+
   // ============== Listas ==============
   refreshListas() {
     this.carregandoLista = true;
