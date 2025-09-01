@@ -13,13 +13,16 @@
     <div class="user-section">
       <div class="user-profile">
         <div class="user-avatar">
-          <div class="avatar-icon">👤</div>
+          <div class="avatar-icon"><i class="fas fa-user"></i></div>
         </div>
         <div class="user-info">
           <div class="user-name">{{ userName }}</div>
           <div class="user-role">{{ userRole }}</div>
         </div>
-        <button class="logout-button" (click)="logout()">🚪</button>
+        <button *ngIf="isLoggedIn; else loginTpl" class="logout-button" (click)="logout()"><i class="fas fa-sign-out-alt"></i></button>
+        <ng-template #loginTpl>
+          <button class="logout-button" (click)="goLogin()"><i class="fas fa-sign-in-alt"></i></button>
+        </ng-template>
       </div>
     </div>
   </div>

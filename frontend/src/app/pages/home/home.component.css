@@ -338,11 +338,13 @@
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
+  justify-items: center; /* garante centralização dos itens */
 }
 
 /* About Text Section */
 .about-text {
   max-width: 100%;
+  width: 100%;
 }
 
 .about-title {
@@ -394,10 +396,11 @@
 
 /* About Boxes Section */
 .about-boxes {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
   max-width: 300px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -703,5 +706,74 @@
   .contact-item,
   .footer-link {
     font-size: 0.875rem;
+  }
+}
+
+/* Responsividade adicional da seção About */
+@media (max-width: 1024px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 4rem 1rem;
+  }
+  .about-content {
+    gap: 2rem;
+    justify-items: center;
+  }
+  .about-title {
+    font-size: 2rem;
+  }
+  .about-description {
+    font-size: 1rem;
+  }
+  .features-list {
+    gap: 1rem;
+    align-items: center;
+  }
+  .feature-item {
+    justify-content: center;
+  }
+  .about-boxes {
+    max-width: 100%;
+    grid-template-columns: 1fr; /* empilha para evitar quebra em tablets */
+    gap: 1rem;
+  }
+  .info-box {
+    padding: 1.25rem;
+  }
+  .box-number {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-title {
+    font-size: 1.75rem;
+  }
+  .feature-icon {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.875rem;
+  }
+  .feature-text {
+    font-size: 1rem;
+  }
+  .about-boxes {
+    grid-template-columns: 1fr; /* empilha no mobile */
+  }
+  .info-box {
+    padding: 1rem;
+  }
+  .box-number {
+    font-size: 1.75rem;
+  }
+  .box-label {
+    font-size: 0.75rem;
   }
 }
