@@ -15,4 +15,8 @@ export class PalestraService {
   listarMinhas() {
     return this.http.get<any[]>(`${this.base}/palestras`);
   }
+
+  obterPalestraPorProtocolo(protocolo: string) {
+    return this.http.get<any>(`${this.base}/palestras/${encodeURIComponent(protocolo)}`);
+  }
 }

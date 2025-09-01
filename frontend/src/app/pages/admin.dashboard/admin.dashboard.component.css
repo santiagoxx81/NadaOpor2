@@ -1,0 +1,10 @@
+/* Estilos do detalhe no admin */
+.mt-6 { margin-top: 1.5rem; }
+.mb-0 { margin-bottom: 0; }
+.flex { display: flex; }
+.justify-between { justify-content: space-between; }
+.items-center { align-items: center; }
+.grid { display: grid; }
+.grid-cols-2 { grid-template-columns: 1fr 1fr; }
+.gap-4 { gap: 1rem; }
+.text-muted { color: var(--gray-600); }

@@ -46658,10 +46658,66 @@ var AdminService = class _AdminService {
   }], null, null);
 })();
 
+// src/app/services/palestra.service.ts
+var PalestraService = class _PalestraService {
+  http = inject2(HttpClient);
+  base = "http://localhost:4000/api";
+  criar(body) {
+    return this.http.post(`${this.base}/palestras`, body);
+  }
+  listarMinhas() {
+    return this.http.get(`${this.base}/palestras`);
+  }
+  obterPalestraPorProtocolo(protocolo) {
+    return this.http.get(`${this.base}/palestras/${encodeURIComponent(protocolo)}`);
+  }
+  static \u0275fac = function PalestraService_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _PalestraService)();
+  };
+  static \u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _PalestraService, factory: _PalestraService.\u0275fac, providedIn: "root" });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(PalestraService, [{
+    type: Injectable,
+    args: [{ providedIn: "root" }]
+  }], null, null);
+})();
+
+// src/app/services/anexos.service.ts
+var AnexosService = class _AnexosService {
+  http = inject2(HttpClient);
+  base = "http://localhost:4000/api";
+  listar(protocoloAE) {
+    return this.http.get(`${this.base}/eventos/autorizacao/${protocoloAE}/anexos`);
+  }
+  upload(protocoloAE, arquivo, tipo_documento) {
+    const fd = new FormData();
+    fd.append("arquivo", arquivo);
+    fd.append("tipo_documento", tipo_documento);
+    return this.http.post(`${this.base}/eventos/autorizacao/${protocoloAE}/anexos`, fd);
+  }
+  download(id) {
+    return this.http.get(`${this.base}/eventos/autorizacao/anexos/${id}/download`, { responseType: "blob" });
+  }
+  excluir(id) {
+    return this.http.delete(`${this.base}/eventos/autorizacao/anexos/${id}`);
+  }
+  static \u0275fac = function AnexosService_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _AnexosService)();
+  };
+  static \u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _AnexosService, factory: _AnexosService.\u0275fac, providedIn: "root" });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AnexosService, [{
+    type: Injectable,
+    args: [{ providedIn: "root" }]
+  }], null, null);
+})();
+
 // src/app/pages/admin.dashboard/admin.dashboard.component.ts
 function AdminDashboardComponent_div_8_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 28);
+    \u0275\u0275elementStart(0, "div", 29);
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
@@ -46673,7 +46729,7 @@ function AdminDashboardComponent_div_8_Template(rf, ctx) {
 }
 function AdminDashboardComponent_div_9_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 29);
+    \u0275\u0275elementStart(0, "div", 30);
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
@@ -46685,9 +46741,9 @@ function AdminDashboardComponent_div_9_Template(rf, ctx) {
 }
 function AdminDashboardComponent_div_53_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 30);
-    \u0275\u0275element(1, "div", 31);
-    \u0275\u0275elementStart(2, "p", 32);
+    \u0275\u0275elementStart(0, "div", 31);
+    \u0275\u0275element(1, "div", 32);
+    \u0275\u0275elementStart(2, "p", 33);
     \u0275\u0275text(3, "Carregando registros...");
     \u0275\u0275elementEnd()();
   }
@@ -46711,34 +46767,43 @@ function AdminDashboardComponent_div_54_tr_17_Template(rf, ctx) {
     \u0275\u0275text(12);
     \u0275\u0275pipe(13, "date");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(14, "td")(15, "div", 36)(16, "select", 37, 0);
+    \u0275\u0275elementStart(14, "td")(15, "div", 37)(16, "select", 38, 0);
     \u0275\u0275listener("change", function AdminDashboardComponent_div_54_tr_17_Template_select_change_16_listener() {
       const r_r3 = \u0275\u0275restoreView(_r2).$implicit;
       const statusSelect_r4 = \u0275\u0275reference(17);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.atualizarStatus(r_r3.protocolo, statusSelect_r4.value));
     });
-    \u0275\u0275elementStart(18, "option", 38);
+    \u0275\u0275elementStart(18, "option", 39);
     \u0275\u0275text(19, "RECEBIDA");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(20, "option", 39);
+    \u0275\u0275elementStart(20, "option", 40);
     \u0275\u0275text(21, "EM_ANALISE");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(22, "option", 40);
+    \u0275\u0275elementStart(22, "option", 41);
     \u0275\u0275text(23, "PENDENTE");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(24, "option", 41);
+    \u0275\u0275elementStart(24, "option", 42);
     \u0275\u0275text(25, "APROVADA");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(26, "option", 42);
+    \u0275\u0275elementStart(26, "option", 43);
     \u0275\u0275text(27, "RECUSADA");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(28, "option", 43);
+    \u0275\u0275elementStart(28, "option", 44);
     \u0275\u0275text(29, "FINALIZADA");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(30, "option", 44);
+    \u0275\u0275elementStart(30, "option", 45);
     \u0275\u0275text(31, "CANCELADA");
-    \u0275\u0275elementEnd()()()()();
+    \u0275\u0275elementEnd()();
+    \u0275\u0275elementStart(32, "button", 46);
+    \u0275\u0275listener("click", function AdminDashboardComponent_div_54_tr_17_Template_button_click_32_listener() {
+      const r_r3 = \u0275\u0275restoreView(_r2).$implicit;
+      const ctx_r0 = \u0275\u0275nextContext(2);
+      return \u0275\u0275resetView(ctx_r0.verDetalhe(r_r3));
+    });
+    \u0275\u0275element(33, "i", 47);
+    \u0275\u0275text(34, " Ver");
+    \u0275\u0275elementEnd()()()();
   }
   if (rf & 2) {
     const r_r3 = ctx.$implicit;
@@ -46760,7 +46825,7 @@ function AdminDashboardComponent_div_54_tr_17_Template(rf, ctx) {
 }
 function AdminDashboardComponent_div_54_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 33)(1, "table", 34)(2, "thead")(3, "tr")(4, "th");
+    \u0275\u0275elementStart(0, "div", 34)(1, "table", 35)(2, "thead")(3, "tr")(4, "th");
     \u0275\u0275text(5, "Protocolo");
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(6, "th");
@@ -46779,7 +46844,7 @@ function AdminDashboardComponent_div_54_Template(rf, ctx) {
     \u0275\u0275text(15, "A\xE7\xF5es");
     \u0275\u0275elementEnd()()();
     \u0275\u0275elementStart(16, "tbody");
-    \u0275\u0275template(17, AdminDashboardComponent_div_54_tr_17_Template, 32, 13, "tr", 35);
+    \u0275\u0275template(17, AdminDashboardComponent_div_54_tr_17_Template, 35, 13, "tr", 36);
     \u0275\u0275elementEnd()()();
   }
   if (rf & 2) {
@@ -46790,30 +46855,334 @@ function AdminDashboardComponent_div_54_Template(rf, ctx) {
 }
 function AdminDashboardComponent_div_55_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 30)(1, "div", 45);
-    \u0275\u0275element(2, "i", 46);
+    \u0275\u0275elementStart(0, "div", 31)(1, "div", 48);
+    \u0275\u0275element(2, "i", 49);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "h3", 47);
+    \u0275\u0275elementStart(3, "h3", 50);
     \u0275\u0275text(4, "Nenhum registro encontrado");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(5, "p", 32);
+    \u0275\u0275elementStart(5, "p", 33);
     \u0275\u0275text(6, "N\xE3o h\xE1 solicita\xE7\xF5es que correspondam aos filtros aplicados.");
     \u0275\u0275elementEnd()();
+  }
+}
+function AdminDashboardComponent_section_56_div_8_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 60);
+    \u0275\u0275element(1, "div", 32);
+    \u0275\u0275elementStart(2, "p", 33);
+    \u0275\u0275text(3, "Carregando detalhes...");
+    \u0275\u0275elementEnd()();
+  }
+}
+function AdminDashboardComponent_section_56_div_9_div_12_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div")(1, "strong");
+    \u0275\u0275text(2, "Tipo:");
+    \u0275\u0275elementEnd();
+    \u0275\u0275text(3);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext(3);
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate1(" ", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.tipo_evento);
+  }
+}
+function AdminDashboardComponent_section_56_div_9_div_17_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div")(1, "strong");
+    \u0275\u0275text(2, "CEP:");
+    \u0275\u0275elementEnd();
+    \u0275\u0275text(3);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext(3);
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate1(" ", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.cep);
+  }
+}
+function AdminDashboardComponent_section_56_div_9_div_18_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div")(1, "strong");
+    \u0275\u0275text(2, "In\xEDcio:");
+    \u0275\u0275elementEnd();
+    \u0275\u0275text(3);
+    \u0275\u0275pipe(4, "date");
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext(3);
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind2(4, 1, ctx_r0.detalhe == null ? null : ctx_r0.detalhe.data_inicio, "short"));
+  }
+}
+function AdminDashboardComponent_section_56_div_9_div_19_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div")(1, "strong");
+    \u0275\u0275text(2, "Fim:");
+    \u0275\u0275elementEnd();
+    \u0275\u0275text(3);
+    \u0275\u0275pipe(4, "date");
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext(3);
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind2(4, 1, ctx_r0.detalhe == null ? null : ctx_r0.detalhe.data_fim, "short"));
+  }
+}
+function AdminDashboardComponent_section_56_div_9_div_20_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div")(1, "strong");
+    \u0275\u0275text(2, "Data sugerida:");
+    \u0275\u0275elementEnd();
+    \u0275\u0275text(3);
+    \u0275\u0275pipe(4, "date");
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext(3);
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind2(4, 1, ctx_r0.detalhe == null ? null : ctx_r0.detalhe.data_sugerida, "short"));
+  }
+}
+function AdminDashboardComponent_section_56_div_9_div_21_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div")(1, "strong");
+    \u0275\u0275text(2, "P\xFAblico estimado:");
+    \u0275\u0275elementEnd();
+    \u0275\u0275text(3);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext(3);
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate1(" ", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.publico_estimado);
+  }
+}
+function AdminDashboardComponent_section_56_div_9_div_22_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div")(1, "strong");
+    \u0275\u0275text(2, "Qtd pessoas:");
+    \u0275\u0275elementEnd();
+    \u0275\u0275text(3);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext(3);
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate1(" ", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.qtd_pessoas);
+  }
+}
+function AdminDashboardComponent_section_56_div_9_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 61)(1, "div")(2, "h4", 50);
+    \u0275\u0275text(3, "Informa\xE7\xF5es");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(4, "div")(5, "strong");
+    \u0275\u0275text(6, "Protocolo:");
+    \u0275\u0275elementEnd();
+    \u0275\u0275text(7);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(8, "div")(9, "strong");
+    \u0275\u0275text(10, "T\xEDtulo/Organiza\xE7\xE3o:");
+    \u0275\u0275elementEnd();
+    \u0275\u0275text(11);
+    \u0275\u0275elementEnd();
+    \u0275\u0275template(12, AdminDashboardComponent_section_56_div_9_div_12_Template, 4, 1, "div", 62);
+    \u0275\u0275elementStart(13, "div")(14, "strong");
+    \u0275\u0275text(15, "Cidade/UF:");
+    \u0275\u0275elementEnd();
+    \u0275\u0275text(16);
+    \u0275\u0275elementEnd();
+    \u0275\u0275template(17, AdminDashboardComponent_section_56_div_9_div_17_Template, 4, 1, "div", 62)(18, AdminDashboardComponent_section_56_div_9_div_18_Template, 5, 4, "div", 62)(19, AdminDashboardComponent_section_56_div_9_div_19_Template, 5, 4, "div", 62)(20, AdminDashboardComponent_section_56_div_9_div_20_Template, 5, 4, "div", 62)(21, AdminDashboardComponent_section_56_div_9_div_21_Template, 4, 1, "div", 62)(22, AdminDashboardComponent_section_56_div_9_div_22_Template, 4, 1, "div", 62);
+    \u0275\u0275elementStart(23, "div")(24, "strong");
+    \u0275\u0275text(25, "Status:");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(26, "span");
+    \u0275\u0275text(27);
+    \u0275\u0275elementEnd()()();
+    \u0275\u0275elementStart(28, "div")(29, "h4", 50);
+    \u0275\u0275text(30, "Endere\xE7o");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(31, "div");
+    \u0275\u0275text(32);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(33, "div");
+    \u0275\u0275text(34);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(35, "div", 63)(36, "strong");
+    \u0275\u0275text(37, "Descri\xE7\xE3o/Observa\xE7\xF5es:");
+    \u0275\u0275elementEnd();
+    \u0275\u0275element(38, "br");
+    \u0275\u0275text(39);
+    \u0275\u0275elementEnd()()();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext(2);
+    \u0275\u0275advance(7);
+    \u0275\u0275textInterpolate1(" ", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.protocolo);
+    \u0275\u0275advance(4);
+    \u0275\u0275textInterpolate1(" ", (ctx_r0.detalhe == null ? null : ctx_r0.detalhe.titulo) || (ctx_r0.detalhe == null ? null : ctx_r0.detalhe.organizacao));
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.tipo_evento);
+    \u0275\u0275advance(4);
+    \u0275\u0275textInterpolate2(" ", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.cidade, " / ", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.estado);
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.cep);
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.data_inicio);
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.data_fim);
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.data_sugerida);
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.publico_estimado);
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.qtd_pessoas);
+    \u0275\u0275advance(4);
+    \u0275\u0275classMap(\u0275\u0275interpolate1("badge badge-", ((ctx_r0.detalhe == null ? null : ctx_r0.detalhe.status) || "").toLowerCase().replace("_", "-")));
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate(ctx_r0.detalhe == null ? null : ctx_r0.detalhe.status);
+    \u0275\u0275advance(5);
+    \u0275\u0275textInterpolate(ctx_r0.detalhe == null ? null : ctx_r0.detalhe.endereco);
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate(ctx_r0.detalhe == null ? null : ctx_r0.detalhe.bairro);
+    \u0275\u0275advance(5);
+    \u0275\u0275textInterpolate((ctx_r0.detalhe == null ? null : ctx_r0.detalhe.descricao) || (ctx_r0.detalhe == null ? null : ctx_r0.detalhe.observacoes) || "\u2014");
+  }
+}
+function AdminDashboardComponent_section_56_div_10_div_4_tr_13_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r6 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "tr")(1, "td");
+    \u0275\u0275text(2);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(3, "td");
+    \u0275\u0275text(4);
+    \u0275\u0275pipe(5, "number");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(6, "td");
+    \u0275\u0275text(7);
+    \u0275\u0275pipe(8, "date");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(9, "td")(10, "button", 46);
+    \u0275\u0275listener("click", function AdminDashboardComponent_section_56_div_10_div_4_tr_13_Template_button_click_10_listener() {
+      const a_r7 = \u0275\u0275restoreView(_r6).$implicit;
+      const ctx_r0 = \u0275\u0275nextContext(4);
+      return \u0275\u0275resetView(ctx_r0.baixarAnexo(a_r7));
+    });
+    \u0275\u0275element(11, "i", 67);
+    \u0275\u0275text(12, " Baixar");
+    \u0275\u0275elementEnd()()();
+  }
+  if (rf & 2) {
+    const a_r7 = ctx.$implicit;
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate(a_r7.nome_original);
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate1("", \u0275\u0275pipeBind1(5, 3, a_r7.tamanho_bytes), " bytes");
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind2(8, 5, a_r7.criado_em, "short"));
+  }
+}
+function AdminDashboardComponent_section_56_div_10_div_4_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 34)(1, "table", 35)(2, "thead")(3, "tr")(4, "th");
+    \u0275\u0275text(5, "Nome");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(6, "th");
+    \u0275\u0275text(7, "Tamanho");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(8, "th");
+    \u0275\u0275text(9, "Enviado em");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(10, "th");
+    \u0275\u0275text(11, "A\xE7\xF5es");
+    \u0275\u0275elementEnd()()();
+    \u0275\u0275elementStart(12, "tbody");
+    \u0275\u0275template(13, AdminDashboardComponent_section_56_div_10_div_4_tr_13_Template, 13, 8, "tr", 36);
+    \u0275\u0275elementEnd()()();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext(3);
+    \u0275\u0275advance(13);
+    \u0275\u0275property("ngForOf", ctx_r0.anexos);
+  }
+}
+function AdminDashboardComponent_section_56_div_10_div_5_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 33);
+    \u0275\u0275text(1, "Nenhum anexo.");
+    \u0275\u0275elementEnd();
+  }
+}
+function AdminDashboardComponent_section_56_div_10_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 64)(1, "h4", 50);
+    \u0275\u0275element(2, "i", 65);
+    \u0275\u0275text(3, " Anexos");
+    \u0275\u0275elementEnd();
+    \u0275\u0275template(4, AdminDashboardComponent_section_56_div_10_div_4_Template, 14, 1, "div", 27)(5, AdminDashboardComponent_section_56_div_10_div_5_Template, 2, 0, "div", 66);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext(2);
+    \u0275\u0275advance(4);
+    \u0275\u0275property("ngIf", ctx_r0.anexos == null ? null : ctx_r0.anexos.length);
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", !(ctx_r0.anexos == null ? null : ctx_r0.anexos.length));
+  }
+}
+function AdminDashboardComponent_section_56_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r5 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "section", 51)(1, "div", 52)(2, "h3", 53);
+    \u0275\u0275element(3, "i", 54);
+    \u0275\u0275text(4);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(5, "button", 55);
+    \u0275\u0275listener("click", function AdminDashboardComponent_section_56_Template_button_click_5_listener() {
+      \u0275\u0275restoreView(_r5);
+      const ctx_r0 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r0.fecharDetalhe());
+    });
+    \u0275\u0275element(6, "i", 56);
+    \u0275\u0275text(7, " Fechar");
+    \u0275\u0275elementEnd()();
+    \u0275\u0275template(8, AdminDashboardComponent_section_56_div_8_Template, 4, 0, "div", 57)(9, AdminDashboardComponent_section_56_div_9_Template, 40, 18, "div", 58)(10, AdminDashboardComponent_section_56_div_10_Template, 6, 2, "div", 59);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext();
+    \u0275\u0275advance(4);
+    \u0275\u0275textInterpolate1(" Detalhes do Processo (", ctx_r0.detalheOrigem, ")");
+    \u0275\u0275advance(4);
+    \u0275\u0275property("ngIf", ctx_r0.carregandoDetalhe);
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", !ctx_r0.carregandoDetalhe);
+    \u0275\u0275advance();
+    \u0275\u0275property("ngIf", ctx_r0.detalheOrigem === "AE");
   }
 }
 var AdminDashboardComponent = class _AdminDashboardComponent {
   fb = inject2(FormBuilder);
   adminSrv = inject2(AdminService);
-  // UI state
+  palestraSrv = inject2(PalestraService);
+  anexosSrv = inject2(AnexosService);
   carregando = false;
   erro = "";
   msg = "";
-  // Lista de registros
   registros = [];
-  // Filtros
+  // Detalhe
+  detalhe = null;
+  detalheOrigem = "";
+  carregandoDetalhe = false;
+  anexos = [];
   filtros = this.fb.group({
     tipo: [""],
-    // AE (Nada Opor) | PL (Palestras/Eventos)
     status: [""],
     protocolo: [""],
     titulo: [""],
@@ -46872,7 +47241,7 @@ var AdminDashboardComponent = class _AdminDashboardComponent {
           this.carregando = false;
         },
         error: (e) => {
-          this.erro = e?.error?.erro || "Falha ao carregar registros";
+          this.erro = e?.error?.erro || "Falha ao carregar palestras";
           this.carregando = false;
         }
       });
@@ -46901,6 +47270,57 @@ var AdminDashboardComponent = class _AdminDashboardComponent {
       }
     });
   }
+  verDetalhe(row) {
+    this.detalhe = null;
+    this.anexos = [];
+    this.carregandoDetalhe = true;
+    this.detalheOrigem = row?.origem || "AE";
+    if (this.detalheOrigem === "AE") {
+      this.adminSrv.obterAutorizacao(row.protocolo).subscribe({
+        next: (d) => {
+          this.detalhe = d;
+          this.carregarAnexos(row.protocolo);
+          this.carregandoDetalhe = false;
+        },
+        error: () => {
+          this.erro = "Falha ao carregar detalhes";
+          this.carregandoDetalhe = false;
+        }
+      });
+    } else {
+      this.palestraSrv.obterPalestraPorProtocolo(row.protocolo).subscribe({
+        next: (d) => {
+          this.detalhe = d;
+          this.carregandoDetalhe = false;
+        },
+        error: () => {
+          this.erro = "Falha ao carregar detalhes";
+          this.carregandoDetalhe = false;
+        }
+      });
+    }
+  }
+  carregarAnexos(protocolo) {
+    this.anexosSrv.listar(protocolo).subscribe({
+      next: (ax) => this.anexos = ax || [],
+      error: () => this.anexos = []
+    });
+  }
+  baixarAnexo(a) {
+    this.anexosSrv.download(a.id).subscribe((blob) => {
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = a.nome_original || "anexo";
+      link.click();
+      URL.revokeObjectURL(url);
+    });
+  }
+  fecharDetalhe() {
+    this.detalhe = null;
+    this.anexos = [];
+    this.detalheOrigem = "";
+  }
   atualizarStatus(protocolo, novoStatus) {
     if (!confirm(`Alterar status para ${novoStatus}?`))
       return;
@@ -46918,7 +47338,7 @@ var AdminDashboardComponent = class _AdminDashboardComponent {
   static \u0275fac = function AdminDashboardComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || _AdminDashboardComponent)();
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AdminDashboardComponent, selectors: [["app-admin-dashboard"]], decls: 56, vars: 6, consts: [["statusSelect", ""], ["currentPage", "Dashboard do Administrador", "userName", "Admin PMERJ", "userRole", "ADMINISTRADOR"], [1, "dashboard-container"], [1, "dashboard-header"], [1, "dashboard-title"], [1, "dashboard-subtitle"], ["class", "alert alert-success", 4, "ngIf"], ["class", "alert alert-error", 4, "ngIf"], [1, "card", "mb-6"], [1, "mb-4"], [1, "fas", "fa-search"], [1, "grid", "grid-cols-4", "gap-4", 3, "ngSubmit", "formGroup"], [1, "form-group"], [1, "form-label"], ["formControlName", "tipo", 1, "form-input"], ["value", ""], ["value", "AE"], ["value", "PL"], ["formControlName", "status", "placeholder", "RECEBIDA, EM_ANALISE, PENDENTE...", 1, "form-input"], ["formControlName", "protocolo", "placeholder", "N\xFAmero do protocolo", 1, "form-input"], ["formControlName", "titulo", "placeholder", "Nome do evento", 1, "form-input"], ["formControlName", "cidade", "placeholder", "Nome da cidade", 1, "form-input"], ["type", "date", "formControlName", "data_inicio", 1, "form-input"], ["type", "date", "formControlName", "data_fim", 1, "form-input"], [2, "grid-column", "1/-1"], ["type", "submit", 1, "btn", "btn-primary"], ["class", "text-center p-8", 4, "ngIf"], ["class", "table-container", 4, "ngIf"], [1, "alert", "alert-success"], [1, "alert", "alert-error"], [1, "text-center", "p-8"], [1, "loading", "mb-2"], [1, "text-muted"], [1, "table-container"], [1, "table"], [4, "ngFor", "ngForOf"], [1, "flex", "gap-2"], [1, "form-input", "form-input-sm", 3, "change", "value"], ["value", "RECEBIDA"], ["value", "EM_ANALISE"], ["value", "PENDENTE"], ["value", "APROVADA"], ["value", "RECUSADA"], ["value", "FINALIZADA"], ["value", "CANCELADA"], [1, "text-4xl", "mb-4"], [1, "fas", "fa-clipboard"], [1, "mb-2"]], template: function AdminDashboardComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AdminDashboardComponent, selectors: [["app-admin-dashboard"]], decls: 57, vars: 7, consts: [["statusSelect", ""], ["currentPage", "Dashboard do Administrador", "userName", "Admin PMERJ", "userRole", "ADMINISTRADOR"], [1, "dashboard-container"], [1, "dashboard-header"], [1, "dashboard-title"], [1, "dashboard-subtitle"], ["class", "alert alert-success", 4, "ngIf"], ["class", "alert alert-error", 4, "ngIf"], [1, "card", "mb-6"], [1, "mb-4"], [1, "fas", "fa-search"], [1, "grid", "grid-cols-4", "gap-4", 3, "ngSubmit", "formGroup"], [1, "form-group"], [1, "form-label"], ["formControlName", "tipo", 1, "form-input"], ["value", ""], ["value", "AE"], ["value", "PL"], ["formControlName", "status", "placeholder", "RECEBIDA, EM_ANALISE, PENDENTE...", 1, "form-input"], ["formControlName", "protocolo", "placeholder", "N\xFAmero do protocolo", 1, "form-input"], ["formControlName", "titulo", "placeholder", "Nome do evento", 1, "form-input"], ["formControlName", "cidade", "placeholder", "Nome da cidade", 1, "form-input"], ["type", "date", "formControlName", "data_inicio", 1, "form-input"], ["type", "date", "formControlName", "data_fim", 1, "form-input"], [2, "grid-column", "1/-1"], ["type", "submit", 1, "btn", "btn-primary"], ["class", "text-center p-8", 4, "ngIf"], ["class", "table-container", 4, "ngIf"], ["class", "card mt-6", 4, "ngIf"], [1, "alert", "alert-success"], [1, "alert", "alert-error"], [1, "text-center", "p-8"], [1, "loading", "mb-2"], [1, "text-muted"], [1, "table-container"], [1, "table"], [4, "ngFor", "ngForOf"], [1, "flex", "gap-2"], [1, "form-input", "form-input-sm", 3, "change", "value"], ["value", "RECEBIDA"], ["value", "EM_ANALISE"], ["value", "PENDENTE"], ["value", "APROVADA"], ["value", "RECUSADA"], ["value", "FINALIZADA"], ["value", "CANCELADA"], [1, "btn", "btn-sm", "btn-secondary", 3, "click"], [1, "fas", "fa-eye"], [1, "text-4xl", "mb-4"], [1, "fas", "fa-clipboard"], [1, "mb-2"], [1, "card", "mt-6"], [1, "flex", "justify-between", "items-center", "mb-4"], [1, "mb-0"], [1, "fas", "fa-folder-open"], [1, "btn", "btn-secondary", "btn-sm", 3, "click"], [1, "fas", "fa-times"], ["class", "text-center p-4", 4, "ngIf"], ["class", "grid grid-cols-2 gap-4", 4, "ngIf"], ["class", "mt-6", 4, "ngIf"], [1, "text-center", "p-4"], [1, "grid", "grid-cols-2", "gap-4"], [4, "ngIf"], [1, "mt-3"], [1, "mt-6"], [1, "fas", "fa-paperclip"], ["class", "text-muted", 4, "ngIf"], [1, "fas", "fa-download"]], template: function AdminDashboardComponent_Template(rf, ctx) {
     if (rf & 1) {
       \u0275\u0275element(0, "app-header", 1);
       \u0275\u0275elementStart(1, "div", 2)(2, "header", 3)(3, "div")(4, "h1", 4);
@@ -46982,7 +47402,7 @@ var AdminDashboardComponent = class _AdminDashboardComponent {
       \u0275\u0275element(51, "i", 10);
       \u0275\u0275text(52, " Filtrar ");
       \u0275\u0275elementEnd()()()();
-      \u0275\u0275template(53, AdminDashboardComponent_div_53_Template, 4, 0, "div", 26)(54, AdminDashboardComponent_div_54_Template, 18, 1, "div", 27)(55, AdminDashboardComponent_div_55_Template, 7, 0, "div", 26);
+      \u0275\u0275template(53, AdminDashboardComponent_div_53_Template, 4, 0, "div", 26)(54, AdminDashboardComponent_div_54_Template, 18, 1, "div", 27)(55, AdminDashboardComponent_div_55_Template, 7, 0, "div", 26)(56, AdminDashboardComponent_section_56_Template, 11, 4, "section", 28);
       \u0275\u0275elementEnd();
     }
     if (rf & 2) {
@@ -46998,8 +47418,10 @@ var AdminDashboardComponent = class _AdminDashboardComponent {
       \u0275\u0275property("ngIf", !ctx.carregando && (ctx.registros == null ? null : ctx.registros.length));
       \u0275\u0275advance();
       \u0275\u0275property("ngIf", !ctx.carregando && !(ctx.registros == null ? null : ctx.registros.length));
+      \u0275\u0275advance();
+      \u0275\u0275property("ngIf", ctx.detalhe);
     }
-  }, dependencies: [CommonModule, NgForOf, NgIf, ReactiveFormsModule, \u0275NgNoValidate, NgSelectOption, \u0275NgSelectMultipleOption, DefaultValueAccessor, SelectControlValueAccessor, NgControlStatus, NgControlStatusGroup, FormGroupDirective, FormControlName, HeaderComponent, DatePipe], encapsulation: 2 });
+  }, dependencies: [CommonModule, NgForOf, NgIf, ReactiveFormsModule, \u0275NgNoValidate, NgSelectOption, \u0275NgSelectMultipleOption, DefaultValueAccessor, SelectControlValueAccessor, NgControlStatus, NgControlStatusGroup, FormGroupDirective, FormControlName, HeaderComponent, DecimalPipe, DatePipe], styles: ["\n\n.mt-6[_ngcontent-%COMP%] {\n  margin-top: 1.5rem;\n}\n.mb-0[_ngcontent-%COMP%] {\n  margin-bottom: 0;\n}\n.flex[_ngcontent-%COMP%] {\n  display: flex;\n}\n.justify-between[_ngcontent-%COMP%] {\n  justify-content: space-between;\n}\n.items-center[_ngcontent-%COMP%] {\n  align-items: center;\n}\n.grid[_ngcontent-%COMP%] {\n  display: grid;\n}\n.grid-cols-2[_ngcontent-%COMP%] {\n  grid-template-columns: 1fr 1fr;\n}\n.gap-4[_ngcontent-%COMP%] {\n  gap: 1rem;\n}\n.text-muted[_ngcontent-%COMP%] {\n  color: var(--gray-600);\n}\n/*# sourceMappingURL=admin.dashboard.component.css.map */"] });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AdminDashboardComponent, [{
@@ -47139,6 +47561,7 @@ var AdminDashboardComponent = class _AdminDashboardComponent {
                 <option value="FINALIZADA">FINALIZADA</option>\r
                 <option value="CANCELADA">CANCELADA</option>\r
               </select>\r
+              <button class="btn btn-sm btn-secondary" (click)="verDetalhe(r)"><i class="fas fa-eye"></i> Ver</button>\r
             </div>\r
           </td>\r
         </tr>\r
@@ -47152,12 +47575,76 @@ var AdminDashboardComponent = class _AdminDashboardComponent {
     <h3 class="mb-2">Nenhum registro encontrado</h3>\r
     <p class="text-muted">N\xE3o h\xE1 solicita\xE7\xF5es que correspondam aos filtros aplicados.</p>\r
   </div>\r
+\r
+  <!-- Detalhe do Registro -->\r
+  <section *ngIf="detalhe" class="card mt-6">\r
+    <div class="flex justify-between items-center mb-4">\r
+      <h3 class="mb-0"><i class="fas fa-folder-open"></i> Detalhes do Processo ({{ detalheOrigem }})</h3>\r
+      <button class="btn btn-secondary btn-sm" (click)="fecharDetalhe()"><i class="fas fa-times"></i> Fechar</button>\r
+    </div>\r
+\r
+    <div *ngIf="carregandoDetalhe" class="text-center p-4">\r
+      <div class="loading mb-2"></div>\r
+      <p class="text-muted">Carregando detalhes...</p>\r
+    </div>\r
+\r
+    <div *ngIf="!carregandoDetalhe" class="grid grid-cols-2 gap-4">\r
+      <div>\r
+        <h4 class="mb-2">Informa\xE7\xF5es</h4>\r
+        <div><strong>Protocolo:</strong> {{ detalhe?.protocolo }}</div>\r
+        <div><strong>T\xEDtulo/Organiza\xE7\xE3o:</strong> {{ detalhe?.titulo || detalhe?.organizacao }}</div>\r
+        <div *ngIf="detalhe?.tipo_evento"><strong>Tipo:</strong> {{ detalhe?.tipo_evento }}</div>\r
+        <div><strong>Cidade/UF:</strong> {{ detalhe?.cidade }} / {{ detalhe?.estado }}</div>\r
+        <div *ngIf="detalhe?.cep"><strong>CEP:</strong> {{ detalhe?.cep }}</div>\r
+        <div *ngIf="detalhe?.data_inicio"><strong>In\xEDcio:</strong> {{ detalhe?.data_inicio | date:'short' }}</div>\r
+        <div *ngIf="detalhe?.data_fim"><strong>Fim:</strong> {{ detalhe?.data_fim | date:'short' }}</div>\r
+        <div *ngIf="detalhe?.data_sugerida"><strong>Data sugerida:</strong> {{ detalhe?.data_sugerida | date:'short' }}</div>\r
+        <div *ngIf="detalhe?.publico_estimado"><strong>P\xFAblico estimado:</strong> {{ detalhe?.publico_estimado }}</div>\r
+        <div *ngIf="detalhe?.qtd_pessoas"><strong>Qtd pessoas:</strong> {{ detalhe?.qtd_pessoas }}</div>\r
+        <div><strong>Status:</strong> <span class="badge badge-{{ (detalhe?.status||'').toLowerCase().replace('_','-') }}">{{ detalhe?.status }}</span></div>\r
+      </div>\r
+      <div>\r
+        <h4 class="mb-2">Endere\xE7o</h4>\r
+        <div>{{ detalhe?.endereco }}</div>\r
+        <div>{{ detalhe?.bairro }}</div>\r
+        <div class="mt-3"><strong>Descri\xE7\xE3o/Observa\xE7\xF5es:</strong><br>{{ detalhe?.descricao || detalhe?.observacoes || '\u2014' }}</div>\r
+      </div>\r
+    </div>\r
+\r
+    <!-- Anexos (apenas AE) -->\r
+    <div *ngIf="detalheOrigem==='AE'" class="mt-6">\r
+      <h4 class="mb-2"><i class="fas fa-paperclip"></i> Anexos</h4>\r
+      <div *ngIf="anexos?.length" class="table-container">\r
+        <table class="table">\r
+          <thead>\r
+            <tr>\r
+              <th>Nome</th>\r
+              <th>Tamanho</th>\r
+              <th>Enviado em</th>\r
+              <th>A\xE7\xF5es</th>\r
+            </tr>\r
+          </thead>\r
+          <tbody>\r
+            <tr *ngFor="let a of anexos">\r
+              <td>{{ a.nome_original }}</td>\r
+              <td>{{ a.tamanho_bytes | number }} bytes</td>\r
+              <td>{{ a.criado_em | date:'short' }}</td>\r
+              <td>\r
+                <button class="btn btn-sm btn-secondary" (click)="baixarAnexo(a)"><i class="fas fa-download"></i> Baixar</button>\r
+              </td>\r
+            </tr>\r
+          </tbody>\r
+        </table>\r
+      </div>\r
+      <div *ngIf="!anexos?.length" class="text-muted">Nenhum anexo.</div>\r
+    </div>\r
+  </section>\r
 </div>\r
-` }]
+`, styles: ["/* src/app/pages/admin.dashboard/admin.dashboard.component.css */\n.mt-6 {\n  margin-top: 1.5rem;\n}\n.mb-0 {\n  margin-bottom: 0;\n}\n.flex {\n  display: flex;\n}\n.justify-between {\n  justify-content: space-between;\n}\n.items-center {\n  align-items: center;\n}\n.grid {\n  display: grid;\n}\n.grid-cols-2 {\n  grid-template-columns: 1fr 1fr;\n}\n.gap-4 {\n  gap: 1rem;\n}\n.text-muted {\n  color: var(--gray-600);\n}\n/*# sourceMappingURL=admin.dashboard.component.css.map */\n"] }]
   }], null, null);
 })();
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(AdminDashboardComponent, { className: "AdminDashboardComponent", filePath: "src/app/pages/admin.dashboard/admin.dashboard.component.ts", lineNumber: 13 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(AdminDashboardComponent, { className: "AdminDashboardComponent", filePath: "src/app/pages/admin.dashboard/admin.dashboard.component.ts", lineNumber: 16 });
 })();
 
 // src/app/guards/auth.guard-guard.ts
@@ -47205,59 +47692,6 @@ var NadaOporService = class _NadaOporService {
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(NadaOporService, [{
-    type: Injectable,
-    args: [{ providedIn: "root" }]
-  }], null, null);
-})();
-
-// src/app/services/anexos.service.ts
-var AnexosService = class _AnexosService {
-  http = inject2(HttpClient);
-  base = "http://localhost:4000/api";
-  listar(protocoloAE) {
-    return this.http.get(`${this.base}/eventos/autorizacao/${protocoloAE}/anexos`);
-  }
-  upload(protocoloAE, arquivo, tipo_documento) {
-    const fd = new FormData();
-    fd.append("arquivo", arquivo);
-    fd.append("tipo_documento", tipo_documento);
-    return this.http.post(`${this.base}/eventos/autorizacao/${protocoloAE}/anexos`, fd);
-  }
-  download(id) {
-    return this.http.get(`${this.base}/eventos/autorizacao/anexos/${id}/download`, { responseType: "blob" });
-  }
-  excluir(id) {
-    return this.http.delete(`${this.base}/eventos/autorizacao/anexos/${id}`);
-  }
-  static \u0275fac = function AnexosService_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _AnexosService)();
-  };
-  static \u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _AnexosService, factory: _AnexosService.\u0275fac, providedIn: "root" });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AnexosService, [{
-    type: Injectable,
-    args: [{ providedIn: "root" }]
-  }], null, null);
-})();
-
-// src/app/services/palestra.service.ts
-var PalestraService = class _PalestraService {
-  http = inject2(HttpClient);
-  base = "http://localhost:4000/api";
-  criar(body) {
-    return this.http.post(`${this.base}/palestras`, body);
-  }
-  listarMinhas() {
-    return this.http.get(`${this.base}/palestras`);
-  }
-  static \u0275fac = function PalestraService_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _PalestraService)();
-  };
-  static \u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _PalestraService, factory: _PalestraService.\u0275fac, providedIn: "root" });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(PalestraService, [{
     type: Injectable,
     args: [{ providedIn: "root" }]
   }], null, null);

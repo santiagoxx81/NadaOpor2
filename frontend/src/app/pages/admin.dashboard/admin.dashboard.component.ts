@@ -3,28 +3,36 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { AdminService } from '../../services/admin.service';
 import { HeaderComponent } from '../../components/header/header.component';
+import { PalestraService } from '../../services/palestra.service';
+import { AnexosService } from '../../services/anexos.service';
 
 @Component({
   selector: 'app-admin-dashboard',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, HeaderComponent],
-  templateUrl: './admin.dashboard.component.html'
+  templateUrl: './admin.dashboard.component.html',
+  styleUrls: ['./admin.dashboard.component.css']
 })
 export class AdminDashboardComponent {
   private fb = inject(FormBuilder);
   private adminSrv = inject(AdminService);
+  private palestraSrv = inject(PalestraService);
+  private anexosSrv = inject(AnexosService);
 
-  // UI state
   carregando = false;
   erro = '';
   msg = '';
 
-  // Lista de registros
   registros: any[] = [];
 
-  // Filtros
+  // Detalhe
+  detalhe: any | null = null;
+  detalheOrigem: 'AE' | 'PL' | '' = '';
+  carregandoDetalhe = false;
+  anexos: any[] = [];
+
   filtros = this.fb.group({
-    tipo: [''], // AE (Nada Opor) | PL (Palestras/Eventos)
+    tipo: [''],
     status: [''],
     protocolo: [''],
     titulo: [''],
@@ -69,7 +77,6 @@ export class AdminDashboardComponent {
 
     const filtros = this.filtros.value as any;
 
-    // Se escolher tipo específico, busca única
     if (filtros?.tipo === 'AE') {
       this.adminSrv.listarAutorizacoes(filtros).subscribe({
         next: (rows: any[]) => { this.registros = (rows || []).map(r => this.normalizarAE(r)); this.carregando = false; },
@@ -81,12 +88,11 @@ export class AdminDashboardComponent {
     if (filtros?.tipo === 'PL') {
       this.adminSrv.listarPalestras(filtros).subscribe({
         next: (rows: any[]) => { this.registros = (rows || []).map(r => this.normalizarPL(r)); this.carregando = false; },
-        error: (e: any) => { this.erro = e?.error?.erro || 'Falha ao carregar registros'; this.carregando = false; }
+        error: (e: any) => { this.erro = e?.error?.erro || 'Falha ao carregar palestras'; this.carregando = false; }
       });
       return;
     }
 
-    // Senão, carrega ambas e mescla
     let ae: any[] = [];
     let pl: any[] = [];
 
@@ -107,9 +113,51 @@ export class AdminDashboardComponent {
     });
   }
 
+  verDetalhe(row: any) {
+    this.detalhe = null;
+    this.anexos = [];
+    this.carregandoDetalhe = true;
+    this.detalheOrigem = row?.origem || 'AE';
+
+    if (this.detalheOrigem === 'AE') {
+      this.adminSrv.obterAutorizacao(row.protocolo).subscribe({
+        next: (d: any) => {
+          this.detalhe = d;
+          this.carregarAnexos(row.protocolo);
+          this.carregandoDetalhe = false;
+        },
+        error: () => { this.erro = 'Falha ao carregar detalhes'; this.carregandoDetalhe = false; }
+      });
+    } else {
+      this.palestraSrv.obterPalestraPorProtocolo(row.protocolo).subscribe({
+        next: (d: any) => { this.detalhe = d; this.carregandoDetalhe = false; },
+        error: () => { this.erro = 'Falha ao carregar detalhes'; this.carregandoDetalhe = false; }
+      });
+    }
+  }
+
+  private carregarAnexos(protocolo: string) {
+    this.anexosSrv.listar(protocolo).subscribe({
+      next: (ax: any[]) => this.anexos = ax || [],
+      error: () => this.anexos = []
+    });
+  }
+
+  baixarAnexo(a: any) {
+    this.anexosSrv.download(a.id).subscribe(blob => {
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = a.nome_original || 'anexo';
+      link.click();
+      URL.revokeObjectURL(url);
+    });
+  }
+
+  fecharDetalhe() { this.detalhe = null; this.anexos = []; this.detalheOrigem = ''; }
+
   atualizarStatus(protocolo: string, novoStatus: string) {
     if (!confirm(`Alterar status para ${novoStatus}?`)) return;
-    // Por padrão, atualiza em autorizações. Ajuste futuro: detectar origem
     this.adminSrv.alterarStatusAutorizacao(protocolo as any, novoStatus as any).subscribe({
       next: () => { this.msg = 'Status atualizado!'; this.buscar(); },
       error: (e: any) => this.erro = e?.error?.erro || 'Falha ao atualizar status'
