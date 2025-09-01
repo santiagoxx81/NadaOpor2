@@ -14,11 +14,11 @@
     </div>
     <div class="flex gap-4">
       <button type="button" class="btn btn-primary" (click)="abrirFormAE = !abrirFormAE">
-        <span>📋</span>
+        <i class="fas fa-clipboard"></i>
         Novo Nada Opor
       </button>
       <button type="button" class="btn btn-secondary" (click)="abrirFormPL = !abrirFormPL">
-        <span>🎤</span>
+        <i class="fas fa-microphone"></i>
         Nova Palestra
       </button>
     </div>
@@ -32,7 +32,7 @@
   <section class="grid grid-cols-4 mb-8">
     <div class="card">
       <div class="card-header">
-        <div class="card-icon">📄</div>
+        <div class="card-icon"><i class="fas fa-file-alt"></i></div>
         <div class="card-content">
           <h3>Minhas Autorizações</h3>
           <div class="card-value">{{ meusAE.length || 0 }}</div>
@@ -43,7 +43,7 @@
 
     <div class="card">
       <div class="card-header">
-        <div class="card-icon">🎤</div>
+        <div class="card-icon"><i class="fas fa-microphone"></i></div>
         <div class="card-content">
           <h3>Minhas Palestras</h3>
           <div class="card-value">{{ minhasPL.length || 0 }}</div>
@@ -54,7 +54,7 @@
 
     <div class="card">
       <div class="card-header">
-        <div class="card-icon">⏳</div>
+        <div class="card-icon"><i class="fas fa-hourglass-half"></i></div>
         <div class="card-content">
           <h3>Em Análise</h3>
           <div class="card-value">{{ getEmAnaliseCount() }}</div>
@@ -65,7 +65,7 @@
 
     <div class="card">
       <div class="card-header">
-        <div class="card-icon">✅</div>
+        <div class="card-icon"><i class="fas fa-check-circle"></i></div>
         <div class="card-content">
           <h3>Aprovadas</h3>
           <div class="card-value">{{ getAprovadasCount() }}</div>
@@ -141,14 +141,14 @@
       
       <div style="grid-column: 1/-1;">
         <button type="submit" class="btn btn-primary" [disabled]="formAE.invalid">
-          <span>📤</span>
+          <i class="fas fa-upload"></i>
           Enviar Solicitação
         </button>
       </div>
     </form>
     
     <details class="mt-6">
-      <summary class="font-semibold text-primary cursor-pointer">📅 Prazos para entrada do pedido</summary>
+      <summary class="font-semibold text-primary cursor-pointer"><i class="fas fa-calendar-alt"></i> Prazos para entrada do pedido</summary>
       <ul class="mt-2 ml-4">
         <li>Pequeno porte (até 2.000 pessoas): <strong>40 dias</strong> de antecedência</li>
         <li>Médio porte (2.001 a 20.000 pessoas): <strong>50 dias</strong> de antecedência</li>
@@ -218,7 +218,7 @@
       
       <div style="grid-column: 1/-1;">
         <button type="submit" class="btn btn-primary" [disabled]="formPL.invalid">
-          <span>📤</span>
+          <i class="fas fa-upload"></i>
           Enviar Solicitação
         </button>
       </div>
@@ -232,14 +232,14 @@
       [class.btn-primary]="tab==='AE'"
       [class.btn-secondary]="tab!=='AE'"
       (click)="tab='AE'">
-      📋 Minhas Autorizações
+      <i class="fas fa-clipboard"></i> Minhas Autorizações
     </button>
     <button 
       class="btn" 
       [class.btn-primary]="tab==='PL'"
       [class.btn-secondary]="tab!=='PL'"
       (click)="tab='PL'">
-      🎤 Minhas Palestras
+      <i class="fas fa-microphone"></i> Minhas Palestras
     </button>
   </nav>
 
@@ -275,13 +275,13 @@
                   {{ it.status }}
                 </span>
                 <div *ngIf="it.status === 'PENDENTE'" class="text-warning font-medium mt-1">
-                  ⚠️ Pendência
+                  <i class="fas fa-exclamation-triangle"></i> Pendência
                 </div>
               </td>
               <td>{{ it.criado_em | date:'short' }}</td>
               <td>
                 <button type="button" class="btn btn-sm btn-secondary" (click)="abrirDetalheAE(it.protocolo)">
-                  {{ protocoloAberto===it.protocolo ? '👁️ Fechar' : '👁️ Detalhes' }}
+                  <i class="fas fa-eye"></i> {{ protocoloAberto===it.protocolo ? 'Fechar' : 'Detalhes' }}
                 </button>
               </td>
             </tr>
@@ -312,13 +312,13 @@
                     <div style="grid-column: 1/-1;"><strong>Descrição:</strong><br>{{ detalheAE?.descricao || '—' }}</div>
                     <div style="grid-column: 1/-1;"><strong>Observações:</strong><br>{{ detalheAE?.observacoes || '—' }}</div>
                     <div *ngIf="detalheAE?.status === 'PENDENTE'" style="grid-column: 1/-1;" class="alert alert-warning">
-                      <strong>Pendência:</strong><br>{{ detalheAE?.pendencia_obs || '—' }}
+                      <strong><i class="fas fa-exclamation-triangle"></i> Pendência:</strong><br>{{ detalheAE?.pendencia_obs || '—' }}
                     </div>
                   </div>
 
                   <!-- Seção de Anexos -->
                   <div class="mt-6">
-                    <h4 class="mb-4">📎 Anexos</h4>
+                    <h4 class="mb-4"><i class="fas fa-paperclip"></i> Anexos</h4>
                     <p class="text-muted mb-4">
                       Formatos: PDF, JPG, PNG. Máximo: 10 MB por arquivo.
                     </p>
@@ -326,7 +326,7 @@
                     <!-- Upload de Anexos -->
                     <div *ngIf="podeAnexar" class="grid grid-cols-2 gap-6 mb-6">
                       <div>
-                        <h5 class="font-semibold mb-3">📋 Obrigatórios</h5>
+                        <h5 class="font-semibold mb-3"><i class="fas fa-clipboard-list"></i> Obrigatórios</h5>
                         <div *ngFor="let d of tipoDocsObrig" class="card mb-3">
                           <div class="flex justify-between items-center mb-2">
                             <span class="font-medium">{{ d.label }}</span>
@@ -335,14 +335,14 @@
                           <div class="flex gap-2 items-center">
                             <input type="file" (change)="onEscolherArquivo(d.key, $event)" accept=".pdf,.jpg,.jpeg,.png" class="form-input">
                             <button type="button" class="btn btn-sm btn-primary" (click)="enviarArquivo(d.key)" [disabled]="!arquivosSelecionados[d.key]">
-                              📤 Anexar
+                              <i class="fas fa-upload"></i> Anexar
                             </button>
                           </div>
                         </div>
                       </div>
                       
                       <div>
-                        <h5 class="font-semibold mb-3">📄 Condicionais</h5>
+                        <h5 class="font-semibold mb-3"><i class="fas fa-file-alt"></i> Condicionais</h5>
                         <div *ngFor="let d of tipoDocsCond" class="card mb-3">
                           <div class="flex justify-between items-center mb-2">
                             <span class="font-medium">{{ d.label }}</span>
@@ -351,7 +351,7 @@
                           <div class="flex gap-2 items-center">
                             <input type="file" (change)="onEscolherArquivo(d.key, $event)" accept=".pdf,.jpg,.jpeg,.png" class="form-input">
                             <button type="button" class="btn btn-sm btn-primary" (click)="enviarArquivo(d.key)" [disabled]="!arquivosSelecionados[d.key]">
-                              📤 Anexar
+                              <i class="fas fa-upload"></i> Anexar
                             </button>
                           </div>
                         </div>
@@ -377,10 +377,10 @@
                             <td>
                               <div class="flex gap-2">
                                 <button type="button" class="btn btn-sm btn-secondary" (click)="baixar(a)">
-                                  📥 Baixar
+                                  <i class="fas fa-download"></i> Baixar
                                 </button>
                                 <button type="button" class="btn btn-sm btn-danger" (click)="excluir(a)" *ngIf="podeAnexar">
-                                  🗑️ Excluir
+                                  <i class="fas fa-trash"></i> Excluir
                                 </button>
                               </div>
                             </td>
@@ -390,7 +390,7 @@
                     </div>
                     
                     <div *ngIf="!anexos?.length" class="text-center p-8">
-                      <div class="text-4xl mb-2">📁</div>
+                      <div class="text-4xl mb-2"><i class="fas fa-folder-open"></i></div>
                       <p class="text-muted">Nenhum anexo enviado ainda.</p>
                     </div>
                   </div>
@@ -403,11 +403,11 @@
     </div>
 
     <div *ngIf="!carregandoLista && !meusAE?.length" class="text-center p-8">
-      <div class="text-4xl mb-4">📋</div>
+      <div class="text-4xl mb-4"><i class="fas fa-clipboard"></i></div>
       <h3 class="mb-2">Nenhuma solicitação encontrada</h3>
       <p class="text-muted mb-4">Você ainda não tem solicitações de Nada Opor.</p>
       <button type="button" class="btn btn-primary btn-lg" (click)="abrirFormAE = true">
-        📝 Fazer Primeira Solicitação
+        <i class="fas fa-pen-to-square"></i> Fazer Primeira Solicitação
       </button>
     </div>
   </section>
@@ -444,11 +444,11 @@
     </div>
     
     <div *ngIf="!minhasPL?.length" class="text-center p-8">
-      <div class="text-4xl mb-4">🎤</div>
+      <div class="text-4xl mb-4"><i class="fas fa-microphone"></i></div>
       <h3 class="mb-2">Nenhuma solicitação encontrada</h3>
       <p class="text-muted mb-4">Você ainda não tem solicitações de Palestras.</p>
       <button type="button" class="btn btn-primary btn-lg" (click)="abrirFormPL = true">
-        📝 Fazer Primeira Solicitação
+        <i class="fas fa-pen-to-square"></i> Fazer Primeira Solicitação
       </button>
     </div>
   </section>
