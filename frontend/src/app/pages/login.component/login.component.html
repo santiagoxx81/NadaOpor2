@@ -1,0 +1,25 @@
+<section style="max-width:420px;margin:2rem auto;font-family:system-ui">
+  <h2>Entrar</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <label style="display:block;margin:.5rem 0">
+      E-mail
+      <input formControlName="email" type="email" placeholder="E-mail" required style="width:100%">
+    </label>
+
+    <label style="display:block;margin:.5rem 0">
+      Senha
+      <input formControlName="senha" type="password" placeholder="Senha" required style="width:100%">
+    </label>
+
+    <button type="submit" [disabled]="form.invalid || loading">
+      {{ loading ? 'Entrando...' : 'Entrar' }}
+    </button>
+  </form>
+
+  <p *ngIf="erro" style="color:#b00;margin-top:1rem">{{ erro }}</p>
+
+  <hr style="margin:1.5rem 0">
+  <p>Dica Adimin: admin@pmerj.rj.gov / 123456</p>
+  <p>Dica Usuario: joao@email.com / 123456</p>
+</section>

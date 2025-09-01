@@ -1,0 +1,205 @@
+<section style="max-width: 1100px; margin: 2rem auto; font-family: system-ui">
+  <header
+    style="display: flex; justify-content: space-between; align-items: center"
+  >
+    <h2>Dashboard do Administrador</h2>
+    <button (click)="sair()">Sair</button>
+  </header>
+
+  <form
+    [formGroup]="filtros"
+    (ngSubmit)="buscar()"
+    style="
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      margin: 1rem 0;
+    "
+  >
+    <input
+      formControlName="status"
+      placeholder="Status (RECEBIDA, EM_ANALISE...)"
+    />
+    <input formControlName="cidade" placeholder="Cidade" />
+    <input formControlName="de" type="date" placeholder="De" />
+    <input formControlName="ate" type="date" placeholder="Até" />
+    <button type="submit" style="grid-column: 1/-1; width: 140px">
+      Filtrar
+    </button>
+  </form>
+
+  <p *ngIf="carregando">Carregando...</p>
+  <p *ngIf="erro" style="color: #b00">{{ erro }}</p>
+
+  <table
+    *ngIf="!carregando && registros.length"
+    border="1"
+    cellpadding="6"
+    cellspacing="0"
+    width="100%"
+  >
+    <thead>
+      <tr>
+        <th>Protocolo</th>
+        <th>Título</th>
+        <th>Cidade</th>
+        <th>Status</th>
+        <th>Criado</th>
+        <th>Atualizado</th>
+        <th>Solicitante</th>
+        <th style="white-space: nowrap">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let r of registros">
+        <tr>
+          <td>{{ r.protocolo }}</td>
+          <td>{{ r.titulo }}</td>
+          <td>{{ r.cidade }}</td>
+
+          <!-- Status com destaque de pendência -->
+          <td [style.background]="r.status === 'PENDENTE' ? '#fff4cc' : ''">
+            {{ r.status }}
+            <span
+              *ngIf="r.status === 'PENDENTE'"
+              style="color: #a66; font-weight: 600"
+            >
+              — pendência</span
+            >
+          </td>
+
+          <td>{{ r.criado_em | date : "short" }}</td>
+          <td>{{ r.atualizado_em | date : "short" }}</td>
+          <td>{{ r.nome_usuario }} ({{ r.email_usuario }})</td>
+
+          <!-- Ações: status + pendência + abrir/fechar -->
+          <td
+            style="
+              display: flex;
+              gap: 0.5rem;
+              align-items: center;
+              flex-wrap: wrap;
+            "
+          >
+            <!-- alterar status -->
+            <select [(ngModel)]="r._novoStatus">
+              <option *ngFor="let s of statusOptions" [value]="s">
+                {{ s }}
+              </option>
+            </select>
+
+            <!-- obrigatório descrever quando for PENDENTE -->
+            <input
+              *ngIf="r._novoStatus === 'PENDENTE'"
+              type="text"
+              [(ngModel)]="r._pendenciaObs"
+              placeholder="Descreva a pendência (obrigatório)"
+              style="min-width: 260px"
+            />
+
+            <button
+              (click)="alterarStatus(r)"
+              [disabled]="
+                r._novoStatus === 'PENDENTE' &&
+                !(r._pendenciaObs && r._pendenciaObs.trim())
+              "
+            >
+              Salvar
+            </button>
+
+            <!-- abrir painel de detalhes -->
+            <button
+              type="button"
+              (click)="abrirDetalhe(r.protocolo)"
+              [attr.aria-expanded]="selecionadoProtocolo === r.protocolo"
+            >
+              {{ selecionadoProtocolo === r.protocolo ? "Fechar" : "Abrir" }}
+            </button>
+          </td>
+        </tr>
+
+        <!-- Linha de detalhes inline -->
+        <tr *ngIf="selecionadoProtocolo === r.protocolo">
+          <td colspan="8" style="background: #fafafa">
+            <div *ngIf="carregandoDetalhe">Carregando detalhes...</div>
+            <div *ngIf="erroDetalhe" style="color: #b00">{{ erroDetalhe }}</div>
+
+            <div
+              *ngIf="!carregandoDetalhe && !erroDetalhe && detalhe"
+              style="
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+              "
+            >
+              <div><b>Título:</b> {{ detalhe?.titulo }}</div>
+              <div><b>Tipo:</b> {{ detalhe?.tipo_evento || "—" }}</div>
+              <div>
+                <b>Cidade/UF:</b> {{ detalhe?.cidade }} / {{ detalhe?.estado }}
+              </div>
+              <div><b>CEP:</b> {{ detalhe?.cep || "—" }}</div>
+              <div>
+                <b>Início:</b> {{ detalhe?.data_inicio | date : "short" }}
+              </div>
+              <div><b>Fim:</b> {{ detalhe?.data_fim | date : "short" }}</div>
+              <div>
+                <b>Público estimado:</b> {{ detalhe?.publico_estimado || "—" }}
+              </div>
+              <div><b>Status:</b> {{ detalhe?.status }}</div>
+              <div
+                *ngIf="detalhe?.status === 'PENDENTE'"
+                style="grid-column: 1/-1"
+              >
+                <b>Pendência:</b><br />{{ detalhe?.pendencia_obs || "—" }}
+              </div>
+
+              <div style="grid-column: 1/-1">
+                <b>Endereço:</b> {{ detalhe?.endereco }}, {{ detalhe?.bairro }}
+              </div>
+              <div style="grid-column: 1/-1">
+                <b>Descrição:</b><br />{{ detalhe?.descricao || "—" }}
+              </div>
+              <div style="grid-column: 1/-1">
+                <b>Observações:</b><br />{{ detalhe?.observacoes || "—" }}
+              </div>
+
+              <div style="grid-column: 1/-1">
+                <h4>Anexos</h4>
+                <table
+                  *ngIf="anexos.length"
+                  border="1"
+                  width="100%"
+                  cellpadding="6"
+                >
+                  <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>Tamanho</th>
+                      <th>Enviado em</th>
+                      <th style="width: 120px">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let a of anexos">
+                      <td>{{ a.nome_original }}</td>
+                      <td>{{ a.tamanho_bytes | number }} bytes</td>
+                      <td>{{ a.criado_em | date : "short" }}</td>
+                      <td>
+                        <button type="button" (click)="baixar(a)">
+                          Baixar
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p *ngIf="!anexos.length">Nenhum anexo enviado.</p>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+
+  <p *ngIf="!carregando && !registros.length">Nenhum registro encontrado.</p>
+</section>

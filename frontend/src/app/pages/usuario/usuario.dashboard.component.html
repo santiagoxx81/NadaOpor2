@@ -1,0 +1,203 @@
+<section style="max-width:1100px;margin:2rem auto;font-family:system-ui">
+  <header style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap">
+    <h2>Área do Cidadão</h2>
+    <div style="display:flex;gap:.5rem">
+      <button type="button" (click)="abrirFormAE = !abrirFormAE">Novo Nada Opor</button>
+      <button type="button" (click)="abrirFormPL = !abrirFormPL">Novo pedido de Palestra/Representante</button>
+    </div>
+  </header>
+
+  <p *ngIf="msg" style="color:green;margin-top:8px">{{ msg }}</p>
+  <p *ngIf="erro" style="color:#b00;margin-top:8px">{{ erro }}</p>
+
+  <!-- ===== Form: Novo Nada Opor ===== -->
+  <section *ngIf="abrirFormAE" style="margin-top:1rem;border:1px solid #ddd;border-radius:.5rem;padding:1rem">
+    <h3 style="margin-top:0">Novo Nada Opor</h3>
+    <form [formGroup]="formAE" (ngSubmit)="criarAE()" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+      <label> Título <input type="text" formControlName="titulo"></label>
+      <label> Tipo de evento <input type="text" formControlName="tipo_evento"></label>
+      <label style="grid-column:1/-1"> Descrição <textarea rows="3" formControlName="descricao"></textarea></label>
+      <label> Endereço <input type="text" formControlName="endereco"></label>
+      <label> Bairro <input type="text" formControlName="bairro"></label>
+      <label> Cidade <input type="text" formControlName="cidade"></label>
+      <label> UF <input type="text" formControlName="estado" maxlength="2"></label>
+      <label> CEP <input type="text" formControlName="cep"></label>
+      <label> Início <input type="datetime-local" formControlName="data_inicio"></label>
+      <label> Fim <input type="datetime-local" formControlName="data_fim"></label>
+      <label> Público estimado <input type="number" formControlName="publico_estimado" min="0"></label>
+      <label style="grid-column:1/-1"> Observações <textarea rows="3" formControlName="observacoes"></textarea></label>
+      <div style="grid-column:1/-1">
+        <button type="submit" [disabled]="formAE.invalid">Enviar</button>
+      </div>
+    </form>
+    <details style="margin-top:.75rem">
+      <summary><b>Prazos para entrada do pedido</b></summary>
+      <ul style="margin:.5rem 1rem">
+        <li>Pequeno porte (até 2.000 pessoas): <b>40 dias</b> de antecedência</li>
+        <li>Médio porte (2.001 a 20.000 pessoas): <b>50 dias</b> de antecedência</li>
+        <li>Grande porte (acima de 20.001 pessoas): <b>70 dias</b> (verificar peculiaridades)</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- ===== Form: Nova Palestra/Representante ===== -->
+  <section *ngIf="abrirFormPL" style="margin-top:1rem;border:1px solid #ddd;border-radius:.5rem;padding:1rem">
+    <h3 style="margin-top:0">Novo pedido de Palestra/Representante</h3>
+    <form [formGroup]="formPL" (ngSubmit)="criarPL()" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+      <label> Organização <input type="text" formControlName="organizacao"></label>
+      <label> Temas <input type="text" formControlName="temas" placeholder="ex.: trânsito, violência doméstica"></label>
+      <label> Endereço <input type="text" formControlName="endereco"></label>
+      <label> Bairro <input type="text" formControlName="bairro"></label>
+      <label> Cidade <input type="text" formControlName="cidade"></label>
+      <label> UF <input type="text" formControlName="estado" maxlength="2"></label>
+      <label> CEP <input type="text" formControlName="cep"></label>
+      <label> Público-alvo <input type="text" formControlName="publico_alvo"></label>
+      <label> Qtd. pessoas <input type="number" formControlName="qtd_pessoas" min="0"></label>
+      <label> Data sugerida <input type="datetime-local" formControlName="data_sugerida"></label>
+      <label style="grid-column:1/-1"> Observações <textarea rows="3" formControlName="observacoes"></textarea></label>
+      <div style="grid-column:1/-1">
+        <button type="submit" [disabled]="formPL.invalid">Enviar</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- ===== Abas ===== -->
+  <nav style="margin:1.25rem 0; display:flex; gap:.5rem">
+    <button [disabled]="tab==='AE'" (click)="tab='AE'">Minhas solicitações — Nada Opor</button>
+    <button [disabled]="tab==='PL'" (click)="tab='PL'">Minhas solicitações — Palestras</button>
+  </nav>
+
+  <!-- ===== Lista: Nada Opor ===== -->
+  <section *ngIf="tab==='AE'">
+    <div *ngIf="carregandoLista">Carregando...</div>
+    <div *ngIf="erroLista" style="color:#b00">{{ erroLista }}</div>
+
+    <table *ngIf="!carregandoLista && meusAE.length" border="1" width="100%" cellpadding="6" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Protocolo</th><th>Título</th><th>Cidade/UF</th><th>Status</th><th>Criado</th><th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let it of meusAE">
+          <tr>
+            <td>{{ it.protocolo }}</td>
+            <td>{{ it.titulo }}</td>
+            <td>{{ it.cidade }} / {{ it.estado }}</td>
+            <td [style.background]="it.status === 'PENDENTE' ? '#fff4cc' : ''">
+              {{ it.status }}
+              <span *ngIf="it.status === 'PENDENTE'" style="color:#a66;font-weight:600"> — pendência</span>
+            </td>
+            <td>{{ it.criado_em | date:'short' }}</td>
+            <td>
+              <button type="button" (click)="abrirDetalheAE(it.protocolo)">
+                {{ protocoloAberto===it.protocolo ? 'Fechar' : 'Abrir' }}
+              </button>
+            </td>
+          </tr>
+
+          <!-- Detalhes + Anexos -->
+          <tr *ngIf="protocoloAberto===it.protocolo">
+            <td colspan="6" style="background:#fafafa">
+              <div *ngIf="!detalheAE">Carregando detalhes...</div>
+              <div *ngIf="detalheAE" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+                <div><b>Título:</b> {{ detalheAE?.titulo }}</div>
+                <div><b>Tipo:</b> {{ detalheAE?.tipo_evento || '—' }}</div>
+                <div><b>Cidade/UF:</b> {{ detalheAE?.cidade }} / {{ detalheAE?.estado }}</div>
+                <div><b>CEP:</b> {{ detalheAE?.cep || '—' }}</div>
+                <div><b>Início:</b> {{ detalheAE?.data_inicio | date:'short' }}</div>
+                <div><b>Fim:</b> {{ detalheAE?.data_fim | date:'short' }}</div>
+                <div><b>Público estimado:</b> {{ detalheAE?.publico_estimado || '—' }}</div>
+                <div><b>Status:</b> {{ detalheAE?.status }}</div>
+                <div style="grid-column:1/-1"><b>Endereço:</b> {{ detalheAE?.endereco }}, {{ detalheAE?.bairro }}</div>
+                <div style="grid-column:1/-1"><b>Descrição:</b><br>{{ detalheAE?.descricao || '—' }}</div>
+                <div style="grid-column:1/-1"><b>Observações:</b><br>{{ detalheAE?.observacoes || '—' }}</div>
+                <div *ngIf="detalheAE?.status === 'PENDENTE'" style="grid-column:1/-1">
+                  <b>Pendência:</b><br>{{ detalheAE?.pendencia_obs || '—' }}
+                </div>
+
+                <div style="grid-column:1/-1;margin-top:.75rem">
+                  <h4>Anexos</h4>
+                  <p style="opacity:.8;margin:.25rem 0">
+                    Formatos: PDF, JPG, PNG. Máximo: 10 MB por arquivo.
+                  </p>
+
+                  <!-- Envio (habilita enquanto podeAnexar) -->
+                  <div *ngIf="podeAnexar" style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem">
+                    <div>
+                      <h5>Obrigatórios</h5>
+                      <div *ngFor="let d of tipoDocsObrig" style="border:1px solid #ddd;padding:.75rem;border-radius:.5rem;margin:.5rem 0">
+                        <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem">
+                          <span>{{ d.label }}</span>
+                          <span *ngIf="uploading[d.key]">Enviando...</span>
+                        </div>
+                        <div style="margin-top:.5rem;display:flex;gap:.5rem;align-items:center">
+                          <input type="file" (change)="onEscolherArquivo(d.key, $event)" accept=".pdf,.jpg,.jpeg,.png">
+                          <button type="button" (click)="enviarArquivo(d.key)" [disabled]="!arquivosSelecionados[d.key]">Anexar</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <h5>Condicionais</h5>
+                      <div *ngFor="let d of tipoDocsCond" style="border:1px solid #ddd;padding:.75rem;border-radius:.5rem;margin:.5rem 0">
+                        <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem">
+                          <span>{{ d.label }}</span>
+                          <span *ngIf="uploading[d.key]">Enviando...</span>
+                        </div>
+                        <div style="margin-top:.5rem;display:flex;gap:.5rem;align-items:center">
+                          <input type="file" (change)="onEscolherArquivo(d.key, $event)" accept=".pdf,.jpg,.jpeg,.png">
+                          <button type="button" (click)="enviarArquivo(d.key)" [disabled]="!arquivosSelecionados[d.key]">Anexar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Lista de anexos -->
+                  <table *ngIf="anexos.length" border="1" width="100%" cellpadding="6" style="margin-top:.5rem">
+                    <thead><tr><th>Nome</th><th>Tamanho</th><th>Enviado em</th><th>Ações</th></tr></thead>
+                    <tbody>
+                      <tr *ngFor="let a of anexos">
+                        <td>{{ a.nome_original }}</td>
+                        <td>{{ a.tamanho_bytes | number }} bytes</td>
+                        <td>{{ a.criado_em | date:'short' }}</td>
+                        <td>
+                          <button type="button" (click)="baixar(a)">Baixar</button>
+                          <button type="button" (click)="excluir(a)" *ngIf="podeAnexar">Excluir</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p *ngIf="!anexos.length">Nenhum anexo enviado ainda.</p>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+
+    <p *ngIf="!carregandoLista && !meusAE.length">Você ainda não tem solicitações de Nada Opor.</p>
+  </section>
+
+  <!-- ===== Lista: Palestras ===== -->
+  <section *ngIf="tab==='PL'">
+    <table *ngIf="minhasPL.length" border="1" width="100%" cellpadding="6" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Protocolo</th><th>Organização</th><th>Cidade/UF</th><th>Temas</th><th>Status</th><th>Criado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let it of minhasPL">
+          <td>{{ it.protocolo }}</td>
+          <td>{{ it.organizacao || '—' }}</td>
+          <td>{{ it.cidade }} / {{ it.estado }}</td>
+          <td>{{ it.temas }}</td>
+          <td>{{ it.status }}</td>
+          <td>{{ it.criado_em | date:'short' }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="!minhasPL.length">Você ainda não tem solicitações de Palestras.</p>
+  </section>
+</section>
