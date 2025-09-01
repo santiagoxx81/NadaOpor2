@@ -22,13 +22,17 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  cursor: pointer;
 }
 
-
+.logo-section:hover .logo i {
+  transform: scale(1.05);
+}
 
 .logo i {
   font-size: 2rem;
   color: #fbbf24;
+  transition: transform 0.15s ease;
 }
 
 .logo-text {
