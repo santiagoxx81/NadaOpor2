@@ -12,10 +12,7 @@
       <h1 class="dashboard-title">Dashboard do Administrador</h1>
       <p class="dashboard-subtitle">Gerencie solicitações e autorizações</p>
     </div>
-    <button class="btn btn-secondary" (click)="sair()">
-      <span>🚪</span>
-      Sair
-    </button>
+    
   </header>
 
   <!-- Alertas -->
@@ -24,8 +21,16 @@
 
   <!-- Filtros -->
   <section class="card mb-6">
-    <h3 class="mb-4">🔍 Filtros de Busca</h3>
+    <h3 class="mb-4"><i class="fas fa-search"></i> Filtros de Busca</h3>
     <form [formGroup]="filtros" (ngSubmit)="buscar()" class="grid grid-cols-4 gap-4">
+      <div class="form-group">
+        <label class="form-label">Tipo</label>
+        <select class="form-input" formControlName="tipo">
+          <option value="">Todos</option>
+          <option value="AE">Nada Opor</option>
+          <option value="PL">Eventos</option>
+        </select>
+      </div>
       <div class="form-group">
         <label class="form-label">Status</label>
         <input
@@ -76,7 +81,7 @@
       
       <div style="grid-column: 1/-1;">
         <button type="submit" class="btn btn-primary">
-          <span>🔍</span>
+          <i class="fas fa-search"></i>
           Filtrar
         </button>
       </div>
@@ -137,7 +142,7 @@
 
   <!-- Estado Vazio -->
   <div *ngIf="!carregando && !registros?.length" class="text-center p-8">
-    <div class="text-4xl mb-4">📋</div>
+    <div class="text-4xl mb-4"><i class="fas fa-clipboard"></i></div>
     <h3 class="mb-2">Nenhum registro encontrado</h3>
     <p class="text-muted">Não há solicitações que correspondam aos filtros aplicados.</p>
   </div>

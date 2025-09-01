@@ -46573,7 +46573,7 @@ var AdminService = class _AdminService {
     let params = new HttpParams();
     if (filtros) {
       Object.entries(filtros).forEach(([k, v]) => {
-        if (v !== void 0 && v !== null && v !== "")
+        if (v !== void 0 && v !== null && v !== "" && k !== "tipo")
           params = params.set(k, String(v));
       });
     }
@@ -46582,7 +46582,22 @@ var AdminService = class _AdminService {
   alterarStatusAutorizacao(protocolo, status, pendencia_obs) {
     return this.http.patch(`${this.base}/admin/eventos/autorizacao/${encodeURIComponent(protocolo)}/status`, { status, pendencia_obs });
   }
-  // ⇩ novo: detalhe de uma autorização pelo protocolo (usa a rota "cidadão")
+  // Listagem de Palestras (admin)
+  listarPalestras(filtros) {
+    let params = new HttpParams();
+    if (filtros) {
+      Object.entries(filtros).forEach(([k, v]) => {
+        if (v !== void 0 && v !== null && v !== "" && k !== "tipo")
+          params = params.set(k, String(v));
+      });
+    }
+    return this.http.get(`${this.base}/admin/palestras`, { params });
+  }
+  // Alteração de status de Palestra (admin)
+  alterarStatusPalestra(protocolo, status) {
+    return this.http.patch(`${this.base}/admin/palestras/${encodeURIComponent(protocolo)}/status`, { status });
+  }
+  // ⇩ detalhe de uma autorização pelo protocolo (usa a rota "cidadão")
   obterAutorizacao(protocolo) {
     return this.http.get(`${this.base}/eventos/autorizacao/${encodeURIComponent(protocolo)}`);
   }
@@ -46602,9 +46617,9 @@ var AdminService = class _AdminService {
 })();
 
 // src/app/pages/admin.dashboard/admin.dashboard.component.ts
-function AdminDashboardComponent_div_12_Template(rf, ctx) {
+function AdminDashboardComponent_div_8_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 24);
+    \u0275\u0275elementStart(0, "div", 28);
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
@@ -46614,9 +46629,9 @@ function AdminDashboardComponent_div_12_Template(rf, ctx) {
     \u0275\u0275textInterpolate(ctx_r0.msg);
   }
 }
-function AdminDashboardComponent_div_13_Template(rf, ctx) {
+function AdminDashboardComponent_div_9_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 25);
+    \u0275\u0275elementStart(0, "div", 29);
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
@@ -46626,16 +46641,16 @@ function AdminDashboardComponent_div_13_Template(rf, ctx) {
     \u0275\u0275textInterpolate(ctx_r0.erro);
   }
 }
-function AdminDashboardComponent_div_47_Template(rf, ctx) {
+function AdminDashboardComponent_div_53_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 26);
-    \u0275\u0275element(1, "div", 27);
-    \u0275\u0275elementStart(2, "p", 28);
+    \u0275\u0275elementStart(0, "div", 30);
+    \u0275\u0275element(1, "div", 31);
+    \u0275\u0275elementStart(2, "p", 32);
     \u0275\u0275text(3, "Carregando registros...");
     \u0275\u0275elementEnd()();
   }
 }
-function AdminDashboardComponent_div_48_tr_17_Template(rf, ctx) {
+function AdminDashboardComponent_div_54_tr_17_Template(rf, ctx) {
   if (rf & 1) {
     const _r2 = \u0275\u0275getCurrentView();
     \u0275\u0275elementStart(0, "tr")(1, "td")(2, "strong");
@@ -46654,32 +46669,32 @@ function AdminDashboardComponent_div_48_tr_17_Template(rf, ctx) {
     \u0275\u0275text(12);
     \u0275\u0275pipe(13, "date");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(14, "td")(15, "div", 32)(16, "select", 33, 0);
-    \u0275\u0275listener("change", function AdminDashboardComponent_div_48_tr_17_Template_select_change_16_listener() {
+    \u0275\u0275elementStart(14, "td")(15, "div", 36)(16, "select", 37, 0);
+    \u0275\u0275listener("change", function AdminDashboardComponent_div_54_tr_17_Template_select_change_16_listener() {
       const r_r3 = \u0275\u0275restoreView(_r2).$implicit;
       const statusSelect_r4 = \u0275\u0275reference(17);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.atualizarStatus(r_r3.protocolo, statusSelect_r4.value));
     });
-    \u0275\u0275elementStart(18, "option", 34);
+    \u0275\u0275elementStart(18, "option", 38);
     \u0275\u0275text(19, "RECEBIDA");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(20, "option", 35);
+    \u0275\u0275elementStart(20, "option", 39);
     \u0275\u0275text(21, "EM_ANALISE");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(22, "option", 36);
+    \u0275\u0275elementStart(22, "option", 40);
     \u0275\u0275text(23, "PENDENTE");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(24, "option", 37);
+    \u0275\u0275elementStart(24, "option", 41);
     \u0275\u0275text(25, "APROVADA");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(26, "option", 38);
+    \u0275\u0275elementStart(26, "option", 42);
     \u0275\u0275text(27, "RECUSADA");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(28, "option", 39);
+    \u0275\u0275elementStart(28, "option", 43);
     \u0275\u0275text(29, "FINALIZADA");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(30, "option", 40);
+    \u0275\u0275elementStart(30, "option", 44);
     \u0275\u0275text(31, "CANCELADA");
     \u0275\u0275elementEnd()()()()();
   }
@@ -46701,9 +46716,9 @@ function AdminDashboardComponent_div_48_tr_17_Template(rf, ctx) {
     \u0275\u0275property("value", r_r3.status);
   }
 }
-function AdminDashboardComponent_div_48_Template(rf, ctx) {
+function AdminDashboardComponent_div_54_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 29)(1, "table", 30)(2, "thead")(3, "tr")(4, "th");
+    \u0275\u0275elementStart(0, "div", 33)(1, "table", 34)(2, "thead")(3, "tr")(4, "th");
     \u0275\u0275text(5, "Protocolo");
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(6, "th");
@@ -46722,7 +46737,7 @@ function AdminDashboardComponent_div_48_Template(rf, ctx) {
     \u0275\u0275text(15, "A\xE7\xF5es");
     \u0275\u0275elementEnd()()();
     \u0275\u0275elementStart(16, "tbody");
-    \u0275\u0275template(17, AdminDashboardComponent_div_48_tr_17_Template, 32, 13, "tr", 31);
+    \u0275\u0275template(17, AdminDashboardComponent_div_54_tr_17_Template, 32, 13, "tr", 35);
     \u0275\u0275elementEnd()()();
   }
   if (rf & 2) {
@@ -46731,15 +46746,15 @@ function AdminDashboardComponent_div_48_Template(rf, ctx) {
     \u0275\u0275property("ngForOf", ctx_r0.registros);
   }
 }
-function AdminDashboardComponent_div_49_Template(rf, ctx) {
+function AdminDashboardComponent_div_55_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 26)(1, "div", 41);
-    \u0275\u0275text(2, "\u{1F4CB}");
+    \u0275\u0275elementStart(0, "div", 30)(1, "div", 45);
+    \u0275\u0275element(2, "i", 46);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "h3", 42);
+    \u0275\u0275elementStart(3, "h3", 47);
     \u0275\u0275text(4, "Nenhum registro encontrado");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(5, "p", 28);
+    \u0275\u0275elementStart(5, "p", 32);
     \u0275\u0275text(6, "N\xE3o h\xE1 solicita\xE7\xF5es que correspondam aos filtros aplicados.");
     \u0275\u0275elementEnd()();
   }
@@ -46755,6 +46770,8 @@ var AdminDashboardComponent = class _AdminDashboardComponent {
   registros = [];
   // Filtros
   filtros = this.fb.group({
+    tipo: [""],
+    // AE (Nada Opor) | PL (Palestras/Eventos)
     status: [""],
     protocolo: [""],
     titulo: [""],
@@ -46765,16 +46782,79 @@ var AdminDashboardComponent = class _AdminDashboardComponent {
   ngOnInit() {
     this.buscar();
   }
+  normalizarAE(row) {
+    return {
+      origem: "AE",
+      protocolo: row.protocolo,
+      titulo: row.titulo,
+      cidade: row.cidade,
+      estado: row.estado,
+      temas: void 0,
+      status: row.status,
+      criado_em: row.criado_em
+    };
+  }
+  normalizarPL(row) {
+    return {
+      origem: "PL",
+      protocolo: row.protocolo,
+      titulo: row.organizacao || row.titulo || "(Sem t\xEDtulo)",
+      cidade: row.cidade,
+      estado: row.estado,
+      temas: row.temas,
+      status: row.status,
+      criado_em: row.criado_em
+    };
+  }
   buscar() {
     this.carregando = true;
     this.erro = "";
-    this.adminSrv.listarAutorizacoes(this.filtros.value).subscribe({
+    const filtros = this.filtros.value;
+    if (filtros?.tipo === "AE") {
+      this.adminSrv.listarAutorizacoes(filtros).subscribe({
+        next: (rows) => {
+          this.registros = (rows || []).map((r) => this.normalizarAE(r));
+          this.carregando = false;
+        },
+        error: (e) => {
+          this.erro = e?.error?.erro || "Falha ao carregar registros";
+          this.carregando = false;
+        }
+      });
+      return;
+    }
+    if (filtros?.tipo === "PL") {
+      this.adminSrv.listarPalestras(filtros).subscribe({
+        next: (rows) => {
+          this.registros = (rows || []).map((r) => this.normalizarPL(r));
+          this.carregando = false;
+        },
+        error: (e) => {
+          this.erro = e?.error?.erro || "Falha ao carregar registros";
+          this.carregando = false;
+        }
+      });
+      return;
+    }
+    let ae = [];
+    let pl = [];
+    this.adminSrv.listarAutorizacoes(filtros).subscribe({
       next: (rows) => {
-        this.registros = rows || [];
-        this.carregando = false;
+        ae = (rows || []).map((r) => this.normalizarAE(r));
+        this.adminSrv.listarPalestras(filtros).subscribe({
+          next: (rows2) => {
+            pl = (rows2 || []).map((r) => this.normalizarPL(r));
+            this.registros = [...ae, ...pl].sort((a, b) => new Date(b.criado_em).getTime() - new Date(a.criado_em).getTime());
+            this.carregando = false;
+          },
+          error: (e) => {
+            this.erro = e?.error?.erro || "Falha ao carregar palestras";
+            this.carregando = false;
+          }
+        });
       },
       error: (e) => {
-        this.erro = e?.error?.erro || "Falha ao carregar registros";
+        this.erro = e?.error?.erro || "Falha ao carregar autoriza\xE7\xF5es";
         this.carregando = false;
       }
     });
@@ -46796,7 +46876,7 @@ var AdminDashboardComponent = class _AdminDashboardComponent {
   static \u0275fac = function AdminDashboardComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || _AdminDashboardComponent)();
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AdminDashboardComponent, selectors: [["app-admin-dashboard"]], decls: 50, vars: 6, consts: [["statusSelect", ""], ["currentPage", "Dashboard do Administrador", "userName", "Admin PMERJ", "userRole", "ADMINISTRADOR"], [1, "dashboard-container"], [1, "dashboard-header"], [1, "dashboard-title"], [1, "dashboard-subtitle"], [1, "btn", "btn-secondary", 3, "click"], ["class", "alert alert-success", 4, "ngIf"], ["class", "alert alert-error", 4, "ngIf"], [1, "card", "mb-6"], [1, "mb-4"], [1, "grid", "grid-cols-4", "gap-4", 3, "ngSubmit", "formGroup"], [1, "form-group"], [1, "form-label"], ["formControlName", "status", "placeholder", "RECEBIDA, EM_ANALISE, PENDENTE...", 1, "form-input"], ["formControlName", "protocolo", "placeholder", "N\xFAmero do protocolo", 1, "form-input"], ["formControlName", "titulo", "placeholder", "Nome do evento", 1, "form-input"], ["formControlName", "cidade", "placeholder", "Nome da cidade", 1, "form-input"], ["type", "date", "formControlName", "data_inicio", 1, "form-input"], ["type", "date", "formControlName", "data_fim", 1, "form-input"], [2, "grid-column", "1/-1"], ["type", "submit", 1, "btn", "btn-primary"], ["class", "text-center p-8", 4, "ngIf"], ["class", "table-container", 4, "ngIf"], [1, "alert", "alert-success"], [1, "alert", "alert-error"], [1, "text-center", "p-8"], [1, "loading", "mb-2"], [1, "text-muted"], [1, "table-container"], [1, "table"], [4, "ngFor", "ngForOf"], [1, "flex", "gap-2"], [1, "form-input", "form-input-sm", 3, "change", "value"], ["value", "RECEBIDA"], ["value", "EM_ANALISE"], ["value", "PENDENTE"], ["value", "APROVADA"], ["value", "RECUSADA"], ["value", "FINALIZADA"], ["value", "CANCELADA"], [1, "text-4xl", "mb-4"], [1, "mb-2"]], template: function AdminDashboardComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AdminDashboardComponent, selectors: [["app-admin-dashboard"]], decls: 56, vars: 6, consts: [["statusSelect", ""], ["currentPage", "Dashboard do Administrador", "userName", "Admin PMERJ", "userRole", "ADMINISTRADOR"], [1, "dashboard-container"], [1, "dashboard-header"], [1, "dashboard-title"], [1, "dashboard-subtitle"], ["class", "alert alert-success", 4, "ngIf"], ["class", "alert alert-error", 4, "ngIf"], [1, "card", "mb-6"], [1, "mb-4"], [1, "fas", "fa-search"], [1, "grid", "grid-cols-4", "gap-4", 3, "ngSubmit", "formGroup"], [1, "form-group"], [1, "form-label"], ["formControlName", "tipo", 1, "form-input"], ["value", ""], ["value", "AE"], ["value", "PL"], ["formControlName", "status", "placeholder", "RECEBIDA, EM_ANALISE, PENDENTE...", 1, "form-input"], ["formControlName", "protocolo", "placeholder", "N\xFAmero do protocolo", 1, "form-input"], ["formControlName", "titulo", "placeholder", "Nome do evento", 1, "form-input"], ["formControlName", "cidade", "placeholder", "Nome da cidade", 1, "form-input"], ["type", "date", "formControlName", "data_inicio", 1, "form-input"], ["type", "date", "formControlName", "data_fim", 1, "form-input"], [2, "grid-column", "1/-1"], ["type", "submit", 1, "btn", "btn-primary"], ["class", "text-center p-8", 4, "ngIf"], ["class", "table-container", 4, "ngIf"], [1, "alert", "alert-success"], [1, "alert", "alert-error"], [1, "text-center", "p-8"], [1, "loading", "mb-2"], [1, "text-muted"], [1, "table-container"], [1, "table"], [4, "ngFor", "ngForOf"], [1, "flex", "gap-2"], [1, "form-input", "form-input-sm", 3, "change", "value"], ["value", "RECEBIDA"], ["value", "EM_ANALISE"], ["value", "PENDENTE"], ["value", "APROVADA"], ["value", "RECUSADA"], ["value", "FINALIZADA"], ["value", "CANCELADA"], [1, "text-4xl", "mb-4"], [1, "fas", "fa-clipboard"], [1, "mb-2"]], template: function AdminDashboardComponent_Template(rf, ctx) {
     if (rf & 1) {
       \u0275\u0275element(0, "app-header", 1);
       \u0275\u0275elementStart(1, "div", 2)(2, "header", 3)(3, "div")(4, "h1", 4);
@@ -46804,77 +46884,80 @@ var AdminDashboardComponent = class _AdminDashboardComponent {
       \u0275\u0275elementEnd();
       \u0275\u0275elementStart(6, "p", 5);
       \u0275\u0275text(7, "Gerencie solicita\xE7\xF5es e autoriza\xE7\xF5es");
-      \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(8, "button", 6);
-      \u0275\u0275listener("click", function AdminDashboardComponent_Template_button_click_8_listener() {
-        return ctx.sair();
-      });
-      \u0275\u0275elementStart(9, "span");
-      \u0275\u0275text(10, "\u{1F6AA}");
+      \u0275\u0275elementEnd()()();
+      \u0275\u0275template(8, AdminDashboardComponent_div_8_Template, 2, 1, "div", 6)(9, AdminDashboardComponent_div_9_Template, 2, 1, "div", 7);
+      \u0275\u0275elementStart(10, "section", 8)(11, "h3", 9);
+      \u0275\u0275element(12, "i", 10);
+      \u0275\u0275text(13, " Filtros de Busca");
       \u0275\u0275elementEnd();
-      \u0275\u0275text(11, " Sair ");
-      \u0275\u0275elementEnd()();
-      \u0275\u0275template(12, AdminDashboardComponent_div_12_Template, 2, 1, "div", 7)(13, AdminDashboardComponent_div_13_Template, 2, 1, "div", 8);
-      \u0275\u0275elementStart(14, "section", 9)(15, "h3", 10);
-      \u0275\u0275text(16, "\u{1F50D} Filtros de Busca");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(17, "form", 11);
-      \u0275\u0275listener("ngSubmit", function AdminDashboardComponent_Template_form_ngSubmit_17_listener() {
+      \u0275\u0275elementStart(14, "form", 11);
+      \u0275\u0275listener("ngSubmit", function AdminDashboardComponent_Template_form_ngSubmit_14_listener() {
         return ctx.buscar();
       });
-      \u0275\u0275elementStart(18, "div", 12)(19, "label", 13);
-      \u0275\u0275text(20, "Status");
+      \u0275\u0275elementStart(15, "div", 12)(16, "label", 13);
+      \u0275\u0275text(17, "Tipo");
       \u0275\u0275elementEnd();
-      \u0275\u0275element(21, "input", 14);
+      \u0275\u0275elementStart(18, "select", 14)(19, "option", 15);
+      \u0275\u0275text(20, "Todos");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(22, "div", 12)(23, "label", 13);
-      \u0275\u0275text(24, "Protocolo");
+      \u0275\u0275elementStart(21, "option", 16);
+      \u0275\u0275text(22, "Nada Opor");
       \u0275\u0275elementEnd();
-      \u0275\u0275element(25, "input", 15);
+      \u0275\u0275elementStart(23, "option", 17);
+      \u0275\u0275text(24, "Eventos");
+      \u0275\u0275elementEnd()()();
+      \u0275\u0275elementStart(25, "div", 12)(26, "label", 13);
+      \u0275\u0275text(27, "Status");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(26, "div", 12)(27, "label", 13);
-      \u0275\u0275text(28, "T\xEDtulo");
+      \u0275\u0275element(28, "input", 18);
       \u0275\u0275elementEnd();
-      \u0275\u0275element(29, "input", 16);
+      \u0275\u0275elementStart(29, "div", 12)(30, "label", 13);
+      \u0275\u0275text(31, "Protocolo");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(30, "div", 12)(31, "label", 13);
-      \u0275\u0275text(32, "Cidade");
+      \u0275\u0275element(32, "input", 19);
       \u0275\u0275elementEnd();
-      \u0275\u0275element(33, "input", 17);
+      \u0275\u0275elementStart(33, "div", 12)(34, "label", 13);
+      \u0275\u0275text(35, "T\xEDtulo");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(34, "div", 12)(35, "label", 13);
-      \u0275\u0275text(36, "Data In\xEDcio");
+      \u0275\u0275element(36, "input", 20);
       \u0275\u0275elementEnd();
-      \u0275\u0275element(37, "input", 18);
+      \u0275\u0275elementStart(37, "div", 12)(38, "label", 13);
+      \u0275\u0275text(39, "Cidade");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(38, "div", 12)(39, "label", 13);
-      \u0275\u0275text(40, "Data Fim");
+      \u0275\u0275element(40, "input", 21);
       \u0275\u0275elementEnd();
-      \u0275\u0275element(41, "input", 19);
+      \u0275\u0275elementStart(41, "div", 12)(42, "label", 13);
+      \u0275\u0275text(43, "Data In\xEDcio");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(42, "div", 20)(43, "button", 21)(44, "span");
-      \u0275\u0275text(45, "\u{1F50D}");
+      \u0275\u0275element(44, "input", 22);
       \u0275\u0275elementEnd();
-      \u0275\u0275text(46, " Filtrar ");
+      \u0275\u0275elementStart(45, "div", 12)(46, "label", 13);
+      \u0275\u0275text(47, "Data Fim");
+      \u0275\u0275elementEnd();
+      \u0275\u0275element(48, "input", 23);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(49, "div", 24)(50, "button", 25);
+      \u0275\u0275element(51, "i", 10);
+      \u0275\u0275text(52, " Filtrar ");
       \u0275\u0275elementEnd()()()();
-      \u0275\u0275template(47, AdminDashboardComponent_div_47_Template, 4, 0, "div", 22)(48, AdminDashboardComponent_div_48_Template, 18, 1, "div", 23)(49, AdminDashboardComponent_div_49_Template, 7, 0, "div", 22);
+      \u0275\u0275template(53, AdminDashboardComponent_div_53_Template, 4, 0, "div", 26)(54, AdminDashboardComponent_div_54_Template, 18, 1, "div", 27)(55, AdminDashboardComponent_div_55_Template, 7, 0, "div", 26);
       \u0275\u0275elementEnd();
     }
     if (rf & 2) {
-      \u0275\u0275advance(12);
+      \u0275\u0275advance(8);
       \u0275\u0275property("ngIf", ctx.msg);
       \u0275\u0275advance();
       \u0275\u0275property("ngIf", ctx.erro);
-      \u0275\u0275advance(4);
+      \u0275\u0275advance(5);
       \u0275\u0275property("formGroup", ctx.filtros);
-      \u0275\u0275advance(30);
+      \u0275\u0275advance(39);
       \u0275\u0275property("ngIf", ctx.carregando);
       \u0275\u0275advance();
       \u0275\u0275property("ngIf", !ctx.carregando && (ctx.registros == null ? null : ctx.registros.length));
       \u0275\u0275advance();
       \u0275\u0275property("ngIf", !ctx.carregando && !(ctx.registros == null ? null : ctx.registros.length));
     }
-  }, dependencies: [CommonModule, NgForOf, NgIf, ReactiveFormsModule, \u0275NgNoValidate, NgSelectOption, \u0275NgSelectMultipleOption, DefaultValueAccessor, NgControlStatus, NgControlStatusGroup, FormGroupDirective, FormControlName, HeaderComponent, DatePipe], encapsulation: 2 });
+  }, dependencies: [CommonModule, NgForOf, NgIf, ReactiveFormsModule, \u0275NgNoValidate, NgSelectOption, \u0275NgSelectMultipleOption, DefaultValueAccessor, SelectControlValueAccessor, NgControlStatus, NgControlStatusGroup, FormGroupDirective, FormControlName, HeaderComponent, DatePipe], encapsulation: 2 });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AdminDashboardComponent, [{
@@ -46893,10 +46976,7 @@ var AdminDashboardComponent = class _AdminDashboardComponent {
       <h1 class="dashboard-title">Dashboard do Administrador</h1>\r
       <p class="dashboard-subtitle">Gerencie solicita\xE7\xF5es e autoriza\xE7\xF5es</p>\r
     </div>\r
-    <button class="btn btn-secondary" (click)="sair()">\r
-      <span>\u{1F6AA}</span>\r
-      Sair\r
-    </button>\r
+    \r
   </header>\r
 \r
   <!-- Alertas -->\r
@@ -46905,8 +46985,16 @@ var AdminDashboardComponent = class _AdminDashboardComponent {
 \r
   <!-- Filtros -->\r
   <section class="card mb-6">\r
-    <h3 class="mb-4">\u{1F50D} Filtros de Busca</h3>\r
+    <h3 class="mb-4"><i class="fas fa-search"></i> Filtros de Busca</h3>\r
     <form [formGroup]="filtros" (ngSubmit)="buscar()" class="grid grid-cols-4 gap-4">\r
+      <div class="form-group">\r
+        <label class="form-label">Tipo</label>\r
+        <select class="form-input" formControlName="tipo">\r
+          <option value="">Todos</option>\r
+          <option value="AE">Nada Opor</option>\r
+          <option value="PL">Eventos</option>\r
+        </select>\r
+      </div>\r
       <div class="form-group">\r
         <label class="form-label">Status</label>\r
         <input\r
@@ -46957,7 +47045,7 @@ var AdminDashboardComponent = class _AdminDashboardComponent {
       \r
       <div style="grid-column: 1/-1;">\r
         <button type="submit" class="btn btn-primary">\r
-          <span>\u{1F50D}</span>\r
+          <i class="fas fa-search"></i>\r
           Filtrar\r
         </button>\r
       </div>\r
@@ -47018,7 +47106,7 @@ var AdminDashboardComponent = class _AdminDashboardComponent {
 \r
   <!-- Estado Vazio -->\r
   <div *ngIf="!carregando && !registros?.length" class="text-center p-8">\r
-    <div class="text-4xl mb-4">\u{1F4CB}</div>\r
+    <div class="text-4xl mb-4"><i class="fas fa-clipboard"></i></div>\r
     <h3 class="mb-2">Nenhum registro encontrado</h3>\r
     <p class="text-muted">N\xE3o h\xE1 solicita\xE7\xF5es que correspondam aos filtros aplicados.</p>\r
   </div>\r
