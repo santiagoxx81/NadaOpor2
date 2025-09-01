@@ -1,3 +1,10 @@
+<!-- Header Component -->
+<app-header 
+  currentPage="Dashboard do Administrador"
+  userName="Admin PMERJ"
+  userRole="ADMINISTRADOR">
+</app-header>
+
 <div class="dashboard-container">
   <!-- Header -->
   <header class="dashboard-header">
@@ -11,42 +18,60 @@
     </button>
   </header>
 
+  <!-- Alertas -->
+  <div *ngIf="msg" class="alert alert-success">{{ msg }}</div>
+  <div *ngIf="erro" class="alert alert-error">{{ erro }}</div>
+
   <!-- Filtros -->
   <section class="card mb-6">
     <h3 class="mb-4">🔍 Filtros de Busca</h3>
     <form [formGroup]="filtros" (ngSubmit)="buscar()" class="grid grid-cols-4 gap-4">
       <div class="form-group">
         <label class="form-label">Status</label>
-        <input 
-          class="form-input" 
-          formControlName="status" 
+        <input
+          class="form-input"
+          formControlName="status"
           placeholder="RECEBIDA, EM_ANALISE, PENDENTE...">
       </div>
       
       <div class="form-group">
+        <label class="form-label">Protocolo</label>
+        <input
+          class="form-input"
+          formControlName="protocolo"
+          placeholder="Número do protocolo">
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">Título</label>
+        <input
+          class="form-input"
+          formControlName="titulo"
+          placeholder="Nome do evento">
+      </div>
+      
+      <div class="form-group">
         <label class="form-label">Cidade</label>
-        <input 
-          class="form-input" 
-          formControlName="cidade" 
+        <input
+          class="form-input"
+          formControlName="cidade"
           placeholder="Nome da cidade">
       </div>
       
       <div class="form-group">
-        <label class="form-label">Data Inicial</label>
-        <input 
-          type="date" 
-          class="form-input" 
-          formControlName="de" 
-          placeholder="De">
+        <label class="form-label">Data Início</label>
+        <input
+          type="date"
+          class="form-input"
+          formControlName="data_inicio">
       </div>
       
       <div class="form-group">
-        <label class="form-label">Data Final</label>
-        <input 
-          type="date" 
-          class="form-input" 
-          formControlName="ate" 
-          placeholder="Até">
+        <label class="form-label">Data Fim</label>
+        <input
+          type="date"
+          class="form-input"
+          formControlName="data_fim">
       </div>
       
       <div style="grid-column: 1/-1;">
@@ -58,200 +83,62 @@
     </form>
   </section>
 
-  <!-- Estados de Carregamento -->
+  <!-- Loading -->
   <div *ngIf="carregando" class="text-center p-8">
     <div class="loading mb-2"></div>
     <p class="text-muted">Carregando registros...</p>
   </div>
-  
-  <div *ngIf="erro" class="alert alert-error">{{ erro }}</div>
 
-  <!-- Tabela de Registros -->
-  <div *ngIf="!carregando && registros.length" class="table-container">
+  <!-- Lista de Registros -->
+  <div *ngIf="!carregando && registros?.length" class="table-container">
     <table class="table">
       <thead>
         <tr>
           <th>Protocolo</th>
           <th>Título</th>
-          <th>Cidade</th>
+          <th>Cidade/UF</th>
           <th>Status</th>
           <th>Criado</th>
-          <th>Atualizado</th>
-          <th>Solicitante</th>
-          <th style="white-space: nowrap">Ações</th>
+          <th>Ações</th>
         </tr>
       </thead>
       <tbody>
-        <ng-container *ngFor="let r of registros">
-          <tr>
-            <td><strong>{{ r.protocolo }}</strong></td>
-            <td>{{ r.titulo }}</td>
-            <td>{{ r.cidade }}</td>
-
-            <!-- Status com destaque de pendência -->
-            <td>
-              <span class="badge badge-{{ r.status.toLowerCase().replace('_', '-') }}">
-                {{ r.status }}
-              </span>
-              <div *ngIf="r.status === 'PENDENTE'" class="text-warning font-medium mt-1">
-                ⚠️ Pendência
-              </div>
-            </td>
-
-            <td>{{ r.criado_em | date : "short" }}</td>
-            <td>{{ r.atualizado_em | date : "short" }}</td>
-            <td>
-              <div class="text-sm">
-                <div class="font-medium">{{ r.nome_usuario }}</div>
-                <div class="text-muted">{{ r.email_usuario }}</div>
-              </div>
-            </td>
-
-            <!-- Ações -->
-            <td>
-              <div class="flex gap-2 items-center flex-wrap">
-                <!-- Alterar status -->
-                <select class="form-select" [(ngModel)]="r._novoStatus" style="min-width: 120px;">
-                  <option *ngFor="let s of statusOptions" [value]="s">
-                    {{ s }}
-                  </option>
-                </select>
-
-                <!-- Campo de pendência obrigatório -->
-                <input
-                  *ngIf="r._novoStatus === 'PENDENTE'"
-                  type="text"
-                  class="form-input"
-                  [(ngModel)]="r._pendenciaObs"
-                  placeholder="Descreva a pendência (obrigatório)"
-                  style="min-width: 260px;"
-                />
-
-                <button
-                  class="btn btn-sm btn-success"
-                  (click)="alterarStatus(r)"
-                  [disabled]="
-                    r._novoStatus === 'PENDENTE' &&
-                    !(r._pendenciaObs && r._pendenciaObs.trim())
-                  "
-                >
-                  <span>💾</span>
-                  Salvar
-                </button>
-
-                <!-- Abrir painel de detalhes -->
-                <button
-                  type="button"
-                  class="btn btn-sm btn-secondary"
-                  (click)="abrirDetalhe(r.protocolo)"
-                  [attr.aria-expanded]="selecionadoProtocolo === r.protocolo"
-                >
-                  {{ selecionadoProtocolo === r.protocolo ? "👁️ Fechar" : "👁️ Detalhes" }}
-                </button>
-              </div>
-            </td>
-          </tr>
-
-          <!-- Linha de detalhes inline -->
-          <tr *ngIf="selecionadoProtocolo === r.protocolo">
-            <td colspan="8" style="background: var(--gray-50);">
-              <div *ngIf="carregandoDetalhe" class="text-center p-4">
-                <div class="loading mb-2"></div>
-                <p class="text-muted">Carregando detalhes...</p>
-              </div>
-              
-              <div *ngIf="erroDetalhe" class="alert alert-error">{{ erroDetalhe }}</div>
-
-              <div
-                *ngIf="!carregandoDetalhe && !erroDetalhe && detalhe"
-                class="p-4"
-              >
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                  <div><strong>Título:</strong> {{ detalhe?.titulo }}</div>
-                  <div><strong>Tipo:</strong> {{ detalhe?.tipo_evento || "—" }}</div>
-                  <div>
-                    <strong>Cidade/UF:</strong> {{ detalhe?.cidade }} / {{ detalhe?.estado }}
-                  </div>
-                  <div><strong>CEP:</strong> {{ detalhe?.cep || "—" }}</div>
-                  <div>
-                    <strong>Início:</strong> {{ detalhe?.data_inicio | date : "short" }}
-                  </div>
-                  <div><strong>Fim:</strong> {{ detalhe?.data_fim | date : "short" }}</div>
-                  <div>
-                    <strong>Público estimado:</strong> {{ detalhe?.publico_estimado || "—" }}
-                  </div>
-                  <div>
-                    <strong>Status:</strong> 
-                    <span class="badge badge-{{ detalhe?.status.toLowerCase().replace('_', '-') }}">
-                      {{ detalhe?.status }}
-                    </span>
-                  </div>
-                  
-                  <div
-                    *ngIf="detalhe?.status === 'PENDENTE'"
-                    style="grid-column: 1/-1;"
-                    class="alert alert-warning"
-                  >
-                    <strong>Pendência:</strong><br />{{ detalhe?.pendencia_obs || "—" }}
-                  </div>
-
-                  <div style="grid-column: 1/-1;">
-                    <strong>Endereço:</strong> {{ detalhe?.endereco }}, {{ detalhe?.bairro }}
-                  </div>
-                  <div style="grid-column: 1/-1;">
-                    <strong>Descrição:</strong><br />{{ detalhe?.descricao || "—" }}
-                  </div>
-                  <div style="grid-column: 1/-1;">
-                    <strong>Observações:</strong><br />{{ detalhe?.observacoes || "—" }}
-                  </div>
-                </div>
-
-                <!-- Seção de Anexos -->
-                <div class="mt-6">
-                  <h4 class="mb-4">📎 Anexos</h4>
-                  
-                  <div *ngIf="anexos.length" class="table-container">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Nome</th>
-                          <th>Tamanho</th>
-                          <th>Enviado em</th>
-                          <th style="width: 120px">Ações</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let a of anexos">
-                          <td>{{ a.nome_original }}</td>
-                          <td>{{ a.tamanho_bytes | number }} bytes</td>
-                          <td>{{ a.criado_em | date : "short" }}</td>
-                          <td>
-                            <button type="button" class="btn btn-sm btn-secondary" (click)="baixar(a)">
-                              📥 Baixar
-                            </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  
-                  <div *ngIf="!anexos.length" class="text-center p-8">
-                    <div class="text-4xl mb-2">📁</div>
-                    <p class="text-muted">Nenhum anexo enviado.</p>
-                  </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </ng-container>
+        <tr *ngFor="let r of registros">
+          <td><strong>{{ r.protocolo }}</strong></td>
+          <td>{{ r.titulo }}</td>
+          <td>{{ r.cidade }} / {{ r.estado }}</td>
+          <td>
+            <span class="badge badge-{{ r.status.toLowerCase().replace('_', '-') }}">
+              {{ r.status }}
+            </span>
+          </td>
+          <td>{{ r.criado_em | date:'short' }}</td>
+          <td>
+            <div class="flex gap-2">
+              <select 
+                class="form-input form-input-sm" 
+                [value]="r.status"
+                #statusSelect
+                (change)="atualizarStatus(r.protocolo, statusSelect.value)">
+                <option value="RECEBIDA">RECEBIDA</option>
+                <option value="EM_ANALISE">EM_ANALISE</option>
+                <option value="PENDENTE">PENDENTE</option>
+                <option value="APROVADA">APROVADA</option>
+                <option value="RECUSADA">RECUSADA</option>
+                <option value="FINALIZADA">FINALIZADA</option>
+                <option value="CANCELADA">CANCELADA</option>
+              </select>
+            </div>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- Estado vazio -->
-  <div *ngIf="!carregando && !registros.length" class="text-center p-8">
+  <!-- Estado Vazio -->
+  <div *ngIf="!carregando && !registros?.length" class="text-center p-8">
     <div class="text-4xl mb-4">📋</div>
     <h3 class="mb-2">Nenhum registro encontrado</h3>
-    <p class="text-muted">Tente ajustar os filtros de busca.</p>
+    <p class="text-muted">Não há solicitações que correspondam aos filtros aplicados.</p>
   </div>
 </div>

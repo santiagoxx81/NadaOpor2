@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { NadaOporService } from '../../services/nada-opor.service';
 import { AnexosService } from '../../services/anexos.service';
 import { PalestraService } from '../../services/palestra.service';
+import { HeaderComponent } from '../../components/header/header.component';
 
 const STATUS = ['RECEBIDA','EM_ANALISE','PENDENTE','APROVADA','RECUSADA','FINALIZADA','CANCELADA'] as const;
 type StatusAE = typeof STATUS[number];
@@ -11,7 +12,7 @@ type StatusAE = typeof STATUS[number];
 @Component({
   selector: 'app-usuario-dashboard',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, HeaderComponent],
   templateUrl: './usuario.dashboard.component.html'
 })
 export class UsuarioDashboardComponent {

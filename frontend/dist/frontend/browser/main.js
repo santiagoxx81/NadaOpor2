@@ -46477,50 +46477,90 @@ var AdminService = class _AdminService {
   }], null, null);
 })();
 
-// src/app/services/anexos.service.ts
-var AnexosService = class _AnexosService {
-  http = inject2(HttpClient);
-  base = "http://localhost:4000/api";
-  listar(protocoloAE) {
-    return this.http.get(`${this.base}/eventos/autorizacao/${protocoloAE}/anexos`);
+// src/app/components/header/header.component.ts
+var HeaderComponent = class _HeaderComponent {
+  router;
+  currentPage = "P\xE1gina Inicial";
+  userName = "Admin PMERJ";
+  userRole = "ADMINISTRADOR";
+  constructor(router) {
+    this.router = router;
   }
-  upload(protocoloAE, arquivo, tipo_documento) {
-    const fd = new FormData();
-    fd.append("arquivo", arquivo);
-    fd.append("tipo_documento", tipo_documento);
-    return this.http.post(`${this.base}/eventos/autorizacao/${protocoloAE}/anexos`, fd);
+  logout() {
+    this.router.navigate(["/login"]);
   }
-  download(id) {
-    return this.http.get(`${this.base}/eventos/autorizacao/anexos/${id}/download`, { responseType: "blob" });
-  }
-  excluir(id) {
-    return this.http.delete(`${this.base}/eventos/autorizacao/anexos/${id}`);
-  }
-  static \u0275fac = function AnexosService_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _AnexosService)();
+  static \u0275fac = function HeaderComponent_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _HeaderComponent)(\u0275\u0275directiveInject(Router));
   };
-  static \u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _AnexosService, factory: _AnexosService.\u0275fac, providedIn: "root" });
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _HeaderComponent, selectors: [["app-header"]], inputs: { currentPage: "currentPage", userName: "userName", userRole: "userRole" }, decls: 23, vars: 3, consts: [[1, "main-header"], [1, "header-content"], [1, "logo-section"], [1, "logo"], [1, "fas", "fa-shield-alt"], [1, "logo-text"], [1, "user-section"], [1, "user-profile"], [1, "user-avatar"], [1, "avatar-icon"], [1, "user-info"], [1, "user-name"], [1, "user-role"], [1, "logout-button", 3, "click"], [1, "nav-bar"], [1, "nav-content"], [1, "nav-text"]], template: function HeaderComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      \u0275\u0275domElementStart(0, "header", 0)(1, "div", 1)(2, "div", 2)(3, "div", 3);
+      \u0275\u0275domElement(4, "i", 4);
+      \u0275\u0275domElementEnd();
+      \u0275\u0275domElementStart(5, "h1", 5);
+      \u0275\u0275text(6, "Solicita\xE7\xE3o PMERJ");
+      \u0275\u0275domElementEnd()();
+      \u0275\u0275domElementStart(7, "div", 6)(8, "div", 7)(9, "div", 8)(10, "div", 9);
+      \u0275\u0275text(11, "\u{1F464}");
+      \u0275\u0275domElementEnd()();
+      \u0275\u0275domElementStart(12, "div", 10)(13, "div", 11);
+      \u0275\u0275text(14);
+      \u0275\u0275domElementEnd();
+      \u0275\u0275domElementStart(15, "div", 12);
+      \u0275\u0275text(16);
+      \u0275\u0275domElementEnd()();
+      \u0275\u0275domElementStart(17, "button", 13);
+      \u0275\u0275domListener("click", function HeaderComponent_Template_button_click_17_listener() {
+        return ctx.logout();
+      });
+      \u0275\u0275text(18, "\u{1F6AA}");
+      \u0275\u0275domElementEnd()()()();
+      \u0275\u0275domElementStart(19, "nav", 14)(20, "div", 15)(21, "span", 16);
+      \u0275\u0275text(22);
+      \u0275\u0275domElementEnd()()()();
+    }
+    if (rf & 2) {
+      \u0275\u0275advance(14);
+      \u0275\u0275textInterpolate(ctx.userName);
+      \u0275\u0275advance(2);
+      \u0275\u0275textInterpolate(ctx.userRole);
+      \u0275\u0275advance(6);
+      \u0275\u0275textInterpolate(ctx.currentPage);
+    }
+  }, dependencies: [CommonModule], styles: ["\n\n.main-header[_ngcontent-%COMP%] {\n  background:\n    linear-gradient(\n      135deg,\n      #197cb1 0%,\n      #1e88e5 100%);\n  color: white;\n  box-shadow: 0 2px 10px rgba(25, 124, 177, 0.2);\n}\n.header-content[_ngcontent-%COMP%] {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 1rem 2rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 2rem;\n}\n.logo-section[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n}\n.logo[_ngcontent-%COMP%] {\n  width: 3rem;\n  height: 3rem;\n  background: #fbbf24;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);\n}\n.logo[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  font-size: 1.5rem;\n  color: #197cb1;\n}\n.logo-text[_ngcontent-%COMP%] {\n  font-size: 1.5rem;\n  font-weight: 700;\n  color: white;\n  white-space: nowrap;\n}\n.user-section[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n}\n.user-profile[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n  padding: 0.5rem 1rem;\n  background: rgba(255, 255, 255, 0.1);\n  border-radius: 2rem;\n  -webkit-backdrop-filter: blur(10px);\n  backdrop-filter: blur(10px);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  transition: all 0.2s ease;\n}\n.user-profile[_ngcontent-%COMP%]:hover {\n  background: rgba(255, 255, 255, 0.15);\n  border-color: rgba(255, 255, 255, 0.3);\n}\n.user-avatar[_ngcontent-%COMP%] {\n  width: 2.5rem;\n  height: 2.5rem;\n  background: #fbbf24;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);\n}\n.avatar-icon[_ngcontent-%COMP%] {\n  font-size: 1.25rem;\n  color: #197cb1;\n}\n.user-info[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 0.125rem;\n}\n.user-name[_ngcontent-%COMP%] {\n  font-size: 0.875rem;\n  font-weight: 600;\n  color: white;\n}\n.user-role[_ngcontent-%COMP%] {\n  font-size: 0.75rem;\n  color: rgba(255, 255, 255, 0.8);\n  font-weight: 500;\n}\n.logout-button[_ngcontent-%COMP%] {\n  background: none;\n  border: none;\n  color: rgba(255, 255, 255, 0.8);\n  font-size: 1rem;\n  cursor: pointer;\n  padding: 0.5rem;\n  border-radius: 50%;\n  transition: all 0.2s ease;\n  margin-left: 0.5rem;\n}\n.logout-button[_ngcontent-%COMP%]:hover {\n  background: rgba(255, 255, 255, 0.1);\n  color: white;\n  transform: scale(1.1);\n}\n.nav-bar[_ngcontent-%COMP%] {\n  background: #1565c0;\n  padding: 0.75rem 2rem;\n  border-top: 1px solid rgba(255, 255, 255, 0.1);\n}\n.nav-content[_ngcontent-%COMP%] {\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.nav-text[_ngcontent-%COMP%] {\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: white;\n}\n@media (max-width: 768px) {\n  .header-content[_ngcontent-%COMP%] {\n    flex-direction: column;\n    gap: 1rem;\n    padding: 1rem;\n  }\n  .user-profile[_ngcontent-%COMP%] {\n    width: 100%;\n    justify-content: center;\n  }\n  .logo-text[_ngcontent-%COMP%] {\n    font-size: 1.25rem;\n  }\n}\n@media (max-width: 480px) {\n  .header-content[_ngcontent-%COMP%] {\n    padding: 0.75rem;\n  }\n  .logo[_ngcontent-%COMP%] {\n    width: 2.5rem;\n    height: 2.5rem;\n  }\n  .logo[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n    font-size: 1.25rem;\n  }\n  .logo-text[_ngcontent-%COMP%] {\n    font-size: 1.125rem;\n  }\n  .user-avatar[_ngcontent-%COMP%] {\n    width: 2rem;\n    height: 2rem;\n  }\n  .avatar-icon[_ngcontent-%COMP%] {\n    font-size: 1rem;\n  }\n  .user-name[_ngcontent-%COMP%] {\n    font-size: 0.75rem;\n  }\n  .user-role[_ngcontent-%COMP%] {\n    font-size: 0.625rem;\n  }\n}\n/*# sourceMappingURL=header.component.css.map */"] });
 };
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AnexosService, [{
-    type: Injectable,
-    args: [{ providedIn: "root" }]
-  }], null, null);
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(HeaderComponent, [{
+    type: Component,
+    args: [{ selector: "app-header", standalone: true, imports: [CommonModule], template: '<!-- Header Principal -->\r\n<header class="main-header">\r\n  <div class="header-content">\r\n    <!-- Logo e Nome -->\r\n    <div class="logo-section">\r\n      <div class="logo">\r\n        <i class="fas fa-shield-alt"></i>\r\n      </div>\r\n      <h1 class="logo-text">Solicita\xE7\xE3o PMERJ</h1>\r\n    </div>\r\n\r\n    <!-- Perfil do Usu\xE1rio -->\r\n    <div class="user-section">\r\n      <div class="user-profile">\r\n        <div class="user-avatar">\r\n          <div class="avatar-icon">\u{1F464}</div>\r\n        </div>\r\n        <div class="user-info">\r\n          <div class="user-name">{{ userName }}</div>\r\n          <div class="user-role">{{ userRole }}</div>\r\n        </div>\r\n        <button class="logout-button" (click)="logout()">\u{1F6AA}</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Barra de Navega\xE7\xE3o -->\r\n  <nav class="nav-bar">\r\n    <div class="nav-content">\r\n      <span class="nav-text">{{ currentPage }}</span>\r\n    </div>\r\n  </nav>\r\n</header>\r\n', styles: ["/* src/app/components/header/header.component.css */\n.main-header {\n  background:\n    linear-gradient(\n      135deg,\n      #197cb1 0%,\n      #1e88e5 100%);\n  color: white;\n  box-shadow: 0 2px 10px rgba(25, 124, 177, 0.2);\n}\n.header-content {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 1rem 2rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 2rem;\n}\n.logo-section {\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n}\n.logo {\n  width: 3rem;\n  height: 3rem;\n  background: #fbbf24;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);\n}\n.logo i {\n  font-size: 1.5rem;\n  color: #197cb1;\n}\n.logo-text {\n  font-size: 1.5rem;\n  font-weight: 700;\n  color: white;\n  white-space: nowrap;\n}\n.user-section {\n  display: flex;\n  align-items: center;\n}\n.user-profile {\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n  padding: 0.5rem 1rem;\n  background: rgba(255, 255, 255, 0.1);\n  border-radius: 2rem;\n  -webkit-backdrop-filter: blur(10px);\n  backdrop-filter: blur(10px);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  transition: all 0.2s ease;\n}\n.user-profile:hover {\n  background: rgba(255, 255, 255, 0.15);\n  border-color: rgba(255, 255, 255, 0.3);\n}\n.user-avatar {\n  width: 2.5rem;\n  height: 2.5rem;\n  background: #fbbf24;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);\n}\n.avatar-icon {\n  font-size: 1.25rem;\n  color: #197cb1;\n}\n.user-info {\n  display: flex;\n  flex-direction: column;\n  gap: 0.125rem;\n}\n.user-name {\n  font-size: 0.875rem;\n  font-weight: 600;\n  color: white;\n}\n.user-role {\n  font-size: 0.75rem;\n  color: rgba(255, 255, 255, 0.8);\n  font-weight: 500;\n}\n.logout-button {\n  background: none;\n  border: none;\n  color: rgba(255, 255, 255, 0.8);\n  font-size: 1rem;\n  cursor: pointer;\n  padding: 0.5rem;\n  border-radius: 50%;\n  transition: all 0.2s ease;\n  margin-left: 0.5rem;\n}\n.logout-button:hover {\n  background: rgba(255, 255, 255, 0.1);\n  color: white;\n  transform: scale(1.1);\n}\n.nav-bar {\n  background: #1565c0;\n  padding: 0.75rem 2rem;\n  border-top: 1px solid rgba(255, 255, 255, 0.1);\n}\n.nav-content {\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.nav-text {\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: white;\n}\n@media (max-width: 768px) {\n  .header-content {\n    flex-direction: column;\n    gap: 1rem;\n    padding: 1rem;\n  }\n  .user-profile {\n    width: 100%;\n    justify-content: center;\n  }\n  .logo-text {\n    font-size: 1.25rem;\n  }\n}\n@media (max-width: 480px) {\n  .header-content {\n    padding: 0.75rem;\n  }\n  .logo {\n    width: 2.5rem;\n    height: 2.5rem;\n  }\n  .logo i {\n    font-size: 1.25rem;\n  }\n  .logo-text {\n    font-size: 1.125rem;\n  }\n  .user-avatar {\n    width: 2rem;\n    height: 2rem;\n  }\n  .avatar-icon {\n    font-size: 1rem;\n  }\n  .user-name {\n    font-size: 0.75rem;\n  }\n  .user-role {\n    font-size: 0.625rem;\n  }\n}\n/*# sourceMappingURL=header.component.css.map */\n"] }]
+  }], () => [{ type: Router }], { currentPage: [{
+    type: Input
+  }], userName: [{
+    type: Input
+  }], userRole: [{
+    type: Input
+  }] });
+})();
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(HeaderComponent, { className: "HeaderComponent", filePath: "src/app/components/header/header.component.ts", lineNumber: 12 });
 })();
 
 // src/app/pages/admin.dashboard/admin.dashboard.component.ts
-function AdminDashboardComponent_div_36_Template(rf, ctx) {
+function AdminDashboardComponent_div_12_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 19);
-    \u0275\u0275element(1, "div", 20);
-    \u0275\u0275elementStart(2, "p", 21);
-    \u0275\u0275text(3, "Carregando registros...");
-    \u0275\u0275elementEnd()();
+    \u0275\u0275elementStart(0, "div", 24);
+    \u0275\u0275text(1);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext();
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate(ctx_r0.msg);
   }
 }
-function AdminDashboardComponent_div_37_Template(rf, ctx) {
+function AdminDashboardComponent_div_13_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 22);
+    \u0275\u0275elementStart(0, "div", 25);
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
@@ -46530,377 +46570,91 @@ function AdminDashboardComponent_div_37_Template(rf, ctx) {
     \u0275\u0275textInterpolate(ctx_r0.erro);
   }
 }
-function AdminDashboardComponent_div_38_ng_container_21_div_12_Template(rf, ctx) {
+function AdminDashboardComponent_div_47_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 37);
-    \u0275\u0275text(1, " \u26A0\uFE0F Pend\xEAncia ");
-    \u0275\u0275elementEnd();
-  }
-}
-function AdminDashboardComponent_div_38_ng_container_21_option_28_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "option", 38);
-    \u0275\u0275text(1);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const s_r4 = ctx.$implicit;
-    \u0275\u0275property("value", s_r4);
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate1(" ", s_r4, " ");
-  }
-}
-function AdminDashboardComponent_div_38_ng_container_21_input_29_Template(rf, ctx) {
-  if (rf & 1) {
-    const _r5 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "input", 39);
-    \u0275\u0275twoWayListener("ngModelChange", function AdminDashboardComponent_div_38_ng_container_21_input_29_Template_input_ngModelChange_0_listener($event) {
-      \u0275\u0275restoreView(_r5);
-      const r_r3 = \u0275\u0275nextContext().$implicit;
-      \u0275\u0275twoWayBindingSet(r_r3._pendenciaObs, $event) || (r_r3._pendenciaObs = $event);
-      return \u0275\u0275resetView($event);
-    });
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const r_r3 = \u0275\u0275nextContext().$implicit;
-    \u0275\u0275twoWayProperty("ngModel", r_r3._pendenciaObs);
-  }
-}
-function AdminDashboardComponent_div_38_ng_container_21_tr_36_div_2_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 43);
-    \u0275\u0275element(1, "div", 20);
-    \u0275\u0275elementStart(2, "p", 21);
-    \u0275\u0275text(3, "Carregando detalhes...");
+    \u0275\u0275elementStart(0, "div", 26);
+    \u0275\u0275element(1, "div", 27);
+    \u0275\u0275elementStart(2, "p", 28);
+    \u0275\u0275text(3, "Carregando registros...");
     \u0275\u0275elementEnd()();
   }
 }
-function AdminDashboardComponent_div_38_ng_container_21_tr_36_div_3_Template(rf, ctx) {
+function AdminDashboardComponent_div_48_tr_17_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 22);
-    \u0275\u0275text(1);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const ctx_r0 = \u0275\u0275nextContext(4);
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate(ctx_r0.erroDetalhe);
-  }
-}
-function AdminDashboardComponent_div_38_ng_container_21_tr_36_div_4_div_37_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 48)(1, "strong");
-    \u0275\u0275text(2, "Pend\xEAncia:");
-    \u0275\u0275elementEnd();
-    \u0275\u0275element(3, "br");
-    \u0275\u0275text(4);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const ctx_r0 = \u0275\u0275nextContext(5);
-    \u0275\u0275advance(4);
-    \u0275\u0275textInterpolate1("", (ctx_r0.detalhe == null ? null : ctx_r0.detalhe.pendencia_obs) || "\u2014", " ");
-  }
-}
-function AdminDashboardComponent_div_38_ng_container_21_tr_36_div_4_div_55_tr_13_Template(rf, ctx) {
-  if (rf & 1) {
-    const _r6 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "tr")(1, "td");
-    \u0275\u0275text(2);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "td");
-    \u0275\u0275text(4);
-    \u0275\u0275pipe(5, "number");
+    const _r2 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "tr")(1, "td")(2, "strong");
+    \u0275\u0275text(3);
+    \u0275\u0275elementEnd()();
+    \u0275\u0275elementStart(4, "td");
+    \u0275\u0275text(5);
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(6, "td");
     \u0275\u0275text(7);
-    \u0275\u0275pipe(8, "date");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(9, "td")(10, "button", 35);
-    \u0275\u0275listener("click", function AdminDashboardComponent_div_38_ng_container_21_tr_36_div_4_div_55_tr_13_Template_button_click_10_listener() {
-      const a_r7 = \u0275\u0275restoreView(_r6).$implicit;
-      const ctx_r0 = \u0275\u0275nextContext(6);
-      return \u0275\u0275resetView(ctx_r0.baixar(a_r7));
-    });
-    \u0275\u0275text(11, " \u{1F4E5} Baixar ");
-    \u0275\u0275elementEnd()()();
-  }
-  if (rf & 2) {
-    const a_r7 = ctx.$implicit;
-    \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(a_r7.nome_original);
-    \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate1("", \u0275\u0275pipeBind1(5, 3, a_r7.tamanho_bytes), " bytes");
-    \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind2(8, 5, a_r7.criado_em, "short"));
-  }
-}
-function AdminDashboardComponent_div_38_ng_container_21_tr_36_div_4_div_55_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 23)(1, "table", 24)(2, "thead")(3, "tr")(4, "th");
-    \u0275\u0275text(5, "Nome");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(6, "th");
-    \u0275\u0275text(7, "Tamanho");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(8, "th");
-    \u0275\u0275text(9, "Enviado em");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(10, "th", 49);
-    \u0275\u0275text(11, "A\xE7\xF5es");
-    \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(12, "tbody");
-    \u0275\u0275template(13, AdminDashboardComponent_div_38_ng_container_21_tr_36_div_4_div_55_tr_13_Template, 12, 8, "tr", 26);
-    \u0275\u0275elementEnd()()();
-  }
-  if (rf & 2) {
-    const ctx_r0 = \u0275\u0275nextContext(5);
-    \u0275\u0275advance(13);
-    \u0275\u0275property("ngForOf", ctx_r0.anexos);
-  }
-}
-function AdminDashboardComponent_div_38_ng_container_21_tr_36_div_4_div_56_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 19)(1, "div", 50);
-    \u0275\u0275text(2, "\u{1F4C1}");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "p", 21);
-    \u0275\u0275text(4, "Nenhum anexo enviado.");
+    \u0275\u0275elementStart(8, "td")(9, "span");
+    \u0275\u0275text(10);
     \u0275\u0275elementEnd()();
-  }
-}
-function AdminDashboardComponent_div_38_ng_container_21_tr_36_div_4_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 44)(1, "div", 45)(2, "div")(3, "strong");
-    \u0275\u0275text(4, "T\xEDtulo:");
+    \u0275\u0275elementStart(11, "td");
+    \u0275\u0275text(12);
+    \u0275\u0275pipe(13, "date");
     \u0275\u0275elementEnd();
-    \u0275\u0275text(5);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(6, "div")(7, "strong");
-    \u0275\u0275text(8, "Tipo:");
-    \u0275\u0275elementEnd();
-    \u0275\u0275text(9);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(10, "div")(11, "strong");
-    \u0275\u0275text(12, "Cidade/UF:");
-    \u0275\u0275elementEnd();
-    \u0275\u0275text(13);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(14, "div")(15, "strong");
-    \u0275\u0275text(16, "CEP:");
-    \u0275\u0275elementEnd();
-    \u0275\u0275text(17);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(18, "div")(19, "strong");
-    \u0275\u0275text(20, "In\xEDcio:");
-    \u0275\u0275elementEnd();
-    \u0275\u0275text(21);
-    \u0275\u0275pipe(22, "date");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(23, "div")(24, "strong");
-    \u0275\u0275text(25, "Fim:");
-    \u0275\u0275elementEnd();
-    \u0275\u0275text(26);
-    \u0275\u0275pipe(27, "date");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(28, "div")(29, "strong");
-    \u0275\u0275text(30, "P\xFAblico estimado:");
-    \u0275\u0275elementEnd();
-    \u0275\u0275text(31);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(32, "div")(33, "strong");
-    \u0275\u0275text(34, "Status:");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(35, "span");
-    \u0275\u0275text(36);
-    \u0275\u0275elementEnd()();
-    \u0275\u0275template(37, AdminDashboardComponent_div_38_ng_container_21_tr_36_div_4_div_37_Template, 5, 1, "div", 46);
-    \u0275\u0275elementStart(38, "div", 14)(39, "strong");
-    \u0275\u0275text(40, "Endere\xE7o:");
-    \u0275\u0275elementEnd();
-    \u0275\u0275text(41);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(42, "div", 14)(43, "strong");
-    \u0275\u0275text(44, "Descri\xE7\xE3o:");
-    \u0275\u0275elementEnd();
-    \u0275\u0275element(45, "br");
-    \u0275\u0275text(46);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(47, "div", 14)(48, "strong");
-    \u0275\u0275text(49, "Observa\xE7\xF5es:");
-    \u0275\u0275elementEnd();
-    \u0275\u0275element(50, "br");
-    \u0275\u0275text(51);
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(52, "div", 47)(53, "h4", 6);
-    \u0275\u0275text(54, "\u{1F4CE} Anexos");
-    \u0275\u0275elementEnd();
-    \u0275\u0275template(55, AdminDashboardComponent_div_38_ng_container_21_tr_36_div_4_div_55_Template, 14, 1, "div", 18)(56, AdminDashboardComponent_div_38_ng_container_21_tr_36_div_4_div_56_Template, 5, 0, "div", 16);
-    \u0275\u0275elementEnd()();
-  }
-  if (rf & 2) {
-    const ctx_r0 = \u0275\u0275nextContext(4);
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate1(" ", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.titulo);
-    \u0275\u0275advance(4);
-    \u0275\u0275textInterpolate1(" ", (ctx_r0.detalhe == null ? null : ctx_r0.detalhe.tipo_evento) || "\u2014");
-    \u0275\u0275advance(4);
-    \u0275\u0275textInterpolate2(" ", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.cidade, " / ", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.estado, " ");
-    \u0275\u0275advance(4);
-    \u0275\u0275textInterpolate1(" ", (ctx_r0.detalhe == null ? null : ctx_r0.detalhe.cep) || "\u2014");
-    \u0275\u0275advance(4);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind2(22, 19, ctx_r0.detalhe == null ? null : ctx_r0.detalhe.data_inicio, "short"), " ");
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate1(" ", \u0275\u0275pipeBind2(27, 22, ctx_r0.detalhe == null ? null : ctx_r0.detalhe.data_fim, "short"));
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate1(" ", (ctx_r0.detalhe == null ? null : ctx_r0.detalhe.publico_estimado) || "\u2014", " ");
-    \u0275\u0275advance(4);
-    \u0275\u0275classMap(\u0275\u0275interpolate1("badge badge-", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.status.toLowerCase().replace("_", "-")));
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate1(" ", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.status, " ");
-    \u0275\u0275advance();
-    \u0275\u0275property("ngIf", (ctx_r0.detalhe == null ? null : ctx_r0.detalhe.status) === "PENDENTE");
-    \u0275\u0275advance(4);
-    \u0275\u0275textInterpolate2(" ", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.endereco, ", ", ctx_r0.detalhe == null ? null : ctx_r0.detalhe.bairro, " ");
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate1("", (ctx_r0.detalhe == null ? null : ctx_r0.detalhe.descricao) || "\u2014", " ");
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate1("", (ctx_r0.detalhe == null ? null : ctx_r0.detalhe.observacoes) || "\u2014", " ");
-    \u0275\u0275advance(4);
-    \u0275\u0275property("ngIf", ctx_r0.anexos.length);
-    \u0275\u0275advance();
-    \u0275\u0275property("ngIf", !ctx_r0.anexos.length);
-  }
-}
-function AdminDashboardComponent_div_38_ng_container_21_tr_36_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "tr")(1, "td", 40);
-    \u0275\u0275template(2, AdminDashboardComponent_div_38_ng_container_21_tr_36_div_2_Template, 4, 0, "div", 41)(3, AdminDashboardComponent_div_38_ng_container_21_tr_36_div_3_Template, 2, 1, "div", 17)(4, AdminDashboardComponent_div_38_ng_container_21_tr_36_div_4_Template, 57, 25, "div", 42);
-    \u0275\u0275elementEnd()();
-  }
-  if (rf & 2) {
-    const ctx_r0 = \u0275\u0275nextContext(3);
-    \u0275\u0275advance(2);
-    \u0275\u0275property("ngIf", ctx_r0.carregandoDetalhe);
-    \u0275\u0275advance();
-    \u0275\u0275property("ngIf", ctx_r0.erroDetalhe);
-    \u0275\u0275advance();
-    \u0275\u0275property("ngIf", !ctx_r0.carregandoDetalhe && !ctx_r0.erroDetalhe && ctx_r0.detalhe);
-  }
-}
-function AdminDashboardComponent_div_38_ng_container_21_Template(rf, ctx) {
-  if (rf & 1) {
-    const _r2 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementContainerStart(0);
-    \u0275\u0275elementStart(1, "tr")(2, "td")(3, "strong");
-    \u0275\u0275text(4);
-    \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(5, "td");
-    \u0275\u0275text(6);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(7, "td");
-    \u0275\u0275text(8);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(9, "td")(10, "span");
-    \u0275\u0275text(11);
-    \u0275\u0275elementEnd();
-    \u0275\u0275template(12, AdminDashboardComponent_div_38_ng_container_21_div_12_Template, 2, 0, "div", 27);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(13, "td");
-    \u0275\u0275text(14);
-    \u0275\u0275pipe(15, "date");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(16, "td");
-    \u0275\u0275text(17);
-    \u0275\u0275pipe(18, "date");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(19, "td")(20, "div", 28)(21, "div", 29);
-    \u0275\u0275text(22);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(23, "div", 21);
-    \u0275\u0275text(24);
-    \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(25, "td")(26, "div", 30)(27, "select", 31);
-    \u0275\u0275twoWayListener("ngModelChange", function AdminDashboardComponent_div_38_ng_container_21_Template_select_ngModelChange_27_listener($event) {
+    \u0275\u0275elementStart(14, "td")(15, "div", 32)(16, "select", 33, 0);
+    \u0275\u0275listener("change", function AdminDashboardComponent_div_48_tr_17_Template_select_change_16_listener() {
       const r_r3 = \u0275\u0275restoreView(_r2).$implicit;
-      \u0275\u0275twoWayBindingSet(r_r3._novoStatus, $event) || (r_r3._novoStatus = $event);
-      return \u0275\u0275resetView($event);
-    });
-    \u0275\u0275template(28, AdminDashboardComponent_div_38_ng_container_21_option_28_Template, 2, 2, "option", 32);
-    \u0275\u0275elementEnd();
-    \u0275\u0275template(29, AdminDashboardComponent_div_38_ng_container_21_input_29_Template, 1, 1, "input", 33);
-    \u0275\u0275elementStart(30, "button", 34);
-    \u0275\u0275listener("click", function AdminDashboardComponent_div_38_ng_container_21_Template_button_click_30_listener() {
-      const r_r3 = \u0275\u0275restoreView(_r2).$implicit;
+      const statusSelect_r4 = \u0275\u0275reference(17);
       const ctx_r0 = \u0275\u0275nextContext(2);
-      return \u0275\u0275resetView(ctx_r0.alterarStatus(r_r3));
+      return \u0275\u0275resetView(ctx_r0.atualizarStatus(r_r3.protocolo, statusSelect_r4.value));
     });
-    \u0275\u0275elementStart(31, "span");
-    \u0275\u0275text(32, "\u{1F4BE}");
+    \u0275\u0275elementStart(18, "option", 34);
+    \u0275\u0275text(19, "RECEBIDA");
     \u0275\u0275elementEnd();
-    \u0275\u0275text(33, " Salvar ");
+    \u0275\u0275elementStart(20, "option", 35);
+    \u0275\u0275text(21, "EM_ANALISE");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(34, "button", 35);
-    \u0275\u0275listener("click", function AdminDashboardComponent_div_38_ng_container_21_Template_button_click_34_listener() {
-      const r_r3 = \u0275\u0275restoreView(_r2).$implicit;
-      const ctx_r0 = \u0275\u0275nextContext(2);
-      return \u0275\u0275resetView(ctx_r0.abrirDetalhe(r_r3.protocolo));
-    });
-    \u0275\u0275text(35);
-    \u0275\u0275elementEnd()()()();
-    \u0275\u0275template(36, AdminDashboardComponent_div_38_ng_container_21_tr_36_Template, 5, 3, "tr", 36);
-    \u0275\u0275elementContainerEnd();
+    \u0275\u0275elementStart(22, "option", 36);
+    \u0275\u0275text(23, "PENDENTE");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(24, "option", 37);
+    \u0275\u0275text(25, "APROVADA");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(26, "option", 38);
+    \u0275\u0275text(27, "RECUSADA");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(28, "option", 39);
+    \u0275\u0275text(29, "FINALIZADA");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(30, "option", 40);
+    \u0275\u0275text(31, "CANCELADA");
+    \u0275\u0275elementEnd()()()()();
   }
   if (rf & 2) {
     const r_r3 = ctx.$implicit;
-    const ctx_r0 = \u0275\u0275nextContext(2);
-    \u0275\u0275advance(4);
+    \u0275\u0275advance(3);
     \u0275\u0275textInterpolate(r_r3.protocolo);
     \u0275\u0275advance(2);
     \u0275\u0275textInterpolate(r_r3.titulo);
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(r_r3.cidade);
+    \u0275\u0275textInterpolate2("", r_r3.cidade, " / ", r_r3.estado);
     \u0275\u0275advance(2);
     \u0275\u0275classMap(\u0275\u0275interpolate1("badge badge-", r_r3.status.toLowerCase().replace("_", "-")));
     \u0275\u0275advance();
     \u0275\u0275textInterpolate1(" ", r_r3.status, " ");
-    \u0275\u0275advance();
-    \u0275\u0275property("ngIf", r_r3.status === "PENDENTE");
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind2(15, 19, r_r3.criado_em, "short"));
-    \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate(\u0275\u0275pipeBind2(18, 22, r_r3.atualizado_em, "short"));
-    \u0275\u0275advance(5);
-    \u0275\u0275textInterpolate(r_r3.nome_usuario);
-    \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate(r_r3.email_usuario);
-    \u0275\u0275advance(3);
-    \u0275\u0275twoWayProperty("ngModel", r_r3._novoStatus);
-    \u0275\u0275advance();
-    \u0275\u0275property("ngForOf", ctx_r0.statusOptions);
-    \u0275\u0275advance();
-    \u0275\u0275property("ngIf", r_r3._novoStatus === "PENDENTE");
-    \u0275\u0275advance();
-    \u0275\u0275property("disabled", r_r3._novoStatus === "PENDENTE" && !(r_r3._pendenciaObs && r_r3._pendenciaObs.trim()));
+    \u0275\u0275textInterpolate(\u0275\u0275pipeBind2(13, 10, r_r3.criado_em, "short"));
     \u0275\u0275advance(4);
-    \u0275\u0275attribute("aria-expanded", ctx_r0.selecionadoProtocolo === r_r3.protocolo);
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate1(" ", ctx_r0.selecionadoProtocolo === r_r3.protocolo ? "\u{1F441}\uFE0F Fechar" : "\u{1F441}\uFE0F Detalhes", " ");
-    \u0275\u0275advance();
-    \u0275\u0275property("ngIf", ctx_r0.selecionadoProtocolo === r_r3.protocolo);
+    \u0275\u0275property("value", r_r3.status);
   }
 }
-function AdminDashboardComponent_div_38_Template(rf, ctx) {
+function AdminDashboardComponent_div_48_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 23)(1, "table", 24)(2, "thead")(3, "tr")(4, "th");
+    \u0275\u0275elementStart(0, "div", 29)(1, "table", 30)(2, "thead")(3, "tr")(4, "th");
     \u0275\u0275text(5, "Protocolo");
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(6, "th");
     \u0275\u0275text(7, "T\xEDtulo");
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(8, "th");
-    \u0275\u0275text(9, "Cidade");
+    \u0275\u0275text(9, "Cidade/UF");
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(10, "th");
     \u0275\u0275text(11, "Status");
@@ -46909,64 +46663,48 @@ function AdminDashboardComponent_div_38_Template(rf, ctx) {
     \u0275\u0275text(13, "Criado");
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(14, "th");
-    \u0275\u0275text(15, "Atualizado");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(16, "th");
-    \u0275\u0275text(17, "Solicitante");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(18, "th", 25);
-    \u0275\u0275text(19, "A\xE7\xF5es");
+    \u0275\u0275text(15, "A\xE7\xF5es");
     \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(20, "tbody");
-    \u0275\u0275template(21, AdminDashboardComponent_div_38_ng_container_21_Template, 37, 25, "ng-container", 26);
+    \u0275\u0275elementStart(16, "tbody");
+    \u0275\u0275template(17, AdminDashboardComponent_div_48_tr_17_Template, 32, 13, "tr", 31);
     \u0275\u0275elementEnd()()();
   }
   if (rf & 2) {
     const ctx_r0 = \u0275\u0275nextContext();
-    \u0275\u0275advance(21);
+    \u0275\u0275advance(17);
     \u0275\u0275property("ngForOf", ctx_r0.registros);
   }
 }
-function AdminDashboardComponent_div_39_Template(rf, ctx) {
+function AdminDashboardComponent_div_49_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 19)(1, "div", 51);
+    \u0275\u0275elementStart(0, "div", 26)(1, "div", 41);
     \u0275\u0275text(2, "\u{1F4CB}");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "h3", 52);
+    \u0275\u0275elementStart(3, "h3", 42);
     \u0275\u0275text(4, "Nenhum registro encontrado");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(5, "p", 21);
-    \u0275\u0275text(6, "Tente ajustar os filtros de busca.");
+    \u0275\u0275elementStart(5, "p", 28);
+    \u0275\u0275text(6, "N\xE3o h\xE1 solicita\xE7\xF5es que correspondam aos filtros aplicados.");
     \u0275\u0275elementEnd()();
   }
 }
 var AdminDashboardComponent = class _AdminDashboardComponent {
   fb = inject2(FormBuilder);
-  admin = inject2(AdminService);
-  router = inject2(Router);
-  anexosSrv = inject2(AnexosService);
+  adminSrv = inject2(AdminService);
+  // UI state
   carregando = false;
   erro = "";
+  msg = "";
+  // Lista de registros
   registros = [];
-  statusOptions = [
-    "EM_ANALISE",
-    "PENDENTE",
-    "APROVADA",
-    "RECUSADA",
-    "FINALIZADA",
-    "CANCELADA"
-  ];
-  // detalhe inline
-  selecionadoProtocolo = null;
-  carregandoDetalhe = false;
-  erroDetalhe = "";
-  detalhe = null;
-  anexos = [];
+  // Filtros
   filtros = this.fb.group({
     status: [""],
+    protocolo: [""],
+    titulo: [""],
     cidade: [""],
-    de: [""],
-    ate: [""]
+    data_inicio: [""],
+    data_fim: [""]
   });
   ngOnInit() {
     this.buscar();
@@ -46974,172 +46712,125 @@ var AdminDashboardComponent = class _AdminDashboardComponent {
   buscar() {
     this.carregando = true;
     this.erro = "";
-    this.admin.listarAutorizacoes(this.filtros.value).subscribe({
+    this.adminSrv.listarAutorizacoes(this.filtros.value).subscribe({
       next: (rows) => {
-        this.registros = rows.map((r) => __spreadProps(__spreadValues({}, r), {
-          _novoStatus: r.status,
-          _pendenciaObs: r.pendencia_obs || ""
-        }));
+        this.registros = rows || [];
         this.carregando = false;
-        if (this.selecionadoProtocolo && !this.registros.some((r) => r.protocolo === this.selecionadoProtocolo)) {
-          this.selecionadoProtocolo = null;
-          this.detalhe = null;
-          this.anexos = [];
-        }
-        this.registros = rows.map((r) => __spreadProps(__spreadValues({}, r), {
-          _novoStatus: r.status,
-          _pendente: !!r.pendente,
-          // novo
-          _pendenteObs: r.pendente_obs || ""
-          // novo
-        }));
       },
       error: (e) => {
-        this.erro = e?.error?.erro || "Falha ao carregar";
+        this.erro = e?.error?.erro || "Falha ao carregar registros";
         this.carregando = false;
       }
     });
   }
-  alterarStatus(r) {
-    if (!r?.protocolo || !r?._novoStatus)
+  atualizarStatus(protocolo, novoStatus) {
+    if (!confirm(`Alterar status para ${novoStatus}?`))
       return;
-    if (r._novoStatus === "PENDENTE" && !String(r._pendenciaObs || "").trim()) {
-      this.erro = "Descreva a pend\xEAncia antes de salvar o status PENDENTE.";
-      return;
-    }
-    this.admin.alterarStatusAutorizacao(r.protocolo, r._novoStatus, r._pendenciaObs).subscribe({
+    this.adminSrv.alterarStatusAutorizacao(protocolo, novoStatus).subscribe({
       next: () => {
-        const estavaAberto = this.selecionadoProtocolo === r.protocolo;
+        this.msg = "Status atualizado!";
         this.buscar();
-        if (estavaAberto)
-          setTimeout(() => this.abrirDetalhe(r.protocolo, true), 0);
       },
-      error: (e) => this.erro = e?.error?.erro || "Erro ao alterar status"
+      error: (e) => this.erro = e?.error?.erro || "Falha ao atualizar status"
     });
   }
   sair() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("usuario");
-    this.router.navigate(["/login"]);
-  }
-  abrirDetalhe(protocolo, manterAberto = false) {
-    if (!manterAberto && this.selecionadoProtocolo === protocolo) {
-      this.selecionadoProtocolo = null;
-      this.detalhe = null;
-      this.anexos = [];
-      return;
-    }
-    this.selecionadoProtocolo = protocolo;
-    this.carregandoDetalhe = true;
-    this.erroDetalhe = "";
-    this.detalhe = null;
-    this.anexos = [];
-    this.admin.obterAutorizacao(protocolo).subscribe({
-      next: (det) => {
-        this.detalhe = det;
-        this.carregandoDetalhe = false;
-      },
-      error: (e) => {
-        this.erroDetalhe = e?.error?.erro || "Falha ao carregar detalhes";
-        this.carregandoDetalhe = false;
-      }
-    });
-    this.anexosSrv.listar(protocolo).subscribe({
-      next: (rows) => this.anexos = rows,
-      error: () => this.anexos = []
-    });
-  }
-  baixar(anexo) {
-    this.anexosSrv.download(anexo.id).subscribe((blob) => {
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = anexo.nome_original || "anexo";
-      a.click();
-      window.URL.revokeObjectURL(url);
-    });
-  }
-  salvarPendencia(r) {
-    if (!r?.protocolo)
-      return;
-    this.admin.atualizarPendencia(r.protocolo, !!r._pendente, r._pendenteObs).subscribe({
-      next: () => this.buscar(),
-      error: (e) => this.erro = e?.error?.erro || "Erro ao salvar pend\xEAncia"
-    });
+    console.log("Saindo...");
   }
   static \u0275fac = function AdminDashboardComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || _AdminDashboardComponent)();
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AdminDashboardComponent, selectors: [["app-admin-dashboard"]], decls: 40, vars: 5, consts: [[1, "dashboard-container"], [1, "dashboard-header"], [1, "dashboard-title"], [1, "dashboard-subtitle"], [1, "btn", "btn-secondary", 3, "click"], [1, "card", "mb-6"], [1, "mb-4"], [1, "grid", "grid-cols-4", "gap-4", 3, "ngSubmit", "formGroup"], [1, "form-group"], [1, "form-label"], ["formControlName", "status", "placeholder", "RECEBIDA, EM_ANALISE, PENDENTE...", 1, "form-input"], ["formControlName", "cidade", "placeholder", "Nome da cidade", 1, "form-input"], ["type", "date", "formControlName", "de", "placeholder", "De", 1, "form-input"], ["type", "date", "formControlName", "ate", "placeholder", "At\xE9", 1, "form-input"], [2, "grid-column", "1/-1"], ["type", "submit", 1, "btn", "btn-primary"], ["class", "text-center p-8", 4, "ngIf"], ["class", "alert alert-error", 4, "ngIf"], ["class", "table-container", 4, "ngIf"], [1, "text-center", "p-8"], [1, "loading", "mb-2"], [1, "text-muted"], [1, "alert", "alert-error"], [1, "table-container"], [1, "table"], [2, "white-space", "nowrap"], [4, "ngFor", "ngForOf"], ["class", "text-warning font-medium mt-1", 4, "ngIf"], [1, "text-sm"], [1, "font-medium"], [1, "flex", "gap-2", "items-center", "flex-wrap"], [1, "form-select", 2, "min-width", "120px", 3, "ngModelChange", "ngModel"], [3, "value", 4, "ngFor", "ngForOf"], ["type", "text", "class", "form-input", "placeholder", "Descreva a pend\xEAncia (obrigat\xF3rio)", "style", "min-width: 260px;", 3, "ngModel", "ngModelChange", 4, "ngIf"], [1, "btn", "btn-sm", "btn-success", 3, "click", "disabled"], ["type", "button", 1, "btn", "btn-sm", "btn-secondary", 3, "click"], [4, "ngIf"], [1, "text-warning", "font-medium", "mt-1"], [3, "value"], ["type", "text", "placeholder", "Descreva a pend\xEAncia (obrigat\xF3rio)", 1, "form-input", 2, "min-width", "260px", 3, "ngModelChange", "ngModel"], ["colspan", "8", 2, "background", "var(--gray-50)"], ["class", "text-center p-4", 4, "ngIf"], ["class", "p-4", 4, "ngIf"], [1, "text-center", "p-4"], [1, "p-4"], [1, "grid", "grid-cols-2", "gap-4", "mb-6"], ["style", "grid-column: 1/-1;", "class", "alert alert-warning", 4, "ngIf"], [1, "mt-6"], [1, "alert", "alert-warning", 2, "grid-column", "1/-1"], [2, "width", "120px"], [1, "text-4xl", "mb-2"], [1, "text-4xl", "mb-4"], [1, "mb-2"]], template: function AdminDashboardComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _AdminDashboardComponent, selectors: [["app-admin-dashboard"]], decls: 50, vars: 6, consts: [["statusSelect", ""], ["currentPage", "Dashboard do Administrador", "userName", "Admin PMERJ", "userRole", "ADMINISTRADOR"], [1, "dashboard-container"], [1, "dashboard-header"], [1, "dashboard-title"], [1, "dashboard-subtitle"], [1, "btn", "btn-secondary", 3, "click"], ["class", "alert alert-success", 4, "ngIf"], ["class", "alert alert-error", 4, "ngIf"], [1, "card", "mb-6"], [1, "mb-4"], [1, "grid", "grid-cols-4", "gap-4", 3, "ngSubmit", "formGroup"], [1, "form-group"], [1, "form-label"], ["formControlName", "status", "placeholder", "RECEBIDA, EM_ANALISE, PENDENTE...", 1, "form-input"], ["formControlName", "protocolo", "placeholder", "N\xFAmero do protocolo", 1, "form-input"], ["formControlName", "titulo", "placeholder", "Nome do evento", 1, "form-input"], ["formControlName", "cidade", "placeholder", "Nome da cidade", 1, "form-input"], ["type", "date", "formControlName", "data_inicio", 1, "form-input"], ["type", "date", "formControlName", "data_fim", 1, "form-input"], [2, "grid-column", "1/-1"], ["type", "submit", 1, "btn", "btn-primary"], ["class", "text-center p-8", 4, "ngIf"], ["class", "table-container", 4, "ngIf"], [1, "alert", "alert-success"], [1, "alert", "alert-error"], [1, "text-center", "p-8"], [1, "loading", "mb-2"], [1, "text-muted"], [1, "table-container"], [1, "table"], [4, "ngFor", "ngForOf"], [1, "flex", "gap-2"], [1, "form-input", "form-input-sm", 3, "change", "value"], ["value", "RECEBIDA"], ["value", "EM_ANALISE"], ["value", "PENDENTE"], ["value", "APROVADA"], ["value", "RECUSADA"], ["value", "FINALIZADA"], ["value", "CANCELADA"], [1, "text-4xl", "mb-4"], [1, "mb-2"]], template: function AdminDashboardComponent_Template(rf, ctx) {
     if (rf & 1) {
-      \u0275\u0275elementStart(0, "div", 0)(1, "header", 1)(2, "div")(3, "h1", 2);
-      \u0275\u0275text(4, "Dashboard do Administrador");
+      \u0275\u0275element(0, "app-header", 1);
+      \u0275\u0275elementStart(1, "div", 2)(2, "header", 3)(3, "div")(4, "h1", 4);
+      \u0275\u0275text(5, "Dashboard do Administrador");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(5, "p", 3);
-      \u0275\u0275text(6, "Gerencie solicita\xE7\xF5es e autoriza\xE7\xF5es");
+      \u0275\u0275elementStart(6, "p", 5);
+      \u0275\u0275text(7, "Gerencie solicita\xE7\xF5es e autoriza\xE7\xF5es");
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(7, "button", 4);
-      \u0275\u0275listener("click", function AdminDashboardComponent_Template_button_click_7_listener() {
+      \u0275\u0275elementStart(8, "button", 6);
+      \u0275\u0275listener("click", function AdminDashboardComponent_Template_button_click_8_listener() {
         return ctx.sair();
       });
-      \u0275\u0275elementStart(8, "span");
-      \u0275\u0275text(9, "\u{1F6AA}");
+      \u0275\u0275elementStart(9, "span");
+      \u0275\u0275text(10, "\u{1F6AA}");
       \u0275\u0275elementEnd();
-      \u0275\u0275text(10, " Sair ");
+      \u0275\u0275text(11, " Sair ");
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(11, "section", 5)(12, "h3", 6);
-      \u0275\u0275text(13, "\u{1F50D} Filtros de Busca");
+      \u0275\u0275template(12, AdminDashboardComponent_div_12_Template, 2, 1, "div", 7)(13, AdminDashboardComponent_div_13_Template, 2, 1, "div", 8);
+      \u0275\u0275elementStart(14, "section", 9)(15, "h3", 10);
+      \u0275\u0275text(16, "\u{1F50D} Filtros de Busca");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(14, "form", 7);
-      \u0275\u0275listener("ngSubmit", function AdminDashboardComponent_Template_form_ngSubmit_14_listener() {
+      \u0275\u0275elementStart(17, "form", 11);
+      \u0275\u0275listener("ngSubmit", function AdminDashboardComponent_Template_form_ngSubmit_17_listener() {
         return ctx.buscar();
       });
-      \u0275\u0275elementStart(15, "div", 8)(16, "label", 9);
-      \u0275\u0275text(17, "Status");
+      \u0275\u0275elementStart(18, "div", 12)(19, "label", 13);
+      \u0275\u0275text(20, "Status");
       \u0275\u0275elementEnd();
-      \u0275\u0275element(18, "input", 10);
+      \u0275\u0275element(21, "input", 14);
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(19, "div", 8)(20, "label", 9);
-      \u0275\u0275text(21, "Cidade");
+      \u0275\u0275elementStart(22, "div", 12)(23, "label", 13);
+      \u0275\u0275text(24, "Protocolo");
       \u0275\u0275elementEnd();
-      \u0275\u0275element(22, "input", 11);
+      \u0275\u0275element(25, "input", 15);
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(23, "div", 8)(24, "label", 9);
-      \u0275\u0275text(25, "Data Inicial");
+      \u0275\u0275elementStart(26, "div", 12)(27, "label", 13);
+      \u0275\u0275text(28, "T\xEDtulo");
       \u0275\u0275elementEnd();
-      \u0275\u0275element(26, "input", 12);
+      \u0275\u0275element(29, "input", 16);
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(27, "div", 8)(28, "label", 9);
-      \u0275\u0275text(29, "Data Final");
+      \u0275\u0275elementStart(30, "div", 12)(31, "label", 13);
+      \u0275\u0275text(32, "Cidade");
       \u0275\u0275elementEnd();
-      \u0275\u0275element(30, "input", 13);
+      \u0275\u0275element(33, "input", 17);
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(31, "div", 14)(32, "button", 15)(33, "span");
-      \u0275\u0275text(34, "\u{1F50D}");
+      \u0275\u0275elementStart(34, "div", 12)(35, "label", 13);
+      \u0275\u0275text(36, "Data In\xEDcio");
       \u0275\u0275elementEnd();
-      \u0275\u0275text(35, " Filtrar ");
+      \u0275\u0275element(37, "input", 18);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(38, "div", 12)(39, "label", 13);
+      \u0275\u0275text(40, "Data Fim");
+      \u0275\u0275elementEnd();
+      \u0275\u0275element(41, "input", 19);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(42, "div", 20)(43, "button", 21)(44, "span");
+      \u0275\u0275text(45, "\u{1F50D}");
+      \u0275\u0275elementEnd();
+      \u0275\u0275text(46, " Filtrar ");
       \u0275\u0275elementEnd()()()();
-      \u0275\u0275template(36, AdminDashboardComponent_div_36_Template, 4, 0, "div", 16)(37, AdminDashboardComponent_div_37_Template, 2, 1, "div", 17)(38, AdminDashboardComponent_div_38_Template, 22, 1, "div", 18)(39, AdminDashboardComponent_div_39_Template, 7, 0, "div", 16);
+      \u0275\u0275template(47, AdminDashboardComponent_div_47_Template, 4, 0, "div", 22)(48, AdminDashboardComponent_div_48_Template, 18, 1, "div", 23)(49, AdminDashboardComponent_div_49_Template, 7, 0, "div", 22);
       \u0275\u0275elementEnd();
     }
     if (rf & 2) {
-      \u0275\u0275advance(14);
-      \u0275\u0275property("formGroup", ctx.filtros);
-      \u0275\u0275advance(22);
-      \u0275\u0275property("ngIf", ctx.carregando);
+      \u0275\u0275advance(12);
+      \u0275\u0275property("ngIf", ctx.msg);
       \u0275\u0275advance();
       \u0275\u0275property("ngIf", ctx.erro);
+      \u0275\u0275advance(4);
+      \u0275\u0275property("formGroup", ctx.filtros);
+      \u0275\u0275advance(30);
+      \u0275\u0275property("ngIf", ctx.carregando);
       \u0275\u0275advance();
-      \u0275\u0275property("ngIf", !ctx.carregando && ctx.registros.length);
+      \u0275\u0275property("ngIf", !ctx.carregando && (ctx.registros == null ? null : ctx.registros.length));
       \u0275\u0275advance();
-      \u0275\u0275property("ngIf", !ctx.carregando && !ctx.registros.length);
+      \u0275\u0275property("ngIf", !ctx.carregando && !(ctx.registros == null ? null : ctx.registros.length));
     }
-  }, dependencies: [CommonModule, NgForOf, NgIf, ReactiveFormsModule, \u0275NgNoValidate, NgSelectOption, \u0275NgSelectMultipleOption, DefaultValueAccessor, SelectControlValueAccessor, NgControlStatus, NgControlStatusGroup, FormGroupDirective, FormControlName, FormsModule, NgModel, DecimalPipe, DatePipe], encapsulation: 2 });
+  }, dependencies: [CommonModule, NgForOf, NgIf, ReactiveFormsModule, \u0275NgNoValidate, NgSelectOption, \u0275NgSelectMultipleOption, DefaultValueAccessor, NgControlStatus, NgControlStatusGroup, FormGroupDirective, FormControlName, HeaderComponent, DatePipe], encapsulation: 2 });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AdminDashboardComponent, [{
     type: Component,
-    args: [{ selector: "app-admin-dashboard", standalone: true, imports: [CommonModule, ReactiveFormsModule, FormsModule], template: `<div class="dashboard-container">\r
+    args: [{ selector: "app-admin-dashboard", standalone: true, imports: [CommonModule, ReactiveFormsModule, HeaderComponent], template: `<!-- Header Component -->\r
+<app-header \r
+  currentPage="Dashboard do Administrador"\r
+  userName="Admin PMERJ"\r
+  userRole="ADMINISTRADOR">\r
+</app-header>\r
+\r
+<div class="dashboard-container">\r
   <!-- Header -->\r
   <header class="dashboard-header">\r
     <div>\r
@@ -47152,42 +46843,60 @@ var AdminDashboardComponent = class _AdminDashboardComponent {
     </button>\r
   </header>\r
 \r
+  <!-- Alertas -->\r
+  <div *ngIf="msg" class="alert alert-success">{{ msg }}</div>\r
+  <div *ngIf="erro" class="alert alert-error">{{ erro }}</div>\r
+\r
   <!-- Filtros -->\r
   <section class="card mb-6">\r
     <h3 class="mb-4">\u{1F50D} Filtros de Busca</h3>\r
     <form [formGroup]="filtros" (ngSubmit)="buscar()" class="grid grid-cols-4 gap-4">\r
       <div class="form-group">\r
         <label class="form-label">Status</label>\r
-        <input \r
-          class="form-input" \r
-          formControlName="status" \r
+        <input\r
+          class="form-input"\r
+          formControlName="status"\r
           placeholder="RECEBIDA, EM_ANALISE, PENDENTE...">\r
       </div>\r
       \r
       <div class="form-group">\r
+        <label class="form-label">Protocolo</label>\r
+        <input\r
+          class="form-input"\r
+          formControlName="protocolo"\r
+          placeholder="N\xFAmero do protocolo">\r
+      </div>\r
+      \r
+      <div class="form-group">\r
+        <label class="form-label">T\xEDtulo</label>\r
+        <input\r
+          class="form-input"\r
+          formControlName="titulo"\r
+          placeholder="Nome do evento">\r
+      </div>\r
+      \r
+      <div class="form-group">\r
         <label class="form-label">Cidade</label>\r
-        <input \r
-          class="form-input" \r
-          formControlName="cidade" \r
+        <input\r
+          class="form-input"\r
+          formControlName="cidade"\r
           placeholder="Nome da cidade">\r
       </div>\r
       \r
       <div class="form-group">\r
-        <label class="form-label">Data Inicial</label>\r
-        <input \r
-          type="date" \r
-          class="form-input" \r
-          formControlName="de" \r
-          placeholder="De">\r
+        <label class="form-label">Data In\xEDcio</label>\r
+        <input\r
+          type="date"\r
+          class="form-input"\r
+          formControlName="data_inicio">\r
       </div>\r
       \r
       <div class="form-group">\r
-        <label class="form-label">Data Final</label>\r
-        <input \r
-          type="date" \r
-          class="form-input" \r
-          formControlName="ate" \r
-          placeholder="At\xE9">\r
+        <label class="form-label">Data Fim</label>\r
+        <input\r
+          type="date"\r
+          class="form-input"\r
+          formControlName="data_fim">\r
       </div>\r
       \r
       <div style="grid-column: 1/-1;">\r
@@ -47199,208 +46908,70 @@ var AdminDashboardComponent = class _AdminDashboardComponent {
     </form>\r
   </section>\r
 \r
-  <!-- Estados de Carregamento -->\r
+  <!-- Loading -->\r
   <div *ngIf="carregando" class="text-center p-8">\r
     <div class="loading mb-2"></div>\r
     <p class="text-muted">Carregando registros...</p>\r
   </div>\r
-  \r
-  <div *ngIf="erro" class="alert alert-error">{{ erro }}</div>\r
 \r
-  <!-- Tabela de Registros -->\r
-  <div *ngIf="!carregando && registros.length" class="table-container">\r
+  <!-- Lista de Registros -->\r
+  <div *ngIf="!carregando && registros?.length" class="table-container">\r
     <table class="table">\r
       <thead>\r
         <tr>\r
           <th>Protocolo</th>\r
           <th>T\xEDtulo</th>\r
-          <th>Cidade</th>\r
+          <th>Cidade/UF</th>\r
           <th>Status</th>\r
           <th>Criado</th>\r
-          <th>Atualizado</th>\r
-          <th>Solicitante</th>\r
-          <th style="white-space: nowrap">A\xE7\xF5es</th>\r
+          <th>A\xE7\xF5es</th>\r
         </tr>\r
       </thead>\r
       <tbody>\r
-        <ng-container *ngFor="let r of registros">\r
-          <tr>\r
-            <td><strong>{{ r.protocolo }}</strong></td>\r
-            <td>{{ r.titulo }}</td>\r
-            <td>{{ r.cidade }}</td>\r
-\r
-            <!-- Status com destaque de pend\xEAncia -->\r
-            <td>\r
-              <span class="badge badge-{{ r.status.toLowerCase().replace('_', '-') }}">\r
-                {{ r.status }}\r
-              </span>\r
-              <div *ngIf="r.status === 'PENDENTE'" class="text-warning font-medium mt-1">\r
-                \u26A0\uFE0F Pend\xEAncia\r
-              </div>\r
-            </td>\r
-\r
-            <td>{{ r.criado_em | date : "short" }}</td>\r
-            <td>{{ r.atualizado_em | date : "short" }}</td>\r
-            <td>\r
-              <div class="text-sm">\r
-                <div class="font-medium">{{ r.nome_usuario }}</div>\r
-                <div class="text-muted">{{ r.email_usuario }}</div>\r
-              </div>\r
-            </td>\r
-\r
-            <!-- A\xE7\xF5es -->\r
-            <td>\r
-              <div class="flex gap-2 items-center flex-wrap">\r
-                <!-- Alterar status -->\r
-                <select class="form-select" [(ngModel)]="r._novoStatus" style="min-width: 120px;">\r
-                  <option *ngFor="let s of statusOptions" [value]="s">\r
-                    {{ s }}\r
-                  </option>\r
-                </select>\r
-\r
-                <!-- Campo de pend\xEAncia obrigat\xF3rio -->\r
-                <input\r
-                  *ngIf="r._novoStatus === 'PENDENTE'"\r
-                  type="text"\r
-                  class="form-input"\r
-                  [(ngModel)]="r._pendenciaObs"\r
-                  placeholder="Descreva a pend\xEAncia (obrigat\xF3rio)"\r
-                  style="min-width: 260px;"\r
-                />\r
-\r
-                <button\r
-                  class="btn btn-sm btn-success"\r
-                  (click)="alterarStatus(r)"\r
-                  [disabled]="\r
-                    r._novoStatus === 'PENDENTE' &&\r
-                    !(r._pendenciaObs && r._pendenciaObs.trim())\r
-                  "\r
-                >\r
-                  <span>\u{1F4BE}</span>\r
-                  Salvar\r
-                </button>\r
-\r
-                <!-- Abrir painel de detalhes -->\r
-                <button\r
-                  type="button"\r
-                  class="btn btn-sm btn-secondary"\r
-                  (click)="abrirDetalhe(r.protocolo)"\r
-                  [attr.aria-expanded]="selecionadoProtocolo === r.protocolo"\r
-                >\r
-                  {{ selecionadoProtocolo === r.protocolo ? "\u{1F441}\uFE0F Fechar" : "\u{1F441}\uFE0F Detalhes" }}\r
-                </button>\r
-              </div>\r
-            </td>\r
-          </tr>\r
-\r
-          <!-- Linha de detalhes inline -->\r
-          <tr *ngIf="selecionadoProtocolo === r.protocolo">\r
-            <td colspan="8" style="background: var(--gray-50);">\r
-              <div *ngIf="carregandoDetalhe" class="text-center p-4">\r
-                <div class="loading mb-2"></div>\r
-                <p class="text-muted">Carregando detalhes...</p>\r
-              </div>\r
-              \r
-              <div *ngIf="erroDetalhe" class="alert alert-error">{{ erroDetalhe }}</div>\r
-\r
-              <div\r
-                *ngIf="!carregandoDetalhe && !erroDetalhe && detalhe"\r
-                class="p-4"\r
-              >\r
-                <div class="grid grid-cols-2 gap-4 mb-6">\r
-                  <div><strong>T\xEDtulo:</strong> {{ detalhe?.titulo }}</div>\r
-                  <div><strong>Tipo:</strong> {{ detalhe?.tipo_evento || "\u2014" }}</div>\r
-                  <div>\r
-                    <strong>Cidade/UF:</strong> {{ detalhe?.cidade }} / {{ detalhe?.estado }}\r
-                  </div>\r
-                  <div><strong>CEP:</strong> {{ detalhe?.cep || "\u2014" }}</div>\r
-                  <div>\r
-                    <strong>In\xEDcio:</strong> {{ detalhe?.data_inicio | date : "short" }}\r
-                  </div>\r
-                  <div><strong>Fim:</strong> {{ detalhe?.data_fim | date : "short" }}</div>\r
-                  <div>\r
-                    <strong>P\xFAblico estimado:</strong> {{ detalhe?.publico_estimado || "\u2014" }}\r
-                  </div>\r
-                  <div>\r
-                    <strong>Status:</strong> \r
-                    <span class="badge badge-{{ detalhe?.status.toLowerCase().replace('_', '-') }}">\r
-                      {{ detalhe?.status }}\r
-                    </span>\r
-                  </div>\r
-                  \r
-                  <div\r
-                    *ngIf="detalhe?.status === 'PENDENTE'"\r
-                    style="grid-column: 1/-1;"\r
-                    class="alert alert-warning"\r
-                  >\r
-                    <strong>Pend\xEAncia:</strong><br />{{ detalhe?.pendencia_obs || "\u2014" }}\r
-                  </div>\r
-\r
-                  <div style="grid-column: 1/-1;">\r
-                    <strong>Endere\xE7o:</strong> {{ detalhe?.endereco }}, {{ detalhe?.bairro }}\r
-                  </div>\r
-                  <div style="grid-column: 1/-1;">\r
-                    <strong>Descri\xE7\xE3o:</strong><br />{{ detalhe?.descricao || "\u2014" }}\r
-                  </div>\r
-                  <div style="grid-column: 1/-1;">\r
-                    <strong>Observa\xE7\xF5es:</strong><br />{{ detalhe?.observacoes || "\u2014" }}\r
-                  </div>\r
-                </div>\r
-\r
-                <!-- Se\xE7\xE3o de Anexos -->\r
-                <div class="mt-6">\r
-                  <h4 class="mb-4">\u{1F4CE} Anexos</h4>\r
-                  \r
-                  <div *ngIf="anexos.length" class="table-container">\r
-                    <table class="table">\r
-                      <thead>\r
-                        <tr>\r
-                          <th>Nome</th>\r
-                          <th>Tamanho</th>\r
-                          <th>Enviado em</th>\r
-                          <th style="width: 120px">A\xE7\xF5es</th>\r
-                        </tr>\r
-                      </thead>\r
-                      <tbody>\r
-                        <tr *ngFor="let a of anexos">\r
-                          <td>{{ a.nome_original }}</td>\r
-                          <td>{{ a.tamanho_bytes | number }} bytes</td>\r
-                          <td>{{ a.criado_em | date : "short" }}</td>\r
-                          <td>\r
-                            <button type="button" class="btn btn-sm btn-secondary" (click)="baixar(a)">\r
-                              \u{1F4E5} Baixar\r
-                            </button>\r
-                          </td>\r
-                        </tr>\r
-                      </tbody>\r
-                    </table>\r
-                  </div>\r
-                  \r
-                  <div *ngIf="!anexos.length" class="text-center p-8">\r
-                    <div class="text-4xl mb-2">\u{1F4C1}</div>\r
-                    <p class="text-muted">Nenhum anexo enviado.</p>\r
-                  </div>\r
-                </div>\r
-              </div>\r
-            </td>\r
-          </tr>\r
-        </ng-container>\r
+        <tr *ngFor="let r of registros">\r
+          <td><strong>{{ r.protocolo }}</strong></td>\r
+          <td>{{ r.titulo }}</td>\r
+          <td>{{ r.cidade }} / {{ r.estado }}</td>\r
+          <td>\r
+            <span class="badge badge-{{ r.status.toLowerCase().replace('_', '-') }}">\r
+              {{ r.status }}\r
+            </span>\r
+          </td>\r
+          <td>{{ r.criado_em | date:'short' }}</td>\r
+          <td>\r
+            <div class="flex gap-2">\r
+              <select \r
+                class="form-input form-input-sm" \r
+                [value]="r.status"\r
+                #statusSelect\r
+                (change)="atualizarStatus(r.protocolo, statusSelect.value)">\r
+                <option value="RECEBIDA">RECEBIDA</option>\r
+                <option value="EM_ANALISE">EM_ANALISE</option>\r
+                <option value="PENDENTE">PENDENTE</option>\r
+                <option value="APROVADA">APROVADA</option>\r
+                <option value="RECUSADA">RECUSADA</option>\r
+                <option value="FINALIZADA">FINALIZADA</option>\r
+                <option value="CANCELADA">CANCELADA</option>\r
+              </select>\r
+            </div>\r
+          </td>\r
+        </tr>\r
       </tbody>\r
     </table>\r
   </div>\r
 \r
-  <!-- Estado vazio -->\r
-  <div *ngIf="!carregando && !registros.length" class="text-center p-8">\r
+  <!-- Estado Vazio -->\r
+  <div *ngIf="!carregando && !registros?.length" class="text-center p-8">\r
     <div class="text-4xl mb-4">\u{1F4CB}</div>\r
     <h3 class="mb-2">Nenhum registro encontrado</h3>\r
-    <p class="text-muted">Tente ajustar os filtros de busca.</p>\r
+    <p class="text-muted">N\xE3o h\xE1 solicita\xE7\xF5es que correspondam aos filtros aplicados.</p>\r
   </div>\r
 </div>\r
 ` }]
   }], null, null);
 })();
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(AdminDashboardComponent, { className: "AdminDashboardComponent", filePath: "src/app/pages/admin.dashboard/admin.dashboard.component.ts", lineNumber: 15 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(AdminDashboardComponent, { className: "AdminDashboardComponent", filePath: "src/app/pages/admin.dashboard/admin.dashboard.component.ts", lineNumber: 13 });
 })();
 
 // src/app/guards/auth.guard-guard.ts
@@ -47453,6 +47024,37 @@ var NadaOporService = class _NadaOporService {
   }], null, null);
 })();
 
+// src/app/services/anexos.service.ts
+var AnexosService = class _AnexosService {
+  http = inject2(HttpClient);
+  base = "http://localhost:4000/api";
+  listar(protocoloAE) {
+    return this.http.get(`${this.base}/eventos/autorizacao/${protocoloAE}/anexos`);
+  }
+  upload(protocoloAE, arquivo, tipo_documento) {
+    const fd = new FormData();
+    fd.append("arquivo", arquivo);
+    fd.append("tipo_documento", tipo_documento);
+    return this.http.post(`${this.base}/eventos/autorizacao/${protocoloAE}/anexos`, fd);
+  }
+  download(id) {
+    return this.http.get(`${this.base}/eventos/autorizacao/anexos/${id}/download`, { responseType: "blob" });
+  }
+  excluir(id) {
+    return this.http.delete(`${this.base}/eventos/autorizacao/anexos/${id}`);
+  }
+  static \u0275fac = function AnexosService_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _AnexosService)();
+  };
+  static \u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _AnexosService, factory: _AnexosService.\u0275fac, providedIn: "root" });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AnexosService, [{
+    type: Injectable,
+    args: [{ providedIn: "root" }]
+  }], null, null);
+})();
+
 // src/app/services/palestra.service.ts
 var PalestraService = class _PalestraService {
   http = inject2(HttpClient);
@@ -47476,18 +47078,6 @@ var PalestraService = class _PalestraService {
 })();
 
 // src/app/pages/usuario/usuario.dashboard.component.ts
-function UsuarioDashboardComponent_div_16_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 20);
-    \u0275\u0275text(1);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const ctx_r0 = \u0275\u0275nextContext();
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate(ctx_r0.msg);
-  }
-}
 function UsuarioDashboardComponent_div_17_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "div", 21);
@@ -47497,90 +47087,102 @@ function UsuarioDashboardComponent_div_17_Template(rf, ctx) {
   if (rf & 2) {
     const ctx_r0 = \u0275\u0275nextContext();
     \u0275\u0275advance();
+    \u0275\u0275textInterpolate(ctx_r0.msg);
+  }
+}
+function UsuarioDashboardComponent_div_18_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 22);
+    \u0275\u0275text(1);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext();
+    \u0275\u0275advance();
     \u0275\u0275textInterpolate(ctx_r0.erro);
   }
 }
-function UsuarioDashboardComponent_section_63_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_64_Template(rf, ctx) {
   if (rf & 1) {
     const _r2 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "section", 22)(1, "h3", 23);
+    \u0275\u0275elementStart(0, "section", 23)(1, "h3", 24);
     \u0275\u0275text(2, "Novo Nada Opor");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "form", 24);
-    \u0275\u0275listener("ngSubmit", function UsuarioDashboardComponent_section_63_Template_form_ngSubmit_3_listener() {
+    \u0275\u0275elementStart(3, "form", 25);
+    \u0275\u0275listener("ngSubmit", function UsuarioDashboardComponent_section_64_Template_form_ngSubmit_3_listener() {
       \u0275\u0275restoreView(_r2);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.criarAE());
     });
-    \u0275\u0275elementStart(4, "div", 25)(5, "label", 26);
+    \u0275\u0275elementStart(4, "div", 26)(5, "label", 27);
     \u0275\u0275text(6, "T\xEDtulo");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(7, "input", 27);
+    \u0275\u0275element(7, "input", 28);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(8, "div", 25)(9, "label", 26);
+    \u0275\u0275elementStart(8, "div", 26)(9, "label", 27);
     \u0275\u0275text(10, "Tipo de evento");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(11, "input", 28);
+    \u0275\u0275element(11, "input", 29);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(12, "div", 29)(13, "label", 26);
+    \u0275\u0275elementStart(12, "div", 30)(13, "label", 27);
     \u0275\u0275text(14, "Descri\xE7\xE3o");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(15, "textarea", 30);
+    \u0275\u0275element(15, "textarea", 31);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(16, "div", 25)(17, "label", 26);
+    \u0275\u0275elementStart(16, "div", 26)(17, "label", 27);
     \u0275\u0275text(18, "Endere\xE7o");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(19, "input", 31);
+    \u0275\u0275element(19, "input", 32);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(20, "div", 25)(21, "label", 26);
+    \u0275\u0275elementStart(20, "div", 26)(21, "label", 27);
     \u0275\u0275text(22, "Bairro");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(23, "input", 32);
+    \u0275\u0275element(23, "input", 33);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(24, "div", 25)(25, "label", 26);
+    \u0275\u0275elementStart(24, "div", 26)(25, "label", 27);
     \u0275\u0275text(26, "Cidade");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(27, "input", 33);
+    \u0275\u0275element(27, "input", 34);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(28, "div", 25)(29, "label", 26);
+    \u0275\u0275elementStart(28, "div", 26)(29, "label", 27);
     \u0275\u0275text(30, "UF");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(31, "input", 34);
+    \u0275\u0275element(31, "input", 35);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(32, "div", 25)(33, "label", 26);
+    \u0275\u0275elementStart(32, "div", 26)(33, "label", 27);
     \u0275\u0275text(34, "CEP");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(35, "input", 35);
+    \u0275\u0275element(35, "input", 36);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(36, "div", 25)(37, "label", 26);
+    \u0275\u0275elementStart(36, "div", 26)(37, "label", 27);
     \u0275\u0275text(38, "Data de In\xEDcio");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(39, "input", 36);
+    \u0275\u0275element(39, "input", 37);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(40, "div", 25)(41, "label", 26);
+    \u0275\u0275elementStart(40, "div", 26)(41, "label", 27);
     \u0275\u0275text(42, "Data de Fim");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(43, "input", 37);
+    \u0275\u0275element(43, "input", 38);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(44, "div", 25)(45, "label", 26);
+    \u0275\u0275elementStart(44, "div", 26)(45, "label", 27);
     \u0275\u0275text(46, "P\xFAblico estimado");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(47, "input", 38);
+    \u0275\u0275element(47, "input", 39);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(48, "div", 29)(49, "label", 26);
+    \u0275\u0275elementStart(48, "div", 30)(49, "label", 27);
     \u0275\u0275text(50, "Observa\xE7\xF5es");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(51, "textarea", 39);
+    \u0275\u0275element(51, "textarea", 40);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(52, "div", 40)(53, "button", 41)(54, "span");
+    \u0275\u0275elementStart(52, "div", 41)(53, "button", 42)(54, "span");
     \u0275\u0275text(55, "\u{1F4E4}");
     \u0275\u0275elementEnd();
     \u0275\u0275text(56, " Enviar Solicita\xE7\xE3o ");
     \u0275\u0275elementEnd()()();
-    \u0275\u0275elementStart(57, "details", 42)(58, "summary", 43);
+    \u0275\u0275elementStart(57, "details", 43)(58, "summary", 44);
     \u0275\u0275text(59, "\u{1F4C5} Prazos para entrada do pedido");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(60, "ul", 44)(61, "li");
+    \u0275\u0275elementStart(60, "ul", 45)(61, "li");
     \u0275\u0275text(62, "Pequeno porte (at\xE9 2.000 pessoas): ");
     \u0275\u0275elementStart(63, "strong");
     \u0275\u0275text(64, "40 dias");
@@ -47610,74 +47212,74 @@ function UsuarioDashboardComponent_section_63_Template(rf, ctx) {
     \u0275\u0275property("disabled", ctx_r0.formAE.invalid);
   }
 }
-function UsuarioDashboardComponent_section_64_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_65_Template(rf, ctx) {
   if (rf & 1) {
     const _r3 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "section", 22)(1, "h3", 23);
+    \u0275\u0275elementStart(0, "section", 23)(1, "h3", 24);
     \u0275\u0275text(2, "Novo pedido de Palestra/Representante");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "form", 24);
-    \u0275\u0275listener("ngSubmit", function UsuarioDashboardComponent_section_64_Template_form_ngSubmit_3_listener() {
+    \u0275\u0275elementStart(3, "form", 25);
+    \u0275\u0275listener("ngSubmit", function UsuarioDashboardComponent_section_65_Template_form_ngSubmit_3_listener() {
       \u0275\u0275restoreView(_r3);
       const ctx_r0 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r0.criarPL());
     });
-    \u0275\u0275elementStart(4, "div", 25)(5, "label", 26);
+    \u0275\u0275elementStart(4, "div", 26)(5, "label", 27);
     \u0275\u0275text(6, "Organiza\xE7\xE3o");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(7, "input", 45);
+    \u0275\u0275element(7, "input", 46);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(8, "div", 25)(9, "label", 26);
+    \u0275\u0275elementStart(8, "div", 26)(9, "label", 27);
     \u0275\u0275text(10, "Temas");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(11, "input", 46);
+    \u0275\u0275element(11, "input", 47);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(12, "div", 25)(13, "label", 26);
+    \u0275\u0275elementStart(12, "div", 26)(13, "label", 27);
     \u0275\u0275text(14, "Endere\xE7o");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(15, "input", 31);
+    \u0275\u0275element(15, "input", 32);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(16, "div", 25)(17, "label", 26);
+    \u0275\u0275elementStart(16, "div", 26)(17, "label", 27);
     \u0275\u0275text(18, "Bairro");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(19, "input", 32);
+    \u0275\u0275element(19, "input", 33);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(20, "div", 25)(21, "label", 26);
+    \u0275\u0275elementStart(20, "div", 26)(21, "label", 27);
     \u0275\u0275text(22, "Cidade");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(23, "input", 33);
+    \u0275\u0275element(23, "input", 34);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(24, "div", 25)(25, "label", 26);
+    \u0275\u0275elementStart(24, "div", 26)(25, "label", 27);
     \u0275\u0275text(26, "UF");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(27, "input", 34);
+    \u0275\u0275element(27, "input", 35);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(28, "div", 25)(29, "label", 26);
+    \u0275\u0275elementStart(28, "div", 26)(29, "label", 27);
     \u0275\u0275text(30, "CEP");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(31, "input", 35);
+    \u0275\u0275element(31, "input", 36);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(32, "div", 25)(33, "label", 26);
+    \u0275\u0275elementStart(32, "div", 26)(33, "label", 27);
     \u0275\u0275text(34, "P\xFAblico-alvo");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(35, "input", 47);
+    \u0275\u0275element(35, "input", 48);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(36, "div", 25)(37, "label", 26);
+    \u0275\u0275elementStart(36, "div", 26)(37, "label", 27);
     \u0275\u0275text(38, "Quantidade de pessoas");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(39, "input", 48);
+    \u0275\u0275element(39, "input", 49);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(40, "div", 25)(41, "label", 26);
+    \u0275\u0275elementStart(40, "div", 26)(41, "label", 27);
     \u0275\u0275text(42, "Data sugerida");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(43, "input", 49);
+    \u0275\u0275element(43, "input", 50);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(44, "div", 29)(45, "label", 26);
+    \u0275\u0275elementStart(44, "div", 30)(45, "label", 27);
     \u0275\u0275text(46, "Observa\xE7\xF5es");
     \u0275\u0275elementEnd();
-    \u0275\u0275element(47, "textarea", 39);
+    \u0275\u0275element(47, "textarea", 40);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(48, "div", 40)(49, "button", 41)(50, "span");
+    \u0275\u0275elementStart(48, "div", 41)(49, "button", 42)(50, "span");
     \u0275\u0275text(51, "\u{1F4E4}");
     \u0275\u0275elementEnd();
     \u0275\u0275text(52, " Enviar Solicita\xE7\xE3o ");
@@ -47691,18 +47293,18 @@ function UsuarioDashboardComponent_section_64_Template(rf, ctx) {
     \u0275\u0275property("disabled", ctx_r0.formPL.invalid);
   }
 }
-function UsuarioDashboardComponent_section_70_div_1_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_1_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 52);
-    \u0275\u0275element(1, "div", 53);
-    \u0275\u0275elementStart(2, "p", 54);
+    \u0275\u0275elementStart(0, "div", 53);
+    \u0275\u0275element(1, "div", 54);
+    \u0275\u0275elementStart(2, "p", 55);
     \u0275\u0275text(3, "Carregando suas solicita\xE7\xF5es...");
     \u0275\u0275elementEnd()();
   }
 }
-function UsuarioDashboardComponent_section_70_div_2_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_2_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 21);
+    \u0275\u0275elementStart(0, "div", 22);
     \u0275\u0275text(1);
     \u0275\u0275elementEnd();
   }
@@ -47712,25 +47314,25 @@ function UsuarioDashboardComponent_section_70_div_2_Template(rf, ctx) {
     \u0275\u0275textInterpolate(ctx_r0.erroLista);
   }
 }
-function UsuarioDashboardComponent_section_70_div_3_ng_container_17_div_12_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_3_ng_container_17_div_12_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 60);
+    \u0275\u0275elementStart(0, "div", 61);
     \u0275\u0275text(1, " \u26A0\uFE0F Pend\xEAncia ");
     \u0275\u0275elementEnd();
   }
 }
-function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_2_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_2_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 64);
-    \u0275\u0275element(1, "div", 53);
-    \u0275\u0275elementStart(2, "p", 54);
+    \u0275\u0275elementStart(0, "div", 65);
+    \u0275\u0275element(1, "div", 54);
+    \u0275\u0275elementStart(2, "p", 55);
     \u0275\u0275text(3, "Carregando detalhes...");
     \u0275\u0275elementEnd()();
   }
 }
-function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_51_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_51_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 70)(1, "strong");
+    \u0275\u0275elementStart(0, "div", 71)(1, "strong");
     \u0275\u0275text(2, "Pend\xEAncia:");
     \u0275\u0275elementEnd();
     \u0275\u0275element(3, "br");
@@ -47743,28 +47345,28 @@ function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_
     \u0275\u0275textInterpolate1("", (ctx_r0.detalheAE == null ? null : ctx_r0.detalheAE.pendencia_obs) || "\u2014", " ");
   }
 }
-function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_57_div_4_span_4_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_57_div_4_span_4_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275element(0, "span", 81);
+    \u0275\u0275element(0, "span", 82);
   }
 }
-function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_57_div_4_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_57_div_4_Template(rf, ctx) {
   if (rf & 1) {
     const _r6 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 74)(1, "div", 75)(2, "span", 76);
+    \u0275\u0275elementStart(0, "div", 75)(1, "div", 76)(2, "span", 77);
     \u0275\u0275text(3);
     \u0275\u0275elementEnd();
-    \u0275\u0275template(4, UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_57_div_4_span_4_Template, 1, 0, "span", 77);
+    \u0275\u0275template(4, UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_57_div_4_span_4_Template, 1, 0, "span", 78);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(5, "div", 78)(6, "input", 79);
-    \u0275\u0275listener("change", function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_57_div_4_Template_input_change_6_listener($event) {
+    \u0275\u0275elementStart(5, "div", 79)(6, "input", 80);
+    \u0275\u0275listener("change", function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_57_div_4_Template_input_change_6_listener($event) {
       const d_r7 = \u0275\u0275restoreView(_r6).$implicit;
       const ctx_r0 = \u0275\u0275nextContext(7);
       return \u0275\u0275resetView(ctx_r0.onEscolherArquivo(d_r7.key, $event));
     });
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(7, "button", 80);
-    \u0275\u0275listener("click", function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_57_div_4_Template_button_click_7_listener() {
+    \u0275\u0275elementStart(7, "button", 81);
+    \u0275\u0275listener("click", function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_57_div_4_Template_button_click_7_listener() {
       const d_r7 = \u0275\u0275restoreView(_r6).$implicit;
       const ctx_r0 = \u0275\u0275nextContext(7);
       return \u0275\u0275resetView(ctx_r0.enviarArquivo(d_r7.key));
@@ -47783,28 +47385,28 @@ function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_
     \u0275\u0275property("disabled", !ctx_r0.arquivosSelecionados[d_r7.key]);
   }
 }
-function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_57_div_8_span_4_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_57_div_8_span_4_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275element(0, "span", 81);
+    \u0275\u0275element(0, "span", 82);
   }
 }
-function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_57_div_8_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_57_div_8_Template(rf, ctx) {
   if (rf & 1) {
     const _r8 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 74)(1, "div", 75)(2, "span", 76);
+    \u0275\u0275elementStart(0, "div", 75)(1, "div", 76)(2, "span", 77);
     \u0275\u0275text(3);
     \u0275\u0275elementEnd();
-    \u0275\u0275template(4, UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_57_div_8_span_4_Template, 1, 0, "span", 77);
+    \u0275\u0275template(4, UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_57_div_8_span_4_Template, 1, 0, "span", 78);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(5, "div", 78)(6, "input", 79);
-    \u0275\u0275listener("change", function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_57_div_8_Template_input_change_6_listener($event) {
+    \u0275\u0275elementStart(5, "div", 79)(6, "input", 80);
+    \u0275\u0275listener("change", function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_57_div_8_Template_input_change_6_listener($event) {
       const d_r9 = \u0275\u0275restoreView(_r8).$implicit;
       const ctx_r0 = \u0275\u0275nextContext(7);
       return \u0275\u0275resetView(ctx_r0.onEscolherArquivo(d_r9.key, $event));
     });
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(7, "button", 80);
-    \u0275\u0275listener("click", function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_57_div_8_Template_button_click_7_listener() {
+    \u0275\u0275elementStart(7, "button", 81);
+    \u0275\u0275listener("click", function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_57_div_8_Template_button_click_7_listener() {
       const d_r9 = \u0275\u0275restoreView(_r8).$implicit;
       const ctx_r0 = \u0275\u0275nextContext(7);
       return \u0275\u0275resetView(ctx_r0.enviarArquivo(d_r9.key));
@@ -47823,17 +47425,17 @@ function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_
     \u0275\u0275property("disabled", !ctx_r0.arquivosSelecionados[d_r9.key]);
   }
 }
-function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_57_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_57_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 71)(1, "div")(2, "h5", 72);
+    \u0275\u0275elementStart(0, "div", 72)(1, "div")(2, "h5", 73);
     \u0275\u0275text(3, "\u{1F4CB} Obrigat\xF3rios");
     \u0275\u0275elementEnd();
-    \u0275\u0275template(4, UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_57_div_4_Template, 9, 3, "div", 73);
+    \u0275\u0275template(4, UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_57_div_4_Template, 9, 3, "div", 74);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(5, "div")(6, "h5", 72);
+    \u0275\u0275elementStart(5, "div")(6, "h5", 73);
     \u0275\u0275text(7, "\u{1F4C4} Condicionais");
     \u0275\u0275elementEnd();
-    \u0275\u0275template(8, UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_57_div_8_Template, 9, 3, "div", 73);
+    \u0275\u0275template(8, UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_57_div_8_Template, 9, 3, "div", 74);
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
@@ -47844,11 +47446,11 @@ function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_
     \u0275\u0275property("ngForOf", ctx_r0.tipoDocsCond);
   }
 }
-function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_58_tr_13_button_13_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_58_tr_13_button_13_Template(rf, ctx) {
   if (rf & 1) {
     const _r12 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 84);
-    \u0275\u0275listener("click", function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_58_tr_13_button_13_Template_button_click_0_listener() {
+    \u0275\u0275elementStart(0, "button", 85);
+    \u0275\u0275listener("click", function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_58_tr_13_button_13_Template_button_click_0_listener() {
       \u0275\u0275restoreView(_r12);
       const a_r11 = \u0275\u0275nextContext().$implicit;
       const ctx_r0 = \u0275\u0275nextContext(7);
@@ -47858,7 +47460,7 @@ function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_
     \u0275\u0275elementEnd();
   }
 }
-function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_58_tr_13_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_58_tr_13_Template(rf, ctx) {
   if (rf & 1) {
     const _r10 = \u0275\u0275getCurrentView();
     \u0275\u0275elementStart(0, "tr")(1, "td");
@@ -47872,15 +47474,15 @@ function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_
     \u0275\u0275text(7);
     \u0275\u0275pipe(8, "date");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(9, "td")(10, "div", 82)(11, "button", 59);
-    \u0275\u0275listener("click", function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_58_tr_13_Template_button_click_11_listener() {
+    \u0275\u0275elementStart(9, "td")(10, "div", 83)(11, "button", 60);
+    \u0275\u0275listener("click", function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_58_tr_13_Template_button_click_11_listener() {
       const a_r11 = \u0275\u0275restoreView(_r10).$implicit;
       const ctx_r0 = \u0275\u0275nextContext(7);
       return \u0275\u0275resetView(ctx_r0.baixar(a_r11));
     });
     \u0275\u0275text(12, " \u{1F4E5} Baixar ");
     \u0275\u0275elementEnd();
-    \u0275\u0275template(13, UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_58_tr_13_button_13_Template, 2, 0, "button", 83);
+    \u0275\u0275template(13, UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_58_tr_13_button_13_Template, 2, 0, "button", 84);
     \u0275\u0275elementEnd()()();
   }
   if (rf & 2) {
@@ -47896,9 +47498,9 @@ function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_
     \u0275\u0275property("ngIf", ctx_r0.podeAnexar);
   }
 }
-function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_58_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_58_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 55)(1, "table", 56)(2, "thead")(3, "tr")(4, "th");
+    \u0275\u0275elementStart(0, "div", 56)(1, "table", 57)(2, "thead")(3, "tr")(4, "th");
     \u0275\u0275text(5, "Nome");
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(6, "th");
@@ -47911,7 +47513,7 @@ function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_
     \u0275\u0275text(11, "A\xE7\xF5es");
     \u0275\u0275elementEnd()()();
     \u0275\u0275elementStart(12, "tbody");
-    \u0275\u0275template(13, UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_58_tr_13_Template, 14, 9, "tr", 57);
+    \u0275\u0275template(13, UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_58_tr_13_Template, 14, 9, "tr", 58);
     \u0275\u0275elementEnd()()();
   }
   if (rf & 2) {
@@ -47920,19 +47522,19 @@ function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_
     \u0275\u0275property("ngForOf", ctx_r0.anexos);
   }
 }
-function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_59_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_59_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 52)(1, "div", 85);
+    \u0275\u0275elementStart(0, "div", 53)(1, "div", 86);
     \u0275\u0275text(2, "\u{1F4C1}");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "p", 54);
+    \u0275\u0275elementStart(3, "p", 55);
     \u0275\u0275text(4, "Nenhum anexo enviado ainda.");
     \u0275\u0275elementEnd()();
   }
 }
-function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 65)(1, "div", 66)(2, "div")(3, "strong");
+    \u0275\u0275elementStart(0, "div", 66)(1, "div", 67)(2, "div")(3, "strong");
     \u0275\u0275text(4, "T\xEDtulo:");
     \u0275\u0275elementEnd();
     \u0275\u0275text(5);
@@ -47975,32 +47577,32 @@ function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_
     \u0275\u0275elementStart(35, "span");
     \u0275\u0275text(36);
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(37, "div", 40)(38, "strong");
+    \u0275\u0275elementStart(37, "div", 41)(38, "strong");
     \u0275\u0275text(39, "Endere\xE7o:");
     \u0275\u0275elementEnd();
     \u0275\u0275text(40);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(41, "div", 40)(42, "strong");
+    \u0275\u0275elementStart(41, "div", 41)(42, "strong");
     \u0275\u0275text(43, "Descri\xE7\xE3o:");
     \u0275\u0275elementEnd();
     \u0275\u0275element(44, "br");
     \u0275\u0275text(45);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(46, "div", 40)(47, "strong");
+    \u0275\u0275elementStart(46, "div", 41)(47, "strong");
     \u0275\u0275text(48, "Observa\xE7\xF5es:");
     \u0275\u0275elementEnd();
     \u0275\u0275element(49, "br");
     \u0275\u0275text(50);
     \u0275\u0275elementEnd();
-    \u0275\u0275template(51, UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_51_Template, 5, 1, "div", 67);
+    \u0275\u0275template(51, UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_51_Template, 5, 1, "div", 68);
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(52, "div", 42)(53, "h4", 23);
+    \u0275\u0275elementStart(52, "div", 43)(53, "h4", 24);
     \u0275\u0275text(54, "\u{1F4CE} Anexos");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(55, "p", 68);
+    \u0275\u0275elementStart(55, "p", 69);
     \u0275\u0275text(56, " Formatos: PDF, JPG, PNG. M\xE1ximo: 10 MB por arquivo. ");
     \u0275\u0275elementEnd();
-    \u0275\u0275template(57, UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_57_Template, 9, 2, "div", 69)(58, UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_58_Template, 14, 1, "div", 51)(59, UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_div_59_Template, 5, 0, "div", 50);
+    \u0275\u0275template(57, UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_57_Template, 9, 2, "div", 70)(58, UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_58_Template, 14, 1, "div", 52)(59, UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_div_59_Template, 5, 0, "div", 51);
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
@@ -48039,10 +47641,10 @@ function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_
     \u0275\u0275property("ngIf", !(ctx_r0.anexos == null ? null : ctx_r0.anexos.length));
   }
 }
-function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "tr")(1, "td", 61);
-    \u0275\u0275template(2, UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_2_Template, 4, 0, "div", 62)(3, UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_div_3_Template, 60, 26, "div", 63);
+    \u0275\u0275elementStart(0, "tr")(1, "td", 62);
+    \u0275\u0275template(2, UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_2_Template, 4, 0, "div", 63)(3, UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_div_3_Template, 60, 26, "div", 64);
     \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
@@ -48053,7 +47655,7 @@ function UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_Templa
     \u0275\u0275property("ngIf", ctx_r0.detalheAE);
   }
 }
-function UsuarioDashboardComponent_section_70_div_3_ng_container_17_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_3_ng_container_17_Template(rf, ctx) {
   if (rf & 1) {
     const _r4 = \u0275\u0275getCurrentView();
     \u0275\u0275elementContainerStart(0);
@@ -48069,21 +47671,21 @@ function UsuarioDashboardComponent_section_70_div_3_ng_container_17_Template(rf,
     \u0275\u0275elementStart(9, "td")(10, "span");
     \u0275\u0275text(11);
     \u0275\u0275elementEnd();
-    \u0275\u0275template(12, UsuarioDashboardComponent_section_70_div_3_ng_container_17_div_12_Template, 2, 0, "div", 58);
+    \u0275\u0275template(12, UsuarioDashboardComponent_section_71_div_3_ng_container_17_div_12_Template, 2, 0, "div", 59);
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(13, "td");
     \u0275\u0275text(14);
     \u0275\u0275pipe(15, "date");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(16, "td")(17, "button", 59);
-    \u0275\u0275listener("click", function UsuarioDashboardComponent_section_70_div_3_ng_container_17_Template_button_click_17_listener() {
+    \u0275\u0275elementStart(16, "td")(17, "button", 60);
+    \u0275\u0275listener("click", function UsuarioDashboardComponent_section_71_div_3_ng_container_17_Template_button_click_17_listener() {
       const it_r5 = \u0275\u0275restoreView(_r4).$implicit;
       const ctx_r0 = \u0275\u0275nextContext(3);
       return \u0275\u0275resetView(ctx_r0.abrirDetalheAE(it_r5.protocolo));
     });
     \u0275\u0275text(18);
     \u0275\u0275elementEnd()()();
-    \u0275\u0275template(19, UsuarioDashboardComponent_section_70_div_3_ng_container_17_tr_19_Template, 4, 2, "tr", 19);
+    \u0275\u0275template(19, UsuarioDashboardComponent_section_71_div_3_ng_container_17_tr_19_Template, 4, 2, "tr", 20);
     \u0275\u0275elementContainerEnd();
   }
   if (rf & 2) {
@@ -48109,9 +47711,9 @@ function UsuarioDashboardComponent_section_70_div_3_ng_container_17_Template(rf,
     \u0275\u0275property("ngIf", ctx_r0.protocoloAberto === it_r5.protocolo);
   }
 }
-function UsuarioDashboardComponent_section_70_div_3_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_3_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 55)(1, "table", 56)(2, "thead")(3, "tr")(4, "th");
+    \u0275\u0275elementStart(0, "div", 56)(1, "table", 57)(2, "thead")(3, "tr")(4, "th");
     \u0275\u0275text(5, "Protocolo");
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(6, "th");
@@ -48130,7 +47732,7 @@ function UsuarioDashboardComponent_section_70_div_3_Template(rf, ctx) {
     \u0275\u0275text(15, "A\xE7\xF5es");
     \u0275\u0275elementEnd()()();
     \u0275\u0275elementStart(16, "tbody");
-    \u0275\u0275template(17, UsuarioDashboardComponent_section_70_div_3_ng_container_17_Template, 20, 15, "ng-container", 57);
+    \u0275\u0275template(17, UsuarioDashboardComponent_section_71_div_3_ng_container_17_Template, 20, 15, "ng-container", 58);
     \u0275\u0275elementEnd()()();
   }
   if (rf & 2) {
@@ -48139,20 +47741,20 @@ function UsuarioDashboardComponent_section_70_div_3_Template(rf, ctx) {
     \u0275\u0275property("ngForOf", ctx_r0.meusAE);
   }
 }
-function UsuarioDashboardComponent_section_70_div_4_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_div_4_Template(rf, ctx) {
   if (rf & 1) {
     const _r13 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 52)(1, "div", 86);
+    \u0275\u0275elementStart(0, "div", 53)(1, "div", 87);
     \u0275\u0275text(2, "\u{1F4CB}");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "h3", 87);
+    \u0275\u0275elementStart(3, "h3", 88);
     \u0275\u0275text(4, "Nenhuma solicita\xE7\xE3o encontrada");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(5, "p", 68);
+    \u0275\u0275elementStart(5, "p", 69);
     \u0275\u0275text(6, "Voc\xEA ainda n\xE3o tem solicita\xE7\xF5es de Nada Opor.");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(7, "button", 88);
-    \u0275\u0275listener("click", function UsuarioDashboardComponent_section_70_div_4_Template_button_click_7_listener() {
+    \u0275\u0275elementStart(7, "button", 89);
+    \u0275\u0275listener("click", function UsuarioDashboardComponent_section_71_div_4_Template_button_click_7_listener() {
       \u0275\u0275restoreView(_r13);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.abrirFormAE = true);
@@ -48161,10 +47763,10 @@ function UsuarioDashboardComponent_section_70_div_4_Template(rf, ctx) {
     \u0275\u0275elementEnd()();
   }
 }
-function UsuarioDashboardComponent_section_70_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_71_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "section");
-    \u0275\u0275template(1, UsuarioDashboardComponent_section_70_div_1_Template, 4, 0, "div", 50)(2, UsuarioDashboardComponent_section_70_div_2_Template, 2, 1, "div", 8)(3, UsuarioDashboardComponent_section_70_div_3_Template, 18, 1, "div", 51)(4, UsuarioDashboardComponent_section_70_div_4_Template, 9, 0, "div", 50);
+    \u0275\u0275template(1, UsuarioDashboardComponent_section_71_div_1_Template, 4, 0, "div", 51)(2, UsuarioDashboardComponent_section_71_div_2_Template, 2, 1, "div", 9)(3, UsuarioDashboardComponent_section_71_div_3_Template, 18, 1, "div", 52)(4, UsuarioDashboardComponent_section_71_div_4_Template, 9, 0, "div", 51);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -48179,7 +47781,7 @@ function UsuarioDashboardComponent_section_70_Template(rf, ctx) {
     \u0275\u0275property("ngIf", !ctx_r0.carregandoLista && !(ctx_r0.meusAE == null ? null : ctx_r0.meusAE.length));
   }
 }
-function UsuarioDashboardComponent_section_71_div_1_tr_17_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_72_div_1_tr_17_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "tr")(1, "td")(2, "strong");
     \u0275\u0275text(3);
@@ -48219,9 +47821,9 @@ function UsuarioDashboardComponent_section_71_div_1_tr_17_Template(rf, ctx) {
     \u0275\u0275textInterpolate(\u0275\u0275pipeBind2(15, 10, it_r14.criado_em, "short"));
   }
 }
-function UsuarioDashboardComponent_section_71_div_1_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_72_div_1_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 55)(1, "table", 56)(2, "thead")(3, "tr")(4, "th");
+    \u0275\u0275elementStart(0, "div", 56)(1, "table", 57)(2, "thead")(3, "tr")(4, "th");
     \u0275\u0275text(5, "Protocolo");
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(6, "th");
@@ -48240,7 +47842,7 @@ function UsuarioDashboardComponent_section_71_div_1_Template(rf, ctx) {
     \u0275\u0275text(15, "Criado");
     \u0275\u0275elementEnd()()();
     \u0275\u0275elementStart(16, "tbody");
-    \u0275\u0275template(17, UsuarioDashboardComponent_section_71_div_1_tr_17_Template, 16, 13, "tr", 57);
+    \u0275\u0275template(17, UsuarioDashboardComponent_section_72_div_1_tr_17_Template, 16, 13, "tr", 58);
     \u0275\u0275elementEnd()()();
   }
   if (rf & 2) {
@@ -48249,20 +47851,20 @@ function UsuarioDashboardComponent_section_71_div_1_Template(rf, ctx) {
     \u0275\u0275property("ngForOf", ctx_r0.minhasPL);
   }
 }
-function UsuarioDashboardComponent_section_71_div_2_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_72_div_2_Template(rf, ctx) {
   if (rf & 1) {
     const _r15 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "div", 52)(1, "div", 86);
+    \u0275\u0275elementStart(0, "div", 53)(1, "div", 87);
     \u0275\u0275text(2, "\u{1F3A4}");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(3, "h3", 87);
+    \u0275\u0275elementStart(3, "h3", 88);
     \u0275\u0275text(4, "Nenhuma solicita\xE7\xE3o encontrada");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(5, "p", 68);
+    \u0275\u0275elementStart(5, "p", 69);
     \u0275\u0275text(6, "Voc\xEA ainda n\xE3o tem solicita\xE7\xF5es de Palestras.");
     \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(7, "button", 88);
-    \u0275\u0275listener("click", function UsuarioDashboardComponent_section_71_div_2_Template_button_click_7_listener() {
+    \u0275\u0275elementStart(7, "button", 89);
+    \u0275\u0275listener("click", function UsuarioDashboardComponent_section_72_div_2_Template_button_click_7_listener() {
       \u0275\u0275restoreView(_r15);
       const ctx_r0 = \u0275\u0275nextContext(2);
       return \u0275\u0275resetView(ctx_r0.abrirFormPL = true);
@@ -48271,10 +47873,10 @@ function UsuarioDashboardComponent_section_71_div_2_Template(rf, ctx) {
     \u0275\u0275elementEnd()();
   }
 }
-function UsuarioDashboardComponent_section_71_Template(rf, ctx) {
+function UsuarioDashboardComponent_section_72_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "section");
-    \u0275\u0275template(1, UsuarioDashboardComponent_section_71_div_1_Template, 18, 1, "div", 51)(2, UsuarioDashboardComponent_section_71_div_2_Template, 9, 0, "div", 50);
+    \u0275\u0275template(1, UsuarioDashboardComponent_section_72_div_1_Template, 18, 1, "div", 52)(2, UsuarioDashboardComponent_section_72_div_2_Template, 9, 0, "div", 51);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -48502,99 +48104,100 @@ var UsuarioDashboardComponent = class _UsuarioDashboardComponent {
   static \u0275fac = function UsuarioDashboardComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || _UsuarioDashboardComponent)();
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _UsuarioDashboardComponent, selectors: [["app-usuario-dashboard"]], decls: 72, vars: 18, consts: [[1, "dashboard-container"], [1, "dashboard-header"], [1, "dashboard-title"], [1, "dashboard-subtitle"], [1, "flex", "gap-4"], ["type", "button", 1, "btn", "btn-primary", 3, "click"], ["type", "button", 1, "btn", "btn-secondary", 3, "click"], ["class", "alert alert-success", 4, "ngIf"], ["class", "alert alert-error", 4, "ngIf"], [1, "grid", "grid-cols-4", "mb-8"], [1, "card"], [1, "card-header"], [1, "card-icon"], [1, "card-content"], [1, "card-value"], [1, "card-description"], ["class", "card mb-8", 4, "ngIf"], [1, "flex", "gap-2", "mb-6"], [1, "btn", 3, "click"], [4, "ngIf"], [1, "alert", "alert-success"], [1, "alert", "alert-error"], [1, "card", "mb-8"], [1, "mb-4"], [1, "grid", "grid-cols-2", "gap-4", 3, "ngSubmit", "formGroup"], [1, "form-group"], [1, "form-label"], ["type", "text", "formControlName", "titulo", "placeholder", "Nome do evento", 1, "form-input"], ["type", "text", "formControlName", "tipo_evento", "placeholder", "Ex: feira, show, congresso", 1, "form-input"], [1, "form-group", 2, "grid-column", "1/-1"], ["formControlName", "descricao", "placeholder", "Descreva o evento", 1, "form-textarea"], ["type", "text", "formControlName", "endereco", "placeholder", "Endere\xE7o completo", 1, "form-input"], ["type", "text", "formControlName", "bairro", "placeholder", "Nome do bairro", 1, "form-input"], ["type", "text", "formControlName", "cidade", "placeholder", "Nome da cidade", 1, "form-input"], ["type", "text", "formControlName", "estado", "maxlength", "2", "placeholder", "RJ", 1, "form-input"], ["type", "text", "formControlName", "cep", "placeholder", "00000-000", 1, "form-input"], ["type", "datetime-local", "formControlName", "data_inicio", 1, "form-input"], ["type", "datetime-local", "formControlName", "data_fim", 1, "form-input"], ["type", "number", "formControlName", "publico_estimado", "min", "0", "placeholder", "N\xFAmero de pessoas", 1, "form-input"], ["formControlName", "observacoes", "placeholder", "Observa\xE7\xF5es adicionais", 1, "form-textarea"], [2, "grid-column", "1/-1"], ["type", "submit", 1, "btn", "btn-primary", 3, "disabled"], [1, "mt-6"], [1, "font-semibold", "text-primary", "cursor-pointer"], [1, "mt-2", "ml-4"], ["type", "text", "formControlName", "organizacao", "placeholder", "Nome da organiza\xE7\xE3o", 1, "form-input"], ["type", "text", "formControlName", "temas", "placeholder", "ex.: tr\xE2nsito, viol\xEAncia dom\xE9stica", 1, "form-input"], ["type", "text", "formControlName", "publico_alvo", "placeholder", "Ex: colaboradores, estudantes", 1, "form-input"], ["type", "number", "formControlName", "qtd_pessoas", "min", "0", "placeholder", "N\xFAmero de pessoas", 1, "form-input"], ["type", "datetime-local", "formControlName", "data_sugerida", 1, "form-input"], ["class", "text-center p-8", 4, "ngIf"], ["class", "table-container", 4, "ngIf"], [1, "text-center", "p-8"], [1, "loading", "mb-2"], [1, "text-muted"], [1, "table-container"], [1, "table"], [4, "ngFor", "ngForOf"], ["class", "text-warning font-medium mt-1", 4, "ngIf"], ["type", "button", 1, "btn", "btn-sm", "btn-secondary", 3, "click"], [1, "text-warning", "font-medium", "mt-1"], ["colspan", "6", 2, "background", "var(--gray-50)"], ["class", "text-center p-4", 4, "ngIf"], ["class", "p-4", 4, "ngIf"], [1, "text-center", "p-4"], [1, "p-4"], [1, "grid", "grid-cols-2", "gap-4", "mb-6"], ["style", "grid-column: 1/-1;", "class", "alert alert-warning", 4, "ngIf"], [1, "text-muted", "mb-4"], ["class", "grid grid-cols-2 gap-6 mb-6", 4, "ngIf"], [1, "alert", "alert-warning", 2, "grid-column", "1/-1"], [1, "grid", "grid-cols-2", "gap-6", "mb-6"], [1, "font-semibold", "mb-3"], ["class", "card mb-3", 4, "ngFor", "ngForOf"], [1, "card", "mb-3"], [1, "flex", "justify-between", "items-center", "mb-2"], [1, "font-medium"], ["class", "loading", 4, "ngIf"], [1, "flex", "gap-2", "items-center"], ["type", "file", "accept", ".pdf,.jpg,.jpeg,.png", 1, "form-input", 3, "change"], ["type", "button", 1, "btn", "btn-sm", "btn-primary", 3, "click", "disabled"], [1, "loading"], [1, "flex", "gap-2"], ["type", "button", "class", "btn btn-sm btn-danger", 3, "click", 4, "ngIf"], ["type", "button", 1, "btn", "btn-sm", "btn-danger", 3, "click"], [1, "text-4xl", "mb-2"], [1, "text-4xl", "mb-4"], [1, "mb-2"], ["type", "button", 1, "btn", "btn-primary", "btn-lg", 3, "click"]], template: function UsuarioDashboardComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _UsuarioDashboardComponent, selectors: [["app-usuario-dashboard"]], decls: 73, vars: 18, consts: [["currentPage", "Meu Portal", "userName", "Usu\xE1rio", "userRole", "CIDAD\xC3O"], [1, "dashboard-container"], [1, "dashboard-header"], [1, "dashboard-title"], [1, "dashboard-subtitle"], [1, "flex", "gap-4"], ["type", "button", 1, "btn", "btn-primary", 3, "click"], ["type", "button", 1, "btn", "btn-secondary", 3, "click"], ["class", "alert alert-success", 4, "ngIf"], ["class", "alert alert-error", 4, "ngIf"], [1, "grid", "grid-cols-4", "mb-8"], [1, "card"], [1, "card-header"], [1, "card-icon"], [1, "card-content"], [1, "card-value"], [1, "card-description"], ["class", "card mb-8", 4, "ngIf"], [1, "flex", "gap-2", "mb-6"], [1, "btn", 3, "click"], [4, "ngIf"], [1, "alert", "alert-success"], [1, "alert", "alert-error"], [1, "card", "mb-8"], [1, "mb-4"], [1, "grid", "grid-cols-2", "gap-4", 3, "ngSubmit", "formGroup"], [1, "form-group"], [1, "form-label"], ["type", "text", "formControlName", "titulo", "placeholder", "Nome do evento", 1, "form-input"], ["type", "text", "formControlName", "tipo_evento", "placeholder", "Ex: feira, show, congresso", 1, "form-input"], [1, "form-group", 2, "grid-column", "1/-1"], ["formControlName", "descricao", "placeholder", "Descreva o evento", 1, "form-textarea"], ["type", "text", "formControlName", "endereco", "placeholder", "Endere\xE7o completo", 1, "form-input"], ["type", "text", "formControlName", "bairro", "placeholder", "Nome do bairro", 1, "form-input"], ["type", "text", "formControlName", "cidade", "placeholder", "Nome da cidade", 1, "form-input"], ["type", "text", "formControlName", "estado", "maxlength", "2", "placeholder", "RJ", 1, "form-input"], ["type", "text", "formControlName", "cep", "placeholder", "00000-000", 1, "form-input"], ["type", "datetime-local", "formControlName", "data_inicio", 1, "form-input"], ["type", "datetime-local", "formControlName", "data_fim", 1, "form-input"], ["type", "number", "formControlName", "publico_estimado", "min", "0", "placeholder", "N\xFAmero de pessoas", 1, "form-input"], ["formControlName", "observacoes", "placeholder", "Observa\xE7\xF5es adicionais", 1, "form-textarea"], [2, "grid-column", "1/-1"], ["type", "submit", 1, "btn", "btn-primary", 3, "disabled"], [1, "mt-6"], [1, "font-semibold", "text-primary", "cursor-pointer"], [1, "mt-2", "ml-4"], ["type", "text", "formControlName", "organizacao", "placeholder", "Nome da organiza\xE7\xE3o", 1, "form-input"], ["type", "text", "formControlName", "temas", "placeholder", "ex.: tr\xE2nsito, viol\xEAncia dom\xE9stica", 1, "form-input"], ["type", "text", "formControlName", "publico_alvo", "placeholder", "Ex: colaboradores, estudantes", 1, "form-input"], ["type", "number", "formControlName", "qtd_pessoas", "min", "0", "placeholder", "N\xFAmero de pessoas", 1, "form-input"], ["type", "datetime-local", "formControlName", "data_sugerida", 1, "form-input"], ["class", "text-center p-8", 4, "ngIf"], ["class", "table-container", 4, "ngIf"], [1, "text-center", "p-8"], [1, "loading", "mb-2"], [1, "text-muted"], [1, "table-container"], [1, "table"], [4, "ngFor", "ngForOf"], ["class", "text-warning font-medium mt-1", 4, "ngIf"], ["type", "button", 1, "btn", "btn-sm", "btn-secondary", 3, "click"], [1, "text-warning", "font-medium", "mt-1"], ["colspan", "6", 2, "background", "var(--gray-50)"], ["class", "text-center p-4", 4, "ngIf"], ["class", "p-4", 4, "ngIf"], [1, "text-center", "p-4"], [1, "p-4"], [1, "grid", "grid-cols-2", "gap-4", "mb-6"], ["style", "grid-column: 1/-1;", "class", "alert alert-warning", 4, "ngIf"], [1, "text-muted", "mb-4"], ["class", "grid grid-cols-2 gap-6 mb-6", 4, "ngIf"], [1, "alert", "alert-warning", 2, "grid-column", "1/-1"], [1, "grid", "grid-cols-2", "gap-6", "mb-6"], [1, "font-semibold", "mb-3"], ["class", "card mb-3", 4, "ngFor", "ngForOf"], [1, "card", "mb-3"], [1, "flex", "justify-between", "items-center", "mb-2"], [1, "font-medium"], ["class", "loading", 4, "ngIf"], [1, "flex", "gap-2", "items-center"], ["type", "file", "accept", ".pdf,.jpg,.jpeg,.png", 1, "form-input", 3, "change"], ["type", "button", 1, "btn", "btn-sm", "btn-primary", 3, "click", "disabled"], [1, "loading"], [1, "flex", "gap-2"], ["type", "button", "class", "btn btn-sm btn-danger", 3, "click", 4, "ngIf"], ["type", "button", 1, "btn", "btn-sm", "btn-danger", 3, "click"], [1, "text-4xl", "mb-2"], [1, "text-4xl", "mb-4"], [1, "mb-2"], ["type", "button", 1, "btn", "btn-primary", "btn-lg", 3, "click"]], template: function UsuarioDashboardComponent_Template(rf, ctx) {
     if (rf & 1) {
-      \u0275\u0275elementStart(0, "div", 0)(1, "header", 1)(2, "div")(3, "h1", 2);
-      \u0275\u0275text(4, "Meu Portal");
+      \u0275\u0275element(0, "app-header", 0);
+      \u0275\u0275elementStart(1, "div", 1)(2, "header", 2)(3, "div")(4, "h1", 3);
+      \u0275\u0275text(5, "Meu Portal");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(5, "p", 3);
-      \u0275\u0275text(6, "Acompanhe suas solicita\xE7\xF5es e status");
+      \u0275\u0275elementStart(6, "p", 4);
+      \u0275\u0275text(7, "Acompanhe suas solicita\xE7\xF5es e status");
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(7, "div", 4)(8, "button", 5);
-      \u0275\u0275listener("click", function UsuarioDashboardComponent_Template_button_click_8_listener() {
+      \u0275\u0275elementStart(8, "div", 5)(9, "button", 6);
+      \u0275\u0275listener("click", function UsuarioDashboardComponent_Template_button_click_9_listener() {
         return ctx.abrirFormAE = !ctx.abrirFormAE;
       });
-      \u0275\u0275elementStart(9, "span");
-      \u0275\u0275text(10, "\u{1F4CB}");
+      \u0275\u0275elementStart(10, "span");
+      \u0275\u0275text(11, "\u{1F4CB}");
       \u0275\u0275elementEnd();
-      \u0275\u0275text(11, " Novo Nada Opor ");
+      \u0275\u0275text(12, " Novo Nada Opor ");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(12, "button", 6);
-      \u0275\u0275listener("click", function UsuarioDashboardComponent_Template_button_click_12_listener() {
+      \u0275\u0275elementStart(13, "button", 7);
+      \u0275\u0275listener("click", function UsuarioDashboardComponent_Template_button_click_13_listener() {
         return ctx.abrirFormPL = !ctx.abrirFormPL;
       });
-      \u0275\u0275elementStart(13, "span");
-      \u0275\u0275text(14, "\u{1F3A4}");
+      \u0275\u0275elementStart(14, "span");
+      \u0275\u0275text(15, "\u{1F3A4}");
       \u0275\u0275elementEnd();
-      \u0275\u0275text(15, " Nova Palestra ");
+      \u0275\u0275text(16, " Nova Palestra ");
       \u0275\u0275elementEnd()()();
-      \u0275\u0275template(16, UsuarioDashboardComponent_div_16_Template, 2, 1, "div", 7)(17, UsuarioDashboardComponent_div_17_Template, 2, 1, "div", 8);
-      \u0275\u0275elementStart(18, "section", 9)(19, "div", 10)(20, "div", 11)(21, "div", 12);
-      \u0275\u0275text(22, "\u{1F4C4}");
+      \u0275\u0275template(17, UsuarioDashboardComponent_div_17_Template, 2, 1, "div", 8)(18, UsuarioDashboardComponent_div_18_Template, 2, 1, "div", 9);
+      \u0275\u0275elementStart(19, "section", 10)(20, "div", 11)(21, "div", 12)(22, "div", 13);
+      \u0275\u0275text(23, "\u{1F4C4}");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(23, "div", 13)(24, "h3");
-      \u0275\u0275text(25, "Minhas Autoriza\xE7\xF5es");
+      \u0275\u0275elementStart(24, "div", 14)(25, "h3");
+      \u0275\u0275text(26, "Minhas Autoriza\xE7\xF5es");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(26, "div", 14);
-      \u0275\u0275text(27);
+      \u0275\u0275elementStart(27, "div", 15);
+      \u0275\u0275text(28);
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(28, "p", 15);
-      \u0275\u0275text(29, "Total de solicita\xE7\xF5es");
+      \u0275\u0275elementStart(29, "p", 16);
+      \u0275\u0275text(30, "Total de solicita\xE7\xF5es");
       \u0275\u0275elementEnd()()()();
-      \u0275\u0275elementStart(30, "div", 10)(31, "div", 11)(32, "div", 12);
-      \u0275\u0275text(33, "\u{1F3A4}");
+      \u0275\u0275elementStart(31, "div", 11)(32, "div", 12)(33, "div", 13);
+      \u0275\u0275text(34, "\u{1F3A4}");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(34, "div", 13)(35, "h3");
-      \u0275\u0275text(36, "Minhas Palestras");
+      \u0275\u0275elementStart(35, "div", 14)(36, "h3");
+      \u0275\u0275text(37, "Minhas Palestras");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(37, "div", 14);
-      \u0275\u0275text(38);
+      \u0275\u0275elementStart(38, "div", 15);
+      \u0275\u0275text(39);
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(39, "p", 15);
-      \u0275\u0275text(40, "Total de solicita\xE7\xF5es");
+      \u0275\u0275elementStart(40, "p", 16);
+      \u0275\u0275text(41, "Total de solicita\xE7\xF5es");
       \u0275\u0275elementEnd()()()();
-      \u0275\u0275elementStart(41, "div", 10)(42, "div", 11)(43, "div", 12);
-      \u0275\u0275text(44, "\u23F3");
+      \u0275\u0275elementStart(42, "div", 11)(43, "div", 12)(44, "div", 13);
+      \u0275\u0275text(45, "\u23F3");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(45, "div", 13)(46, "h3");
-      \u0275\u0275text(47, "Em An\xE1lise");
+      \u0275\u0275elementStart(46, "div", 14)(47, "h3");
+      \u0275\u0275text(48, "Em An\xE1lise");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(48, "div", 14);
-      \u0275\u0275text(49);
+      \u0275\u0275elementStart(49, "div", 15);
+      \u0275\u0275text(50);
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(50, "p", 15);
-      \u0275\u0275text(51, "Aguardando resposta");
+      \u0275\u0275elementStart(51, "p", 16);
+      \u0275\u0275text(52, "Aguardando resposta");
       \u0275\u0275elementEnd()()()();
-      \u0275\u0275elementStart(52, "div", 10)(53, "div", 11)(54, "div", 12);
-      \u0275\u0275text(55, "\u2705");
+      \u0275\u0275elementStart(53, "div", 11)(54, "div", 12)(55, "div", 13);
+      \u0275\u0275text(56, "\u2705");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(56, "div", 13)(57, "h3");
-      \u0275\u0275text(58, "Aprovadas");
+      \u0275\u0275elementStart(57, "div", 14)(58, "h3");
+      \u0275\u0275text(59, "Aprovadas");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(59, "div", 14);
-      \u0275\u0275text(60);
+      \u0275\u0275elementStart(60, "div", 15);
+      \u0275\u0275text(61);
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(61, "p", 15);
-      \u0275\u0275text(62, "Solicita\xE7\xF5es aprovadas");
+      \u0275\u0275elementStart(62, "p", 16);
+      \u0275\u0275text(63, "Solicita\xE7\xF5es aprovadas");
       \u0275\u0275elementEnd()()()()();
-      \u0275\u0275template(63, UsuarioDashboardComponent_section_63_Template, 76, 2, "section", 16)(64, UsuarioDashboardComponent_section_64_Template, 53, 2, "section", 16);
-      \u0275\u0275elementStart(65, "nav", 17)(66, "button", 18);
-      \u0275\u0275listener("click", function UsuarioDashboardComponent_Template_button_click_66_listener() {
+      \u0275\u0275template(64, UsuarioDashboardComponent_section_64_Template, 76, 2, "section", 17)(65, UsuarioDashboardComponent_section_65_Template, 53, 2, "section", 17);
+      \u0275\u0275elementStart(66, "nav", 18)(67, "button", 19);
+      \u0275\u0275listener("click", function UsuarioDashboardComponent_Template_button_click_67_listener() {
         return ctx.tab = "AE";
       });
-      \u0275\u0275text(67, " \u{1F4CB} Minhas Autoriza\xE7\xF5es ");
+      \u0275\u0275text(68, " \u{1F4CB} Minhas Autoriza\xE7\xF5es ");
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(68, "button", 18);
-      \u0275\u0275listener("click", function UsuarioDashboardComponent_Template_button_click_68_listener() {
+      \u0275\u0275elementStart(69, "button", 19);
+      \u0275\u0275listener("click", function UsuarioDashboardComponent_Template_button_click_69_listener() {
         return ctx.tab = "PL";
       });
-      \u0275\u0275text(69, " \u{1F3A4} Minhas Palestras ");
+      \u0275\u0275text(70, " \u{1F3A4} Minhas Palestras ");
       \u0275\u0275elementEnd()();
-      \u0275\u0275template(70, UsuarioDashboardComponent_section_70_Template, 5, 4, "section", 19)(71, UsuarioDashboardComponent_section_71_Template, 3, 2, "section", 19);
+      \u0275\u0275template(71, UsuarioDashboardComponent_section_71_Template, 5, 4, "section", 20)(72, UsuarioDashboardComponent_section_72_Template, 3, 2, "section", 20);
       \u0275\u0275elementEnd();
     }
     if (rf & 2) {
-      \u0275\u0275advance(16);
+      \u0275\u0275advance(17);
       \u0275\u0275property("ngIf", ctx.msg);
       \u0275\u0275advance();
       \u0275\u0275property("ngIf", ctx.erro);
@@ -48619,12 +48222,19 @@ var UsuarioDashboardComponent = class _UsuarioDashboardComponent {
       \u0275\u0275advance();
       \u0275\u0275property("ngIf", ctx.tab === "PL");
     }
-  }, dependencies: [CommonModule, NgForOf, NgIf, ReactiveFormsModule, \u0275NgNoValidate, DefaultValueAccessor, NumberValueAccessor, NgControlStatus, NgControlStatusGroup, MaxLengthValidator, MinValidator, FormGroupDirective, FormControlName, DecimalPipe, DatePipe], encapsulation: 2 });
+  }, dependencies: [CommonModule, NgForOf, NgIf, ReactiveFormsModule, \u0275NgNoValidate, DefaultValueAccessor, NumberValueAccessor, NgControlStatus, NgControlStatusGroup, MaxLengthValidator, MinValidator, FormGroupDirective, FormControlName, HeaderComponent, DecimalPipe, DatePipe], encapsulation: 2 });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(UsuarioDashboardComponent, [{
     type: Component,
-    args: [{ selector: "app-usuario-dashboard", standalone: true, imports: [CommonModule, ReactiveFormsModule], template: `<div class="dashboard-container">\r
+    args: [{ selector: "app-usuario-dashboard", standalone: true, imports: [CommonModule, ReactiveFormsModule, HeaderComponent], template: `<!-- Header Component -->\r
+<app-header \r
+  currentPage="Meu Portal"\r
+  userName="Usu\xE1rio"\r
+  userRole="CIDAD\xC3O">\r
+</app-header>\r
+\r
+<div class="dashboard-container">\r
   <!-- Header -->\r
   <header class="dashboard-header">\r
     <div>\r
@@ -49076,19 +48686,221 @@ var UsuarioDashboardComponent = class _UsuarioDashboardComponent {
   }], null, null);
 })();
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(UsuarioDashboardComponent, { className: "UsuarioDashboardComponent", filePath: "src/app/pages/usuario/usuario.dashboard.component.ts", lineNumber: 17 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(UsuarioDashboardComponent, { className: "UsuarioDashboardComponent", filePath: "src/app/pages/usuario/usuario.dashboard.component.ts", lineNumber: 18 });
+})();
+
+// src/app/pages/home/home.component.ts
+var HomeComponent = class _HomeComponent {
+  router;
+  constructor(router) {
+    this.router = router;
+  }
+  novaSolicitacao() {
+    this.router.navigate(["/usuario/dashboard"]);
+  }
+  minhasSolicitacoes() {
+    this.router.navigate(["/usuario/dashboard"]);
+  }
+  static \u0275fac = function HomeComponent_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _HomeComponent)(\u0275\u0275directiveInject(Router));
+  };
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _HomeComponent, selectors: [["app-home"]], decls: 147, vars: 0, consts: [["currentPage", "P\xE1gina Inicial", "userName", "Admin PMERJ", "userRole", "ADMINISTRADOR"], [1, "hero-section"], [1, "hero-content"], [1, "hero-main"], [1, "hero-title"], [1, "hero-subtitle"], [1, "hero-description"], [1, "hero-actions"], [1, "btn-primary", 3, "click"], [1, "btn-icon"], [1, "btn-secondary", 3, "click"], [1, "hero-decoration"], [1, "decoration-circle"], [1, "decoration-shield"], [1, "services-section"], [1, "services-content"], [1, "services-header"], [1, "services-title"], [1, "services-subtitle"], [1, "services-grid"], [1, "service-card", "nada-opor-card"], [1, "card-accent", "nada-opor-accent"], [1, "card-header"], [1, "card-icon", "nada-opor-icon"], [1, "fas", "fa-file-alt"], [1, "nav-button", "nada-opor-nav", 3, "click"], [1, "fas", "fa-arrow-right"], [1, "card-content"], [1, "card-title"], [1, "card-description"], [1, "card-tags"], [1, "tag"], [1, "service-card", "palestra-card"], [1, "card-accent", "palestra-accent"], [1, "card-icon", "palestra-icon"], [1, "fas", "fa-chalkboard-teacher"], [1, "nav-button", "palestra-nav", 3, "click"], [1, "about-section"], [1, "about-content"], [1, "about-text"], [1, "about-title"], [1, "about-description"], [1, "features-list"], [1, "feature-item"], [1, "feature-icon"], [1, "fas", "fa-clock"], [1, "feature-text"], [1, "fas", "fa-shield-alt"], [1, "fas", "fa-mobile-alt"], [1, "about-boxes"], [1, "info-box"], [1, "box-number"], [1, "box-label"], [1, "footer"], [1, "footer-content"], [1, "footer-columns"], [1, "footer-column"], [1, "footer-title"], [1, "footer-description"], [1, "contact-info"], [1, "contact-item"], [1, "fas", "fa-phone"], [1, "fas", "fa-envelope"], [1, "fas", "fa-map-marker-alt"], [1, "footer-links"], ["href", "#", 1, "footer-link"], [1, "footer-divider"], [1, "footer-copyright"]], template: function HomeComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      \u0275\u0275element(0, "app-header", 0);
+      \u0275\u0275elementStart(1, "section", 1)(2, "div", 2)(3, "div", 3)(4, "h1", 4);
+      \u0275\u0275text(5, "Solicita\xE7\xE3o PMERJ");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(6, "p", 5);
+      \u0275\u0275text(7, "Sistema de solicita\xE7\xF5es da Pol\xEDcia Militar do Estado do Rio de Janeiro");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(8, "div", 6)(9, "p");
+      \u0275\u0275text(10, "Bem-vindo ao portal oficial da Pol\xEDcia Militar do Estado do Rio de Janeiro. Solicite autoriza\xE7\xF5es para eventos e palestras de forma simples e eficiente.");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(11, "div", 7)(12, "button", 8);
+      \u0275\u0275listener("click", function HomeComponent_Template_button_click_12_listener() {
+        return ctx.novaSolicitacao();
+      });
+      \u0275\u0275elementStart(13, "span", 9);
+      \u0275\u0275text(14, "+");
+      \u0275\u0275elementEnd();
+      \u0275\u0275text(15, " Nova Solicita\xE7\xE3o ");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(16, "button", 10);
+      \u0275\u0275listener("click", function HomeComponent_Template_button_click_16_listener() {
+        return ctx.minhasSolicitacoes();
+      });
+      \u0275\u0275elementStart(17, "span", 9);
+      \u0275\u0275text(18, "\u{1F464}");
+      \u0275\u0275elementEnd();
+      \u0275\u0275text(19, " Minhas Solicita\xE7\xF5es ");
+      \u0275\u0275elementEnd()()();
+      \u0275\u0275elementStart(20, "div", 11)(21, "div", 12)(22, "div", 13);
+      \u0275\u0275text(23, "\u{1F6E1}\uFE0F");
+      \u0275\u0275elementEnd()()()()();
+      \u0275\u0275elementStart(24, "section", 14)(25, "div", 15)(26, "div", 16)(27, "h2", 17);
+      \u0275\u0275text(28, "Nossos Servi\xE7os");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(29, "p", 18);
+      \u0275\u0275text(30, "Escolha o tipo de solicita\xE7\xE3o que melhor atende \xE0s suas necessidades");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(31, "div", 19)(32, "div", 20);
+      \u0275\u0275element(33, "div", 21);
+      \u0275\u0275elementStart(34, "div", 22)(35, "div", 23);
+      \u0275\u0275element(36, "i", 24);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(37, "button", 25);
+      \u0275\u0275listener("click", function HomeComponent_Template_button_click_37_listener() {
+        return ctx.novaSolicitacao();
+      });
+      \u0275\u0275element(38, "i", 26);
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(39, "div", 27)(40, "h3", 28);
+      \u0275\u0275text(41, "Solicitar Nada Opor");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(42, "p", 29);
+      \u0275\u0275text(43, " Solicite autoriza\xE7\xE3o para eventos, manifesta\xE7\xF5es e atividades que requerem autoriza\xE7\xE3o da Pol\xEDcia Militar. ");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(44, "div", 30)(45, "span", 31);
+      \u0275\u0275text(46, "Eventos");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(47, "span", 31);
+      \u0275\u0275text(48, "Manifesta\xE7\xF5es");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(49, "span", 31);
+      \u0275\u0275text(50, "Atividades P\xFAblicas");
+      \u0275\u0275elementEnd()()()();
+      \u0275\u0275elementStart(51, "div", 32);
+      \u0275\u0275element(52, "div", 33);
+      \u0275\u0275elementStart(53, "div", 22)(54, "div", 34);
+      \u0275\u0275element(55, "i", 35);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(56, "button", 36);
+      \u0275\u0275listener("click", function HomeComponent_Template_button_click_56_listener() {
+        return ctx.novaSolicitacao();
+      });
+      \u0275\u0275element(57, "i", 26);
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(58, "div", 27)(59, "h3", 28);
+      \u0275\u0275text(60, "Solicitar Palestra");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(61, "p", 29);
+      \u0275\u0275text(62, " Solicite palestras educativas da PMERJ sobre seguran\xE7a, preven\xE7\xE3o e orienta\xE7\xF5es para sua comunidade. ");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(63, "div", 30)(64, "span", 31);
+      \u0275\u0275text(65, "Educa\xE7\xE3o");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(66, "span", 31);
+      \u0275\u0275text(67, "Preven\xE7\xE3o");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(68, "span", 31);
+      \u0275\u0275text(69, "Seguran\xE7a");
+      \u0275\u0275elementEnd()()()()()()();
+      \u0275\u0275elementStart(70, "section", 37)(71, "div", 38)(72, "div", 39)(73, "h2", 40);
+      \u0275\u0275text(74, "Sobre a Solicita\xE7\xE3o PMERJ");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(75, "p", 41);
+      \u0275\u0275text(76, " A Solicita\xE7\xE3o PMERJ \xE9 uma plataforma digital desenvolvida para facilitar o acesso aos servi\xE7os da Pol\xEDcia Militar do Estado do Rio de Janeiro. Atrav\xE9s deste portal, cidad\xE3os podem solicitar autoriza\xE7\xF5es para eventos e palestras de forma transparente e eficiente. ");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(77, "div", 42)(78, "div", 43)(79, "div", 44);
+      \u0275\u0275element(80, "i", 45);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(81, "span", 46);
+      \u0275\u0275text(82, "Processo R\xE1pido");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(83, "div", 43)(84, "div", 44);
+      \u0275\u0275element(85, "i", 47);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(86, "span", 46);
+      \u0275\u0275text(87, "Seguro e Confi\xE1vel");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(88, "div", 43)(89, "div", 44);
+      \u0275\u0275element(90, "i", 48);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(91, "span", 46);
+      \u0275\u0275text(92, "Acesso Mobile");
+      \u0275\u0275elementEnd()()()();
+      \u0275\u0275elementStart(93, "div", 49)(94, "div", 50)(95, "div", 51);
+      \u0275\u0275text(96, "24/7");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(97, "div", 52);
+      \u0275\u0275text(98, "DISPONIBILIDADE");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(99, "div", 50)(100, "div", 51);
+      \u0275\u0275text(101, "100%");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(102, "div", 52);
+      \u0275\u0275text(103, "DIGITAL");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(104, "div", 50)(105, "div", 51);
+      \u0275\u0275text(106, "PMERJ");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(107, "div", 52);
+      \u0275\u0275text(108, "OFICIAL");
+      \u0275\u0275elementEnd()()()()();
+      \u0275\u0275elementStart(109, "footer", 53)(110, "div", 54)(111, "div", 55)(112, "div", 56)(113, "h3", 57);
+      \u0275\u0275text(114, "Solicita\xE7\xE3o PMERJ");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(115, "p", 58);
+      \u0275\u0275text(116, " Sistema oficial de autoriza\xE7\xF5es e palestras da Pol\xEDcia Militar do Estado do Rio de Janeiro. ");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(117, "div", 56)(118, "h3", 57);
+      \u0275\u0275text(119, "Contato");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(120, "div", 59)(121, "div", 60);
+      \u0275\u0275element(122, "i", 61);
+      \u0275\u0275elementStart(123, "span");
+      \u0275\u0275text(124, "(21) 2334-5000");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(125, "div", 60);
+      \u0275\u0275element(126, "i", 62);
+      \u0275\u0275elementStart(127, "span");
+      \u0275\u0275text(128, "portal@pmerj.rj.gov.br");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(129, "div", 60);
+      \u0275\u0275element(130, "i", 63);
+      \u0275\u0275elementStart(131, "span");
+      \u0275\u0275text(132, "Rio de Janeiro, RJ");
+      \u0275\u0275elementEnd()()()();
+      \u0275\u0275elementStart(133, "div", 56)(134, "h3", 57);
+      \u0275\u0275text(135, "Links \xDAteis");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(136, "div", 64)(137, "a", 65);
+      \u0275\u0275text(138, "Pol\xEDtica de Privacidade");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(139, "a", 65);
+      \u0275\u0275text(140, "Termos de Uso");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(141, "a", 65);
+      \u0275\u0275text(142, "Ajuda");
+      \u0275\u0275elementEnd()()()();
+      \u0275\u0275element(143, "div", 66);
+      \u0275\u0275elementStart(144, "div", 67)(145, "p");
+      \u0275\u0275text(146, "\xA9 2025 Solicita\xE7\xE3o PMERJ. Todos os direitos reservados.");
+      \u0275\u0275elementEnd()()()();
+    }
+  }, dependencies: [CommonModule, HeaderComponent], styles: ["\n\n*[_ngcontent-%COMP%] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.hero-section[_ngcontent-%COMP%] {\n  background:\n    linear-gradient(\n      135deg,\n      #197cb1 0%,\n      #1565c0 50%,\n      #0d47a1 100%);\n  min-height: 80vh;\n  display: flex;\n  align-items: center;\n  position: relative;\n  overflow: hidden;\n}\n.hero-content[_ngcontent-%COMP%] {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 4rem 2rem;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 4rem;\n  align-items: center;\n  position: relative;\n  z-index: 2;\n}\n.hero-main[_ngcontent-%COMP%] {\n  color: white;\n}\n.hero-title[_ngcontent-%COMP%] {\n  font-size: 3.5rem;\n  font-weight: 700;\n  line-height: 1.1;\n  margin-bottom: 1rem;\n  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  color: white;\n}\n.hero-subtitle[_ngcontent-%COMP%] {\n  font-size: 1.25rem;\n  font-weight: 500;\n  margin-bottom: 2rem;\n  opacity: 0.9;\n  line-height: 1.4;\n  color: white;\n}\n.hero-description[_ngcontent-%COMP%] {\n  margin-bottom: 3rem;\n}\n.hero-description[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-size: 1.125rem;\n  line-height: 1.6;\n  opacity: 0.9;\n  max-width: 500px;\n  color: white;\n}\n.hero-actions[_ngcontent-%COMP%] {\n  display: flex;\n  gap: 1rem;\n  flex-wrap: wrap;\n}\n.btn-primary[_ngcontent-%COMP%] {\n  background: #fbbf24;\n  color: #197cb1;\n  border: none;\n  padding: 1rem 2rem;\n  border-radius: 0.75rem;\n  font-size: 1rem;\n  font-weight: 600;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  gap: 0.5rem;\n  transition: all 0.2s ease;\n  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);\n}\n.btn-primary[_ngcontent-%COMP%]:hover {\n  background: #f59e0b;\n  transform: translateY(-2px);\n  box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);\n}\n.btn-secondary[_ngcontent-%COMP%] {\n  background: transparent;\n  color: white;\n  border: 2px solid rgba(255, 255, 255, 0.3);\n  padding: 1rem 2rem;\n  border-radius: 0.75rem;\n  font-size: 1rem;\n  font-weight: 600;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  gap: 0.5rem;\n  transition: all 0.2s ease;\n  -webkit-backdrop-filter: blur(10px);\n  backdrop-filter: blur(10px);\n}\n.btn-secondary[_ngcontent-%COMP%]:hover {\n  background: rgba(255, 255, 255, 0.1);\n  border-color: rgba(255, 255, 255, 0.5);\n  transform: translateY(-2px);\n}\n.btn-icon[_ngcontent-%COMP%] {\n  font-size: 1.25rem;\n  font-weight: bold;\n}\n.hero-decoration[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.decoration-circle[_ngcontent-%COMP%] {\n  width: 300px;\n  height: 300px;\n  background: rgba(255, 255, 255, 0.1);\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  -webkit-backdrop-filter: blur(10px);\n  backdrop-filter: blur(10px);\n  border: 2px solid rgba(255, 255, 255, 0.2);\n  position: relative;\n}\n.decoration-shield[_ngcontent-%COMP%] {\n  font-size: 6rem;\n  color: #fbbf24;\n  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));\n}\n.services-section[_ngcontent-%COMP%] {\n  background: white;\n  padding: 6rem 2rem;\n  min-height: 60vh;\n  display: flex;\n  align-items: center;\n}\n.services-content[_ngcontent-%COMP%] {\n  max-width: 1200px;\n  margin: 0 auto;\n  width: 100%;\n}\n.services-header[_ngcontent-%COMP%] {\n  text-align: center;\n  margin-bottom: 4rem;\n}\n.services-title[_ngcontent-%COMP%] {\n  font-size: 2.5rem;\n  font-weight: 700;\n  color: var(--gray-900);\n  margin-bottom: 1rem;\n}\n.services-subtitle[_ngcontent-%COMP%] {\n  font-size: 1.125rem;\n  color: var(--gray-600);\n  max-width: 600px;\n  margin: 0 auto;\n  line-height: 1.6;\n}\n.services-grid[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 3rem;\n  max-width: 1000px;\n  margin: 0 auto;\n}\n.service-card[_ngcontent-%COMP%] {\n  background: white;\n  border-radius: 1rem;\n  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);\n  overflow: hidden;\n  position: relative;\n  transition: all 0.3s ease;\n  border: 1px solid var(--gray-200);\n}\n.service-card[_ngcontent-%COMP%]:hover {\n  transform: translateY(-8px);\n  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);\n}\n.card-accent[_ngcontent-%COMP%] {\n  height: 6px;\n  width: 100%;\n}\n.nada-opor-accent[_ngcontent-%COMP%] {\n  background:\n    linear-gradient(\n      90deg,\n      #197cb1 0%,\n      #1565c0 100%);\n}\n.palestra-accent[_ngcontent-%COMP%] {\n  background:\n    linear-gradient(\n      90deg,\n      #fbbf24 0%,\n      #f59e0b 100%);\n}\n.card-header[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  padding: 2rem 2rem 0 2rem;\n}\n.card-icon[_ngcontent-%COMP%] {\n  width: 4rem;\n  height: 4rem;\n  border-radius: 1rem;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 1.5rem;\n  color: white;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\n}\n.nada-opor-icon[_ngcontent-%COMP%] {\n  background:\n    linear-gradient(\n      135deg,\n      #197cb1 0%,\n      #1565c0 100%);\n}\n.palestra-icon[_ngcontent-%COMP%] {\n  background:\n    linear-gradient(\n      135deg,\n      #fbbf24 0%,\n      #f59e0b 100%);\n}\n.nav-button[_ngcontent-%COMP%] {\n  width: 2.5rem;\n  height: 2.5rem;\n  border-radius: 50%;\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: all 0.2s ease;\n  font-size: 0.875rem;\n  color: white;\n}\n.nada-opor-nav[_ngcontent-%COMP%] {\n  background: #197cb1;\n}\n.nada-opor-nav[_ngcontent-%COMP%]:hover {\n  background: #1565c0;\n  transform: scale(1.1);\n}\n.palestra-nav[_ngcontent-%COMP%] {\n  background: #fbbf24;\n}\n.palestra-nav[_ngcontent-%COMP%]:hover {\n  background: #f59e0b;\n  transform: scale(1.1);\n}\n.card-content[_ngcontent-%COMP%] {\n  padding: 1.5rem 2rem 2rem 2rem;\n}\n.card-title[_ngcontent-%COMP%] {\n  font-size: 1.5rem;\n  font-weight: 700;\n  color: var(--gray-900);\n  margin-bottom: 1rem;\n}\n.card-description[_ngcontent-%COMP%] {\n  font-size: 1rem;\n  color: var(--gray-600);\n  line-height: 1.6;\n  margin-bottom: 1.5rem;\n}\n.card-tags[_ngcontent-%COMP%] {\n  display: flex;\n  gap: 0.5rem;\n  flex-wrap: wrap;\n}\n.tag[_ngcontent-%COMP%] {\n  background: #fbbf24;\n  color: #197cb1;\n  padding: 0.375rem 0.75rem;\n  border-radius: 2rem;\n  font-size: 0.75rem;\n  font-weight: 600;\n  text-transform: uppercase;\n  letter-spacing: 0.025em;\n}\n.about-section[_ngcontent-%COMP%] {\n  background: white;\n  padding: 6rem 2rem;\n  min-height: 60vh;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.about-content[_ngcontent-%COMP%] {\n  max-width: 1200px;\n  margin: 0 auto;\n  width: 100%;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 4rem;\n  align-items: center;\n}\n.about-text[_ngcontent-%COMP%] {\n  max-width: 100%;\n}\n.about-title[_ngcontent-%COMP%] {\n  font-size: 2.5rem;\n  font-weight: 700;\n  color: var(--gray-900);\n  margin-bottom: 1.5rem;\n  line-height: 1.2;\n}\n.about-description[_ngcontent-%COMP%] {\n  font-size: 1.125rem;\n  color: var(--gray-600);\n  line-height: 1.7;\n  margin-bottom: 2.5rem;\n}\n.features-list[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 1.5rem;\n}\n.feature-item[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.feature-icon[_ngcontent-%COMP%] {\n  width: 2.5rem;\n  height: 2.5rem;\n  background: #fbbf24;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: #197cb1;\n  font-size: 1rem;\n  flex-shrink: 0;\n}\n.feature-text[_ngcontent-%COMP%] {\n  font-size: 1.125rem;\n  font-weight: 600;\n  color: var(--gray-800);\n}\n.about-boxes[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 1.5rem;\n  max-width: 300px;\n  margin: 0 auto;\n}\n.info-box[_ngcontent-%COMP%] {\n  background: #fbbf24;\n  border: 2px solid #197cb1;\n  border-radius: 0.75rem;\n  padding: 2rem;\n  text-align: center;\n  transition: all 0.3s ease;\n}\n.info-box[_ngcontent-%COMP%]:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 8px 25px rgba(251, 191, 36, 0.3);\n}\n.box-number[_ngcontent-%COMP%] {\n  font-size: 2.5rem;\n  font-weight: 800;\n  color: white;\n  margin-bottom: 0.5rem;\n  line-height: 1;\n}\n.box-label[_ngcontent-%COMP%] {\n  font-size: 0.875rem;\n  font-weight: 600;\n  color: var(--gray-800);\n  text-transform: uppercase;\n  letter-spacing: 0.05em;\n}\n.footer[_ngcontent-%COMP%] {\n  background: #1a1a1a;\n  color: white;\n  padding: 4rem 2rem 2rem 2rem;\n}\n.footer-content[_ngcontent-%COMP%] {\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.footer-columns[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr;\n  gap: 3rem;\n  margin-bottom: 3rem;\n}\n.footer-column[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n.footer-title[_ngcontent-%COMP%] {\n  font-size: 1.5rem;\n  font-weight: 700;\n  color: #fbbf24;\n  margin-bottom: 1rem;\n}\n.footer-description[_ngcontent-%COMP%] {\n  font-size: 1rem;\n  color: white;\n  line-height: 1.6;\n  opacity: 0.9;\n}\n.contact-info[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n.contact-item[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n  font-size: 1rem;\n  color: white;\n  opacity: 0.9;\n}\n.contact-item[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  color: #fbbf24;\n  font-size: 1rem;\n  width: 1rem;\n  text-align: center;\n}\n.footer-links[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 0.75rem;\n}\n.footer-link[_ngcontent-%COMP%] {\n  color: white;\n  text-decoration: none;\n  font-size: 1rem;\n  opacity: 0.9;\n  transition: all 0.2s ease;\n}\n.footer-link[_ngcontent-%COMP%]:hover {\n  color: #fbbf24;\n  opacity: 1;\n}\n.footer-divider[_ngcontent-%COMP%] {\n  height: 1px;\n  background: #333;\n  margin: 2rem 0;\n}\n.footer-copyright[_ngcontent-%COMP%] {\n  text-align: center;\n  padding-top: 2rem;\n}\n.footer-copyright[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  font-size: 0.9rem;\n  color: white;\n  opacity: 0.8;\n}\n@media (max-width: 1024px) {\n  .hero-content[_ngcontent-%COMP%] {\n    grid-template-columns: 1fr;\n    text-align: center;\n    gap: 2rem;\n  }\n  .hero-title[_ngcontent-%COMP%] {\n    font-size: 2.5rem;\n  }\n  .decoration-circle[_ngcontent-%COMP%] {\n    width: 200px;\n    height: 200px;\n  }\n  .decoration-shield[_ngcontent-%COMP%] {\n    font-size: 4rem;\n  }\n  .services-grid[_ngcontent-%COMP%] {\n    grid-template-columns: 1fr;\n    gap: 2rem;\n  }\n  .about-content[_ngcontent-%COMP%] {\n    grid-template-columns: 1fr;\n    gap: 3rem;\n    text-align: center;\n  }\n  .about-text[_ngcontent-%COMP%] {\n    max-width: 100%;\n  }\n  .features-list[_ngcontent-%COMP%] {\n    align-items: center;\n  }\n  .feature-item[_ngcontent-%COMP%] {\n    justify-content: center;\n  }\n  .footer-columns[_ngcontent-%COMP%] {\n    grid-template-columns: 1fr;\n    gap: 2rem;\n    text-align: center;\n  }\n}\n@media (max-width: 768px) {\n  .hero-content[_ngcontent-%COMP%] {\n    padding: 2rem 1rem;\n  }\n  .hero-title[_ngcontent-%COMP%] {\n    font-size: 2rem;\n  }\n  .hero-actions[_ngcontent-%COMP%] {\n    justify-content: center;\n  }\n  .btn-primary[_ngcontent-%COMP%], \n   .btn-secondary[_ngcontent-%COMP%] {\n    width: 100%;\n    justify-content: center;\n  }\n  .services-section[_ngcontent-%COMP%], \n   .about-section[_ngcontent-%COMP%] {\n    padding: 4rem 1rem;\n  }\n  .services-title[_ngcontent-%COMP%], \n   .about-title[_ngcontent-%COMP%] {\n    font-size: 2rem;\n  }\n  .card-header[_ngcontent-%COMP%] {\n    padding: 1.5rem 1.5rem 0 1.5rem;\n  }\n  .card-content[_ngcontent-%COMP%] {\n    padding: 1rem 1.5rem 1.5rem 1.5rem;\n  }\n  .info-box[_ngcontent-%COMP%] {\n    padding: 1.5rem;\n  }\n  .box-number[_ngcontent-%COMP%] {\n    font-size: 2rem;\n  }\n  .footer[_ngcontent-%COMP%] {\n    padding: 3rem 1rem 1.5rem 1rem;\n  }\n  .footer-title[_ngcontent-%COMP%] {\n    font-size: 1.25rem;\n  }\n}\n@media (max-width: 480px) {\n  .hero-title[_ngcontent-%COMP%] {\n    font-size: 1.75rem;\n  }\n  .hero-subtitle[_ngcontent-%COMP%] {\n    font-size: 1rem;\n  }\n  .decoration-circle[_ngcontent-%COMP%] {\n    width: 150px;\n    height: 150px;\n  }\n  .decoration-shield[_ngcontent-%COMP%] {\n    font-size: 3rem;\n  }\n  .services-title[_ngcontent-%COMP%], \n   .about-title[_ngcontent-%COMP%] {\n    font-size: 1.75rem;\n  }\n  .card-icon[_ngcontent-%COMP%] {\n    width: 3rem;\n    height: 3rem;\n    font-size: 1.25rem;\n  }\n  .nav-button[_ngcontent-%COMP%] {\n    width: 2rem;\n    height: 2rem;\n    font-size: 0.75rem;\n  }\n  .feature-icon[_ngcontent-%COMP%] {\n    width: 2rem;\n    height: 2rem;\n    font-size: 0.875rem;\n  }\n  .feature-text[_ngcontent-%COMP%] {\n    font-size: 1rem;\n  }\n  .info-box[_ngcontent-%COMP%] {\n    padding: 1rem;\n  }\n  .box-number[_ngcontent-%COMP%] {\n    font-size: 1.75rem;\n  }\n  .box-label[_ngcontent-%COMP%] {\n    font-size: 0.75rem;\n  }\n  .footer-title[_ngcontent-%COMP%] {\n    font-size: 1.125rem;\n  }\n  .footer-description[_ngcontent-%COMP%], \n   .contact-item[_ngcontent-%COMP%], \n   .footer-link[_ngcontent-%COMP%] {\n    font-size: 0.875rem;\n  }\n}\n/*# sourceMappingURL=home.component.css.map */"] });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(HomeComponent, [{
+    type: Component,
+    args: [{ selector: "app-home", standalone: true, imports: [CommonModule, HeaderComponent], template: '<!-- Header Component -->\r\n<app-header \r\n  currentPage="P\xE1gina Inicial"\r\n  userName="Admin PMERJ"\r\n  userRole="ADMINISTRADOR">\r\n</app-header>\r\n\r\n<!-- Primeira Dobra - Hero Section -->\r\n<section class="hero-section">\r\n  <div class="hero-content">\r\n    <!-- Conte\xFAdo Principal -->\r\n    <div class="hero-main">\r\n      <h1 class="hero-title">Solicita\xE7\xE3o PMERJ</h1>\r\n      <p class="hero-subtitle">Sistema de solicita\xE7\xF5es da Pol\xEDcia Militar do Estado do Rio de Janeiro</p>\r\n      \r\n      <div class="hero-description">\r\n        <p>Bem-vindo ao portal oficial da Pol\xEDcia Militar do Estado do Rio de Janeiro. Solicite autoriza\xE7\xF5es para eventos e palestras de forma simples e eficiente.</p>\r\n      </div>\r\n\r\n      <!-- Bot\xF5es de A\xE7\xE3o -->\r\n      <div class="hero-actions">\r\n        <button class="btn-primary" (click)="novaSolicitacao()">\r\n          <span class="btn-icon">+</span>\r\n          Nova Solicita\xE7\xE3o\r\n        </button>\r\n        <button class="btn-secondary" (click)="minhasSolicitacoes()">\r\n          <span class="btn-icon">\u{1F464}</span>\r\n          Minhas Solicita\xE7\xF5es\r\n        </button>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- Elemento Decorativo -->\r\n    <div class="hero-decoration">\r\n      <div class="decoration-circle">\r\n        <div class="decoration-shield">\u{1F6E1}\uFE0F</div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n\r\n\r\n<!-- Segunda Dobra - Nossos Servi\xE7os -->\r\n<section class="services-section">\r\n  <div class="services-content">\r\n    <!-- Header da Se\xE7\xE3o -->\r\n    <div class="services-header">\r\n      <h2 class="services-title">Nossos Servi\xE7os</h2>\r\n      <p class="services-subtitle">Escolha o tipo de solicita\xE7\xE3o que melhor atende \xE0s suas necessidades</p>\r\n    </div>\r\n\r\n    <!-- Cards de Servi\xE7os -->\r\n    <div class="services-grid">\r\n      <!-- Card: Solicitar Nada Opor -->\r\n      <div class="service-card nada-opor-card">\r\n        <div class="card-accent nada-opor-accent"></div>\r\n        <div class="card-header">\r\n          <div class="card-icon nada-opor-icon">\r\n            <i class="fas fa-file-alt"></i>\r\n          </div>\r\n          <button class="nav-button nada-opor-nav" (click)="novaSolicitacao()">\r\n            <i class="fas fa-arrow-right"></i>\r\n          </button>\r\n        </div>\r\n        \r\n        <div class="card-content">\r\n          <h3 class="card-title">Solicitar Nada Opor</h3>\r\n          <p class="card-description">\r\n            Solicite autoriza\xE7\xE3o para eventos, manifesta\xE7\xF5es e atividades que requerem autoriza\xE7\xE3o da Pol\xEDcia Militar.\r\n          </p>\r\n          \r\n          <div class="card-tags">\r\n            <span class="tag">Eventos</span>\r\n            <span class="tag">Manifesta\xE7\xF5es</span>\r\n            <span class="tag">Atividades P\xFAblicas</span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <!-- Card: Solicitar Palestra -->\r\n      <div class="service-card palestra-card">\r\n        <div class="card-accent palestra-accent"></div>\r\n        <div class="card-header">\r\n          <div class="card-icon palestra-icon">\r\n            <i class="fas fa-chalkboard-teacher"></i>\r\n          </div>\r\n          <button class="nav-button palestra-nav" (click)="novaSolicitacao()">\r\n            <i class="fas fa-arrow-right"></i>\r\n          </button>\r\n        </div>\r\n        \r\n        <div class="card-content">\r\n          <h3 class="card-title">Solicitar Palestra</h3>\r\n          <p class="card-description">\r\n            Solicite palestras educativas da PMERJ sobre seguran\xE7a, preven\xE7\xE3o e orienta\xE7\xF5es para sua comunidade.\r\n          </p>\r\n          \r\n          <div class="card-tags">\r\n            <span class="tag">Educa\xE7\xE3o</span>\r\n            <span class="tag">Preven\xE7\xE3o</span>\r\n            <span class="tag">Seguran\xE7a</span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n\r\n<!-- Terceira Dobra - Sobre a Solicita\xE7\xE3o PMERJ -->\r\n<section class="about-section">\r\n  <div class="about-content">\r\n    <!-- Se\xE7\xE3o de Texto (Esquerda) -->\r\n    <div class="about-text">\r\n      <h2 class="about-title">Sobre a Solicita\xE7\xE3o PMERJ</h2>\r\n      <p class="about-description">\r\n        A Solicita\xE7\xE3o PMERJ \xE9 uma plataforma digital desenvolvida para facilitar o acesso aos servi\xE7os da Pol\xEDcia Militar do Estado do Rio de Janeiro. Atrav\xE9s deste portal, cidad\xE3os podem solicitar autoriza\xE7\xF5es para eventos e palestras de forma transparente e eficiente.\r\n      </p>\r\n      \r\n      <!-- Lista de Recursos -->\r\n      <div class="features-list">\r\n        <div class="feature-item">\r\n          <div class="feature-icon">\r\n            <i class="fas fa-clock"></i>\r\n          </div>\r\n          <span class="feature-text">Processo R\xE1pido</span>\r\n        </div>\r\n        \r\n        <div class="feature-item">\r\n          <div class="feature-icon">\r\n            <i class="fas fa-shield-alt"></i>\r\n          </div>\r\n          <span class="feature-text">Seguro e Confi\xE1vel</span>\r\n        </div>\r\n        \r\n        <div class="feature-item">\r\n          <div class="feature-icon">\r\n            <i class="fas fa-mobile-alt"></i>\r\n          </div>\r\n          <span class="feature-text">Acesso Mobile</span>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- Se\xE7\xE3o de Caixas (Direita) -->\r\n    <div class="about-boxes">\r\n      <!-- Caixa 1: 24/7 -->\r\n      <div class="info-box">\r\n        <div class="box-number">24/7</div>\r\n        <div class="box-label">DISPONIBILIDADE</div>\r\n      </div>\r\n      \r\n      <!-- Caixa 2: 100% -->\r\n      <div class="info-box">\r\n        <div class="box-number">100%</div>\r\n        <div class="box-label">DIGITAL</div>\r\n      </div>\r\n      \r\n      <!-- Caixa 3: PMERJ -->\r\n      <div class="info-box">\r\n        <div class="box-number">PMERJ</div>\r\n        <div class="box-label">OFICIAL</div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n\r\n<!-- Footer -->\r\n<footer class="footer">\r\n  <div class="footer-content">\r\n    <!-- Colunas Principais -->\r\n    <div class="footer-columns">\r\n      <!-- Coluna 1: Solicita\xE7\xE3o PMERJ -->\r\n      <div class="footer-column">\r\n        <h3 class="footer-title">Solicita\xE7\xE3o PMERJ</h3>\r\n        <p class="footer-description">\r\n          Sistema oficial de autoriza\xE7\xF5es e palestras da Pol\xEDcia Militar do Estado do Rio de Janeiro.\r\n        </p>\r\n      </div>\r\n\r\n      <!-- Coluna 2: Contato -->\r\n      <div class="footer-column">\r\n        <h3 class="footer-title">Contato</h3>\r\n        <div class="contact-info">\r\n          <div class="contact-item">\r\n            <i class="fas fa-phone"></i>\r\n            <span>(21) 2334-5000</span>\r\n          </div>\r\n          <div class="contact-item">\r\n            <i class="fas fa-envelope"></i>\r\n            <span>portal@pmerj.rj.gov.br</span>\r\n          </div>\r\n          <div class="contact-item">\r\n            <i class="fas fa-map-marker-alt"></i>\r\n            <span>Rio de Janeiro, RJ</span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <!-- Coluna 3: Links \xDAteis -->\r\n      <div class="footer-column">\r\n        <h3 class="footer-title">Links \xDAteis</h3>\r\n        <div class="footer-links">\r\n          <a href="#" class="footer-link">Pol\xEDtica de Privacidade</a>\r\n          <a href="#" class="footer-link">Termos de Uso</a>\r\n          <a href="#" class="footer-link">Ajuda</a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- Linha Separadora -->\r\n    <div class="footer-divider"></div>\r\n\r\n    <!-- Copyright -->\r\n    <div class="footer-copyright">\r\n      <p>\xA9 2025 Solicita\xE7\xE3o PMERJ. Todos os direitos reservados.</p>\r\n    </div>\r\n  </div>\r\n</footer>\r\n', styles: ["/* src/app/pages/home/home.component.css */\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.hero-section {\n  background:\n    linear-gradient(\n      135deg,\n      #197cb1 0%,\n      #1565c0 50%,\n      #0d47a1 100%);\n  min-height: 80vh;\n  display: flex;\n  align-items: center;\n  position: relative;\n  overflow: hidden;\n}\n.hero-content {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 4rem 2rem;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 4rem;\n  align-items: center;\n  position: relative;\n  z-index: 2;\n}\n.hero-main {\n  color: white;\n}\n.hero-title {\n  font-size: 3.5rem;\n  font-weight: 700;\n  line-height: 1.1;\n  margin-bottom: 1rem;\n  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n  color: white;\n}\n.hero-subtitle {\n  font-size: 1.25rem;\n  font-weight: 500;\n  margin-bottom: 2rem;\n  opacity: 0.9;\n  line-height: 1.4;\n  color: white;\n}\n.hero-description {\n  margin-bottom: 3rem;\n}\n.hero-description p {\n  font-size: 1.125rem;\n  line-height: 1.6;\n  opacity: 0.9;\n  max-width: 500px;\n  color: white;\n}\n.hero-actions {\n  display: flex;\n  gap: 1rem;\n  flex-wrap: wrap;\n}\n.btn-primary {\n  background: #fbbf24;\n  color: #197cb1;\n  border: none;\n  padding: 1rem 2rem;\n  border-radius: 0.75rem;\n  font-size: 1rem;\n  font-weight: 600;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  gap: 0.5rem;\n  transition: all 0.2s ease;\n  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);\n}\n.btn-primary:hover {\n  background: #f59e0b;\n  transform: translateY(-2px);\n  box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);\n}\n.btn-secondary {\n  background: transparent;\n  color: white;\n  border: 2px solid rgba(255, 255, 255, 0.3);\n  padding: 1rem 2rem;\n  border-radius: 0.75rem;\n  font-size: 1rem;\n  font-weight: 600;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  gap: 0.5rem;\n  transition: all 0.2s ease;\n  -webkit-backdrop-filter: blur(10px);\n  backdrop-filter: blur(10px);\n}\n.btn-secondary:hover {\n  background: rgba(255, 255, 255, 0.1);\n  border-color: rgba(255, 255, 255, 0.5);\n  transform: translateY(-2px);\n}\n.btn-icon {\n  font-size: 1.25rem;\n  font-weight: bold;\n}\n.hero-decoration {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.decoration-circle {\n  width: 300px;\n  height: 300px;\n  background: rgba(255, 255, 255, 0.1);\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  -webkit-backdrop-filter: blur(10px);\n  backdrop-filter: blur(10px);\n  border: 2px solid rgba(255, 255, 255, 0.2);\n  position: relative;\n}\n.decoration-shield {\n  font-size: 6rem;\n  color: #fbbf24;\n  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));\n}\n.services-section {\n  background: white;\n  padding: 6rem 2rem;\n  min-height: 60vh;\n  display: flex;\n  align-items: center;\n}\n.services-content {\n  max-width: 1200px;\n  margin: 0 auto;\n  width: 100%;\n}\n.services-header {\n  text-align: center;\n  margin-bottom: 4rem;\n}\n.services-title {\n  font-size: 2.5rem;\n  font-weight: 700;\n  color: var(--gray-900);\n  margin-bottom: 1rem;\n}\n.services-subtitle {\n  font-size: 1.125rem;\n  color: var(--gray-600);\n  max-width: 600px;\n  margin: 0 auto;\n  line-height: 1.6;\n}\n.services-grid {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 3rem;\n  max-width: 1000px;\n  margin: 0 auto;\n}\n.service-card {\n  background: white;\n  border-radius: 1rem;\n  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);\n  overflow: hidden;\n  position: relative;\n  transition: all 0.3s ease;\n  border: 1px solid var(--gray-200);\n}\n.service-card:hover {\n  transform: translateY(-8px);\n  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);\n}\n.card-accent {\n  height: 6px;\n  width: 100%;\n}\n.nada-opor-accent {\n  background:\n    linear-gradient(\n      90deg,\n      #197cb1 0%,\n      #1565c0 100%);\n}\n.palestra-accent {\n  background:\n    linear-gradient(\n      90deg,\n      #fbbf24 0%,\n      #f59e0b 100%);\n}\n.card-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: flex-start;\n  padding: 2rem 2rem 0 2rem;\n}\n.card-icon {\n  width: 4rem;\n  height: 4rem;\n  border-radius: 1rem;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 1.5rem;\n  color: white;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\n}\n.nada-opor-icon {\n  background:\n    linear-gradient(\n      135deg,\n      #197cb1 0%,\n      #1565c0 100%);\n}\n.palestra-icon {\n  background:\n    linear-gradient(\n      135deg,\n      #fbbf24 0%,\n      #f59e0b 100%);\n}\n.nav-button {\n  width: 2.5rem;\n  height: 2.5rem;\n  border-radius: 50%;\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: all 0.2s ease;\n  font-size: 0.875rem;\n  color: white;\n}\n.nada-opor-nav {\n  background: #197cb1;\n}\n.nada-opor-nav:hover {\n  background: #1565c0;\n  transform: scale(1.1);\n}\n.palestra-nav {\n  background: #fbbf24;\n}\n.palestra-nav:hover {\n  background: #f59e0b;\n  transform: scale(1.1);\n}\n.card-content {\n  padding: 1.5rem 2rem 2rem 2rem;\n}\n.card-title {\n  font-size: 1.5rem;\n  font-weight: 700;\n  color: var(--gray-900);\n  margin-bottom: 1rem;\n}\n.card-description {\n  font-size: 1rem;\n  color: var(--gray-600);\n  line-height: 1.6;\n  margin-bottom: 1.5rem;\n}\n.card-tags {\n  display: flex;\n  gap: 0.5rem;\n  flex-wrap: wrap;\n}\n.tag {\n  background: #fbbf24;\n  color: #197cb1;\n  padding: 0.375rem 0.75rem;\n  border-radius: 2rem;\n  font-size: 0.75rem;\n  font-weight: 600;\n  text-transform: uppercase;\n  letter-spacing: 0.025em;\n}\n.about-section {\n  background: white;\n  padding: 6rem 2rem;\n  min-height: 60vh;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.about-content {\n  max-width: 1200px;\n  margin: 0 auto;\n  width: 100%;\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 4rem;\n  align-items: center;\n}\n.about-text {\n  max-width: 100%;\n}\n.about-title {\n  font-size: 2.5rem;\n  font-weight: 700;\n  color: var(--gray-900);\n  margin-bottom: 1.5rem;\n  line-height: 1.2;\n}\n.about-description {\n  font-size: 1.125rem;\n  color: var(--gray-600);\n  line-height: 1.7;\n  margin-bottom: 2.5rem;\n}\n.features-list {\n  display: flex;\n  flex-direction: column;\n  gap: 1.5rem;\n}\n.feature-item {\n  display: flex;\n  align-items: center;\n  gap: 1rem;\n}\n.feature-icon {\n  width: 2.5rem;\n  height: 2.5rem;\n  background: #fbbf24;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: #197cb1;\n  font-size: 1rem;\n  flex-shrink: 0;\n}\n.feature-text {\n  font-size: 1.125rem;\n  font-weight: 600;\n  color: var(--gray-800);\n}\n.about-boxes {\n  display: flex;\n  flex-direction: column;\n  gap: 1.5rem;\n  max-width: 300px;\n  margin: 0 auto;\n}\n.info-box {\n  background: #fbbf24;\n  border: 2px solid #197cb1;\n  border-radius: 0.75rem;\n  padding: 2rem;\n  text-align: center;\n  transition: all 0.3s ease;\n}\n.info-box:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 8px 25px rgba(251, 191, 36, 0.3);\n}\n.box-number {\n  font-size: 2.5rem;\n  font-weight: 800;\n  color: white;\n  margin-bottom: 0.5rem;\n  line-height: 1;\n}\n.box-label {\n  font-size: 0.875rem;\n  font-weight: 600;\n  color: var(--gray-800);\n  text-transform: uppercase;\n  letter-spacing: 0.05em;\n}\n.footer {\n  background: #1a1a1a;\n  color: white;\n  padding: 4rem 2rem 2rem 2rem;\n}\n.footer-content {\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.footer-columns {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr;\n  gap: 3rem;\n  margin-bottom: 3rem;\n}\n.footer-column {\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n.footer-title {\n  font-size: 1.5rem;\n  font-weight: 700;\n  color: #fbbf24;\n  margin-bottom: 1rem;\n}\n.footer-description {\n  font-size: 1rem;\n  color: white;\n  line-height: 1.6;\n  opacity: 0.9;\n}\n.contact-info {\n  display: flex;\n  flex-direction: column;\n  gap: 1rem;\n}\n.contact-item {\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n  font-size: 1rem;\n  color: white;\n  opacity: 0.9;\n}\n.contact-item i {\n  color: #fbbf24;\n  font-size: 1rem;\n  width: 1rem;\n  text-align: center;\n}\n.footer-links {\n  display: flex;\n  flex-direction: column;\n  gap: 0.75rem;\n}\n.footer-link {\n  color: white;\n  text-decoration: none;\n  font-size: 1rem;\n  opacity: 0.9;\n  transition: all 0.2s ease;\n}\n.footer-link:hover {\n  color: #fbbf24;\n  opacity: 1;\n}\n.footer-divider {\n  height: 1px;\n  background: #333;\n  margin: 2rem 0;\n}\n.footer-copyright {\n  text-align: center;\n  padding-top: 2rem;\n}\n.footer-copyright p {\n  font-size: 0.9rem;\n  color: white;\n  opacity: 0.8;\n}\n@media (max-width: 1024px) {\n  .hero-content {\n    grid-template-columns: 1fr;\n    text-align: center;\n    gap: 2rem;\n  }\n  .hero-title {\n    font-size: 2.5rem;\n  }\n  .decoration-circle {\n    width: 200px;\n    height: 200px;\n  }\n  .decoration-shield {\n    font-size: 4rem;\n  }\n  .services-grid {\n    grid-template-columns: 1fr;\n    gap: 2rem;\n  }\n  .about-content {\n    grid-template-columns: 1fr;\n    gap: 3rem;\n    text-align: center;\n  }\n  .about-text {\n    max-width: 100%;\n  }\n  .features-list {\n    align-items: center;\n  }\n  .feature-item {\n    justify-content: center;\n  }\n  .footer-columns {\n    grid-template-columns: 1fr;\n    gap: 2rem;\n    text-align: center;\n  }\n}\n@media (max-width: 768px) {\n  .hero-content {\n    padding: 2rem 1rem;\n  }\n  .hero-title {\n    font-size: 2rem;\n  }\n  .hero-actions {\n    justify-content: center;\n  }\n  .btn-primary,\n  .btn-secondary {\n    width: 100%;\n    justify-content: center;\n  }\n  .services-section,\n  .about-section {\n    padding: 4rem 1rem;\n  }\n  .services-title,\n  .about-title {\n    font-size: 2rem;\n  }\n  .card-header {\n    padding: 1.5rem 1.5rem 0 1.5rem;\n  }\n  .card-content {\n    padding: 1rem 1.5rem 1.5rem 1.5rem;\n  }\n  .info-box {\n    padding: 1.5rem;\n  }\n  .box-number {\n    font-size: 2rem;\n  }\n  .footer {\n    padding: 3rem 1rem 1.5rem 1rem;\n  }\n  .footer-title {\n    font-size: 1.25rem;\n  }\n}\n@media (max-width: 480px) {\n  .hero-title {\n    font-size: 1.75rem;\n  }\n  .hero-subtitle {\n    font-size: 1rem;\n  }\n  .decoration-circle {\n    width: 150px;\n    height: 150px;\n  }\n  .decoration-shield {\n    font-size: 3rem;\n  }\n  .services-title,\n  .about-title {\n    font-size: 1.75rem;\n  }\n  .card-icon {\n    width: 3rem;\n    height: 3rem;\n    font-size: 1.25rem;\n  }\n  .nav-button {\n    width: 2rem;\n    height: 2rem;\n    font-size: 0.75rem;\n  }\n  .feature-icon {\n    width: 2rem;\n    height: 2rem;\n    font-size: 0.875rem;\n  }\n  .feature-text {\n    font-size: 1rem;\n  }\n  .info-box {\n    padding: 1rem;\n  }\n  .box-number {\n    font-size: 1.75rem;\n  }\n  .box-label {\n    font-size: 0.75rem;\n  }\n  .footer-title {\n    font-size: 1.125rem;\n  }\n  .footer-description,\n  .contact-item,\n  .footer-link {\n    font-size: 0.875rem;\n  }\n}\n/*# sourceMappingURL=home.component.css.map */\n"] }]
+  }], () => [{ type: Router }], null);
+})();
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(HomeComponent, { className: "HomeComponent", filePath: "src/app/pages/home/home.component.ts", lineNumber: 13 });
 })();
 
 // src/app/app.routes.ts
 var routes = [
+  { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
   // CIDADÃO
   { path: "usuario/dashboard", component: UsuarioDashboardComponent, canActivate: [authGuard] },
   // ADMIN
   { path: "admin/dashboard", component: AdminDashboardComponent, canActivate: [authGuard, adminGuard] },
   // defaults
-  { path: "", redirectTo: "login", pathMatch: "full" },
-  { path: "**", redirectTo: "login" }
+  { path: "", redirectTo: "home", pathMatch: "full" },
+  { path: "**", redirectTo: "home" }
 ];
 
 // src/app/core/token.interceptor.ts

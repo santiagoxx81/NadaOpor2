@@ -4,9 +4,11 @@ import { AdminDashboardComponent } from './pages/admin.dashboard/admin.dashboard
 import { authGuard } from './guards/auth.guard-guard';
 import { adminGuard } from './guards/admin.guard-guard';
 import { UsuarioDashboardComponent } from './pages/usuario/usuario.dashboard.component';
+import { HomeComponent } from './pages/home/home.component';
 
 
 export const routes: Routes = [
+  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
 
   // CIDADÃO
@@ -15,6 +17,6 @@ export const routes: Routes = [
   { path: 'admin/dashboard', component: AdminDashboardComponent, canActivate: [authGuard, adminGuard] },
 
   // defaults
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: '**', redirectTo: 'login' }
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home' }
 ];

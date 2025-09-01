@@ -1,0 +1,218 @@
+<!-- Header Component -->
+<app-header 
+  currentPage="Página Inicial"
+  userName="Admin PMERJ"
+  userRole="ADMINISTRADOR">
+</app-header>
+
+<!-- Primeira Dobra - Hero Section -->
+<section class="hero-section">
+  <div class="hero-content">
+    <!-- Conteúdo Principal -->
+    <div class="hero-main">
+      <h1 class="hero-title">Solicitação PMERJ</h1>
+      <p class="hero-subtitle">Sistema de solicitações da Polícia Militar do Estado do Rio de Janeiro</p>
+      
+      <div class="hero-description">
+        <p>Bem-vindo ao portal oficial da Polícia Militar do Estado do Rio de Janeiro. Solicite autorizações para eventos e palestras de forma simples e eficiente.</p>
+      </div>
+
+      <!-- Botões de Ação -->
+      <div class="hero-actions">
+        <button class="btn-primary" (click)="novaSolicitacao()">
+          <span class="btn-icon">+</span>
+          Nova Solicitação
+        </button>
+        <button class="btn-secondary" (click)="minhasSolicitacoes()">
+          <span class="btn-icon">👤</span>
+          Minhas Solicitações
+        </button>
+      </div>
+    </div>
+
+    <!-- Elemento Decorativo -->
+    <div class="hero-decoration">
+      <div class="decoration-circle">
+        <div class="decoration-shield">🛡️</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Segunda Dobra - Nossos Serviços -->
+<section class="services-section">
+  <div class="services-content">
+    <!-- Header da Seção -->
+    <div class="services-header">
+      <h2 class="services-title">Nossos Serviços</h2>
+      <p class="services-subtitle">Escolha o tipo de solicitação que melhor atende às suas necessidades</p>
+    </div>
+
+    <!-- Cards de Serviços -->
+    <div class="services-grid">
+      <!-- Card: Solicitar Nada Opor -->
+      <div class="service-card nada-opor-card">
+        <div class="card-accent nada-opor-accent"></div>
+        <div class="card-header">
+          <div class="card-icon nada-opor-icon">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <button class="nav-button nada-opor-nav" (click)="novaSolicitacao()">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+        
+        <div class="card-content">
+          <h3 class="card-title">Solicitar Nada Opor</h3>
+          <p class="card-description">
+            Solicite autorização para eventos, manifestações e atividades que requerem autorização da Polícia Militar.
+          </p>
+          
+          <div class="card-tags">
+            <span class="tag">Eventos</span>
+            <span class="tag">Manifestações</span>
+            <span class="tag">Atividades Públicas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Solicitar Palestra -->
+      <div class="service-card palestra-card">
+        <div class="card-accent palestra-accent"></div>
+        <div class="card-header">
+          <div class="card-icon palestra-icon">
+            <i class="fas fa-chalkboard-teacher"></i>
+          </div>
+          <button class="nav-button palestra-nav" (click)="novaSolicitacao()">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+        
+        <div class="card-content">
+          <h3 class="card-title">Solicitar Palestra</h3>
+          <p class="card-description">
+            Solicite palestras educativas da PMERJ sobre segurança, prevenção e orientações para sua comunidade.
+          </p>
+          
+          <div class="card-tags">
+            <span class="tag">Educação</span>
+            <span class="tag">Prevenção</span>
+            <span class="tag">Segurança</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Terceira Dobra - Sobre a Solicitação PMERJ -->
+<section class="about-section">
+  <div class="about-content">
+    <!-- Seção de Texto (Esquerda) -->
+    <div class="about-text">
+      <h2 class="about-title">Sobre a Solicitação PMERJ</h2>
+      <p class="about-description">
+        A Solicitação PMERJ é uma plataforma digital desenvolvida para facilitar o acesso aos serviços da Polícia Militar do Estado do Rio de Janeiro. Através deste portal, cidadãos podem solicitar autorizações para eventos e palestras de forma transparente e eficiente.
+      </p>
+      
+      <!-- Lista de Recursos -->
+      <div class="features-list">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <span class="feature-text">Processo Rápido</span>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <span class="feature-text">Seguro e Confiável</span>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <span class="feature-text">Acesso Mobile</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seção de Caixas (Direita) -->
+    <div class="about-boxes">
+      <!-- Caixa 1: 24/7 -->
+      <div class="info-box">
+        <div class="box-number">24/7</div>
+        <div class="box-label">DISPONIBILIDADE</div>
+      </div>
+      
+      <!-- Caixa 2: 100% -->
+      <div class="info-box">
+        <div class="box-number">100%</div>
+        <div class="box-label">DIGITAL</div>
+      </div>
+      
+      <!-- Caixa 3: PMERJ -->
+      <div class="info-box">
+        <div class="box-number">PMERJ</div>
+        <div class="box-label">OFICIAL</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+    <!-- Colunas Principais -->
+    <div class="footer-columns">
+      <!-- Coluna 1: Solicitação PMERJ -->
+      <div class="footer-column">
+        <h3 class="footer-title">Solicitação PMERJ</h3>
+        <p class="footer-description">
+          Sistema oficial de autorizações e palestras da Polícia Militar do Estado do Rio de Janeiro.
+        </p>
+      </div>
+
+      <!-- Coluna 2: Contato -->
+      <div class="footer-column">
+        <h3 class="footer-title">Contato</h3>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>(21) 2334-5000</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>portal@pmerj.rj.gov.br</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Rio de Janeiro, RJ</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coluna 3: Links Úteis -->
+      <div class="footer-column">
+        <h3 class="footer-title">Links Úteis</h3>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Política de Privacidade</a>
+          <a href="#" class="footer-link">Termos de Uso</a>
+          <a href="#" class="footer-link">Ajuda</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Linha Separadora -->
+    <div class="footer-divider"></div>
+
+    <!-- Copyright -->
+    <div class="footer-copyright">
+      <p>© 2025 Solicitação PMERJ. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
