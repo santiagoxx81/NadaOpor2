@@ -188,3 +188,9 @@
     font-size: 0.625rem;
   }
 }
+
+/* Acessibilidade - botões no header */
+.a11y-actions { display: flex; gap: .5rem; margin-right: .5rem; }
+.a11y-btn { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: white; width: 2rem; height: 2rem; border-radius: .5rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: all .15s ease; }
+.a11y-btn:hover { background: rgba(255,255,255,0.2); }
+.a11y-btn i { font-size: .9rem; }

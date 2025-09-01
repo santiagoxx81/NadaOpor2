@@ -46209,29 +46209,29 @@ var AuthService = class _AuthService {
 })();
 
 // src/app/components/header/header.component.ts
-function HeaderComponent_button_17_Template(rf, ctx) {
+function HeaderComponent_button_22_Template(rf, ctx) {
   if (rf & 1) {
     const _r2 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 19);
-    \u0275\u0275listener("click", function HeaderComponent_button_17_Template_button_click_0_listener() {
+    \u0275\u0275elementStart(0, "button", 24);
+    \u0275\u0275listener("click", function HeaderComponent_button_22_Template_button_click_0_listener() {
       \u0275\u0275restoreView(_r2);
       const ctx_r2 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r2.logout());
     });
-    \u0275\u0275element(1, "i", 20);
+    \u0275\u0275element(1, "i", 25);
     \u0275\u0275elementEnd();
   }
 }
-function HeaderComponent_ng_template_18_Template(rf, ctx) {
+function HeaderComponent_ng_template_23_Template(rf, ctx) {
   if (rf & 1) {
     const _r4 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "button", 19);
-    \u0275\u0275listener("click", function HeaderComponent_ng_template_18_Template_button_click_0_listener() {
+    \u0275\u0275elementStart(0, "button", 24);
+    \u0275\u0275listener("click", function HeaderComponent_ng_template_23_Template_button_click_0_listener() {
       \u0275\u0275restoreView(_r4);
       const ctx_r2 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r2.goLogin());
     });
-    \u0275\u0275element(1, "i", 21);
+    \u0275\u0275element(1, "i", 26);
     \u0275\u0275elementEnd();
   }
 }
@@ -46242,12 +46242,32 @@ var HeaderComponent = class _HeaderComponent {
   userName = "Admin PMERJ";
   userRole = "ADMINISTRADOR";
   isLoggedIn = false;
+  contrast = false;
+  fontLg = false;
   constructor(router, auth) {
     this.router = router;
     this.auth = auth;
   }
   ngOnInit() {
     this.updateUserInfo();
+    this.contrast = localStorage.getItem("a11y_contrast") === "1";
+    this.fontLg = localStorage.getItem("a11y_font_lg") === "1";
+    this.applyA11y();
+  }
+  applyA11y() {
+    const html = document.documentElement;
+    html.classList.toggle("contrast", this.contrast);
+    html.classList.toggle("font-lg", this.fontLg);
+  }
+  toggleContrast() {
+    this.contrast = !this.contrast;
+    localStorage.setItem("a11y_contrast", this.contrast ? "1" : "0");
+    this.applyA11y();
+  }
+  toggleFont() {
+    this.fontLg = !this.fontLg;
+    localStorage.setItem("a11y_font_lg", this.fontLg ? "1" : "0");
+    this.applyA11y();
   }
   updateUserInfo() {
     const token = localStorage.getItem("token");
@@ -46287,7 +46307,7 @@ var HeaderComponent = class _HeaderComponent {
   static \u0275fac = function HeaderComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || _HeaderComponent)(\u0275\u0275directiveInject(Router), \u0275\u0275directiveInject(AuthService));
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _HeaderComponent, selectors: [["app-header"]], inputs: { currentPage: "currentPage", userName: "userName", userRole: "userRole" }, decls: 24, vars: 5, consts: [["loginTpl", ""], [1, "main-header"], [1, "header-content"], [1, "logo-section", 2, "cursor", "pointer", 3, "click"], [1, "logo"], [1, "fas", "fa-shield-alt"], [1, "logo-text"], [1, "user-section"], [1, "user-profile"], [1, "user-avatar"], [1, "avatar-icon"], [1, "fas", "fa-user"], [1, "user-info"], [1, "user-name"], [1, "user-role"], ["class", "logout-button", 3, "click", 4, "ngIf", "ngIfElse"], [1, "nav-bar"], [1, "nav-content"], [1, "nav-text"], [1, "logout-button", 3, "click"], [1, "fas", "fa-sign-out-alt"], [1, "fas", "fa-sign-in-alt"]], template: function HeaderComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _HeaderComponent, selectors: [["app-header"]], inputs: { currentPage: "currentPage", userName: "userName", userRole: "userRole" }, decls: 29, vars: 5, consts: [["loginTpl", ""], [1, "main-header"], [1, "header-content"], [1, "logo-section", 2, "cursor", "pointer", 3, "click"], [1, "logo"], [1, "fas", "fa-shield-alt"], [1, "logo-text"], [1, "user-section"], [1, "a11y-actions"], ["title", "Alto contraste", 1, "a11y-btn", 3, "click"], [1, "fas", "fa-adjust"], ["title", "Fonte ampliada", 1, "a11y-btn", 3, "click"], [1, "fas", "fa-text-height"], [1, "user-profile"], [1, "user-avatar"], [1, "avatar-icon"], [1, "fas", "fa-user"], [1, "user-info"], [1, "user-name"], [1, "user-role"], ["class", "logout-button", 3, "click", 4, "ngIf", "ngIfElse"], [1, "nav-bar"], [1, "nav-content"], [1, "nav-text"], [1, "logout-button", 3, "click"], [1, "fas", "fa-sign-out-alt"], [1, "fas", "fa-sign-in-alt"]], template: function HeaderComponent_Template(rf, ctx) {
     if (rf & 1) {
       const _r1 = \u0275\u0275getCurrentView();
       \u0275\u0275elementStart(0, "header", 1)(1, "div", 2)(2, "div", 3);
@@ -46301,24 +46321,38 @@ var HeaderComponent = class _HeaderComponent {
       \u0275\u0275elementStart(5, "h1", 6);
       \u0275\u0275text(6, "Solicita\xE7\xE3o PMERJ");
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(7, "div", 7)(8, "div", 8)(9, "div", 9)(10, "div", 10);
-      \u0275\u0275element(11, "i", 11);
-      \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(12, "div", 12)(13, "div", 13);
-      \u0275\u0275text(14);
+      \u0275\u0275elementStart(7, "div", 7)(8, "div", 8)(9, "button", 9);
+      \u0275\u0275listener("click", function HeaderComponent_Template_button_click_9_listener() {
+        \u0275\u0275restoreView(_r1);
+        return \u0275\u0275resetView(ctx.toggleContrast());
+      });
+      \u0275\u0275element(10, "i", 10);
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(15, "div", 14);
-      \u0275\u0275text(16);
+      \u0275\u0275elementStart(11, "button", 11);
+      \u0275\u0275listener("click", function HeaderComponent_Template_button_click_11_listener() {
+        \u0275\u0275restoreView(_r1);
+        return \u0275\u0275resetView(ctx.toggleFont());
+      });
+      \u0275\u0275element(12, "i", 12);
       \u0275\u0275elementEnd()();
-      \u0275\u0275template(17, HeaderComponent_button_17_Template, 2, 0, "button", 15)(18, HeaderComponent_ng_template_18_Template, 2, 0, "ng-template", null, 0, \u0275\u0275templateRefExtractor);
+      \u0275\u0275elementStart(13, "div", 13)(14, "div", 14)(15, "div", 15);
+      \u0275\u0275element(16, "i", 16);
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(17, "div", 17)(18, "div", 18);
+      \u0275\u0275text(19);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(20, "div", 19);
+      \u0275\u0275text(21);
+      \u0275\u0275elementEnd()();
+      \u0275\u0275template(22, HeaderComponent_button_22_Template, 2, 0, "button", 20)(23, HeaderComponent_ng_template_23_Template, 2, 0, "ng-template", null, 0, \u0275\u0275templateRefExtractor);
       \u0275\u0275elementEnd()()();
-      \u0275\u0275elementStart(20, "nav", 16)(21, "div", 17)(22, "span", 18);
-      \u0275\u0275text(23);
+      \u0275\u0275elementStart(25, "nav", 21)(26, "div", 22)(27, "span", 23);
+      \u0275\u0275text(28);
       \u0275\u0275elementEnd()()()();
     }
     if (rf & 2) {
-      const loginTpl_r5 = \u0275\u0275reference(19);
-      \u0275\u0275advance(14);
+      const loginTpl_r5 = \u0275\u0275reference(24);
+      \u0275\u0275advance(19);
       \u0275\u0275textInterpolate(ctx.userName);
       \u0275\u0275advance(2);
       \u0275\u0275textInterpolate(ctx.userRole);
@@ -46327,12 +46361,12 @@ var HeaderComponent = class _HeaderComponent {
       \u0275\u0275advance(6);
       \u0275\u0275textInterpolate(ctx.currentPage);
     }
-  }, dependencies: [CommonModule, NgIf], styles: ["\n\n.main-header[_ngcontent-%COMP%] {\n  background:\n    linear-gradient(\n      135deg,\n      #197cb1 0%,\n      #1e88e5 100%);\n  color: white;\n  box-shadow: 0 2px 10px rgba(25, 124, 177, 0.2);\n}\n.header-content[_ngcontent-%COMP%] {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 1rem 2rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 2rem;\n}\n.logo-section[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n  cursor: pointer;\n}\n.logo-section[_ngcontent-%COMP%]:hover   .logo[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  transform: scale(1.05);\n}\n.logo[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  font-size: 2rem;\n  color: #fbbf24;\n  transition: transform 0.15s ease;\n}\n.logo-text[_ngcontent-%COMP%] {\n  font-size: 1.5rem;\n  font-weight: 700;\n  color: white;\n  white-space: nowrap;\n}\n.user-section[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n}\n.user-profile[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n  padding: 0.5rem 1rem;\n  background: rgba(255, 255, 255, 0.1);\n  border-radius: 2rem;\n  -webkit-backdrop-filter: blur(10px);\n  backdrop-filter: blur(10px);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  transition: all 0.2s ease;\n}\n.user-profile[_ngcontent-%COMP%]:hover {\n  background: rgba(255, 255, 255, 0.15);\n  border-color: rgba(255, 255, 255, 0.3);\n}\n.user-avatar[_ngcontent-%COMP%] {\n  width: 2.5rem;\n  height: 2.5rem;\n  background: #fbbf24;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);\n}\n.avatar-icon[_ngcontent-%COMP%] {\n  font-size: 1.25rem;\n  color: #197cb1;\n}\n.user-info[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 0.125rem;\n}\n.user-name[_ngcontent-%COMP%] {\n  font-size: 0.875rem;\n  font-weight: 600;\n  color: white;\n}\n.user-role[_ngcontent-%COMP%] {\n  font-size: 0.75rem;\n  color: rgba(255, 255, 255, 0.8);\n  font-weight: 500;\n}\n.logout-button[_ngcontent-%COMP%] {\n  background: none;\n  border: none;\n  color: rgba(255, 255, 255, 0.8);\n  font-size: 1rem;\n  cursor: pointer;\n  padding: 0.5rem;\n  border-radius: 50%;\n  transition: all 0.2s ease;\n  margin-left: 0.5rem;\n}\n.logout-button[_ngcontent-%COMP%]:hover {\n  background: rgba(255, 255, 255, 0.1);\n  color: white;\n  transform: scale(1.1);\n}\n.nav-bar[_ngcontent-%COMP%] {\n  background: #1565c0;\n  padding: 0.75rem 2rem;\n  border-top: 1px solid rgba(255, 255, 255, 0.1);\n}\n.nav-content[_ngcontent-%COMP%] {\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.nav-text[_ngcontent-%COMP%] {\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: white;\n}\n@media (max-width: 768px) {\n  .header-content[_ngcontent-%COMP%] {\n    flex-direction: column;\n    gap: 1rem;\n    padding: 1rem;\n  }\n  .user-profile[_ngcontent-%COMP%] {\n    width: 100%;\n    justify-content: center;\n  }\n  .logo-text[_ngcontent-%COMP%] {\n    font-size: 1.25rem;\n  }\n}\n@media (max-width: 480px) {\n  .header-content[_ngcontent-%COMP%] {\n    padding: 0.75rem;\n  }\n  .logo[_ngcontent-%COMP%] {\n    width: 2.5rem;\n    height: 2.5rem;\n  }\n  .logo[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n    font-size: 1.25rem;\n  }\n  .logo-text[_ngcontent-%COMP%] {\n    font-size: 1.125rem;\n  }\n  .user-avatar[_ngcontent-%COMP%] {\n    width: 2rem;\n    height: 2rem;\n  }\n  .avatar-icon[_ngcontent-%COMP%] {\n    font-size: 1rem;\n  }\n  .user-name[_ngcontent-%COMP%] {\n    font-size: 0.75rem;\n  }\n  .user-role[_ngcontent-%COMP%] {\n    font-size: 0.625rem;\n  }\n}\n/*# sourceMappingURL=header.component.css.map */"] });
+  }, dependencies: [CommonModule, NgIf], styles: ["\n\n.main-header[_ngcontent-%COMP%] {\n  background:\n    linear-gradient(\n      135deg,\n      #197cb1 0%,\n      #1e88e5 100%);\n  color: white;\n  box-shadow: 0 2px 10px rgba(25, 124, 177, 0.2);\n}\n.header-content[_ngcontent-%COMP%] {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 1rem 2rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 2rem;\n}\n.logo-section[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n  cursor: pointer;\n}\n.logo-section[_ngcontent-%COMP%]:hover   .logo[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  transform: scale(1.05);\n}\n.logo[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  font-size: 2rem;\n  color: #fbbf24;\n  transition: transform 0.15s ease;\n}\n.logo-text[_ngcontent-%COMP%] {\n  font-size: 1.5rem;\n  font-weight: 700;\n  color: white;\n  white-space: nowrap;\n}\n.user-section[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n}\n.user-profile[_ngcontent-%COMP%] {\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n  padding: 0.5rem 1rem;\n  background: rgba(255, 255, 255, 0.1);\n  border-radius: 2rem;\n  -webkit-backdrop-filter: blur(10px);\n  backdrop-filter: blur(10px);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  transition: all 0.2s ease;\n}\n.user-profile[_ngcontent-%COMP%]:hover {\n  background: rgba(255, 255, 255, 0.15);\n  border-color: rgba(255, 255, 255, 0.3);\n}\n.user-avatar[_ngcontent-%COMP%] {\n  width: 2.5rem;\n  height: 2.5rem;\n  background: #fbbf24;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);\n}\n.avatar-icon[_ngcontent-%COMP%] {\n  font-size: 1.25rem;\n  color: #197cb1;\n}\n.user-info[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  gap: 0.125rem;\n}\n.user-name[_ngcontent-%COMP%] {\n  font-size: 0.875rem;\n  font-weight: 600;\n  color: white;\n}\n.user-role[_ngcontent-%COMP%] {\n  font-size: 0.75rem;\n  color: rgba(255, 255, 255, 0.8);\n  font-weight: 500;\n}\n.logout-button[_ngcontent-%COMP%] {\n  background: none;\n  border: none;\n  color: rgba(255, 255, 255, 0.8);\n  font-size: 1rem;\n  cursor: pointer;\n  padding: 0.5rem;\n  border-radius: 50%;\n  transition: all 0.2s ease;\n  margin-left: 0.5rem;\n}\n.logout-button[_ngcontent-%COMP%]:hover {\n  background: rgba(255, 255, 255, 0.1);\n  color: white;\n  transform: scale(1.1);\n}\n.nav-bar[_ngcontent-%COMP%] {\n  background: #1565c0;\n  padding: 0.75rem 2rem;\n  border-top: 1px solid rgba(255, 255, 255, 0.1);\n}\n.nav-content[_ngcontent-%COMP%] {\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.nav-text[_ngcontent-%COMP%] {\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: white;\n}\n@media (max-width: 768px) {\n  .header-content[_ngcontent-%COMP%] {\n    flex-direction: column;\n    gap: 1rem;\n    padding: 1rem;\n  }\n  .user-profile[_ngcontent-%COMP%] {\n    width: 100%;\n    justify-content: center;\n  }\n  .logo-text[_ngcontent-%COMP%] {\n    font-size: 1.25rem;\n  }\n}\n@media (max-width: 480px) {\n  .header-content[_ngcontent-%COMP%] {\n    padding: 0.75rem;\n  }\n  .logo[_ngcontent-%COMP%] {\n    width: 2.5rem;\n    height: 2.5rem;\n  }\n  .logo[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n    font-size: 1.25rem;\n  }\n  .logo-text[_ngcontent-%COMP%] {\n    font-size: 1.125rem;\n  }\n  .user-avatar[_ngcontent-%COMP%] {\n    width: 2rem;\n    height: 2rem;\n  }\n  .avatar-icon[_ngcontent-%COMP%] {\n    font-size: 1rem;\n  }\n  .user-name[_ngcontent-%COMP%] {\n    font-size: 0.75rem;\n  }\n  .user-role[_ngcontent-%COMP%] {\n    font-size: 0.625rem;\n  }\n}\n.a11y-actions[_ngcontent-%COMP%] {\n  display: flex;\n  gap: .5rem;\n  margin-right: .5rem;\n}\n.a11y-btn[_ngcontent-%COMP%] {\n  background: rgba(255, 255, 255, 0.12);\n  border: 1px solid rgba(255, 255, 255, 0.25);\n  color: white;\n  width: 2rem;\n  height: 2rem;\n  border-radius: .5rem;\n  cursor: pointer;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  transition: all .15s ease;\n}\n.a11y-btn[_ngcontent-%COMP%]:hover {\n  background: rgba(255, 255, 255, 0.2);\n}\n.a11y-btn[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  font-size: .9rem;\n}\n/*# sourceMappingURL=header.component.css.map */"] });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(HeaderComponent, [{
     type: Component,
-    args: [{ selector: "app-header", standalone: true, imports: [CommonModule], template: '<!-- Header Principal -->\r\n<header class="main-header">\r\n  <div class="header-content">\r\n    <!-- Logo e Nome -->\r\n    <div class="logo-section" (click)="goHome()" style="cursor: pointer;">\r\n      <div class="logo">\r\n        <i class="fas fa-shield-alt"></i>\r\n      </div>\r\n      <h1 class="logo-text">Solicita\xE7\xE3o PMERJ</h1>\r\n    </div>\r\n\r\n    <!-- Perfil do Usu\xE1rio -->\r\n    <div class="user-section">\r\n      <div class="user-profile">\r\n        <div class="user-avatar">\r\n          <div class="avatar-icon"><i class="fas fa-user"></i></div>\r\n        </div>\r\n        <div class="user-info">\r\n          <div class="user-name">{{ userName }}</div>\r\n          <div class="user-role">{{ userRole }}</div>\r\n        </div>\r\n        <button *ngIf="isLoggedIn; else loginTpl" class="logout-button" (click)="logout()"><i class="fas fa-sign-out-alt"></i></button>\r\n        <ng-template #loginTpl>\r\n          <button class="logout-button" (click)="goLogin()"><i class="fas fa-sign-in-alt"></i></button>\r\n        </ng-template>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Barra de Navega\xE7\xE3o -->\r\n  <nav class="nav-bar">\r\n    <div class="nav-content">\r\n      <span class="nav-text">{{ currentPage }}</span>\r\n    </div>\r\n  </nav>\r\n</header>\r\n', styles: ["/* src/app/components/header/header.component.css */\n.main-header {\n  background:\n    linear-gradient(\n      135deg,\n      #197cb1 0%,\n      #1e88e5 100%);\n  color: white;\n  box-shadow: 0 2px 10px rgba(25, 124, 177, 0.2);\n}\n.header-content {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 1rem 2rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 2rem;\n}\n.logo-section {\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n  cursor: pointer;\n}\n.logo-section:hover .logo i {\n  transform: scale(1.05);\n}\n.logo i {\n  font-size: 2rem;\n  color: #fbbf24;\n  transition: transform 0.15s ease;\n}\n.logo-text {\n  font-size: 1.5rem;\n  font-weight: 700;\n  color: white;\n  white-space: nowrap;\n}\n.user-section {\n  display: flex;\n  align-items: center;\n}\n.user-profile {\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n  padding: 0.5rem 1rem;\n  background: rgba(255, 255, 255, 0.1);\n  border-radius: 2rem;\n  -webkit-backdrop-filter: blur(10px);\n  backdrop-filter: blur(10px);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  transition: all 0.2s ease;\n}\n.user-profile:hover {\n  background: rgba(255, 255, 255, 0.15);\n  border-color: rgba(255, 255, 255, 0.3);\n}\n.user-avatar {\n  width: 2.5rem;\n  height: 2.5rem;\n  background: #fbbf24;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);\n}\n.avatar-icon {\n  font-size: 1.25rem;\n  color: #197cb1;\n}\n.user-info {\n  display: flex;\n  flex-direction: column;\n  gap: 0.125rem;\n}\n.user-name {\n  font-size: 0.875rem;\n  font-weight: 600;\n  color: white;\n}\n.user-role {\n  font-size: 0.75rem;\n  color: rgba(255, 255, 255, 0.8);\n  font-weight: 500;\n}\n.logout-button {\n  background: none;\n  border: none;\n  color: rgba(255, 255, 255, 0.8);\n  font-size: 1rem;\n  cursor: pointer;\n  padding: 0.5rem;\n  border-radius: 50%;\n  transition: all 0.2s ease;\n  margin-left: 0.5rem;\n}\n.logout-button:hover {\n  background: rgba(255, 255, 255, 0.1);\n  color: white;\n  transform: scale(1.1);\n}\n.nav-bar {\n  background: #1565c0;\n  padding: 0.75rem 2rem;\n  border-top: 1px solid rgba(255, 255, 255, 0.1);\n}\n.nav-content {\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.nav-text {\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: white;\n}\n@media (max-width: 768px) {\n  .header-content {\n    flex-direction: column;\n    gap: 1rem;\n    padding: 1rem;\n  }\n  .user-profile {\n    width: 100%;\n    justify-content: center;\n  }\n  .logo-text {\n    font-size: 1.25rem;\n  }\n}\n@media (max-width: 480px) {\n  .header-content {\n    padding: 0.75rem;\n  }\n  .logo {\n    width: 2.5rem;\n    height: 2.5rem;\n  }\n  .logo i {\n    font-size: 1.25rem;\n  }\n  .logo-text {\n    font-size: 1.125rem;\n  }\n  .user-avatar {\n    width: 2rem;\n    height: 2rem;\n  }\n  .avatar-icon {\n    font-size: 1rem;\n  }\n  .user-name {\n    font-size: 0.75rem;\n  }\n  .user-role {\n    font-size: 0.625rem;\n  }\n}\n/*# sourceMappingURL=header.component.css.map */\n"] }]
+    args: [{ selector: "app-header", standalone: true, imports: [CommonModule], template: '<!-- Header Principal -->\r\n<header class="main-header">\r\n  <div class="header-content">\r\n    <!-- Logo e Nome -->\r\n    <div class="logo-section" (click)="goHome()" style="cursor: pointer;">\r\n      <div class="logo">\r\n        <i class="fas fa-shield-alt"></i>\r\n      </div>\r\n      <h1 class="logo-text">Solicita\xE7\xE3o PMERJ</h1>\r\n    </div>\r\n\r\n    <!-- Perfil do Usu\xE1rio -->\r\n    <div class="user-section">\r\n      <div class="a11y-actions">\r\n        <button class="a11y-btn" (click)="toggleContrast()" title="Alto contraste"><i class="fas fa-adjust"></i></button>\r\n        <button class="a11y-btn" (click)="toggleFont()" title="Fonte ampliada"><i class="fas fa-text-height"></i></button>\r\n      </div>\r\n      <div class="user-profile">\r\n        <div class="user-avatar">\r\n          <div class="avatar-icon"><i class="fas fa-user"></i></div>\r\n        </div>\r\n        <div class="user-info">\r\n          <div class="user-name">{{ userName }}</div>\r\n          <div class="user-role">{{ userRole }}</div>\r\n        </div>\r\n        <button *ngIf="isLoggedIn; else loginTpl" class="logout-button" (click)="logout()"><i class="fas fa-sign-out-alt"></i></button>\r\n        <ng-template #loginTpl>\r\n          <button class="logout-button" (click)="goLogin()"><i class="fas fa-sign-in-alt"></i></button>\r\n        </ng-template>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Barra de Navega\xE7\xE3o -->\r\n  <nav class="nav-bar">\r\n    <div class="nav-content">\r\n      <span class="nav-text">{{ currentPage }}</span>\r\n    </div>\r\n  </nav>\r\n</header>\r\n', styles: ["/* src/app/components/header/header.component.css */\n.main-header {\n  background:\n    linear-gradient(\n      135deg,\n      #197cb1 0%,\n      #1e88e5 100%);\n  color: white;\n  box-shadow: 0 2px 10px rgba(25, 124, 177, 0.2);\n}\n.header-content {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 1rem 2rem;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 2rem;\n}\n.logo-section {\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n  cursor: pointer;\n}\n.logo-section:hover .logo i {\n  transform: scale(1.05);\n}\n.logo i {\n  font-size: 2rem;\n  color: #fbbf24;\n  transition: transform 0.15s ease;\n}\n.logo-text {\n  font-size: 1.5rem;\n  font-weight: 700;\n  color: white;\n  white-space: nowrap;\n}\n.user-section {\n  display: flex;\n  align-items: center;\n}\n.user-profile {\n  display: flex;\n  align-items: center;\n  gap: 0.75rem;\n  padding: 0.5rem 1rem;\n  background: rgba(255, 255, 255, 0.1);\n  border-radius: 2rem;\n  -webkit-backdrop-filter: blur(10px);\n  backdrop-filter: blur(10px);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  transition: all 0.2s ease;\n}\n.user-profile:hover {\n  background: rgba(255, 255, 255, 0.15);\n  border-color: rgba(255, 255, 255, 0.3);\n}\n.user-avatar {\n  width: 2.5rem;\n  height: 2.5rem;\n  background: #fbbf24;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);\n}\n.avatar-icon {\n  font-size: 1.25rem;\n  color: #197cb1;\n}\n.user-info {\n  display: flex;\n  flex-direction: column;\n  gap: 0.125rem;\n}\n.user-name {\n  font-size: 0.875rem;\n  font-weight: 600;\n  color: white;\n}\n.user-role {\n  font-size: 0.75rem;\n  color: rgba(255, 255, 255, 0.8);\n  font-weight: 500;\n}\n.logout-button {\n  background: none;\n  border: none;\n  color: rgba(255, 255, 255, 0.8);\n  font-size: 1rem;\n  cursor: pointer;\n  padding: 0.5rem;\n  border-radius: 50%;\n  transition: all 0.2s ease;\n  margin-left: 0.5rem;\n}\n.logout-button:hover {\n  background: rgba(255, 255, 255, 0.1);\n  color: white;\n  transform: scale(1.1);\n}\n.nav-bar {\n  background: #1565c0;\n  padding: 0.75rem 2rem;\n  border-top: 1px solid rgba(255, 255, 255, 0.1);\n}\n.nav-content {\n  max-width: 1200px;\n  margin: 0 auto;\n}\n.nav-text {\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: white;\n}\n@media (max-width: 768px) {\n  .header-content {\n    flex-direction: column;\n    gap: 1rem;\n    padding: 1rem;\n  }\n  .user-profile {\n    width: 100%;\n    justify-content: center;\n  }\n  .logo-text {\n    font-size: 1.25rem;\n  }\n}\n@media (max-width: 480px) {\n  .header-content {\n    padding: 0.75rem;\n  }\n  .logo {\n    width: 2.5rem;\n    height: 2.5rem;\n  }\n  .logo i {\n    font-size: 1.25rem;\n  }\n  .logo-text {\n    font-size: 1.125rem;\n  }\n  .user-avatar {\n    width: 2rem;\n    height: 2rem;\n  }\n  .avatar-icon {\n    font-size: 1rem;\n  }\n  .user-name {\n    font-size: 0.75rem;\n  }\n  .user-role {\n    font-size: 0.625rem;\n  }\n}\n.a11y-actions {\n  display: flex;\n  gap: .5rem;\n  margin-right: .5rem;\n}\n.a11y-btn {\n  background: rgba(255, 255, 255, 0.12);\n  border: 1px solid rgba(255, 255, 255, 0.25);\n  color: white;\n  width: 2rem;\n  height: 2rem;\n  border-radius: .5rem;\n  cursor: pointer;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  transition: all .15s ease;\n}\n.a11y-btn:hover {\n  background: rgba(255, 255, 255, 0.2);\n}\n.a11y-btn i {\n  font-size: .9rem;\n}\n/*# sourceMappingURL=header.component.css.map */\n"] }]
   }], () => [{ type: Router }, { type: AuthService }], { currentPage: [{
     type: Input
   }], userName: [{

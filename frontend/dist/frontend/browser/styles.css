@@ -72,6 +72,51 @@
   --container-max-width: 1100px;
   --header-height: 4rem;
 }
+html.contrast,
+body.contrast {
+  --primary-500: #000000;
+  --primary-600: #000000;
+  --primary-700: #000000;
+  --gray-900: #000000;
+  --gray-800: #111111;
+  --gray-700: #1a1a1a;
+  --gray-600: #222222;
+  --gray-100: #ffffff;
+  --gray-50: #ffffff;
+  --surface: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #000000;
+  --border-color: #000000;
+}
+.contrast *:focus {
+  outline: 3px solid #000 !important;
+  outline-offset: 2px;
+}
+.contrast .btn {
+  border: 2px solid #000;
+  box-shadow: none;
+}
+.contrast .card {
+  border: 2px solid #000;
+  box-shadow: none;
+}
+.contrast .table th,
+.contrast .table td {
+  border-color: #000;
+}
+html.font-lg {
+  font-size: 18px;
+}
+@media (max-width: 768px) {
+  html.font-lg {
+    font-size: 17px;
+  }
+}
+@media (max-width: 480px) {
+  html.font-lg {
+    font-size: 16px;
+  }
+}
 * {
   box-sizing: border-box;
 }

@@ -16,11 +16,35 @@ export class HeaderComponent implements OnInit {
   @Input() userRole: string = 'ADMINISTRADOR';
 
   isLoggedIn = false;
+  contrast = false;
+  fontLg = false;
 
   constructor(private router: Router, private auth: AuthService) {}
 
   ngOnInit(): void {
     this.updateUserInfo();
+    // Restaurar preferências
+    this.contrast = localStorage.getItem('a11y_contrast') === '1';
+    this.fontLg = localStorage.getItem('a11y_font_lg') === '1';
+    this.applyA11y();
+  }
+
+  private applyA11y() {
+    const html = document.documentElement;
+    html.classList.toggle('contrast', this.contrast);
+    html.classList.toggle('font-lg', this.fontLg);
+  }
+
+  toggleContrast() {
+    this.contrast = !this.contrast;
+    localStorage.setItem('a11y_contrast', this.contrast ? '1' : '0');
+    this.applyA11y();
+  }
+
+  toggleFont() {
+    this.fontLg = !this.fontLg;
+    localStorage.setItem('a11y_font_lg', this.fontLg ? '1' : '0');
+    this.applyA11y();
   }
 
   private updateUserInfo(): void {
@@ -47,13 +71,8 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  goHome() {
-    this.router.navigate(['/home']);
-  }
-
-  goLogin() {
-    this.router.navigate(['/login']);
-  }
+  goHome() { this.router.navigate(['/home']); }
+  goLogin() { this.router.navigate(['/login']); }
 
   logout() {
     this.auth.sair();
