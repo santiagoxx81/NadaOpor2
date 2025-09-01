@@ -117,6 +117,12 @@
 /* Footer */
 .login-footer  p { text-align: center; color: #fff; font-size: .875rem; }
 
+/* Extra actions */
+.login-extra { margin-top: 1rem; text-align: center; }
+.create-link { color: #197cb1; text-decoration: none; font-weight: 600; }
+.create-link i { margin-right: .4rem; }
+.create-link:hover { text-decoration: underline; }
+
 /* Responsive */
 @media (max-width: 768px) {
   .login-hero-content { padding: 3rem 1rem; }

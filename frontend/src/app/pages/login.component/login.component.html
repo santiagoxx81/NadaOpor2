@@ -41,6 +41,10 @@
         </button>
       </form>
 
+      <div class="login-extra">
+        <a routerLink="/usuarios/novo" class="create-link"><i class="fas fa-user-plus"></i> Criar uma conta</a>
+      </div>
+
       <div *ngIf="erro" class="alert alert-error mt-4"><i class="fas fa-exclamation-triangle"></i> {{ erro }}</div>
     </div>
 

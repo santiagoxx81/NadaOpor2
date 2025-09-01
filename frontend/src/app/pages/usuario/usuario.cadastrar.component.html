@@ -1,0 +1,63 @@
+<app-header currentPage="Cadastro de Usuário" userName="Visitante" userRole="NÃO AUTENTICADO"></app-header>
+
+<section class="signup-hero">
+  <div class="signup-content">
+    <div class="signup-brand">
+      <div class="signup-logo"><i class="fas fa-user-plus"></i></div>
+      <h1 class="signup-title">Criar nova conta</h1>
+      <p class="signup-subtitle">Preencha os campos para acessar o Portal PMERJ</p>
+    </div>
+
+    <div class="signup-card">
+      <h2 class="signup-card-title"><i class="fas fa-id-card"></i> Dados do Usuário</h2>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <div class="form-group">
+          <label class="form-label"><i class="fas fa-user"></i> Nome completo</label>
+          <input class="form-input" formControlName="nome" type="text" placeholder="Seu nome" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label"><i class="fas fa-envelope"></i> E-mail</label>
+          <input class="form-input" formControlName="email" type="email" placeholder="Seu e-mail" required>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="form-group">
+            <label class="form-label"><i class="fas fa-phone"></i> Telefone (opcional)</label>
+            <input class="form-input" formControlName="telefone" type="tel" placeholder="(21) 90000-0000">
+          </div>
+          <div class="form-group">
+            <label class="form-label"><i class="fas fa-id-card"></i> Documento (opcional)</label>
+            <input class="form-input" formControlName="documento" type="text" placeholder="CPF ou CNPJ">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="form-group">
+            <label class="form-label"><i class="fas fa-key"></i> Senha</label>
+            <input class="form-input" formControlName="senha" type="password" placeholder="Mínimo 6 caracteres" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label"><i class="fas fa-key"></i> Confirmar Senha</label>
+            <input class="form-input" formControlName="confirmarSenha" type="password" placeholder="Repita a senha" required>
+            <div *ngIf="senhasNaoConferem()" class="text-danger text-sm mt-1"><i class="fas fa-triangle-exclamation"></i> As senhas não conferem</div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg w-full" [disabled]="form.invalid || senhasNaoConferem() || loading">
+          <i class="fas" [ngClass]="loading ? 'fa-circle-notch fa-spin' : 'fa-user-plus'"></i>
+          <span class="ml-2">{{ loading ? 'Enviando...' : 'Criar Conta' }}</span>
+        </button>
+      </form>
+
+      <div class="signup-extra">
+        <a routerLink="/login" class="back-login"><i class="fas fa-sign-in-alt"></i> Já tenho uma conta</a>
+      </div>
+
+      <div *ngIf="erro" class="alert alert-error mt-4"><i class="fas fa-exclamation-triangle"></i> {{ erro }}</div>
+      <div *ngIf="ok" class="alert alert-success mt-4"><i class="fas fa-check"></i> {{ ok }}</div>
+    </div>
+  </div>
+</section>

@@ -46346,10 +46346,10 @@ var HeaderComponent = class _HeaderComponent {
 })();
 
 // src/app/pages/login.component/login.component.ts
-function LoginComponent_div_29_Template(rf, ctx) {
+function LoginComponent_div_33_Template(rf, ctx) {
   if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 31);
-    \u0275\u0275element(1, "i", 32);
+    \u0275\u0275elementStart(0, "div", 34);
+    \u0275\u0275element(1, "i", 35);
     \u0275\u0275text(2);
     \u0275\u0275elementEnd();
   }
@@ -46392,7 +46392,7 @@ var LoginComponent = class _LoginComponent {
   static \u0275fac = function LoginComponent_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || _LoginComponent)();
   };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _LoginComponent, selectors: [["app-login"]], decls: 64, vars: 5, consts: [["currentPage", "Login", "userName", "Visitante", "userRole", "N\xC3O AUTENTICADO"], [1, "login-hero"], [1, "login-hero-content"], [1, "login-brand"], [1, "login-logo"], [1, "fas", "fa-shield-alt"], [1, "login-title"], [1, "login-subtitle"], [1, "login-card"], [1, "login-card-title"], [1, "fas", "fa-lock"], ["novalidate", "", 3, "ngSubmit", "formGroup"], [1, "form-group"], [1, "form-label"], [1, "fas", "fa-envelope"], ["formControlName", "email", "type", "email", "placeholder", "Digite seu e-mail", "required", "", 1, "form-input"], [1, "fas", "fa-key"], ["formControlName", "senha", "type", "password", "placeholder", "Digite sua senha", "required", "", 1, "form-input"], ["type", "submit", 1, "btn", "btn-primary", "btn-lg", "w-full", 3, "disabled"], [1, "fas", 3, "ngClass"], [1, "ml-2"], ["class", "alert alert-error mt-4", 4, "ngIf"], [1, "login-info"], [1, "fas", "fa-lightbulb"], [1, "login-info-grid"], [1, "login-info-card"], [1, "login-info-title"], [1, "fas", "fa-user-shield"], [1, "login-info-text"], [1, "fas", "fa-user"], [1, "login-footer"], [1, "alert", "alert-error", "mt-4"], [1, "fas", "fa-exclamation-triangle"]], template: function LoginComponent_Template(rf, ctx) {
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _LoginComponent, selectors: [["app-login"]], decls: 68, vars: 5, consts: [["currentPage", "Login", "userName", "Visitante", "userRole", "N\xC3O AUTENTICADO"], [1, "login-hero"], [1, "login-hero-content"], [1, "login-brand"], [1, "login-logo"], [1, "fas", "fa-shield-alt"], [1, "login-title"], [1, "login-subtitle"], [1, "login-card"], [1, "login-card-title"], [1, "fas", "fa-lock"], ["novalidate", "", 3, "ngSubmit", "formGroup"], [1, "form-group"], [1, "form-label"], [1, "fas", "fa-envelope"], ["formControlName", "email", "type", "email", "placeholder", "Digite seu e-mail", "required", "", 1, "form-input"], [1, "fas", "fa-key"], ["formControlName", "senha", "type", "password", "placeholder", "Digite sua senha", "required", "", 1, "form-input"], ["type", "submit", 1, "btn", "btn-primary", "btn-lg", "w-full", 3, "disabled"], [1, "fas", 3, "ngClass"], [1, "ml-2"], [1, "login-extra"], ["routerLink", "/usuarios/novo", 1, "create-link"], [1, "fas", "fa-user-plus"], ["class", "alert alert-error mt-4", 4, "ngIf"], [1, "login-info"], [1, "fas", "fa-lightbulb"], [1, "login-info-grid"], [1, "login-info-card"], [1, "login-info-title"], [1, "fas", "fa-user-shield"], [1, "login-info-text"], [1, "fas", "fa-user"], [1, "login-footer"], [1, "alert", "alert-error", "mt-4"], [1, "fas", "fa-exclamation-triangle"]], template: function LoginComponent_Template(rf, ctx) {
     if (rf & 1) {
       \u0275\u0275element(0, "app-header", 0);
       \u0275\u0275elementStart(1, "div", 1)(2, "div", 2)(3, "div", 3)(4, "div", 4);
@@ -46429,44 +46429,48 @@ var LoginComponent = class _LoginComponent {
       \u0275\u0275elementStart(27, "span", 20);
       \u0275\u0275text(28);
       \u0275\u0275elementEnd()()();
-      \u0275\u0275template(29, LoginComponent_div_29_Template, 3, 1, "div", 21);
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(30, "div", 22)(31, "h3");
-      \u0275\u0275element(32, "i", 23);
-      \u0275\u0275text(33, " Dicas de Acesso");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(34, "div", 24)(35, "div", 25)(36, "div", 26);
-      \u0275\u0275element(37, "i", 27);
-      \u0275\u0275text(38, " Administrador");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(39, "div", 28)(40, "strong");
-      \u0275\u0275text(41, "E-mail:");
-      \u0275\u0275elementEnd();
-      \u0275\u0275text(42, " admin@pmerj.rj.gov");
-      \u0275\u0275element(43, "br");
-      \u0275\u0275elementStart(44, "strong");
-      \u0275\u0275text(45, "Senha:");
-      \u0275\u0275elementEnd();
-      \u0275\u0275text(46, " 123456 ");
+      \u0275\u0275elementStart(29, "div", 21)(30, "a", 22);
+      \u0275\u0275element(31, "i", 23);
+      \u0275\u0275text(32, " Criar uma conta");
       \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(47, "div", 25)(48, "div", 26);
-      \u0275\u0275element(49, "i", 29);
-      \u0275\u0275text(50, " Usu\xE1rio Cidad\xE3o");
+      \u0275\u0275template(33, LoginComponent_div_33_Template, 3, 1, "div", 24);
       \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(51, "div", 28)(52, "strong");
-      \u0275\u0275text(53, "E-mail:");
+      \u0275\u0275elementStart(34, "div", 25)(35, "h3");
+      \u0275\u0275element(36, "i", 26);
+      \u0275\u0275text(37, " Dicas de Acesso");
       \u0275\u0275elementEnd();
-      \u0275\u0275text(54, " joao@email.com");
-      \u0275\u0275element(55, "br");
-      \u0275\u0275elementStart(56, "strong");
-      \u0275\u0275text(57, "Senha:");
+      \u0275\u0275elementStart(38, "div", 27)(39, "div", 28)(40, "div", 29);
+      \u0275\u0275element(41, "i", 30);
+      \u0275\u0275text(42, " Administrador");
       \u0275\u0275elementEnd();
-      \u0275\u0275text(58, " 123456 ");
+      \u0275\u0275elementStart(43, "div", 31)(44, "strong");
+      \u0275\u0275text(45, "E-mail:");
+      \u0275\u0275elementEnd();
+      \u0275\u0275text(46, " admin@pmerj.rj.gov");
+      \u0275\u0275element(47, "br");
+      \u0275\u0275elementStart(48, "strong");
+      \u0275\u0275text(49, "Senha:");
+      \u0275\u0275elementEnd();
+      \u0275\u0275text(50, " 123456 ");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(51, "div", 28)(52, "div", 29);
+      \u0275\u0275element(53, "i", 32);
+      \u0275\u0275text(54, " Usu\xE1rio Cidad\xE3o");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(55, "div", 31)(56, "strong");
+      \u0275\u0275text(57, "E-mail:");
+      \u0275\u0275elementEnd();
+      \u0275\u0275text(58, " joao@email.com");
+      \u0275\u0275element(59, "br");
+      \u0275\u0275elementStart(60, "strong");
+      \u0275\u0275text(61, "Senha:");
+      \u0275\u0275elementEnd();
+      \u0275\u0275text(62, " 123456 ");
       \u0275\u0275elementEnd()()()();
-      \u0275\u0275elementStart(59, "div", 30)(60, "p");
-      \u0275\u0275text(61, "\xA9 2025 Pol\xEDcia Militar do Estado do Rio de Janeiro");
-      \u0275\u0275element(62, "br");
-      \u0275\u0275text(63, " Sistema de Gest\xE3o de Autoriza\xE7\xF5es e Palestras");
+      \u0275\u0275elementStart(63, "div", 33)(64, "p");
+      \u0275\u0275text(65, "\xA9 2025 Pol\xEDcia Militar do Estado do Rio de Janeiro");
+      \u0275\u0275element(66, "br");
+      \u0275\u0275text(67, " Sistema de Gest\xE3o de Autoriza\xE7\xF5es e Palestras");
       \u0275\u0275elementEnd()()()();
     }
     if (rf & 2) {
@@ -46478,15 +46482,15 @@ var LoginComponent = class _LoginComponent {
       \u0275\u0275property("ngClass", ctx.loading ? "fa-circle-notch fa-spin" : "fa-sign-in-alt");
       \u0275\u0275advance(2);
       \u0275\u0275textInterpolate(ctx.loading ? "Entrando..." : "Entrar no Sistema");
-      \u0275\u0275advance();
+      \u0275\u0275advance(5);
       \u0275\u0275property("ngIf", ctx.erro);
     }
-  }, dependencies: [CommonModule, NgClass, NgIf, ReactiveFormsModule, \u0275NgNoValidate, DefaultValueAccessor, NgControlStatus, NgControlStatusGroup, RequiredValidator, FormGroupDirective, FormControlName, HeaderComponent], styles: ["\n\n.login-hero[_ngcontent-%COMP%] {\n  min-height: 100vh;\n  background:\n    linear-gradient(\n      135deg,\n      #197cb1 0%,\n      #1565c0 50%,\n      #0d47a1 100%);\n  display: flex;\n  align-items: center;\n}\n.login-hero-content[_ngcontent-%COMP%] {\n  max-width: 1100px;\n  margin: 0 auto;\n  padding: 4rem 2rem;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 2rem;\n  align-items: center;\n}\n.login-brand[_ngcontent-%COMP%] {\n  text-align: center;\n}\n.login-logo[_ngcontent-%COMP%] {\n  width: 72px;\n  height: 72px;\n  border-radius: 50%;\n  background: #fbbf24;\n  color: #197cb1;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);\n  margin-bottom: 1rem;\n}\n.login-logo[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  font-size: 28px;\n}\n.login-title[_ngcontent-%COMP%] {\n  color: #fff;\n  font-size: 2rem;\n  font-weight: 800;\n}\n.login-subtitle[_ngcontent-%COMP%] {\n  color: rgba(255, 255, 255, 0.9);\n  font-size: 1rem;\n}\n.login-card[_ngcontent-%COMP%] {\n  background: #fff;\n  width: 100%;\n  max-width: 460px;\n  border-radius: 1rem;\n  padding: 2rem;\n  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);\n  border: 1px solid #e5e7eb;\n}\n.login-card-title[_ngcontent-%COMP%] {\n  font-size: 1.25rem;\n  font-weight: 700;\n  color: #0f172a;\n  display: flex;\n  align-items: center;\n  gap: .5rem;\n  margin-bottom: 1.25rem;\n}\n.form-group[_ngcontent-%COMP%] {\n  margin-bottom: 1rem;\n}\n.form-label[_ngcontent-%COMP%] {\n  font-weight: 600;\n  color: #0f172a;\n  display: flex;\n  gap: .5rem;\n  align-items: center;\n}\n.form-input[_ngcontent-%COMP%] {\n  width: 100%;\n}\n.login-info[_ngcontent-%COMP%] {\n  background: rgba(255, 255, 255, 0.1);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  -webkit-backdrop-filter: blur(6px);\n  backdrop-filter: blur(6px);\n  border-radius: 1rem;\n  padding: 1.5rem;\n  color: #fff;\n  width: 100%;\n}\n.login-info[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%] {\n  font-weight: 700;\n  color: #fff;\n  margin-bottom: 1rem;\n  display: flex;\n  align-items: center;\n  gap: .5rem;\n}\n.login-info-grid[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 1rem;\n}\n.login-info-card[_ngcontent-%COMP%] {\n  background: #ffffff;\n  color: #0f172a;\n  border: 1px solid #e5e7eb;\n  border-radius: .75rem;\n  padding: 1rem;\n}\n.login-info-title[_ngcontent-%COMP%] {\n  font-weight: 700;\n  margin-bottom: .5rem;\n  display: flex;\n  gap: .5rem;\n  align-items: center;\n}\n.login-info-text[_ngcontent-%COMP%] {\n  font-size: .9rem;\n  color: #334155;\n}\n.login-footer[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  text-align: center;\n  color: #fff;\n  font-size: .875rem;\n}\n@media (max-width: 768px) {\n  .login-hero-content[_ngcontent-%COMP%] {\n    padding: 3rem 1rem;\n  }\n  .login-info-grid[_ngcontent-%COMP%] {\n    grid-template-columns: 1fr;\n  }\n}\n@media (max-width: 480px) {\n  .login-title[_ngcontent-%COMP%] {\n    font-size: 1.5rem;\n  }\n  .login-logo[_ngcontent-%COMP%] {\n    width: 60px;\n    height: 60px;\n  }\n  .login-logo[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n    font-size: 24px;\n  }\n}\n/*# sourceMappingURL=login.component.css.map */"] });
+  }, dependencies: [CommonModule, NgClass, NgIf, ReactiveFormsModule, \u0275NgNoValidate, DefaultValueAccessor, NgControlStatus, NgControlStatusGroup, RequiredValidator, FormGroupDirective, FormControlName, HeaderComponent, RouterModule, RouterLink], styles: ["\n\n.login-hero[_ngcontent-%COMP%] {\n  min-height: 100vh;\n  background:\n    linear-gradient(\n      135deg,\n      #197cb1 0%,\n      #1565c0 50%,\n      #0d47a1 100%);\n  display: flex;\n  align-items: center;\n}\n.login-hero-content[_ngcontent-%COMP%] {\n  max-width: 1100px;\n  margin: 0 auto;\n  padding: 4rem 2rem;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 2rem;\n  align-items: center;\n}\n.login-brand[_ngcontent-%COMP%] {\n  text-align: center;\n}\n.login-logo[_ngcontent-%COMP%] {\n  width: 72px;\n  height: 72px;\n  border-radius: 50%;\n  background: #fbbf24;\n  color: #197cb1;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);\n  margin-bottom: 1rem;\n}\n.login-logo[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  font-size: 28px;\n}\n.login-title[_ngcontent-%COMP%] {\n  color: #fff;\n  font-size: 2rem;\n  font-weight: 800;\n}\n.login-subtitle[_ngcontent-%COMP%] {\n  color: rgba(255, 255, 255, 0.9);\n  font-size: 1rem;\n}\n.login-card[_ngcontent-%COMP%] {\n  background: #fff;\n  width: 100%;\n  max-width: 460px;\n  border-radius: 1rem;\n  padding: 2rem;\n  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);\n  border: 1px solid #e5e7eb;\n}\n.login-card-title[_ngcontent-%COMP%] {\n  font-size: 1.25rem;\n  font-weight: 700;\n  color: #0f172a;\n  display: flex;\n  align-items: center;\n  gap: .5rem;\n  margin-bottom: 1.25rem;\n}\n.form-group[_ngcontent-%COMP%] {\n  margin-bottom: 1rem;\n}\n.form-label[_ngcontent-%COMP%] {\n  font-weight: 600;\n  color: #0f172a;\n  display: flex;\n  gap: .5rem;\n  align-items: center;\n}\n.form-input[_ngcontent-%COMP%] {\n  width: 100%;\n}\n.login-info[_ngcontent-%COMP%] {\n  background: rgba(255, 255, 255, 0.1);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  -webkit-backdrop-filter: blur(6px);\n  backdrop-filter: blur(6px);\n  border-radius: 1rem;\n  padding: 1.5rem;\n  color: #fff;\n  width: 100%;\n}\n.login-info[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%] {\n  font-weight: 700;\n  color: #fff;\n  margin-bottom: 1rem;\n  display: flex;\n  align-items: center;\n  gap: .5rem;\n}\n.login-info-grid[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 1rem;\n}\n.login-info-card[_ngcontent-%COMP%] {\n  background: #ffffff;\n  color: #0f172a;\n  border: 1px solid #e5e7eb;\n  border-radius: .75rem;\n  padding: 1rem;\n}\n.login-info-title[_ngcontent-%COMP%] {\n  font-weight: 700;\n  margin-bottom: .5rem;\n  display: flex;\n  gap: .5rem;\n  align-items: center;\n}\n.login-info-text[_ngcontent-%COMP%] {\n  font-size: .9rem;\n  color: #334155;\n}\n.login-footer[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  text-align: center;\n  color: #fff;\n  font-size: .875rem;\n}\n.login-extra[_ngcontent-%COMP%] {\n  margin-top: 1rem;\n  text-align: center;\n}\n.create-link[_ngcontent-%COMP%] {\n  color: #197cb1;\n  text-decoration: none;\n  font-weight: 600;\n}\n.create-link[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  margin-right: .4rem;\n}\n.create-link[_ngcontent-%COMP%]:hover {\n  text-decoration: underline;\n}\n@media (max-width: 768px) {\n  .login-hero-content[_ngcontent-%COMP%] {\n    padding: 3rem 1rem;\n  }\n  .login-info-grid[_ngcontent-%COMP%] {\n    grid-template-columns: 1fr;\n  }\n}\n@media (max-width: 480px) {\n  .login-title[_ngcontent-%COMP%] {\n    font-size: 1.5rem;\n  }\n  .login-logo[_ngcontent-%COMP%] {\n    width: 60px;\n    height: 60px;\n  }\n  .login-logo[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n    font-size: 24px;\n  }\n}\n/*# sourceMappingURL=login.component.css.map */"] });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(LoginComponent, [{
     type: Component,
-    args: [{ selector: "app-login", standalone: true, imports: [CommonModule, ReactiveFormsModule, HeaderComponent], template: `<app-header currentPage="Login" userName="Visitante" userRole="N\xC3O AUTENTICADO"></app-header>\r
+    args: [{ selector: "app-login", standalone: true, imports: [CommonModule, ReactiveFormsModule, HeaderComponent, RouterModule], template: `<app-header currentPage="Login" userName="Visitante" userRole="N\xC3O AUTENTICADO"></app-header>\r
 \r
 <div class="login-hero">\r
   <div class="login-hero-content">\r
@@ -46529,6 +46533,10 @@ var LoginComponent = class _LoginComponent {
         </button>\r
       </form>\r
 \r
+      <div class="login-extra">\r
+        <a routerLink="/usuarios/novo" class="create-link"><i class="fas fa-user-plus"></i> Criar uma conta</a>\r
+      </div>\r
+\r
       <div *ngIf="erro" class="alert alert-error mt-4"><i class="fas fa-exclamation-triangle"></i> {{ erro }}</div>\r
     </div>\r
 \r
@@ -46558,11 +46566,11 @@ var LoginComponent = class _LoginComponent {
     </div>\r
   </div>\r
 </div>\r
-`, styles: ["/* src/app/pages/login.component/login.component.css */\n.login-hero {\n  min-height: 100vh;\n  background:\n    linear-gradient(\n      135deg,\n      #197cb1 0%,\n      #1565c0 50%,\n      #0d47a1 100%);\n  display: flex;\n  align-items: center;\n}\n.login-hero-content {\n  max-width: 1100px;\n  margin: 0 auto;\n  padding: 4rem 2rem;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 2rem;\n  align-items: center;\n}\n.login-brand {\n  text-align: center;\n}\n.login-logo {\n  width: 72px;\n  height: 72px;\n  border-radius: 50%;\n  background: #fbbf24;\n  color: #197cb1;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);\n  margin-bottom: 1rem;\n}\n.login-logo i {\n  font-size: 28px;\n}\n.login-title {\n  color: #fff;\n  font-size: 2rem;\n  font-weight: 800;\n}\n.login-subtitle {\n  color: rgba(255, 255, 255, 0.9);\n  font-size: 1rem;\n}\n.login-card {\n  background: #fff;\n  width: 100%;\n  max-width: 460px;\n  border-radius: 1rem;\n  padding: 2rem;\n  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);\n  border: 1px solid #e5e7eb;\n}\n.login-card-title {\n  font-size: 1.25rem;\n  font-weight: 700;\n  color: #0f172a;\n  display: flex;\n  align-items: center;\n  gap: .5rem;\n  margin-bottom: 1.25rem;\n}\n.form-group {\n  margin-bottom: 1rem;\n}\n.form-label {\n  font-weight: 600;\n  color: #0f172a;\n  display: flex;\n  gap: .5rem;\n  align-items: center;\n}\n.form-input {\n  width: 100%;\n}\n.login-info {\n  background: rgba(255, 255, 255, 0.1);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  -webkit-backdrop-filter: blur(6px);\n  backdrop-filter: blur(6px);\n  border-radius: 1rem;\n  padding: 1.5rem;\n  color: #fff;\n  width: 100%;\n}\n.login-info h3 {\n  font-weight: 700;\n  color: #fff;\n  margin-bottom: 1rem;\n  display: flex;\n  align-items: center;\n  gap: .5rem;\n}\n.login-info-grid {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 1rem;\n}\n.login-info-card {\n  background: #ffffff;\n  color: #0f172a;\n  border: 1px solid #e5e7eb;\n  border-radius: .75rem;\n  padding: 1rem;\n}\n.login-info-title {\n  font-weight: 700;\n  margin-bottom: .5rem;\n  display: flex;\n  gap: .5rem;\n  align-items: center;\n}\n.login-info-text {\n  font-size: .9rem;\n  color: #334155;\n}\n.login-footer p {\n  text-align: center;\n  color: #fff;\n  font-size: .875rem;\n}\n@media (max-width: 768px) {\n  .login-hero-content {\n    padding: 3rem 1rem;\n  }\n  .login-info-grid {\n    grid-template-columns: 1fr;\n  }\n}\n@media (max-width: 480px) {\n  .login-title {\n    font-size: 1.5rem;\n  }\n  .login-logo {\n    width: 60px;\n    height: 60px;\n  }\n  .login-logo i {\n    font-size: 24px;\n  }\n}\n/*# sourceMappingURL=login.component.css.map */\n"] }]
+`, styles: ["/* src/app/pages/login.component/login.component.css */\n.login-hero {\n  min-height: 100vh;\n  background:\n    linear-gradient(\n      135deg,\n      #197cb1 0%,\n      #1565c0 50%,\n      #0d47a1 100%);\n  display: flex;\n  align-items: center;\n}\n.login-hero-content {\n  max-width: 1100px;\n  margin: 0 auto;\n  padding: 4rem 2rem;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 2rem;\n  align-items: center;\n}\n.login-brand {\n  text-align: center;\n}\n.login-logo {\n  width: 72px;\n  height: 72px;\n  border-radius: 50%;\n  background: #fbbf24;\n  color: #197cb1;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);\n  margin-bottom: 1rem;\n}\n.login-logo i {\n  font-size: 28px;\n}\n.login-title {\n  color: #fff;\n  font-size: 2rem;\n  font-weight: 800;\n}\n.login-subtitle {\n  color: rgba(255, 255, 255, 0.9);\n  font-size: 1rem;\n}\n.login-card {\n  background: #fff;\n  width: 100%;\n  max-width: 460px;\n  border-radius: 1rem;\n  padding: 2rem;\n  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);\n  border: 1px solid #e5e7eb;\n}\n.login-card-title {\n  font-size: 1.25rem;\n  font-weight: 700;\n  color: #0f172a;\n  display: flex;\n  align-items: center;\n  gap: .5rem;\n  margin-bottom: 1.25rem;\n}\n.form-group {\n  margin-bottom: 1rem;\n}\n.form-label {\n  font-weight: 600;\n  color: #0f172a;\n  display: flex;\n  gap: .5rem;\n  align-items: center;\n}\n.form-input {\n  width: 100%;\n}\n.login-info {\n  background: rgba(255, 255, 255, 0.1);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  -webkit-backdrop-filter: blur(6px);\n  backdrop-filter: blur(6px);\n  border-radius: 1rem;\n  padding: 1.5rem;\n  color: #fff;\n  width: 100%;\n}\n.login-info h3 {\n  font-weight: 700;\n  color: #fff;\n  margin-bottom: 1rem;\n  display: flex;\n  align-items: center;\n  gap: .5rem;\n}\n.login-info-grid {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 1rem;\n}\n.login-info-card {\n  background: #ffffff;\n  color: #0f172a;\n  border: 1px solid #e5e7eb;\n  border-radius: .75rem;\n  padding: 1rem;\n}\n.login-info-title {\n  font-weight: 700;\n  margin-bottom: .5rem;\n  display: flex;\n  gap: .5rem;\n  align-items: center;\n}\n.login-info-text {\n  font-size: .9rem;\n  color: #334155;\n}\n.login-footer p {\n  text-align: center;\n  color: #fff;\n  font-size: .875rem;\n}\n.login-extra {\n  margin-top: 1rem;\n  text-align: center;\n}\n.create-link {\n  color: #197cb1;\n  text-decoration: none;\n  font-weight: 600;\n}\n.create-link i {\n  margin-right: .4rem;\n}\n.create-link:hover {\n  text-decoration: underline;\n}\n@media (max-width: 768px) {\n  .login-hero-content {\n    padding: 3rem 1rem;\n  }\n  .login-info-grid {\n    grid-template-columns: 1fr;\n  }\n}\n@media (max-width: 480px) {\n  .login-title {\n    font-size: 1.5rem;\n  }\n  .login-logo {\n    width: 60px;\n    height: 60px;\n  }\n  .login-logo i {\n    font-size: 24px;\n  }\n}\n/*# sourceMappingURL=login.component.css.map */\n"] }]
   }], null, null);
 })();
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(LoginComponent, { className: "LoginComponent", filePath: "src/app/pages/login.component/login.component.ts", lineNumber: 15 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(LoginComponent, { className: "LoginComponent", filePath: "src/app/pages/login.component/login.component.ts", lineNumber: 16 });
 })();
 
 // src/app/services/admin.service.ts
@@ -49043,10 +49051,247 @@ var HomeComponent = class _HomeComponent {
   (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(HomeComponent, { className: "HomeComponent", filePath: "src/app/pages/home/home.component.ts", lineNumber: 13 });
 })();
 
+// src/app/pages/usuario/usuario.cadastrar.component.ts
+function UsuarioCadastrarComponent_div_47_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 34);
+    \u0275\u0275element(1, "i", 35);
+    \u0275\u0275text(2, " As senhas n\xE3o conferem");
+    \u0275\u0275elementEnd();
+  }
+}
+function UsuarioCadastrarComponent_div_56_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 36);
+    \u0275\u0275element(1, "i", 37);
+    \u0275\u0275text(2);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext();
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate1(" ", ctx_r0.erro);
+  }
+}
+function UsuarioCadastrarComponent_div_57_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 38);
+    \u0275\u0275element(1, "i", 39);
+    \u0275\u0275text(2);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext();
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate1(" ", ctx_r0.ok);
+  }
+}
+var UsuarioCadastrarComponent = class _UsuarioCadastrarComponent {
+  fb = inject2(FormBuilder);
+  auth = inject2(AuthService);
+  router = inject2(Router);
+  loading = false;
+  erro = "";
+  ok = "";
+  form = this.fb.group({
+    nome: ["", [Validators.required, Validators.minLength(3)]],
+    email: ["", [Validators.required, Validators.email]],
+    telefone: [""],
+    documento: [""],
+    senha: ["", [Validators.required, Validators.minLength(6)]],
+    confirmarSenha: ["", [Validators.required]]
+  });
+  senhasNaoConferem() {
+    const v = this.form.value;
+    return !!v?.senha && !!v?.confirmarSenha && v?.senha !== v?.confirmarSenha;
+  }
+  submit() {
+    if (this.form.invalid || this.senhasNaoConferem())
+      return;
+    this.loading = true;
+    this.erro = "";
+    this.ok = "";
+    const { nome, email, telefone, documento, senha } = this.form.value;
+    this.auth.cadastrar({ nome, email, telefone, documento, senha }).subscribe({
+      next: () => {
+        this.loading = false;
+        this.ok = "Usu\xE1rio cadastrado com sucesso!";
+        setTimeout(() => this.router.navigate(["/login"]), 1200);
+      },
+      error: (e) => {
+        this.loading = false;
+        this.erro = e?.error?.erro || "Falha ao cadastrar";
+      }
+    });
+  }
+  static \u0275fac = function UsuarioCadastrarComponent_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _UsuarioCadastrarComponent)();
+  };
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _UsuarioCadastrarComponent, selectors: [["app-usuario-cadastrar"]], decls: 58, vars: 7, consts: [["currentPage", "Cadastro de Usu\xE1rio", "userName", "Visitante", "userRole", "N\xC3O AUTENTICADO"], [1, "signup-hero"], [1, "signup-content"], [1, "signup-brand"], [1, "signup-logo"], [1, "fas", "fa-user-plus"], [1, "signup-title"], [1, "signup-subtitle"], [1, "signup-card"], [1, "signup-card-title"], [1, "fas", "fa-id-card"], ["novalidate", "", 3, "ngSubmit", "formGroup"], [1, "form-group"], [1, "form-label"], [1, "fas", "fa-user"], ["formControlName", "nome", "type", "text", "placeholder", "Seu nome", "required", "", 1, "form-input"], [1, "fas", "fa-envelope"], ["formControlName", "email", "type", "email", "placeholder", "Seu e-mail", "required", "", 1, "form-input"], [1, "grid", "grid-cols-2", "gap-4"], [1, "fas", "fa-phone"], ["formControlName", "telefone", "type", "tel", "placeholder", "(21) 90000-0000", 1, "form-input"], ["formControlName", "documento", "type", "text", "placeholder", "CPF ou CNPJ", 1, "form-input"], [1, "fas", "fa-key"], ["formControlName", "senha", "type", "password", "placeholder", "M\xEDnimo 6 caracteres", "required", "", 1, "form-input"], ["formControlName", "confirmarSenha", "type", "password", "placeholder", "Repita a senha", "required", "", 1, "form-input"], ["class", "text-danger text-sm mt-1", 4, "ngIf"], ["type", "submit", 1, "btn", "btn-primary", "btn-lg", "w-full", 3, "disabled"], [1, "fas", 3, "ngClass"], [1, "ml-2"], [1, "signup-extra"], ["routerLink", "/login", 1, "back-login"], [1, "fas", "fa-sign-in-alt"], ["class", "alert alert-error mt-4", 4, "ngIf"], ["class", "alert alert-success mt-4", 4, "ngIf"], [1, "text-danger", "text-sm", "mt-1"], [1, "fas", "fa-triangle-exclamation"], [1, "alert", "alert-error", "mt-4"], [1, "fas", "fa-exclamation-triangle"], [1, "alert", "alert-success", "mt-4"], [1, "fas", "fa-check"]], template: function UsuarioCadastrarComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      \u0275\u0275element(0, "app-header", 0);
+      \u0275\u0275elementStart(1, "section", 1)(2, "div", 2)(3, "div", 3)(4, "div", 4);
+      \u0275\u0275element(5, "i", 5);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(6, "h1", 6);
+      \u0275\u0275text(7, "Criar nova conta");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(8, "p", 7);
+      \u0275\u0275text(9, "Preencha os campos para acessar o Portal PMERJ");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(10, "div", 8)(11, "h2", 9);
+      \u0275\u0275element(12, "i", 10);
+      \u0275\u0275text(13, " Dados do Usu\xE1rio");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(14, "form", 11);
+      \u0275\u0275listener("ngSubmit", function UsuarioCadastrarComponent_Template_form_ngSubmit_14_listener() {
+        return ctx.submit();
+      });
+      \u0275\u0275elementStart(15, "div", 12)(16, "label", 13);
+      \u0275\u0275element(17, "i", 14);
+      \u0275\u0275text(18, " Nome completo");
+      \u0275\u0275elementEnd();
+      \u0275\u0275element(19, "input", 15);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(20, "div", 12)(21, "label", 13);
+      \u0275\u0275element(22, "i", 16);
+      \u0275\u0275text(23, " E-mail");
+      \u0275\u0275elementEnd();
+      \u0275\u0275element(24, "input", 17);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(25, "div", 18)(26, "div", 12)(27, "label", 13);
+      \u0275\u0275element(28, "i", 19);
+      \u0275\u0275text(29, " Telefone (opcional)");
+      \u0275\u0275elementEnd();
+      \u0275\u0275element(30, "input", 20);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(31, "div", 12)(32, "label", 13);
+      \u0275\u0275element(33, "i", 10);
+      \u0275\u0275text(34, " Documento (opcional)");
+      \u0275\u0275elementEnd();
+      \u0275\u0275element(35, "input", 21);
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(36, "div", 18)(37, "div", 12)(38, "label", 13);
+      \u0275\u0275element(39, "i", 22);
+      \u0275\u0275text(40, " Senha");
+      \u0275\u0275elementEnd();
+      \u0275\u0275element(41, "input", 23);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(42, "div", 12)(43, "label", 13);
+      \u0275\u0275element(44, "i", 22);
+      \u0275\u0275text(45, " Confirmar Senha");
+      \u0275\u0275elementEnd();
+      \u0275\u0275element(46, "input", 24);
+      \u0275\u0275template(47, UsuarioCadastrarComponent_div_47_Template, 3, 0, "div", 25);
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(48, "button", 26);
+      \u0275\u0275element(49, "i", 27);
+      \u0275\u0275elementStart(50, "span", 28);
+      \u0275\u0275text(51);
+      \u0275\u0275elementEnd()()();
+      \u0275\u0275elementStart(52, "div", 29)(53, "a", 30);
+      \u0275\u0275element(54, "i", 31);
+      \u0275\u0275text(55, " J\xE1 tenho uma conta");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275template(56, UsuarioCadastrarComponent_div_56_Template, 3, 1, "div", 32)(57, UsuarioCadastrarComponent_div_57_Template, 3, 1, "div", 33);
+      \u0275\u0275elementEnd()()();
+    }
+    if (rf & 2) {
+      \u0275\u0275advance(14);
+      \u0275\u0275property("formGroup", ctx.form);
+      \u0275\u0275advance(33);
+      \u0275\u0275property("ngIf", ctx.senhasNaoConferem());
+      \u0275\u0275advance();
+      \u0275\u0275property("disabled", ctx.form.invalid || ctx.senhasNaoConferem() || ctx.loading);
+      \u0275\u0275advance();
+      \u0275\u0275property("ngClass", ctx.loading ? "fa-circle-notch fa-spin" : "fa-user-plus");
+      \u0275\u0275advance(2);
+      \u0275\u0275textInterpolate(ctx.loading ? "Enviando..." : "Criar Conta");
+      \u0275\u0275advance(5);
+      \u0275\u0275property("ngIf", ctx.erro);
+      \u0275\u0275advance();
+      \u0275\u0275property("ngIf", ctx.ok);
+    }
+  }, dependencies: [CommonModule, NgClass, NgIf, ReactiveFormsModule, \u0275NgNoValidate, DefaultValueAccessor, NgControlStatus, NgControlStatusGroup, RequiredValidator, FormGroupDirective, FormControlName, HeaderComponent, RouterModule, RouterLink], styles: ["\n\n.signup-hero[_ngcontent-%COMP%] {\n  min-height: 100vh;\n  background:\n    linear-gradient(\n      135deg,\n      #197cb1 0%,\n      #1565c0 50%,\n      #0d47a1 100%);\n  display: flex;\n  align-items: center;\n}\n.signup-content[_ngcontent-%COMP%] {\n  max-width: 1100px;\n  margin: 0 auto;\n  padding: 4rem 2rem;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 2rem;\n  align-items: center;\n}\n.signup-brand[_ngcontent-%COMP%] {\n  text-align: center;\n}\n.signup-logo[_ngcontent-%COMP%] {\n  width: 72px;\n  height: 72px;\n  border-radius: 50%;\n  background: #fbbf24;\n  color: #197cb1;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);\n  margin-bottom: 1rem;\n}\n.signup-logo[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  font-size: 28px;\n}\n.signup-title[_ngcontent-%COMP%] {\n  color: #fff;\n  font-size: 2rem;\n  font-weight: 800;\n}\n.signup-subtitle[_ngcontent-%COMP%] {\n  color: rgba(255, 255, 255, 0.9);\n}\n.signup-card[_ngcontent-%COMP%] {\n  background: #fff;\n  width: 100%;\n  max-width: 600px;\n  border-radius: 1rem;\n  padding: 2rem;\n  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);\n  border: 1px solid #e5e7eb;\n}\n.signup-card-title[_ngcontent-%COMP%] {\n  font-size: 1.25rem;\n  font-weight: 700;\n  color: #0f172a;\n  display: flex;\n  align-items: center;\n  gap: .5rem;\n  margin-bottom: 1.25rem;\n}\n.text-danger[_ngcontent-%COMP%] {\n  color: #dc2626;\n}\n.text-sm[_ngcontent-%COMP%] {\n  font-size: .875rem;\n}\n.mt-1[_ngcontent-%COMP%] {\n  margin-top: .25rem;\n}\n.ml-2[_ngcontent-%COMP%] {\n  margin-left: .5rem;\n}\n.w-full[_ngcontent-%COMP%] {\n  width: 100%;\n}\n.grid[_ngcontent-%COMP%] {\n  display: grid;\n}\n.grid-cols-2[_ngcontent-%COMP%] {\n  grid-template-columns: 1fr 1fr;\n}\n.gap-4[_ngcontent-%COMP%] {\n  gap: 1rem;\n}\n.signup-extra[_ngcontent-%COMP%] {\n  margin-top: 1rem;\n  text-align: center;\n}\n.back-login[_ngcontent-%COMP%] {\n  color: #197cb1;\n  text-decoration: none;\n  font-weight: 600;\n}\n.back-login[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  margin-right: .4rem;\n}\n.back-login[_ngcontent-%COMP%]:hover {\n  text-decoration: underline;\n}\n@media (max-width: 768px) {\n  .signup-content[_ngcontent-%COMP%] {\n    padding: 3rem 1rem;\n  }\n  .grid-cols-2[_ngcontent-%COMP%] {\n    grid-template-columns: 1fr;\n  }\n}\n/*# sourceMappingURL=usuario.cadastrar.component.css.map */"] });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(UsuarioCadastrarComponent, [{
+    type: Component,
+    args: [{ selector: "app-usuario-cadastrar", standalone: true, imports: [CommonModule, ReactiveFormsModule, HeaderComponent, RouterModule], template: `<app-header currentPage="Cadastro de Usu\xE1rio" userName="Visitante" userRole="N\xC3O AUTENTICADO"></app-header>\r
+\r
+<section class="signup-hero">\r
+  <div class="signup-content">\r
+    <div class="signup-brand">\r
+      <div class="signup-logo"><i class="fas fa-user-plus"></i></div>\r
+      <h1 class="signup-title">Criar nova conta</h1>\r
+      <p class="signup-subtitle">Preencha os campos para acessar o Portal PMERJ</p>\r
+    </div>\r
+\r
+    <div class="signup-card">\r
+      <h2 class="signup-card-title"><i class="fas fa-id-card"></i> Dados do Usu\xE1rio</h2>\r
+\r
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>\r
+        <div class="form-group">\r
+          <label class="form-label"><i class="fas fa-user"></i> Nome completo</label>\r
+          <input class="form-input" formControlName="nome" type="text" placeholder="Seu nome" required>\r
+        </div>\r
+\r
+        <div class="form-group">\r
+          <label class="form-label"><i class="fas fa-envelope"></i> E-mail</label>\r
+          <input class="form-input" formControlName="email" type="email" placeholder="Seu e-mail" required>\r
+        </div>\r
+\r
+        <div class="grid grid-cols-2 gap-4">\r
+          <div class="form-group">\r
+            <label class="form-label"><i class="fas fa-phone"></i> Telefone (opcional)</label>\r
+            <input class="form-input" formControlName="telefone" type="tel" placeholder="(21) 90000-0000">\r
+          </div>\r
+          <div class="form-group">\r
+            <label class="form-label"><i class="fas fa-id-card"></i> Documento (opcional)</label>\r
+            <input class="form-input" formControlName="documento" type="text" placeholder="CPF ou CNPJ">\r
+          </div>\r
+        </div>\r
+\r
+        <div class="grid grid-cols-2 gap-4">\r
+          <div class="form-group">\r
+            <label class="form-label"><i class="fas fa-key"></i> Senha</label>\r
+            <input class="form-input" formControlName="senha" type="password" placeholder="M\xEDnimo 6 caracteres" required>\r
+          </div>\r
+\r
+          <div class="form-group">\r
+            <label class="form-label"><i class="fas fa-key"></i> Confirmar Senha</label>\r
+            <input class="form-input" formControlName="confirmarSenha" type="password" placeholder="Repita a senha" required>\r
+            <div *ngIf="senhasNaoConferem()" class="text-danger text-sm mt-1"><i class="fas fa-triangle-exclamation"></i> As senhas n\xE3o conferem</div>\r
+          </div>\r
+        </div>\r
+\r
+        <button type="submit" class="btn btn-primary btn-lg w-full" [disabled]="form.invalid || senhasNaoConferem() || loading">\r
+          <i class="fas" [ngClass]="loading ? 'fa-circle-notch fa-spin' : 'fa-user-plus'"></i>\r
+          <span class="ml-2">{{ loading ? 'Enviando...' : 'Criar Conta' }}</span>\r
+        </button>\r
+      </form>\r
+\r
+      <div class="signup-extra">\r
+        <a routerLink="/login" class="back-login"><i class="fas fa-sign-in-alt"></i> J\xE1 tenho uma conta</a>\r
+      </div>\r
+\r
+      <div *ngIf="erro" class="alert alert-error mt-4"><i class="fas fa-exclamation-triangle"></i> {{ erro }}</div>\r
+      <div *ngIf="ok" class="alert alert-success mt-4"><i class="fas fa-check"></i> {{ ok }}</div>\r
+    </div>\r
+  </div>\r
+</section>\r
+`, styles: ["/* src/app/pages/usuario/usuario.cadastrar.component.css */\n.signup-hero {\n  min-height: 100vh;\n  background:\n    linear-gradient(\n      135deg,\n      #197cb1 0%,\n      #1565c0 50%,\n      #0d47a1 100%);\n  display: flex;\n  align-items: center;\n}\n.signup-content {\n  max-width: 1100px;\n  margin: 0 auto;\n  padding: 4rem 2rem;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 2rem;\n  align-items: center;\n}\n.signup-brand {\n  text-align: center;\n}\n.signup-logo {\n  width: 72px;\n  height: 72px;\n  border-radius: 50%;\n  background: #fbbf24;\n  color: #197cb1;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);\n  margin-bottom: 1rem;\n}\n.signup-logo i {\n  font-size: 28px;\n}\n.signup-title {\n  color: #fff;\n  font-size: 2rem;\n  font-weight: 800;\n}\n.signup-subtitle {\n  color: rgba(255, 255, 255, 0.9);\n}\n.signup-card {\n  background: #fff;\n  width: 100%;\n  max-width: 600px;\n  border-radius: 1rem;\n  padding: 2rem;\n  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);\n  border: 1px solid #e5e7eb;\n}\n.signup-card-title {\n  font-size: 1.25rem;\n  font-weight: 700;\n  color: #0f172a;\n  display: flex;\n  align-items: center;\n  gap: .5rem;\n  margin-bottom: 1.25rem;\n}\n.text-danger {\n  color: #dc2626;\n}\n.text-sm {\n  font-size: .875rem;\n}\n.mt-1 {\n  margin-top: .25rem;\n}\n.ml-2 {\n  margin-left: .5rem;\n}\n.w-full {\n  width: 100%;\n}\n.grid {\n  display: grid;\n}\n.grid-cols-2 {\n  grid-template-columns: 1fr 1fr;\n}\n.gap-4 {\n  gap: 1rem;\n}\n.signup-extra {\n  margin-top: 1rem;\n  text-align: center;\n}\n.back-login {\n  color: #197cb1;\n  text-decoration: none;\n  font-weight: 600;\n}\n.back-login i {\n  margin-right: .4rem;\n}\n.back-login:hover {\n  text-decoration: underline;\n}\n@media (max-width: 768px) {\n  .signup-content {\n    padding: 3rem 1rem;\n  }\n  .grid-cols-2 {\n    grid-template-columns: 1fr;\n  }\n}\n/*# sourceMappingURL=usuario.cadastrar.component.css.map */\n"] }]
+  }], null, null);
+})();
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(UsuarioCadastrarComponent, { className: "UsuarioCadastrarComponent", filePath: "src/app/pages/usuario/usuario.cadastrar.component.ts", lineNumber: 16 });
+})();
+
 // src/app/app.routes.ts
 var routes = [
   { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
+  { path: "usuarios/novo", component: UsuarioCadastrarComponent },
   // CIDADÃO
   { path: "usuario/dashboard", component: UsuarioDashboardComponent, canActivate: [authGuard] },
   // ADMIN

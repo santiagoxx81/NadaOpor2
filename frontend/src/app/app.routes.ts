@@ -5,11 +5,13 @@ import { authGuard } from './guards/auth.guard-guard';
 import { adminGuard } from './guards/admin.guard-guard';
 import { UsuarioDashboardComponent } from './pages/usuario/usuario.dashboard.component';
 import { HomeComponent } from './pages/home/home.component';
+import { UsuarioCadastrarComponent } from './pages/usuario/usuario.cadastrar.component';
 
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'usuarios/novo', component: UsuarioCadastrarComponent },
 
   // CIDADÃO
   { path: 'usuario/dashboard', component: UsuarioDashboardComponent, canActivate: [authGuard] },
