@@ -46208,275 +46208,6 @@ var AuthService = class _AuthService {
   }], null, null);
 })();
 
-// src/app/pages/login.component/login.component.ts
-function LoginComponent_span_22_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "span");
-    \u0275\u0275text(1, "\u{1F6AA}");
-    \u0275\u0275elementEnd();
-  }
-}
-function LoginComponent_span_23_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275element(0, "span", 25);
-  }
-}
-function LoginComponent_div_25_Template(rf, ctx) {
-  if (rf & 1) {
-    \u0275\u0275elementStart(0, "div", 26);
-    \u0275\u0275text(1);
-    \u0275\u0275elementEnd();
-  }
-  if (rf & 2) {
-    const ctx_r0 = \u0275\u0275nextContext();
-    \u0275\u0275advance();
-    \u0275\u0275textInterpolate(ctx_r0.erro);
-  }
-}
-var LoginComponent = class _LoginComponent {
-  fb = inject2(FormBuilder);
-  auth = inject2(AuthService);
-  router = inject2(Router);
-  loading = false;
-  erro = "";
-  form = this.fb.group({
-    email: ["", [Validators.required, Validators.email]],
-    senha: ["", Validators.required]
-  });
-  submit() {
-    if (this.form.invalid)
-      return;
-    this.loading = true;
-    this.erro = "";
-    this.auth.login(this.form.value).subscribe({
-      next: (res) => {
-        this.auth.salvarToken(res.token);
-        localStorage.setItem("usuario", JSON.stringify(res.usuario));
-        const tipo = res.usuario?.tipo_usuario;
-        const destino = tipo === "ADMIN" ? "/admin/dashboard" : "/usuario/dashboard";
-        this.loading = false;
-        this.router.navigateByUrl(destino);
-      },
-      error: (e) => {
-        this.loading = false;
-        this.erro = e?.error?.erro || "Falha no login";
-      }
-    });
-  }
-  static \u0275fac = function LoginComponent_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _LoginComponent)();
-  };
-  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _LoginComponent, selectors: [["app-login"]], decls: 57, vars: 6, consts: [[1, "container"], [1, "text-center", 2, "max-width", "420px", "margin", "4rem auto"], [1, "mb-8"], [1, "text-6xl", "mb-4"], [1, "dashboard-title", "mb-2"], [1, "dashboard-subtitle"], [1, "card"], [1, "mb-6", "text-center"], ["novalidate", "", 3, "ngSubmit", "formGroup"], [1, "form-group"], [1, "form-label"], ["formControlName", "email", "type", "email", "placeholder", "Digite seu e-mail", "required", "", 1, "form-input"], ["formControlName", "senha", "type", "password", "placeholder", "Digite sua senha", "required", "", 1, "form-input"], ["type", "submit", 1, "btn", "btn-primary", "btn-lg", "w-full", 3, "disabled"], [4, "ngIf"], ["class", "loading", 4, "ngIf"], ["class", "alert alert-error mt-4", 4, "ngIf"], [1, "mt-8", "p-6", "bg-white", "rounded-lg", "shadow-md"], [1, "font-semibold", "mb-4", "text-primary"], [1, "grid", "grid-cols-1", "gap-4"], [1, "p-4", "border", "border-gray-200", "rounded-lg"], [1, "font-medium", "text-gray-900", "mb-1"], [1, "text-sm", "text-gray-600"], [1, "mt-8", "text-center"], [1, "text-sm", "text-gray-500"], [1, "loading"], [1, "alert", "alert-error", "mt-4"]], template: function LoginComponent_Template(rf, ctx) {
-    if (rf & 1) {
-      \u0275\u0275elementStart(0, "div", 0)(1, "div", 1)(2, "div", 2)(3, "div", 3);
-      \u0275\u0275text(4, "\u{1F46E}\u200D\u2642\uFE0F");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(5, "h1", 4);
-      \u0275\u0275text(6, "Portal PMERJ");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(7, "p", 5);
-      \u0275\u0275text(8, "Sistema de Autoriza\xE7\xF5es e Palestras");
-      \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(9, "div", 6)(10, "h2", 7);
-      \u0275\u0275text(11, "\u{1F510} Entrar no Sistema");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(12, "form", 8);
-      \u0275\u0275listener("ngSubmit", function LoginComponent_Template_form_ngSubmit_12_listener() {
-        return ctx.submit();
-      });
-      \u0275\u0275elementStart(13, "div", 9)(14, "label", 10);
-      \u0275\u0275text(15, "\u{1F4E7} E-mail");
-      \u0275\u0275elementEnd();
-      \u0275\u0275element(16, "input", 11);
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(17, "div", 9)(18, "label", 10);
-      \u0275\u0275text(19, "\u{1F512} Senha");
-      \u0275\u0275elementEnd();
-      \u0275\u0275element(20, "input", 12);
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(21, "button", 13);
-      \u0275\u0275template(22, LoginComponent_span_22_Template, 2, 0, "span", 14)(23, LoginComponent_span_23_Template, 1, 0, "span", 15);
-      \u0275\u0275text(24);
-      \u0275\u0275elementEnd()();
-      \u0275\u0275template(25, LoginComponent_div_25_Template, 2, 1, "div", 16);
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(26, "div", 17)(27, "h3", 18);
-      \u0275\u0275text(28, "\u{1F4A1} Dicas de Acesso");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(29, "div", 19)(30, "div", 20)(31, "div", 21);
-      \u0275\u0275text(32, "\u{1F468}\u200D\u{1F4BC} Administrador");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(33, "div", 22)(34, "strong");
-      \u0275\u0275text(35, "E-mail:");
-      \u0275\u0275elementEnd();
-      \u0275\u0275text(36, " admin@pmerj.rj.gov");
-      \u0275\u0275element(37, "br");
-      \u0275\u0275elementStart(38, "strong");
-      \u0275\u0275text(39, "Senha:");
-      \u0275\u0275elementEnd();
-      \u0275\u0275text(40, " 123456 ");
-      \u0275\u0275elementEnd()();
-      \u0275\u0275elementStart(41, "div", 20)(42, "div", 21);
-      \u0275\u0275text(43, "\u{1F464} Usu\xE1rio Cidad\xE3o");
-      \u0275\u0275elementEnd();
-      \u0275\u0275elementStart(44, "div", 22)(45, "strong");
-      \u0275\u0275text(46, "E-mail:");
-      \u0275\u0275elementEnd();
-      \u0275\u0275text(47, " joao@email.com");
-      \u0275\u0275element(48, "br");
-      \u0275\u0275elementStart(49, "strong");
-      \u0275\u0275text(50, "Senha:");
-      \u0275\u0275elementEnd();
-      \u0275\u0275text(51, " 123456 ");
-      \u0275\u0275elementEnd()()()();
-      \u0275\u0275elementStart(52, "div", 23)(53, "p", 24);
-      \u0275\u0275text(54, " \xA9 2024 Pol\xEDcia Militar do Estado do Rio de Janeiro");
-      \u0275\u0275element(55, "br");
-      \u0275\u0275text(56, " Sistema de Gest\xE3o de Autoriza\xE7\xF5es e Palestras ");
-      \u0275\u0275elementEnd()()()();
-    }
-    if (rf & 2) {
-      \u0275\u0275advance(12);
-      \u0275\u0275property("formGroup", ctx.form);
-      \u0275\u0275advance(9);
-      \u0275\u0275property("disabled", ctx.form.invalid || ctx.loading);
-      \u0275\u0275advance();
-      \u0275\u0275property("ngIf", !ctx.loading);
-      \u0275\u0275advance();
-      \u0275\u0275property("ngIf", ctx.loading);
-      \u0275\u0275advance();
-      \u0275\u0275textInterpolate1(" ", ctx.loading ? "Entrando..." : "Entrar no Sistema", " ");
-      \u0275\u0275advance();
-      \u0275\u0275property("ngIf", ctx.erro);
-    }
-  }, dependencies: [CommonModule, NgIf, ReactiveFormsModule, \u0275NgNoValidate, DefaultValueAccessor, NgControlStatus, NgControlStatusGroup, RequiredValidator, FormGroupDirective, FormControlName], encapsulation: 2 });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(LoginComponent, [{
-    type: Component,
-    args: [{ selector: "app-login", standalone: true, imports: [CommonModule, ReactiveFormsModule], template: `<div class="container">\r
-  <div class="text-center" style="max-width: 420px; margin: 4rem auto;">\r
-    <!-- Logo/Header -->\r
-    <div class="mb-8">\r
-      <div class="text-6xl mb-4">\u{1F46E}\u200D\u2642\uFE0F</div>\r
-      <h1 class="dashboard-title mb-2">Portal PMERJ</h1>\r
-      <p class="dashboard-subtitle">Sistema de Autoriza\xE7\xF5es e Palestras</p>\r
-    </div>\r
-\r
-    <!-- Formul\xE1rio de Login -->\r
-    <div class="card">\r
-      <h2 class="mb-6 text-center">\u{1F510} Entrar no Sistema</h2>\r
-\r
-      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>\r
-        <div class="form-group">\r
-          <label class="form-label">\u{1F4E7} E-mail</label>\r
-          <input \r
-            class="form-input" \r
-            formControlName="email" \r
-            type="email" \r
-            placeholder="Digite seu e-mail" \r
-            required>\r
-        </div>\r
-\r
-        <div class="form-group">\r
-          <label class="form-label">\u{1F512} Senha</label>\r
-          <input \r
-            class="form-input" \r
-            formControlName="senha" \r
-            type="password" \r
-            placeholder="Digite sua senha" \r
-            required>\r
-        </div>\r
-\r
-        <button \r
-          type="submit" \r
-          class="btn btn-primary btn-lg w-full" \r
-          [disabled]="form.invalid || loading">\r
-          <span *ngIf="!loading">\u{1F6AA}</span>\r
-          <span *ngIf="loading" class="loading"></span>\r
-          {{ loading ? 'Entrando...' : 'Entrar no Sistema' }}\r
-        </button>\r
-      </form>\r
-\r
-      <!-- Mensagem de Erro -->\r
-      <div *ngIf="erro" class="alert alert-error mt-4">{{ erro }}</div>\r
-    </div>\r
-\r
-    <!-- Informa\xE7\xF5es de Acesso -->\r
-    <div class="mt-8 p-6 bg-white rounded-lg shadow-md">\r
-      <h3 class="font-semibold mb-4 text-primary">\u{1F4A1} Dicas de Acesso</h3>\r
-      \r
-      <div class="grid grid-cols-1 gap-4">\r
-        <div class="p-4 border border-gray-200 rounded-lg">\r
-          <div class="font-medium text-gray-900 mb-1">\u{1F468}\u200D\u{1F4BC} Administrador</div>\r
-          <div class="text-sm text-gray-600">\r
-            <strong>E-mail:</strong> admin@pmerj.rj.gov<br>\r
-            <strong>Senha:</strong> 123456\r
-          </div>\r
-        </div>\r
-        \r
-        <div class="p-4 border border-gray-200 rounded-lg">\r
-          <div class="font-medium text-gray-900 mb-1">\u{1F464} Usu\xE1rio Cidad\xE3o</div>\r
-          <div class="text-sm text-gray-600">\r
-            <strong>E-mail:</strong> joao@email.com<br>\r
-            <strong>Senha:</strong> 123456\r
-          </div>\r
-        </div>\r
-      </div>\r
-    </div>\r
-\r
-    <!-- Footer -->\r
-    <div class="mt-8 text-center">\r
-      <p class="text-sm text-gray-500">\r
-        \xA9 2024 Pol\xEDcia Militar do Estado do Rio de Janeiro<br>\r
-        Sistema de Gest\xE3o de Autoriza\xE7\xF5es e Palestras\r
-      </p>\r
-    </div>\r
-  </div>\r
-</div>\r
-` }]
-  }], null, null);
-})();
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(LoginComponent, { className: "LoginComponent", filePath: "src/app/pages/login.component/login.component.ts", lineNumber: 13 });
-})();
-
-// src/app/services/admin.service.ts
-var AdminService = class _AdminService {
-  http = inject2(HttpClient);
-  base = "http://localhost:4000/api";
-  listarAutorizacoes(filtros) {
-    let params = new HttpParams();
-    if (filtros) {
-      Object.entries(filtros).forEach(([k, v]) => {
-        if (v !== void 0 && v !== null && v !== "")
-          params = params.set(k, String(v));
-      });
-    }
-    return this.http.get(`${this.base}/admin/eventos/autorizacao`, { params });
-  }
-  alterarStatusAutorizacao(protocolo, status, pendencia_obs) {
-    return this.http.patch(`${this.base}/admin/eventos/autorizacao/${encodeURIComponent(protocolo)}/status`, { status, pendencia_obs });
-  }
-  // ⇩ novo: detalhe de uma autorização pelo protocolo (usa a rota "cidadão")
-  obterAutorizacao(protocolo) {
-    return this.http.get(`${this.base}/eventos/autorizacao/${encodeURIComponent(protocolo)}`);
-  }
-  atualizarPendencia(protocolo, pendente, obs) {
-    return this.http.patch(`${this.base}/admin/eventos/autorizacao/${encodeURIComponent(protocolo)}/pendencia`, { pendente, obs });
-  }
-  static \u0275fac = function AdminService_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _AdminService)();
-  };
-  static \u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _AdminService, factory: _AdminService.\u0275fac, providedIn: "root" });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AdminService, [{
-    type: Injectable,
-    args: [{ providedIn: "root" }]
-  }], null, null);
-})();
-
 // src/app/components/header/header.component.ts
 function HeaderComponent_button_17_Template(rf, ctx) {
   if (rf & 1) {
@@ -46612,6 +46343,262 @@ var HeaderComponent = class _HeaderComponent {
 })();
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(HeaderComponent, { className: "HeaderComponent", filePath: "src/app/components/header/header.component.ts", lineNumber: 13 });
+})();
+
+// src/app/pages/login.component/login.component.ts
+function LoginComponent_div_29_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "div", 31);
+    \u0275\u0275element(1, "i", 32);
+    \u0275\u0275text(2);
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const ctx_r0 = \u0275\u0275nextContext();
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate1(" ", ctx_r0.erro);
+  }
+}
+var LoginComponent = class _LoginComponent {
+  fb = inject2(FormBuilder);
+  auth = inject2(AuthService);
+  router = inject2(Router);
+  loading = false;
+  erro = "";
+  form = this.fb.group({
+    email: ["", [Validators.required, Validators.email]],
+    senha: ["", Validators.required]
+  });
+  submit() {
+    if (this.form.invalid)
+      return;
+    this.loading = true;
+    this.erro = "";
+    this.auth.login(this.form.value).subscribe({
+      next: (res) => {
+        this.auth.salvarToken(res.token);
+        localStorage.setItem("usuario", JSON.stringify(res.usuario));
+        const tipo = res.usuario?.tipo_usuario;
+        const destino = tipo === "ADMIN" ? "/admin/dashboard" : "/usuario/dashboard";
+        this.loading = false;
+        this.router.navigateByUrl(destino);
+      },
+      error: (e) => {
+        this.loading = false;
+        this.erro = e?.error?.erro || "Falha no login";
+      }
+    });
+  }
+  static \u0275fac = function LoginComponent_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _LoginComponent)();
+  };
+  static \u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _LoginComponent, selectors: [["app-login"]], decls: 64, vars: 5, consts: [["currentPage", "Login", "userName", "Visitante", "userRole", "N\xC3O AUTENTICADO"], [1, "login-hero"], [1, "login-hero-content"], [1, "login-brand"], [1, "login-logo"], [1, "fas", "fa-shield-alt"], [1, "login-title"], [1, "login-subtitle"], [1, "login-card"], [1, "login-card-title"], [1, "fas", "fa-lock"], ["novalidate", "", 3, "ngSubmit", "formGroup"], [1, "form-group"], [1, "form-label"], [1, "fas", "fa-envelope"], ["formControlName", "email", "type", "email", "placeholder", "Digite seu e-mail", "required", "", 1, "form-input"], [1, "fas", "fa-key"], ["formControlName", "senha", "type", "password", "placeholder", "Digite sua senha", "required", "", 1, "form-input"], ["type", "submit", 1, "btn", "btn-primary", "btn-lg", "w-full", 3, "disabled"], [1, "fas", 3, "ngClass"], [1, "ml-2"], ["class", "alert alert-error mt-4", 4, "ngIf"], [1, "login-info"], [1, "fas", "fa-lightbulb"], [1, "login-info-grid"], [1, "login-info-card"], [1, "login-info-title"], [1, "fas", "fa-user-shield"], [1, "login-info-text"], [1, "fas", "fa-user"], [1, "login-footer"], [1, "alert", "alert-error", "mt-4"], [1, "fas", "fa-exclamation-triangle"]], template: function LoginComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      \u0275\u0275element(0, "app-header", 0);
+      \u0275\u0275elementStart(1, "div", 1)(2, "div", 2)(3, "div", 3)(4, "div", 4);
+      \u0275\u0275element(5, "i", 5);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(6, "h1", 6);
+      \u0275\u0275text(7, "Portal PMERJ");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(8, "p", 7);
+      \u0275\u0275text(9, "Sistema de Autoriza\xE7\xF5es e Palestras");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(10, "div", 8)(11, "h2", 9);
+      \u0275\u0275element(12, "i", 10);
+      \u0275\u0275text(13, " Entrar no Sistema");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(14, "form", 11);
+      \u0275\u0275listener("ngSubmit", function LoginComponent_Template_form_ngSubmit_14_listener() {
+        return ctx.submit();
+      });
+      \u0275\u0275elementStart(15, "div", 12)(16, "label", 13);
+      \u0275\u0275element(17, "i", 14);
+      \u0275\u0275text(18, " E-mail");
+      \u0275\u0275elementEnd();
+      \u0275\u0275element(19, "input", 15);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(20, "div", 12)(21, "label", 13);
+      \u0275\u0275element(22, "i", 16);
+      \u0275\u0275text(23, " Senha");
+      \u0275\u0275elementEnd();
+      \u0275\u0275element(24, "input", 17);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(25, "button", 18);
+      \u0275\u0275element(26, "i", 19);
+      \u0275\u0275elementStart(27, "span", 20);
+      \u0275\u0275text(28);
+      \u0275\u0275elementEnd()()();
+      \u0275\u0275template(29, LoginComponent_div_29_Template, 3, 1, "div", 21);
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(30, "div", 22)(31, "h3");
+      \u0275\u0275element(32, "i", 23);
+      \u0275\u0275text(33, " Dicas de Acesso");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(34, "div", 24)(35, "div", 25)(36, "div", 26);
+      \u0275\u0275element(37, "i", 27);
+      \u0275\u0275text(38, " Administrador");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(39, "div", 28)(40, "strong");
+      \u0275\u0275text(41, "E-mail:");
+      \u0275\u0275elementEnd();
+      \u0275\u0275text(42, " admin@pmerj.rj.gov");
+      \u0275\u0275element(43, "br");
+      \u0275\u0275elementStart(44, "strong");
+      \u0275\u0275text(45, "Senha:");
+      \u0275\u0275elementEnd();
+      \u0275\u0275text(46, " 123456 ");
+      \u0275\u0275elementEnd()();
+      \u0275\u0275elementStart(47, "div", 25)(48, "div", 26);
+      \u0275\u0275element(49, "i", 29);
+      \u0275\u0275text(50, " Usu\xE1rio Cidad\xE3o");
+      \u0275\u0275elementEnd();
+      \u0275\u0275elementStart(51, "div", 28)(52, "strong");
+      \u0275\u0275text(53, "E-mail:");
+      \u0275\u0275elementEnd();
+      \u0275\u0275text(54, " joao@email.com");
+      \u0275\u0275element(55, "br");
+      \u0275\u0275elementStart(56, "strong");
+      \u0275\u0275text(57, "Senha:");
+      \u0275\u0275elementEnd();
+      \u0275\u0275text(58, " 123456 ");
+      \u0275\u0275elementEnd()()()();
+      \u0275\u0275elementStart(59, "div", 30)(60, "p");
+      \u0275\u0275text(61, "\xA9 2025 Pol\xEDcia Militar do Estado do Rio de Janeiro");
+      \u0275\u0275element(62, "br");
+      \u0275\u0275text(63, " Sistema de Gest\xE3o de Autoriza\xE7\xF5es e Palestras");
+      \u0275\u0275elementEnd()()()();
+    }
+    if (rf & 2) {
+      \u0275\u0275advance(14);
+      \u0275\u0275property("formGroup", ctx.form);
+      \u0275\u0275advance(11);
+      \u0275\u0275property("disabled", ctx.form.invalid || ctx.loading);
+      \u0275\u0275advance();
+      \u0275\u0275property("ngClass", ctx.loading ? "fa-circle-notch fa-spin" : "fa-sign-in-alt");
+      \u0275\u0275advance(2);
+      \u0275\u0275textInterpolate(ctx.loading ? "Entrando..." : "Entrar no Sistema");
+      \u0275\u0275advance();
+      \u0275\u0275property("ngIf", ctx.erro);
+    }
+  }, dependencies: [CommonModule, NgClass, NgIf, ReactiveFormsModule, \u0275NgNoValidate, DefaultValueAccessor, NgControlStatus, NgControlStatusGroup, RequiredValidator, FormGroupDirective, FormControlName, HeaderComponent], styles: ["\n\n.login-hero[_ngcontent-%COMP%] {\n  min-height: 100vh;\n  background:\n    linear-gradient(\n      135deg,\n      #197cb1 0%,\n      #1565c0 50%,\n      #0d47a1 100%);\n  display: flex;\n  align-items: center;\n}\n.login-hero-content[_ngcontent-%COMP%] {\n  max-width: 1100px;\n  margin: 0 auto;\n  padding: 4rem 2rem;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 2rem;\n  align-items: center;\n}\n.login-brand[_ngcontent-%COMP%] {\n  text-align: center;\n}\n.login-logo[_ngcontent-%COMP%] {\n  width: 72px;\n  height: 72px;\n  border-radius: 50%;\n  background: #fbbf24;\n  color: #197cb1;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);\n  margin-bottom: 1rem;\n}\n.login-logo[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  font-size: 28px;\n}\n.login-title[_ngcontent-%COMP%] {\n  color: #fff;\n  font-size: 2rem;\n  font-weight: 800;\n}\n.login-subtitle[_ngcontent-%COMP%] {\n  color: rgba(255, 255, 255, 0.9);\n  font-size: 1rem;\n}\n.login-card[_ngcontent-%COMP%] {\n  background: #fff;\n  width: 100%;\n  max-width: 460px;\n  border-radius: 1rem;\n  padding: 2rem;\n  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);\n  border: 1px solid #e5e7eb;\n}\n.login-card-title[_ngcontent-%COMP%] {\n  font-size: 1.25rem;\n  font-weight: 700;\n  color: #0f172a;\n  display: flex;\n  align-items: center;\n  gap: .5rem;\n  margin-bottom: 1.25rem;\n}\n.form-group[_ngcontent-%COMP%] {\n  margin-bottom: 1rem;\n}\n.form-label[_ngcontent-%COMP%] {\n  font-weight: 600;\n  color: #0f172a;\n  display: flex;\n  gap: .5rem;\n  align-items: center;\n}\n.form-input[_ngcontent-%COMP%] {\n  width: 100%;\n}\n.login-info[_ngcontent-%COMP%] {\n  background: rgba(255, 255, 255, 0.1);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  -webkit-backdrop-filter: blur(6px);\n  backdrop-filter: blur(6px);\n  border-radius: 1rem;\n  padding: 1.5rem;\n  color: #fff;\n  width: 100%;\n}\n.login-info[_ngcontent-%COMP%]   h3[_ngcontent-%COMP%] {\n  font-weight: 700;\n  margin-bottom: 1rem;\n  display: flex;\n  align-items: center;\n  gap: .5rem;\n}\n.login-info-grid[_ngcontent-%COMP%] {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 1rem;\n}\n.login-info-card[_ngcontent-%COMP%] {\n  background: #ffffff;\n  color: #0f172a;\n  border: 1px solid #e5e7eb;\n  border-radius: .75rem;\n  padding: 1rem;\n}\n.login-info-title[_ngcontent-%COMP%] {\n  font-weight: 700;\n  margin-bottom: .5rem;\n  display: flex;\n  gap: .5rem;\n  align-items: center;\n}\n.login-info-text[_ngcontent-%COMP%] {\n  font-size: .9rem;\n  color: #334155;\n}\n.login-footer[_ngcontent-%COMP%] {\n  text-align: center;\n  color: rgba(255, 255, 255, 0.85);\n  font-size: .875rem;\n}\n@media (max-width: 768px) {\n  .login-hero-content[_ngcontent-%COMP%] {\n    padding: 3rem 1rem;\n  }\n  .login-info-grid[_ngcontent-%COMP%] {\n    grid-template-columns: 1fr;\n  }\n}\n@media (max-width: 480px) {\n  .login-title[_ngcontent-%COMP%] {\n    font-size: 1.5rem;\n  }\n  .login-logo[_ngcontent-%COMP%] {\n    width: 60px;\n    height: 60px;\n  }\n  .login-logo[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n    font-size: 24px;\n  }\n}\n/*# sourceMappingURL=login.component.css.map */"] });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(LoginComponent, [{
+    type: Component,
+    args: [{ selector: "app-login", standalone: true, imports: [CommonModule, ReactiveFormsModule, HeaderComponent], template: `<app-header currentPage="Login" userName="Visitante" userRole="N\xC3O AUTENTICADO"></app-header>\r
+\r
+<div class="login-hero">\r
+  <div class="login-hero-content">\r
+    <div class="login-brand">\r
+      <div class="login-logo"><i class="fas fa-shield-alt"></i></div>\r
+      <h1 class="login-title">Portal PMERJ</h1>\r
+      <p class="login-subtitle">Sistema de Autoriza\xE7\xF5es e Palestras</p>\r
+    </div>\r
+\r
+    <div class="login-card">\r
+      <h2 class="login-card-title"><i class="fas fa-lock"></i> Entrar no Sistema</h2>\r
+\r
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>\r
+        <div class="form-group">\r
+          <label class="form-label"><i class="fas fa-envelope"></i> E-mail</label>\r
+          <input \r
+            class="form-input" \r
+            formControlName="email" \r
+            type="email" \r
+            placeholder="Digite seu e-mail" \r
+            required>\r
+        </div>\r
+\r
+        <div class="form-group">\r
+          <label class="form-label"><i class="fas fa-key"></i> Senha</label>\r
+          <input \r
+            class="form-input" \r
+            formControlName="senha" \r
+            type="password" \r
+            placeholder="Digite sua senha" \r
+            required>\r
+        </div>\r
+\r
+        <button \r
+          type="submit" \r
+          class="btn btn-primary btn-lg w-full" \r
+          [disabled]="form.invalid || loading">\r
+          <i class="fas" [ngClass]="loading ? 'fa-circle-notch fa-spin' : 'fa-sign-in-alt'"></i>\r
+          <span class="ml-2">{{ loading ? 'Entrando...' : 'Entrar no Sistema' }}</span>\r
+        </button>\r
+      </form>\r
+\r
+      <div *ngIf="erro" class="alert alert-error mt-4"><i class="fas fa-exclamation-triangle"></i> {{ erro }}</div>\r
+    </div>\r
+\r
+    <div class="login-info">\r
+      <h3><i class="fas fa-lightbulb"></i> Dicas de Acesso</h3>\r
+      <div class="login-info-grid">\r
+        <div class="login-info-card">\r
+          <div class="login-info-title"><i class="fas fa-user-shield"></i> Administrador</div>\r
+          <div class="login-info-text">\r
+            <strong>E-mail:</strong> admin@pmerj.rj.gov<br>\r
+            <strong>Senha:</strong> 123456\r
+          </div>\r
+        </div>\r
+        \r
+        <div class="login-info-card">\r
+          <div class="login-info-title"><i class="fas fa-user"></i> Usu\xE1rio Cidad\xE3o</div>\r
+          <div class="login-info-text">\r
+            <strong>E-mail:</strong> joao@email.com<br>\r
+            <strong>Senha:</strong> 123456\r
+          </div>\r
+        </div>\r
+      </div>\r
+    </div>\r
+\r
+    <div class="login-footer">\r
+      <p>\xA9 2025 Pol\xEDcia Militar do Estado do Rio de Janeiro<br> Sistema de Gest\xE3o de Autoriza\xE7\xF5es e Palestras</p>\r
+    </div>\r
+  </div>\r
+</div>\r
+`, styles: ["/* src/app/pages/login.component/login.component.css */\n.login-hero {\n  min-height: 100vh;\n  background:\n    linear-gradient(\n      135deg,\n      #197cb1 0%,\n      #1565c0 50%,\n      #0d47a1 100%);\n  display: flex;\n  align-items: center;\n}\n.login-hero-content {\n  max-width: 1100px;\n  margin: 0 auto;\n  padding: 4rem 2rem;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  gap: 2rem;\n  align-items: center;\n}\n.login-brand {\n  text-align: center;\n}\n.login-logo {\n  width: 72px;\n  height: 72px;\n  border-radius: 50%;\n  background: #fbbf24;\n  color: #197cb1;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);\n  margin-bottom: 1rem;\n}\n.login-logo i {\n  font-size: 28px;\n}\n.login-title {\n  color: #fff;\n  font-size: 2rem;\n  font-weight: 800;\n}\n.login-subtitle {\n  color: rgba(255, 255, 255, 0.9);\n  font-size: 1rem;\n}\n.login-card {\n  background: #fff;\n  width: 100%;\n  max-width: 460px;\n  border-radius: 1rem;\n  padding: 2rem;\n  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);\n  border: 1px solid #e5e7eb;\n}\n.login-card-title {\n  font-size: 1.25rem;\n  font-weight: 700;\n  color: #0f172a;\n  display: flex;\n  align-items: center;\n  gap: .5rem;\n  margin-bottom: 1.25rem;\n}\n.form-group {\n  margin-bottom: 1rem;\n}\n.form-label {\n  font-weight: 600;\n  color: #0f172a;\n  display: flex;\n  gap: .5rem;\n  align-items: center;\n}\n.form-input {\n  width: 100%;\n}\n.login-info {\n  background: rgba(255, 255, 255, 0.1);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  -webkit-backdrop-filter: blur(6px);\n  backdrop-filter: blur(6px);\n  border-radius: 1rem;\n  padding: 1.5rem;\n  color: #fff;\n  width: 100%;\n}\n.login-info h3 {\n  font-weight: 700;\n  margin-bottom: 1rem;\n  display: flex;\n  align-items: center;\n  gap: .5rem;\n}\n.login-info-grid {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 1rem;\n}\n.login-info-card {\n  background: #ffffff;\n  color: #0f172a;\n  border: 1px solid #e5e7eb;\n  border-radius: .75rem;\n  padding: 1rem;\n}\n.login-info-title {\n  font-weight: 700;\n  margin-bottom: .5rem;\n  display: flex;\n  gap: .5rem;\n  align-items: center;\n}\n.login-info-text {\n  font-size: .9rem;\n  color: #334155;\n}\n.login-footer {\n  text-align: center;\n  color: rgba(255, 255, 255, 0.85);\n  font-size: .875rem;\n}\n@media (max-width: 768px) {\n  .login-hero-content {\n    padding: 3rem 1rem;\n  }\n  .login-info-grid {\n    grid-template-columns: 1fr;\n  }\n}\n@media (max-width: 480px) {\n  .login-title {\n    font-size: 1.5rem;\n  }\n  .login-logo {\n    width: 60px;\n    height: 60px;\n  }\n  .login-logo i {\n    font-size: 24px;\n  }\n}\n/*# sourceMappingURL=login.component.css.map */\n"] }]
+  }], null, null);
+})();
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(LoginComponent, { className: "LoginComponent", filePath: "src/app/pages/login.component/login.component.ts", lineNumber: 15 });
+})();
+
+// src/app/services/admin.service.ts
+var AdminService = class _AdminService {
+  http = inject2(HttpClient);
+  base = "http://localhost:4000/api";
+  listarAutorizacoes(filtros) {
+    let params = new HttpParams();
+    if (filtros) {
+      Object.entries(filtros).forEach(([k, v]) => {
+        if (v !== void 0 && v !== null && v !== "")
+          params = params.set(k, String(v));
+      });
+    }
+    return this.http.get(`${this.base}/admin/eventos/autorizacao`, { params });
+  }
+  alterarStatusAutorizacao(protocolo, status, pendencia_obs) {
+    return this.http.patch(`${this.base}/admin/eventos/autorizacao/${encodeURIComponent(protocolo)}/status`, { status, pendencia_obs });
+  }
+  // ⇩ novo: detalhe de uma autorização pelo protocolo (usa a rota "cidadão")
+  obterAutorizacao(protocolo) {
+    return this.http.get(`${this.base}/eventos/autorizacao/${encodeURIComponent(protocolo)}`);
+  }
+  atualizarPendencia(protocolo, pendente, obs) {
+    return this.http.patch(`${this.base}/admin/eventos/autorizacao/${encodeURIComponent(protocolo)}/pendencia`, { pendente, obs });
+  }
+  static \u0275fac = function AdminService_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _AdminService)();
+  };
+  static \u0275prov = /* @__PURE__ */ \u0275\u0275defineInjectable({ token: _AdminService, factory: _AdminService.\u0275fac, providedIn: "root" });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AdminService, [{
+    type: Injectable,
+    args: [{ providedIn: "root" }]
+  }], null, null);
 })();
 
 // src/app/pages/admin.dashboard/admin.dashboard.component.ts
