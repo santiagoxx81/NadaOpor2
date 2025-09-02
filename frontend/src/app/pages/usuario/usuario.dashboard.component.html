@@ -93,7 +93,26 @@
         <label class="form-label">Descrição</label>
         <textarea class="form-textarea" formControlName="descricao" placeholder="Descreva o evento"></textarea>
       </div>
-      
+
+      <!-- ==========================
+           Seção de Endereço (AE)
+           CEP no topo
+      =========================== -->
+      <div class="form-group">
+        <label class="form-label">CEP</label>
+        <input
+          type="text"
+          class="form-input"
+          formControlName="cep"
+          placeholder="00000-000"
+          maxlength="9"
+          (input)="onCepInput(formAE)"
+        >
+        <small class="text-warning" *ngIf="formAE.get('cep')?.errors?.['invalidCep']">
+          CEP inválido ou não encontrado.
+        </small>
+      </div>
+
       <div class="form-group">
         <label class="form-label">Endereço</label>
         <input type="text" class="form-input" formControlName="endereco" placeholder="Endereço completo">
@@ -113,12 +132,8 @@
         <label class="form-label">UF</label>
         <input type="text" class="form-input" formControlName="estado" maxlength="2" placeholder="RJ">
       </div>
-      
-      <div class="form-group">
-        <label class="form-label">CEP</label>
-        <input type="text" class="form-input" formControlName="cep" placeholder="00000-000">
-      </div>
-      
+      <!-- ========================== -->
+
       <div class="form-group">
         <label class="form-label">Data de Início</label>
         <input type="datetime-local" class="form-input" formControlName="data_inicio">
@@ -170,6 +185,25 @@
         <label class="form-label">Temas</label>
         <input type="text" class="form-input" formControlName="temas" placeholder="ex.: trânsito, violência doméstica">
       </div>
+
+      <!-- ==========================
+           Seção de Endereço (PL)
+           CEP no topo
+      =========================== -->
+      <div class="form-group">
+        <label class="form-label">CEP</label>
+        <input
+          type="text"
+          class="form-input"
+          formControlName="cep"
+          placeholder="00000-000"
+          maxlength="9"
+          (input)="onCepInput(formPL)"
+        >
+        <small class="text-warning" *ngIf="formPL.get('cep')?.errors?.['invalidCep']">
+          CEP inválido ou não encontrado.
+        </small>
+      </div>
       
       <div class="form-group">
         <label class="form-label">Endereço</label>
@@ -190,11 +224,7 @@
         <label class="form-label">UF</label>
         <input type="text" class="form-input" formControlName="estado" maxlength="2" placeholder="RJ">
       </div>
-      
-      <div class="form-group">
-        <label class="form-label">CEP</label>
-        <input type="text" class="form-input" formControlName="cep" placeholder="00000-000">
-      </div>
+      <!-- ========================== -->
       
       <div class="form-group">
         <label class="form-label">Público-alvo</label>

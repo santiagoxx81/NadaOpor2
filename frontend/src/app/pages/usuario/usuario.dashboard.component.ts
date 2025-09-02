@@ -1,6 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { of, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map, catchError } from 'rxjs/operators';
+
 import { NadaOporService } from '../../services/nada-opor.service';
 import { AnexosService } from '../../services/anexos.service';
 import { PalestraService } from '../../services/palestra.service';
@@ -12,7 +16,7 @@ type StatusAE = typeof STATUS[number];
 @Component({
   selector: 'app-usuario-dashboard',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HeaderComponent],
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, HeaderComponent],
   templateUrl: './usuario.dashboard.component.html'
 })
 export class UsuarioDashboardComponent {
@@ -20,6 +24,10 @@ export class UsuarioDashboardComponent {
   private aeSrv = inject(NadaOporService);
   private plSrv = inject(PalestraService);
   private anexosSrv = inject(AnexosService);
+  private http = inject(HttpClient);
+
+  // subs para watchers de CEP (opcional)
+  private cepSubs: Subscription[] = [];
 
   // UI state
   tab: 'AE' | 'PL' = 'AE';
@@ -46,11 +54,12 @@ export class UsuarioDashboardComponent {
     titulo: ['', Validators.required],
     descricao: [''],
     tipo_evento: [''],
+    // seção de endereço (CEP ficará no topo no HTML)
     endereco: ['', Validators.required],
     bairro: ['', Validators.required],
     cidade: ['', Validators.required],
     estado: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
-    cep: [''],
+    cep: ['', this.cepValidator()],
     data_inicio: ['', Validators.required],
     data_fim: ['', Validators.required],
     publico_estimado: [null],
@@ -60,11 +69,12 @@ export class UsuarioDashboardComponent {
   // ---- Form Nova Palestra/Representante ----
   formPL = this.fb.group({
     organizacao: [''],
+    // seção de endereço (CEP ficará no topo no HTML)
     endereco: ['', Validators.required],
     bairro: ['', Validators.required],
     cidade: ['', Validators.required],
     estado: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
-    cep: [''],
+    cep: ['', this.cepValidator()],
     temas: ['', Validators.required],
     publico_alvo: [''],
     qtd_pessoas: [null],
@@ -91,6 +101,14 @@ export class UsuarioDashboardComponent {
 
   ngOnInit() {
     this.refreshListas();
+
+    // Se preferir automatizar sem (input) no HTML, habilite:
+    // this.setupCepWatcher(this.formAE);
+    // this.setupCepWatcher(this.formPL);
+  }
+
+  ngOnDestroy() {
+    this.cepSubs.forEach(s => s.unsubscribe());
   }
 
   // Métodos para contadores dos cards
@@ -219,5 +237,84 @@ export class UsuarioDashboardComponent {
       },
       error: e => this.erro = e?.error?.erro || 'Erro ao solicitar Palestra'
     });
+  }
+
+  // ============== CEP / ViaCEP ==============
+
+  /** Valida formato de CEP: aceita 00000-000 ou 00000000 */
+  private cepValidator() {
+    const regex = /^\d{5}-?\d{3}$/;
+    return Validators.pattern(regex);
+  }
+
+  /** Handler chamado pelo (input) do campo CEP. Aplica máscara e consulta ViaCEP ao completar 8 dígitos. */
+  onCepInput(form: FormGroup) {
+    const ctrl = form.get('cep');
+    if (!ctrl) return;
+
+    const raw = String(ctrl.value ?? '');
+    const digits = raw.replace(/\D/g, '').slice(0, 8);
+
+    // aplica máscara 00000-000
+    const masked = digits.replace(/^(\d{5})(\d{0,3})$/, (_m, a, b) => (b ? `${a}-${b}` : a));
+    if (raw !== masked) {
+      ctrl.setValue(masked, { emitEvent: false });
+    }
+
+    if (digits.length === 8) {
+      this.consultarViaCep(digits, form);
+    } else {
+      // enquanto não completou, não manter erro travado
+      if (ctrl.hasError('invalidCep')) {
+        ctrl.setErrors(null);
+      }
+    }
+  }
+
+  /** Alternativa: observar mudanças do CEP sem usar (input) no HTML. Chamar no ngOnInit se quiser. */
+  private setupCepWatcher(form: FormGroup) {
+    const c = form.get('cep');
+    if (!c) return;
+    const sub = c.valueChanges.pipe(
+      map((v: string) => String(v ?? '').replace(/\D/g, '').slice(0, 8)),
+      distinctUntilChanged(),
+      debounceTime(250),
+      filter(v => v.length === 8)
+    ).subscribe(cep8 => this.consultarViaCep(cep8, form));
+    this.cepSubs.push(sub);
+  }
+
+  /** Consulta ViaCEP e preenche endereco/bairro/cidade/estado; seta erro no CEP se não encontrar */
+  private consultarViaCep(cep8: string, form: FormGroup) {
+    this.http.get<any>(`https://viacep.com.br/ws/${cep8}/json/`).pipe(
+      catchError(() => of({ erro: true }))
+    ).subscribe(data => {
+      const cepCtrl = form.get('cep');
+
+      if (!data || data.erro) {
+        cepCtrl?.setErrors({ invalidCep: true });
+        return;
+      }
+
+      // limpa erro
+      cepCtrl?.setErrors(null);
+
+      // monta endereço: logradouro + complemento (quando houver)
+      const endereco = this.joinEndereco(data.logradouro, data.complemento);
+
+      form.patchValue({
+        endereco: endereco,
+        bairro: data.bairro ?? '',
+        cidade: data.localidade ?? '',
+        estado: (data.uf ?? '').toUpperCase()
+      }, { emitEvent: false });
+    });
+  }
+
+  private joinEndereco(logradouro?: string, complemento?: string) {
+    const a = (logradouro ?? '').trim();
+    const b = (complemento ?? '').trim();
+    if (a && b) return `${a}, ${b}`;
+    return a || b || '';
   }
 }
