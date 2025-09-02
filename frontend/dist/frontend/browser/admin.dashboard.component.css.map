@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/pages/admin.dashboard/admin.dashboard.component.css"],
-  "sourcesContent": ["/* Estilos do detalhe no admin */\r\n.mt-6 { margin-top: 1.5rem; }\r\n.mb-0 { margin-bottom: 0; }\r\n.flex { display: flex; }\r\n.justify-between { justify-content: space-between; }\r\n.items-center { align-items: center; }\r\n.grid { display: grid; }\r\n.grid-cols-2 { grid-template-columns: 1fr 1fr; }\r\n.gap-4 { gap: 1rem; }\r\n.text-muted { color: var(--gray-600); }\r\n"],
-  "mappings": ";AACA,CAAC;AAAO,cAAY;AAAQ;AAC5B,CAAC;AAAO,iBAAe;AAAG;AAC1B,CAAC;AAAO,WAAS;AAAM;AACvB,CAAC;AAAkB,mBAAiB;AAAe;AACnD,CAAC;AAAe,eAAa;AAAQ;AACrC,CAAC;AAAO,WAAS;AAAM;AACvB,CAAC;AAAc,yBAAuB,IAAI;AAAK;AAC/C,CAAC;AAAQ,OAAK;AAAM;AACpB,CAAC;AAAa,SAAO,IAAI;AAAa;",
-  "names": []
-}

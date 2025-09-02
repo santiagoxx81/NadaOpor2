@@ -1,0 +1,52 @@
+version: '3.8'
+services:
+  backend:
+    image: automacaodebaixocusto/nadaopor-backend:latest
+    environment:
+      PORT: 4000
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRES: ${JWT_EXPIRES}
+      UPLOAD_DIR: /data/uploads
+    volumes:
+      - uploads_data:/data/uploads
+    networks:
+      - network_public
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    ports:
+      - target: 4000
+        published: 4000
+        protocol: tcp
+        mode: ingress
+
+  frontend:
+    image: automacaodebaixocusto/nadaopor-frontend:latest
+    environment:
+      API_BASE: ${API_BASE}
+    networks:
+      - network_public
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+        mode: ingress
+
+volumes:
+  uploads_data:
+    driver: local
+
+networks:
+  network_public:
+    external: true
+
+

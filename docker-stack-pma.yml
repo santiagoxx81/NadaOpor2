@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  phpmyadmin:
+    image: phpmyadmin:5.2
+    environment:
+      PMA_HOST: db           # nome do serviço MySQL na rede overlay
+      PMA_PORT: 3306
+      UPLOAD_LIMIT: 64M      # aumenta limite para importação de .sql
+      # Opcional: URL pública (ajuste se usar domínio)
+      # PMA_ABSOLUTE_URI: http://localhost:8081/
+    networks:
+      - network_public
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    ports:
+      - target: 80
+        published: 8081
+        protocol: tcp
+        mode: ingress
+
+networks:
+  network_public:
+    external: true
+
+

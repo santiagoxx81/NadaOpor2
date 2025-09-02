@@ -1,0 +1,59 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: nadaopor
+      MYSQL_USER: nadaopor
+      MYSQL_PASSWORD: nadaopor
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - dev
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      PORT: 4000
+      DB_HOST: db
+      DB_USER: nadaopor
+      DB_PASSWORD: nadaopor
+      DB_NAME: nadaopor
+      JWT_SECRET: "changeme-dev"
+      JWT_EXPIRES: "8h"
+      UPLOAD_DIR: /data/uploads
+    volumes:
+      - ./backend:/app
+      - uploads_data:/data/uploads
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+    networks:
+      - dev
+
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      API_BASE: http://localhost:4000/api
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+    networks:
+      - dev
+
+volumes:
+  db_data:
+  uploads_data:
+
+networks:
+  dev:
+    driver: bridge
+
+

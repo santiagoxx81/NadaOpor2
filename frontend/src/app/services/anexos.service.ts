@@ -1,10 +1,12 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+declare const window: any;
+
 @Injectable({ providedIn: 'root' })
 export class AnexosService {
   private http = inject(HttpClient);
-  private base = 'http://localhost:4000/api';
+  private base = (window?.__env?.API_BASE as string) || 'http://localhost:4000/api';
 
   listar(protocoloAE: string) {
     return this.http.get<any[]>(`${this.base}/eventos/autorizacao/${protocoloAE}/anexos`);
