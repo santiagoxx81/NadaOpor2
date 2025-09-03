@@ -13,13 +13,24 @@ import { HeaderComponent } from '../../components/header/header.component';
 export class HomeComponent {
   constructor(private router: Router) {}
 
+  private navegarParaDashboardPorPerfil() {
+    const raw = localStorage.getItem('usuario');
+    let destino = '/usuario/dashboard';
+    if (raw) {
+      try {
+        const usuario = JSON.parse(raw);
+        const tipo = (usuario?.tipo_usuario || '').toString().toUpperCase();
+        destino = tipo === 'ADMIN' ? '/admin/dashboard' : '/usuario/dashboard';
+      } catch {}
+    }
+    this.router.navigate([destino]);
+  }
+
   novaSolicitacao() {
-    // Redireciona para o dashboard do usuário
-    this.router.navigate(['/usuario/dashboard']);
+    this.navegarParaDashboardPorPerfil();
   }
 
   minhasSolicitacoes() {
-    // Redireciona para o dashboard do usuário
-    this.router.navigate(['/usuario/dashboard']);
+    this.navegarParaDashboardPorPerfil();
   }
 }
